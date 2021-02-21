@@ -1,0 +1,20 @@
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+#main {
+  padding: 50px 200px;
+}
+
+li {
+  font-size: 20px;
+  padding: 10px 5px;
+}
+
+.navbar-brand {
+  margin-left: 30px;
+}
+
+.col {
+  border: 3px solid grey;
+}
