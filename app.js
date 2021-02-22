@@ -42,7 +42,6 @@ const port = 8080;
 app.get("/", function (req, res) {
   // console.log(req.auth.user);
   // res.sendFile(__dirname + "/index.html"); //static page
-  // res.render("layouts" + path.sep + "main.handlebars", {
   noteService.list("Admin").then((data) => {
     res.render("index", {
       currentuser: req.auth.user,

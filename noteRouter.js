@@ -36,6 +36,8 @@ module.exports = class NoteRouter {
 
   put(req, res) {
     console.log("PUT ROUTE");
+    console.log(".note " + req.body.note);
+    console.log(".param " + req.param.id);
     return this.noteService
       .update(req.auth.user, req.param.id, req.body.note)
       .then(() => this.noteService.list(req.auth.user))

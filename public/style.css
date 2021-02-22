@@ -9,7 +9,7 @@ body {
 }
 
 #main {
-  padding: 50px 200px;
+  padding: 50px 150px;
 }
 
 li {
@@ -40,4 +40,8 @@ li {
 
 .col {
   border: 3px solid grey;
+}
+
+.btn {
+  display: inline;
 }

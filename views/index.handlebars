@@ -16,10 +16,17 @@
         </div>
         <div class="col">
           <h3>Display notes:</h3>
-          <div class="row">
-              {{#each array}}
-              {{this}}
+        {{#each array}}
+        <div class="row">
+          <div class="col-8">
+              <textarea class="existingnote" data-textarea={{@index}}>{{this}}</textarea>
+              </div>
+              <div class="col-4">
+              <button data-btn={{@index}} type="button" class="btn btn-danger deletebtn">Delete!</button>
+              </div>
+              <br>
               {{/each}}
+          </div>
           </div>
           <ul type="1" style="list-style: none" id="notelist"></ul>
         </div>

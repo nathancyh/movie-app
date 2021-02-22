@@ -103,7 +103,7 @@ module.exports = class NoteService {
         throw new Error("Can't remove non-existent note");
       }
       return this.read().then(() => {
-        this, notes[user].splice(index, 1);
+        this.notes[user].splice(index, 1);
         return this.write();
       });
     });

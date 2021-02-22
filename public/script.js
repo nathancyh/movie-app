@@ -1,33 +1,10 @@
 "use strict";
 
 $(function () {
-  let node;
-  let textnode;
-  let message = [];
-
-  // GET
-  // let refreshPage = function () {
-  //   $.get("http://localhost:8080/api/v1").done((data) => {
-  //     for (let index = 0; index < Object.keys(data).length; index++) {
-  //       if (Object.keys(data)[index] != undefined) {
-  //         message[index] = data[index];
-  //         node = document.createElement("LI");
-  //         textnode = document.createTextNode(message[index]);
-  //         node.appendChild(textnode);
-  //         document.getElementById("notelist").appendChild(node);
-  //       } else {
-  //         message[index] = "";
-  //       }
-  //     }
-  //   });
-  // };
-  // refreshPage();
-
   //POST
   $("#post").click((e) => {
     e.preventDefault();
     let data = $("#notearea").val();
-    console.log(data);
     $.ajax({
       type: "POST",
       url: "http://localhost:8080/api/v1",
@@ -35,9 +12,37 @@ $(function () {
       data: { note: data },
       success: function () {
         console.log("post success");
-        console.log(data);
       },
-    }).done(refreshPage());
+    }).done(window.location.reload());
+  });
+
+  //PUT
+  $(".existingnote").focusout((e) => {
+    e.preventDefault();
+    let data = e.target.value;
+    console.log(e.target.dataset.textarea);
+    $.ajax({
+      type: "PUT",
+      url: `http://localhost:8080/api/v1/${e.target.dataset.textarea}`,
+      dataType: "text",
+      data: { note: data },
+      success: function () {
+        console.log("put success");
+      },
+    }).done();
+  });
+
+  //DELETE
+  $(".deletebtn").click((e) => {
+    e.preventDefault();
+    console.log(e.target.dataset.btn);
+    $.ajax({
+      type: "DELETE",
+      url: `http://localhost:8080/api/v1/${e.target.dataset.btn}`,
+      success: function () {
+        console.log("delete success");
+      },
+    }).done(window.location.reload());
   });
 
   //Edit note: onclick of "textarea", get index of content using indexof, then put request on query .focusout()
