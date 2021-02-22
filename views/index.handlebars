@@ -1,0 +1,28 @@
+<div class="container wrapper" id="main">
+      <div class="row">
+        <div class="col">
+          <!-- <h1>Nevernote</h1> -->
+          <h3>Hello {{currentuser}}</h3>
+          <form
+            ref="note"
+            id="note"
+            {{!-- action="http://localhost:8080/api/v1"
+            method="post"
+            enctype="application/x-www-form-urlencoded" --}}
+          >
+            <textarea id="notearea" cols="50" rows="10" name="note"></textarea>
+            <button id="post" type="button">Add!</button>
+          </form>
+        </div>
+        <div class="col">
+          <h3>Display notes:</h3>
+          <div class="row">
+              {{#each array}}
+              {{this}}
+              {{/each}}
+          </div>
+          <ul type="1" style="list-style: none" id="notelist"></ul>
+        </div>
+      </div>
+      <div class="push"></div>
+    </div>

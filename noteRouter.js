@@ -46,7 +46,7 @@ module.exports = class NoteRouter {
   delete(req, res) {
     console.log("DELETE ROUTE");
     return this.noteService
-      .update(req.auth.user, req.param.id)
+      .remove(req.auth.user, req.param.id)
       .then(() => this.noteService.list(req.auth.user))
       .then((notes) => res.json(notes))
       .catch((err) => res.status(500).json(err));
