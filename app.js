@@ -1,7 +1,3 @@
-//Setup node
-const fs = require("fs");
-const path = require("path");
-
 // Class Import & Init
 const NoteRouter = require("./noteRouter");
 const NoteService = require("./noteService");
@@ -35,20 +31,18 @@ app.use("/api/v1", new NoteRouter(noteService).router());
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
-//Global Variables:
-const port = 8080;
-
 //Serve Main page
 app.get("/", function (req, res) {
-  // console.log(req.auth.user);
-  // res.sendFile(__dirname + "/index.html"); //static page
-  noteService.list("Admin").then((data) => {
+  noteService.list(req.auth.user).then((data) => {
     res.render("index", {
       currentuser: req.auth.user,
       array: data,
     });
   });
 });
+
+//Listen
+const port = 8080;
 app.listen(port, () => {
   console.log(`App listening on port ${port}!`);
 });

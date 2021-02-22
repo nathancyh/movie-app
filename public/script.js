@@ -18,24 +18,19 @@ $(function () {
 
   //PUT
   $(".existingnote").focusout((e) => {
-    e.preventDefault();
-    let data = e.target.value;
-    console.log(e.target.dataset.textarea);
     $.ajax({
       type: "PUT",
       url: `http://localhost:8080/api/v1/${e.target.dataset.textarea}`,
       dataType: "text",
-      data: { note: data },
+      data: { note: e.target.value },
       success: function () {
         console.log("put success");
       },
-    }).done();
+    }).done(window.location.reload());
   });
 
   //DELETE
   $(".deletebtn").click((e) => {
-    e.preventDefault();
-    console.log(e.target.dataset.btn);
     $.ajax({
       type: "DELETE",
       url: `http://localhost:8080/api/v1/${e.target.dataset.btn}`,
@@ -44,8 +39,4 @@ $(function () {
       },
     }).done(window.location.reload());
   });
-
-  //Edit note: onclick of "textarea", get index of content using indexof, then put request on query .focusout()
-
-  //Delete note: onclick of delete button, get index of content using indexof, then do delete request on said index
 });

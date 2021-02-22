@@ -37,9 +37,9 @@ module.exports = class NoteRouter {
   put(req, res) {
     console.log("PUT ROUTE");
     console.log(".note " + req.body.note);
-    console.log(".param " + req.param.id);
+    console.log(".param " + req.params.id);
     return this.noteService
-      .update(req.auth.user, req.param.id, req.body.note)
+      .update(req.auth.user, req.params.id, req.body.note)
       .then(() => this.noteService.list(req.auth.user))
       .then((notes) => res.json(notes))
       .catch((err) => res.status(500).json(err));
@@ -48,7 +48,7 @@ module.exports = class NoteRouter {
   delete(req, res) {
     console.log("DELETE ROUTE");
     return this.noteService
-      .remove(req.auth.user, req.param.id)
+      .remove(req.auth.user, req.params.id)
       .then(() => this.noteService.list(req.auth.user))
       .then((notes) => res.json(notes))
       .catch((err) => res.status(500).json(err));
