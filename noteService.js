@@ -57,7 +57,7 @@ module.exports = class NoteService {
           return this.read();
         })
         .then(() => {
-          if ((typeof this, this.notes[user] === "undefined")) {
+          if (typeof this.notes[user] === "undefined") {
             return [];
           } else {
             return this.notes[user];
@@ -84,7 +84,7 @@ module.exports = class NoteService {
     //'note' = imcoming data
     return this.init().then(() => {
       if (typeof this.notes[user] === "undefined") {
-        throw new Error("Can't update, user not found");
+        throw new Error("Unable to update, user not found");
       }
       if (this.notes[user].length <= index) {
         throw new Error("Can't update non-existent note");
@@ -97,7 +97,7 @@ module.exports = class NoteService {
   remove(user, index) {
     return this.init().then(() => {
       if (typeof this.notes[user] === "undefined") {
-        throw new Error("Can't remove, user not found");
+        throw new Error("Unable to remove, user not found");
       }
       if (this.notes[user].length <= index) {
         throw new Error("Can't remove non-existent note");
