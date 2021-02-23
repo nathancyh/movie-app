@@ -1,34 +1,27 @@
-<div class="container wrapper" id="main">
+<div class="container" id="wrapper">
       <div class="row">
         <div class="col">
           <!-- <h1>Nevernote</h1> -->
           <h3>Hello {{currentuser}}</h3>
           <form
             ref="note"
-            id="note"
-            {{!-- action="http://localhost:8080/api/v1"
-            method="post"
-            enctype="application/x-www-form-urlencoded" --}}
-          >
-            <textarea id="notearea" cols="50" rows="10" name="note"></textarea>
-            <button id="post" type="button">Add!</button>
+            id="note">
+            <textarea id="notearea" cols="60" rows="10" name="note"></textarea>
+            <br>
+            <button id="post" type="button" class="btn btn-primary">Submit!</button>
           </form>
         </div>
         <div class="col">
           <h3>Display notes:</h3>
         {{#each array}}
         <div class="row">
-          <div class="col-8">
-              <textarea class="existingnote" data-textarea={{@index}}>{{this}}</textarea>
-              </div>
-              <div class="col-4">
+          <div class="d-flex cards">
+              <textarea cols="40" class="existingnote" data-textarea={{@index}}>{{this}}</textarea>
               <button data-btn={{@index}} type="button" class="btn btn-danger deletebtn">Delete!</button>
               </div>
               <br>
             </div>
               {{/each}}
           </div>
-          {{!-- <ul type="1" style="list-style: none" id="notelist"></ul> --}}
         </div>
       </div>
-      <div class="push"></div>

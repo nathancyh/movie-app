@@ -2,32 +2,22 @@ html,
 body {
   height: 100%;
   margin: 0;
+  /* background-image: url("windows-SwHvzwEzCfA-unsplash.jpg");
+  background-repeat: no-repeat;
+  background-size: cover; */
 }
 
 body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
-#main {
-  padding: 50px 150px;
+#wrapper {
+  min-height: calc(100vh - 136px);
+  padding: 40px 3%;
 }
 
-li {
-  font-size: 20px;
-  padding: 10px 5px;
-}
-
-.wrapper {
-  min-height: 100%;
-  margin-bottom: -30px;
-}
-
-.push,
 .footer {
   height: 80px;
-}
-
-.footer {
   text-align: center;
   padding: 3px;
   background-color: rgb(0, 0, 0);
@@ -35,13 +25,35 @@ li {
 }
 
 .navbar-brand {
-  margin-left: 30px;
+  margin-left: 100px;
+}
+
+.cards {
+  /* border: 1px solid black; */
+  padding: 15px;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  vertical-align: center;
+  align-items: center;
+  text-align: center;
+  background-color: #f7efac;
+  border-radius: 13px;
+  width: 95%;
 }
 
 .col {
-  border: 3px solid grey;
+  background-color: rgb(139, 222, 224);
+  /* border: 3px solid black; */
+  border-radius: 13px;
+  margin: 10px;
+  padding: 20px;
 }
 
-.btn {
-  display: inline;
+.deletebtn {
+  margin-left: 20px;
+}
+
+.btn-primary {
+  margin-top: 10px;
 }
