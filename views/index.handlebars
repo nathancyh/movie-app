@@ -2,7 +2,7 @@
       <div class="row">
         <div class="col">
           <!-- <h1>Nevernote</h1> -->
-          <h3>Hello {{currentuser}}</h3>
+          <h3>Hello, {{currentuser}}</h3>
           <form
             ref="note"
             id="note">
@@ -12,11 +12,11 @@
           </form>
         </div>
         <div class="col">
-          <h3>Display notes:</h3>
+          <h3>Displaying Notes from {{currentuser}}:</h3>
         {{#each array}}
         <div class="row">
           <div class="d-flex cards">
-              <textarea cols="40" class="existingnote" data-textarea={{@index}}>{{this}}</textarea>
+              <textarea cols="40" rows="4" class="existingnote" data-textarea={{@index}}>{{this}}</textarea>
               <button data-btn={{@index}} type="button" class="btn btn-danger deletebtn">Delete!</button>
               </div>
               <br>
