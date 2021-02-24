@@ -37,6 +37,10 @@ $(function () {
       success: function () {
         console.log("delete success");
       },
-    }).done(window.location.reload());
+    }).done(
+      setTimeout(() => {
+        window.location.reload();
+      }, 500)
+    );
   });
 });
