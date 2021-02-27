@@ -1,3 +1,12 @@
+const knex = require("knex")({
+  client: "postgresql",
+  connection: {
+    database: "noteapp",
+    user: "postgres",
+    password: "postgres",
+  },
+});
+
 // Class Import & Init
 const NoteRouter = require("./noteRouter");
 const NoteService = require("./noteService");
@@ -45,4 +54,18 @@ app.get("/", function (req, res) {
 const port = 8080;
 app.listen(port, () => {
   console.log(`App listening on port ${port}!`);
+});
+
+//SQL testing function
+app.get("/sql", async function (req, res) {
+  console.log(req.auth.user);
+  await knex("citrus")
+    .whereRaw("color = ?", ["orange"])
+    .select("taste")
+    .then((data) => {
+      for (let index = 0; index < 3; index++) {
+        console.log(data[index].taste);
+      }
+      res.send(data);
+    });
 });

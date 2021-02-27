@@ -9,11 +9,14 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
+    "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "express-basic-auth": "^1.2.0",
     "express-handlebars": "^5.2.1",
     "jest": "^26.6.3",
+    "knex": "^0.21.18",
     "morgan": "^1.10.0",
+    "pg": "^8.5.1",
     "supertest": "^6.1.3"
   }
 }

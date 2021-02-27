@@ -1,5 +1,14 @@
 const fs = require("fs");
 
+const knex = require("knex")({
+  client: "postgresql",
+  connection: {
+    database: "noteapp",
+    user: "postgres",
+    password: "postgres",
+  },
+});
+
 module.exports = class NoteService {
   constructor(file) {
     this.file = file;
@@ -38,6 +47,27 @@ module.exports = class NoteService {
       });
     });
   }
+  ////////////////////////
+  //SQL
+  //SELECT username FROM notes WHERE username  = res.auth.name
+  //ORDER BY created_at
+  read() {
+    return new Promise((resolve, reject) => {
+      fs.readFile(this.file, "utf-8", (err, data) => {
+        //TODO:
+        if (err) {
+          reject(err);
+        }
+        try {
+          this.notes = JSON.parse(data);
+        } catch (e) {
+          return reject(e);
+        }
+        return resolve(this.notes);
+      });
+    });
+  }
+  ///////////////////////
 
   write() {
     return new Promise((resolve, reject) => {
