@@ -40,32 +40,22 @@ app.use("/api/v1", new NoteRouter(noteService).router());
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
-//Serve Main page
+//SQL Serve Main page
 app.get("/", function (req, res) {
-  noteService.list(req.auth.user).then((data) => {
-    res.render("index", {
-      currentuser: req.auth.user,
-      array: data,
-    });
-  });
+  console.log("GET MAIN");
+  noteService
+    .listnote(req.auth.user)
+    .then((data) => {
+      res.render("index", {
+        currentuser: req.auth.user,
+        array: data,
+      });
+    })
+    .catch((err) => res.status(500).json(err));
 });
 
 //Listen
 const port = 8080;
 app.listen(port, () => {
   console.log(`App listening on port ${port}!`);
-});
-
-//SQL testing function
-app.get("/sql", async function (req, res) {
-  console.log(req.auth.user);
-  await knex("citrus")
-    .whereRaw("color = ?", ["orange"])
-    .select("taste")
-    .then((data) => {
-      for (let index = 0; index < 3; index++) {
-        console.log(data[index].taste);
-      }
-      res.send(data);
-    });
 });

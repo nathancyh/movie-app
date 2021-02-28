@@ -13,7 +13,11 @@ $(function () {
       success: function () {
         console.log("post success");
       },
-    }).done(window.location.reload());
+    }).done(
+      setTimeout(() => {
+        window.location.reload();
+      }, 500)
+    );
   });
 
   //PUT
@@ -26,7 +30,11 @@ $(function () {
       success: function () {
         console.log("put success");
       },
-    }).done(window.location.reload());
+    }).done(
+      setTimeout(() => {
+        window.location.reload();
+      }, 500)
+    );
   });
 
   //DELETE
