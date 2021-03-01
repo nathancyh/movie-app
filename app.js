@@ -59,3 +59,15 @@ const port = 8080;
 app.listen(port, () => {
   console.log(`App listening on port ${port}!`);
 });
+
+/////////SQL Test Function
+let user = "Nathan";
+app.get("/sql", function (req, res) {
+  return knex("usertable")
+    .whereRaw("id = ?", [1])
+    .select()
+    .then((data) => {
+      console.log(data);
+      res.send(data);
+    });
+});

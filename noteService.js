@@ -10,6 +10,13 @@ const knex = require("knex")({
 });
 
 module.exports = class NoteService {
+  getUserID(user) {
+    return knex("usertable")
+      .whereRaw("id = ?", [user])
+      .select()
+      .then((data) => console.log(data));
+  }
+
   //SQL list
   listnote(user) {
     let outputArr = [];
@@ -25,6 +32,21 @@ module.exports = class NoteService {
       })
       .catch((err) => console.error(err));
   }
+
+  // listall() {
+  //   let outputArr = [];
+  //   return knex("notetable")
+  //     .whereRaw("username = ?", [user])
+  //     .select("noterow")
+  //     .orderBy("id")
+  //     .then((data) => {
+  //       for (let i = 0; i < data.length; i++) {
+  //         outputArr.push(data[i].noterow);
+  //       }
+  //       return outputArr;
+  //     })
+  //     .catch((err) => console.error(err));
+  // }
 
   listid(user) {
     return knex("notetable")
@@ -43,6 +65,9 @@ module.exports = class NoteService {
       .insert([{ username: user, noterow: note }])
       .catch((err) => console.error(err));
   }
+
+  // TODO:
+  // reject empty notes
 
   //SQL update
   update(user, index, note) {
