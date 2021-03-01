@@ -1,9 +1,11 @@
+require("dotenv").config();
+
 const knex = require("knex")({
   client: "postgresql",
   connection: {
-    database: "noteapp",
-    user: "postgres",
-    password: "postgres",
+    database: process.env.DB_NAME,
+    user: process.env.DB_USERNAME,
+    password: process.env.DB_PASSWORD,
   },
 });
 
@@ -44,11 +46,12 @@ app.set("view engine", "handlebars");
 app.get("/", function (req, res) {
   console.log("GET MAIN");
   noteService
-    .listnote(req.auth.user)
-    .then((data) => {
+    .getUserID(req.auth.user)
+    .then((userid) => noteService.listid(userid))
+    .then((noteArr) => {
       res.render("index", {
         currentuser: req.auth.user,
-        array: data,
+        array: noteArr,
       });
     })
     .catch((err) => res.status(500).json(err));
@@ -60,14 +63,17 @@ app.listen(port, () => {
   console.log(`App listening on port ${port}!`);
 });
 
-/////////SQL Test Function
-let user = "Nathan";
+///////SQL Test Function
 app.get("/sql", function (req, res) {
-  return knex("usertable")
-    .whereRaw("id = ?", [1])
-    .select()
-    .then((data) => {
-      console.log(data);
-      res.send(data);
-    });
+  return (
+    knex("notetable")
+      // .whereRaw("username = ?", [user])
+      .select("id", "user_id", "noterow")
+      .orderBy("id")
+      .then((data) => {
+        console.log(data);
+        res.json(data);
+      })
+      .catch((err) => console.error(err))
+  );
 });

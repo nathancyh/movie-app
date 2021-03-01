@@ -16,7 +16,7 @@
         {{#each array}}
         <div class="row">
           <div class="d-flex cards">
-              <textarea cols="40" rows="4" class="existingnote" data-textarea={{@index}}>{{this}}</textarea>
+              <textarea cols="40" rows="4" class="existingnote" data-textarea={{@index}}>{{this.noterow}}</textarea>
               <button data-btn={{@index}} type="button" class="btn btn-danger deletebtn">Delete!</button>
               </div>
               <br>

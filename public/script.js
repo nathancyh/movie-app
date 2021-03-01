@@ -16,7 +16,7 @@ $(function () {
     }).done(
       setTimeout(() => {
         window.location.reload();
-      }, 500)
+      }, 200)
     );
   });
 
@@ -33,7 +33,7 @@ $(function () {
     }).done(
       setTimeout(() => {
         window.location.reload();
-      }, 500)
+      }, 200)
     );
   });
 
@@ -48,7 +48,7 @@ $(function () {
     }).done(
       setTimeout(() => {
         window.location.reload();
-      }, 500)
+      }, 200)
     );
   });
 });

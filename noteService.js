@@ -1,28 +1,28 @@
-const fs = require("fs");
+require("dotenv").config();
 
 const knex = require("knex")({
   client: "postgresql",
   connection: {
-    database: "noteapp",
-    user: "postgres",
-    password: "postgres",
+    database: process.env.DB_NAME,
+    user: process.env.DB_USERNAME,
+    password: process.env.DB_PASSWORD,
   },
 });
 
 module.exports = class NoteService {
   getUserID(user) {
     return knex("usertable")
-      .whereRaw("id = ?", [user])
-      .select()
-      .then((data) => console.log(data));
+      .whereRaw("username = ?", [user])
+      .select("id")
+      .then((data) => data[0].id);
   }
 
   //SQL list
-  listnote(user) {
+  listnote(userid) {
     let outputArr = [];
     return knex("notetable")
-      .whereRaw("username = ?", [user])
-      .select("noterow")
+      .whereRaw("user_id = ?", [userid])
+      .select()
       .orderBy("id")
       .then((data) => {
         for (let i = 0; i < data.length; i++) {
@@ -33,24 +33,19 @@ module.exports = class NoteService {
       .catch((err) => console.error(err));
   }
 
-  // listall() {
-  //   let outputArr = [];
-  //   return knex("notetable")
-  //     .whereRaw("username = ?", [user])
-  //     .select("noterow")
-  //     .orderBy("id")
-  //     .then((data) => {
-  //       for (let i = 0; i < data.length; i++) {
-  //         outputArr.push(data[i].noterow);
-  //       }
-  //       return outputArr;
-  //     })
-  //     .catch((err) => console.error(err));
-  // }
-
-  listid(user) {
+  listall() {
     return knex("notetable")
-      .whereRaw("username = ?", [user])
+      .select("id", "user_id", "noterow")
+      .orderBy("id")
+      .then((data) => {
+        return data;
+      })
+      .catch((err) => console.error(err));
+  }
+
+  listid(userid) {
+    return knex("notetable")
+      .whereRaw("user_id = ?", [userid])
       .select("id", "noterow")
       .orderBy("id")
       .then((data) => {
@@ -60,21 +55,22 @@ module.exports = class NoteService {
   }
 
   //SQL add
-  add(user, note) {
+  add(userid, note) {
     return knex("notetable")
-      .insert([{ username: user, noterow: note }])
+      .insert([{ user_id: userid, noterow: note }])
       .catch((err) => console.error(err));
   }
 
   // TODO:
+  //Delay response? FIXME:
   // reject empty notes
 
   //SQL update
-  update(user, index, note) {
-    return this.listid(user).then((data) => {
+  update(userid, index, note) {
+    return this.listid(userid).then((data) => {
       return knex("notetable")
         .where({ id: data[index].id })
-        .andWhere({ username: user })
+        .andWhere({ user_id: userid })
         .update({ noterow: note })
         .catch((err) => console.error(err));
     });
@@ -84,16 +80,13 @@ module.exports = class NoteService {
   // "Unable to update, user not found"
   // "Can't update non-existent note"
 
-  remove(user, index) {
-    return this.listid(user).then((data) => {
-      return (
-        knex("notetable")
-          .where({ id: data[index].id })
-          .andWhere({ username: user })
-          .del()
-          // .then((data) => console.log(data))
-          .catch((err) => console.error(err))
-      );
+  remove(userid, index) {
+    return this.listid(userid).then((data) => {
+      return knex("notetable")
+        .where({ id: data[index].id })
+        .andWhere({ user_id: userid })
+        .del()
+        .catch((err) => console.error(err));
     });
   }
 
@@ -101,3 +94,6 @@ module.exports = class NoteService {
   // "Unable to remove, user not found"
   // "Can't remove non-existent note"
 };
+
+//NOTES:
+//fix band-aid delay in script.js & router timer
