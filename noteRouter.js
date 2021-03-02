@@ -45,7 +45,6 @@ module.exports = class NoteRouter {
   //SQL post
   post(req, res) {
     console.log("POST ROUTE");
-    let userID = "";
     return (
       this.noteService
         .add(req.auth.user, req.body.note)

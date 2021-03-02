@@ -5,19 +5,23 @@ $(function () {
   $("#post").click((e) => {
     e.preventDefault();
     let data = $("#notearea").val();
-    $.ajax({
-      type: "POST",
-      url: "http://localhost:8080/api/v1",
-      dataType: "text",
-      data: { note: data },
-      success: function () {
-        console.log("post success");
-      },
-    }).done(
-      setTimeout(() => {
-        window.location.reload();
-      }, 200)
-    );
+    if (data.length > 0) {
+      $.ajax({
+        type: "POST",
+        url: "http://localhost:8080/api/v1",
+        dataType: "text",
+        data: { note: data },
+        success: function () {
+          console.log("post success");
+        },
+      }).done(
+        setTimeout(() => {
+          window.location.reload();
+        }, 200)
+      );
+    } else {
+      alert("Cannot submit empty note!");
+    }
   });
 
   //PUT

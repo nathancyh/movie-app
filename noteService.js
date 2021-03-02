@@ -51,10 +51,6 @@ module.exports = class NoteService {
       });
   }
 
-  // TODO:
-  //Delay response? FIXME:
-  // reject empty notes
-
   //SQL update
   update(noteid, note) {
     return knex("notetable")
