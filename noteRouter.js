@@ -25,8 +25,7 @@ module.exports = class NoteRouter {
   get(req, res) {
     console.log("GET ROUTE");
     return this.noteService
-      .getUserID(req.auth.user)
-      .then((userid) => this.noteService.listid(userid))
+      .listid(req.auth.user)
       .then((notes) => {
         res.json({ notes });
       })
@@ -47,45 +46,37 @@ module.exports = class NoteRouter {
   post(req, res) {
     console.log("POST ROUTE");
     let userID = "";
-    return this.noteService
-      .getUserID(req.auth.user)
-      .then((userid) => {
-        userID = userid;
-        this.noteService.add(userID, req.body.note);
-      })
-      .then(() => this.timer(100))
-      .then(() => this.noteService.listnote(userID))
-      .then((notes) => res.json({ notes }))
-      .catch((err) => res.status(500).json(err));
+    return (
+      this.noteService
+        .add(req.auth.user, req.body.note)
+        // .then(() => this.timer(50))
+        .then(() => this.noteService.listid(req.auth.user))
+        .then((notes) => res.json({ notes }))
+        .catch((err) => res.status(500).json(err))
+    );
   }
 
   put(req, res) {
     console.log("PUT ROUTE");
-    let userID = "";
-    return this.noteService
-      .getUserID(req.auth.user)
-      .then((userid) => {
-        userID = userid;
-        this.noteService.update(userID, req.params.id, req.body.note);
-      })
-      .then(() => this.timer(100))
-      .then(() => this.noteService.listnote(userID))
-      .then((notes) => res.json(notes))
-      .catch((err) => res.status(500).json(err));
+    return (
+      this.noteService
+        .update(req.params.id, req.body.note)
+        // .then(() => this.timer(100))
+        .then(() => this.noteService.listid(res.auth.user))
+        .then((notes) => res.json(notes))
+        .catch((err) => res.status(500).json(err))
+    );
   }
 
   delete(req, res) {
     console.log("DELETE ROUTE");
-    let userID = "";
-    return this.noteService
-      .getUserID(req.auth.user)
-      .then((userid) => {
-        userID = userid;
-        this.noteService.remove(userID, req.params.id);
-      })
-      .then(() => this.timer(100))
-      .then(() => this.noteService.listnote(userID))
-      .then((notes) => res.json(notes))
-      .catch((err) => res.status(500).json(err));
+    return (
+      this.noteService
+        .remove(req.params.id)
+        // .then(() => this.timer(100))
+        .then(() => this.noteService.listid(req.auth.user))
+        .then((notes) => res.json(notes))
+        .catch((err) => res.status(500).json(err))
+    );
   }
 };

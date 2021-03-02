@@ -46,8 +46,7 @@ app.set("view engine", "handlebars");
 app.get("/", function (req, res) {
   console.log("GET MAIN");
   noteService
-    .getUserID(req.auth.user)
-    .then((userid) => noteService.listid(userid))
+    .listid(req.auth.user)
     .then((noteArr) => {
       res.render("index", {
         currentuser: req.auth.user,
