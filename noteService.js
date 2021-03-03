@@ -1,5 +1,3 @@
-require("dotenv").config();
-
 module.exports = class NoteService {
   constructor(knex) {
     this.knex = knex;

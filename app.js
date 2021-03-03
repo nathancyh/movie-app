@@ -43,10 +43,11 @@ app.get("/", function (req, res) {
   noteService
     .listid(req.auth.user)
     .then((noteArr) => {
-      res.render("index", {
-        currentuser: req.auth.user,
-        array: noteArr,
-      });
+      res.render("login", {});
+      // res.render("index", {
+      //   currentuser: req.auth.user,
+      //   array: noteArr,
+      // });
     })
     .catch((err) => res.status(500).json(err));
 });

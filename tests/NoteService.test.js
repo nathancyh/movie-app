@@ -1,7 +1,7 @@
 const fs = require("fs");
 const NoteService = require("../noteService");
-const path = require("path");
-const file = __dirname + path.sep + "test.json";
+// const path = require("path");
+// const file = __dirname + path.sep + "test.json";
 
 //Before Each
 describe("Note Service should handle files properly", () => {
