@@ -1,18 +1,12 @@
 require("dotenv").config();
 
-const knex = require("knex")({
-  client: "postgresql",
-  connection: {
-    database: process.env.DB_NAME,
-    user: process.env.DB_USERNAME,
-    password: process.env.DB_PASSWORD,
-  },
-});
-
 module.exports = class NoteService {
+  constructor(knex) {
+    this.knex = knex;
+  }
   //SQL list
   listall() {
-    return knex("notetable")
+    return this.knex("notetable")
       .select("id", "user_id", "noterow")
       .orderBy("id")
       .then((data) => {
@@ -22,7 +16,7 @@ module.exports = class NoteService {
   }
 
   listid(user) {
-    return knex
+    return this.knex
       .select(
         "notetable.user_id",
         "usertable.username",
@@ -40,40 +34,33 @@ module.exports = class NoteService {
 
   //SQL add
   add(user, note) {
-    return knex("usertable")
+    return this.knex("usertable")
       .whereRaw("username = ?", [user])
       .select("id")
       .then((data) => {
         let userid = data[0].id;
-        return knex("notetable")
-          .insert([{ user_id: userid, noterow: note }])
-          .catch((err) => console.error(err));
+        if (userid) {
+          return this.knex("notetable").insert([
+            { user_id: userid, noterow: note },
+          ]);
+        } else {
+          throw new Error("Cannot add note from non-existent user");
+        }
       });
   }
 
   //SQL update
   update(noteid, note) {
-    return knex("notetable")
+    return this.knex("notetable")
       .where({ id: noteid })
       .update({ noterow: note })
       .catch((err) => console.error(err));
   }
 
-  //TODO:
-  // "Unable to update, user not found"
-  // "Can't update non-existent note"
-
   remove(noteid) {
-    return knex("notetable")
+    return this.knex("notetable")
       .where({ id: noteid })
       .del()
       .catch((err) => console.error(err));
   }
-
-  // TODO:
-  // "Unable to remove, user not found"
-  // "Can't remove non-existent note"
 };
-
-//NOTES:
-//fix band-aid delay in script.js & router timer

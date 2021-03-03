@@ -1,32 +1,27 @@
 require("dotenv").config();
 
-const knex = require("knex")({
-  client: "postgresql",
-  connection: {
-    database: process.env.DB_NAME,
-    user: process.env.DB_USERNAME,
-    password: process.env.DB_PASSWORD,
-  },
-});
+// Knex Setup
+const knexConfig = require("./knexfile").development;
+const knex = require("knex")(knexConfig);
 
 // Class Import & Init
 const NoteRouter = require("./noteRouter");
 const NoteService = require("./noteService");
-const noteService = new NoteService("./Database/notes.json");
+const noteService = new NoteService(knex);
 
-//Setup Express
+// Setup Express
 const express = require("express");
 const app = express();
 app.use(express.static("public"));
 
-//Middlewares
+// Middlewares
 const bodyParser = require("body-parser");
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 const basicAuth = require("express-basic-auth");
 var exphbs = require("express-handlebars");
 
-//Middleware: Auth
+// Middleware: Auth
 app.use(
   basicAuth({
     users: { Admin: "super", Nathan: "super" },
@@ -35,10 +30,10 @@ app.use(
   })
 );
 
-//Middleware: Router
+// Middleware: Router
 app.use("/api/v1", new NoteRouter(noteService).router());
 
-//express-handlebar
+// express-handlebar
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
