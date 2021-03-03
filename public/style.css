@@ -13,7 +13,7 @@ nav {
 }
 
 .wrapper {
-  min-height: calc(100vh - 136px);
+  /* min-height: calc(100vh - 136px); */
   padding: 40px 3%;
 }
 
@@ -50,6 +50,9 @@ nav {
   border-radius: 13px;
   border: teal 3px solid;
   max-width: 40%;
+  margin-top: 100px;
+  margin-bottom: 100px;
+  padding: 100px 0px;
 }
 
 @media (max-width: 750px) {

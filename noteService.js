@@ -2,6 +2,26 @@ module.exports = class NoteService {
   constructor(knex) {
     this.knex = knex;
   }
+
+  list(userid) {
+    return (
+      this.knex
+        .select(
+          "notetable.user_id",
+          "usertable.username",
+          "notetable.id",
+          "notetable.noterow"
+        )
+        .from("notetable")
+        .innerJoin("usertable", "notetable.user_id", "usertable.id")
+        // .where("usertable.username", user)
+        .where("usertable.id", userid)
+        .orderBy("notetable.id")
+        .then((joineddata) => {
+          return joineddata;
+        })
+    );
+  }
   //SQL list
   listall() {
     return this.knex("notetable")
@@ -13,38 +33,16 @@ module.exports = class NoteService {
       .catch((err) => console.error(err));
   }
 
-  listid(user) {
-    return this.knex
-      .select(
-        "notetable.user_id",
-        "usertable.username",
-        "notetable.id",
-        "notetable.noterow"
-      )
-      .from("notetable")
-      .innerJoin("usertable", "notetable.user_id", "usertable.id")
-      .where("usertable.username", user)
-      .orderBy("notetable.id")
-      .then((joineddata) => {
-        return joineddata;
-      });
-  }
-
   //SQL add
-  add(user, note) {
-    return this.knex("usertable")
-      .whereRaw("username = ?", [user])
-      .select("id")
-      .then((data) => {
-        let userid = data[0].id;
-        if (userid) {
-          return this.knex("notetable").insert([
-            { user_id: userid, noterow: note },
-          ]);
-        } else {
-          throw new Error("Cannot add note from non-existent user");
-        }
-      });
+  add(userid, note) {
+    if (userid) {
+      return this.knex("notetable").insert([
+        { user_id: userid, noterow: note },
+      ]);
+    } else {
+      throw new Error("Cannot add note from non-existent user");
+    }
+    // });
   }
 
   //SQL update

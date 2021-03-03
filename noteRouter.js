@@ -18,7 +18,7 @@ module.exports = class NoteRouter {
   get(req, res) {
     console.log("GET ROUTE");
     return this.noteService
-      .listid(req.auth.user)
+      .list(req.session.passport.user)
       .then((notes) => {
         res.json({ notes });
       })
@@ -38,8 +38,8 @@ module.exports = class NoteRouter {
   post(req, res) {
     console.log("POST ROUTE");
     return this.noteService
-      .add(req.auth.user, req.body.note)
-      .then(() => this.noteService.listid(req.auth.user))
+      .add(req.session.passport.user, req.body.note)
+      .then(() => this.noteService.list(req.session.passport.user))
       .then((notes) => res.json({ notes }))
       .catch((err) => res.status(500).json(err));
   }
@@ -48,7 +48,7 @@ module.exports = class NoteRouter {
     console.log("PUT ROUTE");
     return this.noteService
       .update(req.params.id, req.body.note)
-      .then(() => this.noteService.listid(req.auth.user))
+      .then(() => this.noteService.list(req.session.passport.user))
       .then((notes) => res.json({ notes }))
       .catch((err) => res.status(500).json(err));
   }
@@ -57,7 +57,7 @@ module.exports = class NoteRouter {
     console.log("DELETE ROUTE");
     return this.noteService
       .remove(req.params.id)
-      .then(() => this.noteService.listid(req.auth.user))
+      .then(() => this.noteService.list(req.session.passport.user))
       .then((notes) => res.json({ notes }))
       .catch((err) => res.status(500).json(err));
   }
