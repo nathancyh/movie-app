@@ -11,6 +11,28 @@ module.exports = (app) => {
   app.use(passport.session());
 
   passport.use(
+    "local-signup",
+    new LocalStrategy(async (email, password, done) => {
+      try {
+        let users = await knex("usertable").where({ username: username });
+        if (users.length > 0) {
+          return done(null, false, { message: "User name already taken" });
+        }
+        let hash = await bcrypt.hashPassword(password);
+        const newUser = {
+          email: email,
+          password: hash,
+        };
+        let userId = await knex("usertable").insert(newUser).returning("id");
+        newUser.id = userId[0];
+        done(null, newUser);
+      } catch (err) {
+        done(err);
+      }
+    })
+  );
+
+  passport.use(
     "local-login",
     new LocalStrategy(async (username, password, done) => {
       try {
