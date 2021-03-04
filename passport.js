@@ -1,5 +1,6 @@
 const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
+const bcrypt = require("./bcrypt");
 
 //Knex setup
 const knexConfig = require("./knexfile").development;
@@ -18,7 +19,8 @@ module.exports = (app) => {
           return done(null, false, { message: "Incorrect credentials." });
         }
         let user = users[0];
-        if (user.password === password) {
+        let result = await bcrypt.checkPassword(password, user.password);
+        if (result) {
           return done(null, user);
         } else {
           return done(null, false, { message: "Incorrect credentials." });
