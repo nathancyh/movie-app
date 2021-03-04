@@ -10,17 +10,18 @@ module.exports = (app) => {
   app.use(passport.initialize());
   app.use(passport.session());
 
+  //Generate hased pw when user first signup
   passport.use(
     "local-signup",
-    new LocalStrategy(async (email, password, done) => {
+    new LocalStrategy(async (username, password, done) => {
       try {
         let users = await knex("usertable").where({ username: username });
         if (users.length > 0) {
-          return done(null, false, { message: "User name already taken" });
+          return done(null, false, { message: "Username already taken" });
         }
         let hash = await bcrypt.hashPassword(password);
         const newUser = {
-          email: email,
+          username: username,
           password: hash,
         };
         let userId = await knex("usertable").insert(newUser).returning("id");
@@ -32,6 +33,7 @@ module.exports = (app) => {
     })
   );
 
+  //Compare hased pw when user tries to login
   passport.use(
     "local-login",
     new LocalStrategy(async (username, password, done) => {
@@ -53,10 +55,12 @@ module.exports = (app) => {
     })
   );
 
+  //Store userinfo into a session
   passport.serializeUser((user, done) => {
     done(null, user.id);
   });
 
+  //Set req.session.passport.user
   passport.deserializeUser(async (id, done) => {
     let users = await knex("usertable").where({ id: id });
     if (users.length == 0) {

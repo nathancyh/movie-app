@@ -11,6 +11,7 @@ const noteService = new NoteService(knex);
 module.exports = (express) => {
   const router = express.Router();
 
+  //Check if the user is authenticated
   function isLoggedIn(req, res, next) {
     if (req.isAuthenticated()) {
       return next();
@@ -32,6 +33,7 @@ module.exports = (express) => {
       .catch((err) => res.status(500).json(err));
   });
 
+  //Login page
   router.get("/login", (req, res) => {
     res.render("login");
   });
@@ -44,6 +46,20 @@ module.exports = (express) => {
     })
   );
 
+  //Signup page
+  router.get("/signup", (req, res) => {
+    res.render("signup");
+  });
+
+  router.post(
+    "/signup",
+    passport.authenticate("local-signup", {
+      successRedirect: "/",
+      failureRedirect: "/error",
+    })
+  );
+
+  //Logout redirect
   router.get("/logout", (req, res) => {
     req.logout();
     res.redirect("/login");

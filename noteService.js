@@ -4,25 +4,23 @@ module.exports = class NoteService {
   }
 
   list(userid) {
-    return (
-      this.knex
-        .select(
-          "notetable.user_id",
-          "usertable.username",
-          "notetable.id",
-          "notetable.noterow"
-        )
-        .from("notetable")
-        .innerJoin("usertable", "notetable.user_id", "usertable.id")
-        // .where("usertable.username", user)
-        .where("usertable.id", userid)
-        .orderBy("notetable.id")
-        .then((joineddata) => {
-          return joineddata;
-        })
-    );
+    return this.knex
+      .select(
+        "notetable.user_id",
+        "usertable.username",
+        "notetable.id",
+        "notetable.noterow"
+      )
+      .from("notetable")
+      .innerJoin("usertable", "notetable.user_id", "usertable.id")
+      .where("usertable.id", userid)
+      .orderBy("notetable.id")
+      .then((joineddata) => {
+        console.log(joineddata);
+        return joineddata;
+      });
   }
-  //SQL list
+
   listall() {
     return this.knex("notetable")
       .select("id", "user_id", "noterow")
@@ -33,7 +31,6 @@ module.exports = class NoteService {
       .catch((err) => console.error(err));
   }
 
-  //SQL add
   add(userid, note) {
     if (userid) {
       return this.knex("notetable").insert([
@@ -44,7 +41,6 @@ module.exports = class NoteService {
     }
   }
 
-  //SQL update
   update(noteid, note) {
     return this.knex("notetable")
       .where({ id: noteid })
