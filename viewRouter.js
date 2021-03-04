@@ -18,21 +18,14 @@ module.exports = (express) => {
     res.redirect("/login");
   }
 
-  //TODO: get id for render index
-  // return this.knex("usertable")
-  //   .whereRaw("username = ?", [user])
-  //   .select("id")
-  //   .then((data) => {
-  //     let userid = data[0].id;
-
   // Serve Main page
-  router.get("/", function (req, res) {
+  router.get("/", isLoggedIn, function (req, res) {
     console.log("GET MAIN");
     noteService
       .list(req.session.passport.user)
       .then((noteArr) => {
         res.render("index", {
-          currentuser: req.session.passport.user,
+          currentuser: noteArr[0].username,
           array: noteArr,
         });
       })
@@ -50,6 +43,11 @@ module.exports = (express) => {
       failureRedirect: "/error",
     })
   );
+
+  router.get("/logout", (req, res) => {
+    req.logout();
+    res.redirect("/login");
+  });
 
   router.get("/error", (req, res) => {
     res.send("You are not logged in!");

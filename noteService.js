@@ -42,7 +42,6 @@ module.exports = class NoteService {
     } else {
       throw new Error("Cannot add note from non-existent user");
     }
-    // });
   }
 
   //SQL update
