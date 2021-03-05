@@ -1,7 +1,6 @@
 <div class="container wrapper">
       <div class="row">
         <div class="col">
-          <!-- <h1>Nevernote</h1> -->
           <h3>Hello, {{currentuser}}</h3>
           <form
             ref="note"
@@ -13,15 +12,17 @@
         </div>
         <div class="col">
           <h3>Displaying Notes from {{currentuser}}:</h3>
-        {{#each array}}
+          {{#if array}}
+          {{#each array}}
         <div class="row">
           <div class="d-flex cards">
-              <textarea cols="40" rows="4" class="existingnote" data-textarea={{this.id}}>{{this.noterow}}</textarea>
-              <button data-btn={{this.id}} type="button" class="btn btn-danger deletebtn">Delete!</button>
-              </div>
-              <br>
-            </div>
-              {{/each}}
+          <textarea cols="40" rows="4" class="existingnote" data-textarea={{this.id}}>{{this.noterow}}</textarea>
+          <button data-btn={{this.id}} type="button" class="btn btn-danger deletebtn">Delete!</button>
+          </div>
+          <br>
+        </div>
+        {{/each}}
+        {{/if}}
           </div>
         </div>
         <div class="row justify-content-center mt-3">

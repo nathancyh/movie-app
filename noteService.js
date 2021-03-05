@@ -16,8 +16,11 @@ module.exports = class NoteService {
       .where("usertable.id", userid)
       .orderBy("notetable.id")
       .then((joineddata) => {
-        console.log(joineddata);
-        return joineddata;
+        if (joineddata.length > 0) {
+          return joineddata;
+        } else {
+          return false;
+        }
       });
   }
 

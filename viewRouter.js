@@ -10,6 +10,7 @@ const noteService = new NoteService(knex);
 
 module.exports = (express) => {
   const router = express.Router();
+  let userName = "";
 
   //Check if the user is authenticated
   function isLoggedIn(req, res, next) {
@@ -19,14 +20,27 @@ module.exports = (express) => {
     res.redirect("/login");
   }
 
+  //Get user id to render on index
+  function getUserName(userid) {
+    return knex("usertable")
+      .select("id", "username")
+      .where("id", userid)
+      .orderBy("id")
+      .then((data) => {
+        userName = data[0].username;
+        return data[0].username;
+      })
+      .catch((err) => console.error(err));
+  }
+
   // Serve Main page
   router.get("/", isLoggedIn, function (req, res) {
     console.log("GET MAIN");
-    noteService
-      .list(req.session.passport.user)
+    getUserName(req.session.passport.user)
+      .then(() => noteService.list(req.session.passport.user))
       .then((noteArr) => {
         res.render("index", {
-          currentuser: noteArr[0].username,
+          currentuser: userName,
           array: noteArr,
         });
       })

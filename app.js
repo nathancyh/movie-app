@@ -37,15 +37,6 @@ var exphbs = require("express-handlebars");
 setupPassport(app);
 app.use("/", viewRouter);
 
-// Middleware: Auth
-// app.use(
-//   basicAuth({
-//     users: { Admin: "super", Nathan: "super" },
-//     challenge: true,
-//     realm: "foo",
-//   })
-// );
-
 // Note Router
 app.use("/api/v1", new NoteRouter(noteService).router());
 
@@ -53,38 +44,7 @@ app.use("/api/v1", new NoteRouter(noteService).router());
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
-// Serve Main page
-// app.get("/", function (req, res) {
-//   console.log("GET MAIN");
-//   noteService
-//     .listid(req.auth.user)
-//     .then((noteArr) => {
-//       // res.render("login");
-//       res.render("index", {
-//         currentuser: req.auth.user,
-//         array: noteArr,
-//       });
-//     })
-//     .catch((err) => res.status(500).json(err));
-// });
-
 //Listen
 app.listen(port, () => {
   console.log(`App listening on port ${port}!`);
-});
-
-///////SQL Test Function
-app.get("/sql", function (req, res) {
-  console.log("isloggedin");
-  console.log(req.isAuthenticated());
-  return (
-    knex("notetable")
-      // .whereRaw("username = ?", [user])
-      .select("id", "user_id", "noterow")
-      .orderBy("id")
-      .then((data) => {
-        res.json(data);
-      })
-      .catch((err) => console.error(err))
-  );
 });
