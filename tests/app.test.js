@@ -58,7 +58,7 @@ describe("Route Testing", () => {
 
   test("GET '/random' should return 404 if try to go down non-existent route", (done) => {
     //404 instead of 401 Unauthorized
-    var auth = "Basic TmF0aGFuOnN1cGVy";
+    var auth = "Basic QWRtaW46c3VwZXI=";
     request(app)
       .get("/random")
       .set("Authorization", auth)
@@ -70,11 +70,13 @@ describe("Route Testing", () => {
   });
 
   test("GET '/' should return the index page", (done) => {
-    var auth = "Basic TmF0aGFuOnN1cGVy";
-    request(app)
-      .get("/")
-      .set("Authorization", auth)
-      .expect("Content-Type", "text/html; charset=utf-8")
+    var auth = "Basic QWRtaW46c3VwZXI=";
+    // request(app)
+    server
+      .post("/login")
+      // .set("Authorization", auth)
+      // .send({ username: "Nathan", password: "super" })
+      // .expect("Content-Type", "text/html; charset=utf-8")
       .expect(200)
       .end((err, res) => {
         if (err) throw err;
