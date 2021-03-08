@@ -12,11 +12,14 @@ const noteService = new NoteService(knex);
 // Setup Express & Passport.js
 const express = require("express");
 const app = express();
+const cors = require("cors");
 const session = require("express-session");
 const setupPassport = require("./passport");
 const viewRouter = require("./viewRouter")(express);
 app.use(express.static("public"));
 const port = process.env.PORT || 8080;
+
+app.use(cors());
 
 app.use(
   session({
