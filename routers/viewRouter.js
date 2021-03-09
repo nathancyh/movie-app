@@ -1,11 +1,11 @@
 const passport = require("passport");
 
 // Knex Setup
-const knexConfig = require("./knexfile").development;
+const knexConfig = require("../knexfile").development;
 const knex = require("knex")(knexConfig);
 
 //Noteservice to render index
-const NoteService = require("./noteService");
+const NoteService = require("../services/noteService");
 const noteService = new NoteService(knex);
 
 module.exports = (express) => {

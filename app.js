@@ -5,8 +5,8 @@ const knexConfig = require("./knexfile").development;
 const knex = require("knex")(knexConfig);
 
 // Class Import & Init
-const NoteRouter = require("./noteRouter");
-const NoteService = require("./noteService");
+const NoteRouter = require("./routers/noteRouter");
+const NoteService = require("./services/noteService");
 const noteService = new NoteService(knex);
 
 // Setup Express & Passport.js
@@ -14,8 +14,8 @@ const express = require("express");
 const app = express();
 const cors = require("cors");
 const session = require("express-session");
-const setupPassport = require("./passport");
-const viewRouter = require("./viewRouter")(express);
+const setupPassport = require("./passport-js/passport");
+const viewRouter = require("./routers/viewRouter")(express);
 app.use(express.static("public"));
 const port = process.env.PORT || 8080;
 
@@ -23,7 +23,7 @@ app.use(cors());
 
 app.use(
   session({
-    secret: "supersecret",
+    secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: true,
   })

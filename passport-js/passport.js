@@ -3,7 +3,7 @@ const LocalStrategy = require("passport-local").Strategy;
 const bcrypt = require("./bcrypt");
 
 //Knex setup
-const knexConfig = require("./knexfile").development;
+const knexConfig = require("../knexfile").development;
 const knex = require("knex")(knexConfig);
 
 module.exports = (app) => {
