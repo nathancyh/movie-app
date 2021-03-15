@@ -33,7 +33,6 @@ app.use(
 const bodyParser = require("body-parser");
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-// const basicAuth = require("express-basic-auth");
 var exphbs = require("express-handlebars");
 
 // Passport Init and View router
