@@ -18,19 +18,19 @@ module.exports = class MovieService {
             .where("movies.api_id", movieid)
             .orderBy("reviews.created_at")
             .then((data) => {
-                console.log("list data",data);
+                // console.log("list data",data);
                 return data;
             })
     }
 
-//     // add(movieid, userid, text) {
-//     //     if (userid) {
-//     //         return this.knex("reviews")
-//     //             .insert([{ user_id: userid, movie_id: movieid, text: text }])
-//     //     } else {
-//     //         throw new Error("Cannot add note from non-existent user");
-//     //     }
-//     // }
+    add(movieid, userid, text) {
+        if (userid) {
+            return this.knex("reviews")
+                .insert([{ user_id: userid, movie_id: movieid, text: text }])
+        } else {
+            throw new Error("Cannot add note from non-existent user");
+        }
+    }
 
 //     // update(reviewid, text) {
 //     //     return this.knex("reviews")

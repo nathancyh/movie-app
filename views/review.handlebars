@@ -1,5 +1,5 @@
 <div class="container">
-    <div class="info-conatiner">
+    <div class="info-conatiner" data-movieid={{this.movie_id}}>
         <div class="row">
             <div class="poster-container col-3">
                 <img src="{{poster}}">
@@ -23,12 +23,14 @@
                 </div>
             </div>
             <div class="review-container">
-                <div class="review-box">
-                    <p>{{reviewTitle}}</p>
-                    <p>{{userRating}}/10</p><br>
-                    <p>by {{userName}}</p>
-                    <p>{{review}}</p>
-                </div>
+                {{#each reviewArr}}
+                <div class="review-box" >
+                    <p>{{this.review_title}}</p>
+                    <p>{{this.rating}}/10</p><br>
+                    <p>by {{this.name}}</p>
+                    <p>{{this.text}}</p>
+                </div>            
+                {{/each}}
             </div>
         </div>
     </div>
