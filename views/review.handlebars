@@ -1,0 +1,35 @@
+<div class="container">
+    <div class="info-conatiner">
+        <div class="row">
+            <div class="poster-container col-3">
+                <img src="{{poster}}">
+            </div>
+            <div class="detail-container col-9">
+                <p>Title: {{title}}</p>
+                <p>Genres: {{genres}}</p>
+                <p>Release Date: {{releaseDate}}</p>
+                <p>Overview: {{overview}}</p>
+            </div>
+        </div>
+        <div class="comment-container">
+            <h3>User Reviews</h3>
+            <div class="text-box">
+                <div class="row">
+                    <form ref="note" id="note">
+                        <textarea id="text-area" cols="60" rows="10" name="note"></textarea>
+                        <br>
+                        <button id="post" type="button" class="btn btn-primary">SEND</button>
+                    </form>
+                </div>
+            </div>
+            <div class="review-container">
+                <div class="review-box">
+                    <p>{{reviewTitle}}</p>
+                    <p>{{userRating}}/10</p><br>
+                    <p>by {{userName}}</p>
+                    <p>{{review}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
