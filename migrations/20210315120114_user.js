@@ -12,12 +12,12 @@ exports.up = function(knex) {
         table.integer('api_id').unique();
         table.varchar('title');
         table.varchar('genres');
-        table.varchar('overview');
+        table.text('overview');
         table.varchar('popularity');
         table.varchar('poster_path');
         table.varchar('release_date');
         table.varchar('runtime');
-        table.integer('vote_average');
+        table.decimal('vote_average');
         table.integer('vote_count');
         table.timestamps(true, true);
     });

@@ -1,37 +1,65 @@
-<div class="container">
-    <div class="info-conatiner" data-movieid={{movieid}}>
+<div class="container-fluid info-container d-flex justify-content-center">
         <div class="row">
-            <div class="poster-container col-3">
-                <img src="{{poster}}">
+            <div class="poster-container col-6">
+                <img class="img-fluid" src="{{poster}}">
             </div>
-            <div class="detail-container col-9">
+            <div class="detail-container col-6">
                 <p>Title: {{title}}</p>
                 <p>Genres: {{genres}}</p>
                 <p>Release Date: {{releaseDate}}</p>
                 <p>Overview: {{overview}}</p>
             </div>
         </div>
-        <div class="comment-container">
+        <div class="row">
+            <div class="comment-container col-12">
             <h3>User Reviews</h3>
-            <div class="text-box">
-                <div class="row">
+            <div class="text-box hidden">
                     <form ref="note" id="note">
-                        <textarea id="text-area" cols="60" rows="10" name="note"></textarea>
+                        <textarea class="note-title" name="title" placeholder="Review Title">{{this.review_title}}</textarea>
+                        <textarea class="note-rating" name="rating" placeholder="Rating(Please enter 1-10)">{{this.rating}}</textarea>
+                        <br>
+                        <textarea class="note-area" cols="60" rows="10" name="note" placeholder="Review"></textarea>
                         <br>
                         <button id="post" type="button" class="btn btn-primary">SEND</button>
                     </form>
+            </div>
+            </div>
+        <div class="review-container">
+                {{#each myReviewArr}}
+                <div class="edit-myreview hidden">
+                    <form ref="edit" id="edit">
+                        <textarea class="edit-title" name="title">{{this.review_title}}</textarea>
+                        <textarea class="edit-rating" name="rating">{{this.rating}}</textarea>
+                        <br>
+                        <textarea class="edit-area" cols="60" rows="10" name="edit">{{this.text}}</textarea>
+                        <br>
+                        <button type="button" class="cancel-btn btn btn-primary">CANCEL</button>
+                        <button type="button" class="save-btn btn btn-primary">SAVE CHANGES</button>
+                    </form>
                 </div>
-            </div>
-            <div class="review-container">
-                {{#each reviewArr}}
-                <div class="review-box" >
-                    <p>{{this.review_title}}</p>
-                    <p>{{this.rating}}/10</p><br>
-                    <p>by {{this.name}}</p>
-                    <p>{{this.text}}</p>
-                </div>            
                 {{/each}}
-            </div>
-        </div>
+
+                {{#each myReviewArr}}
+                <div class="my-review">
+                    <p>Title: {{this.review_title}}</p>
+                    <p>Rating: {{this.rating}}/10</p><br>
+                    <p>by {{this.name}}</p>
+                    <p class="display-area">{{this.text}}</p>
+                    
+                    <button class="edit-btn">EDIT</button>
+                    <button class="del-btn">DELETE</button>
+                </div>
+                {{/each}}
+
+                {{#each reviewArr}}
+                <div class="review-box">
+                    <p>Title: {{this.review_title}}</p>
+                    <p>Rating: {{this.rating}}/10</p><br>
+                    <p>by {{this.name}}</p>
+                    <p class="display-area" >{{this.text}}</p>
+                </div>
+                {{/each}}
     </div>
+    </div>
+</div>
 </div>

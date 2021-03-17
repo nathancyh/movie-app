@@ -1,0 +1,18 @@
+/* .my-review{
+    display: none;
+} */
+
+.hidden{
+    display: none;
+}
+
+.info-container {
+    max-width: 70%;
+}
+
+.info-container{
+    flex-direction: column;
+}
+
+
+

@@ -7,11 +7,20 @@ const knex = require("knex")(knexConfig);
 const express = require('express');
 const hb = require('express-handlebars');
 const bodyParser = require('body-parser');
+const session = require("express-session");
+const setupPassport = require("./passport-js/passport");
 
 const app = express();
 
 const pg = require('pg');
 
+app.use(
+    session({
+      secret: process.env.SESSION_SECRET,
+      resave: false,
+      saveUninitialized: true,
+    })
+  );
 
 
 // const MovieService = require('./services/movieService');
@@ -27,11 +36,12 @@ app.use(express.static("public"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
+setupPassport(app);
 app.use("/movie", MovieRouter);
 
 app.get("/", (req, res) => {
     console.log("app.get")
-    res.send("kim is smart")
+    res.send("kim is tired!")
 })
 
 app.listen(8080, () => {
