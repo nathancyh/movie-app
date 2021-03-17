@@ -8,7 +8,6 @@ $(function () {
     if (data.length > 0) {
       $.ajax({
         type: "POST",
-        // url: "http://localhost:8080/api/v1",
         url: "/api/v1",
         dataType: "text",
         data: { note: data },
@@ -68,14 +67,24 @@ $(function () {
       wildcard: "%QUERY",
       // Map the remote source JSON array to a JavaScript object array
       filter: (movies) => {
-        console.log(movies);
         console.log(movies.results[0].release_date);
-        return $.map(movies.results, (movie) => ({
-          value: movie.original_title,
-          id: movie.id,
-          release_date: movie.release_date.slice(0, 4),
-          poster: `http://image.tmdb.org/t/p/w92${movie.poster_path}`,
-        }));
+        return $.map(movies.results, function (movie) {
+          if (movie.release_date) {
+            return {
+              value: movie.original_title,
+              id: movie.id,
+              release_date: movie.release_date.slice(0, 4),
+              poster: `http://image.tmdb.org/t/p/w92${movie.poster_path}`,
+            };
+          } else {
+            return {
+              value: movie.original_title,
+              id: movie.id,
+              release_date: movie.release_date,
+              poster: `http://image.tmdb.org/t/p/w92${movie.poster_path}`,
+            };
+          }
+        });
       },
     },
   });
@@ -84,22 +93,17 @@ $(function () {
   movies.initialize();
 
   // Instantiate the Typeahead UI
-  $(".typeahead").typeahead(
-    {
-      minLength: 0,
+  $(".typeahead").typeahead(null, {
+    displayKey: "value",
+    source: movies.ttAdapter(),
+    templates: {
+      suggestion: Handlebars.compile(
+        "<p style='padding:6px'><strong>{{value}}</strong> - {{release_date}}</p>"
+        // "<img src='{{poster}}'><p style='padding:6px'>{{value}}-<b>{{release_date}}</b> </p>"
+      ),
+      footer: Handlebars.compile("<b>Searched for '{{query}}'</b>"),
     },
-    {
-      displayKey: "value",
-      source: movies.ttAdapter(),
-      templates: {
-        suggestion: Handlebars.compile(
-          "<p style='padding:6px'><strong>{{value}}</strong> - {{release_date}}</p>"
-          // "<img src='{{poster}}'><p style='padding:6px'>{{value}}-<b>{{release_date}}</b> </p>"
-        ),
-        footer: Handlebars.compile("<b>Searched for '{{query}}'</b>"),
-      },
-    }
-  );
+  });
 
   $(".typeahead").on("typeahead:select", function (event, suggestion) {
     console.log(suggestion);
