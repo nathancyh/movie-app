@@ -5,7 +5,7 @@ const knexConfig = require("./knexfile").development;
 const knex = require("knex")(knexConfig);
 
 const express = require('express');
-const hb = require('express-handlebars');
+const exphbs = require('express-handlebars');
 const bodyParser = require('body-parser');
 const session = require("express-session");
 const setupPassport = require("./passport-js/passport");
@@ -27,7 +27,7 @@ app.use(
 const MovieRouter = require('./routers/movieRouter')(express);
 // const movieService = new MovieService(knex);
 
-app.engine("handlebars", hb({ defaultLayout: "main" }));
+app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
 
