@@ -1,13 +1,11 @@
 "use strict";
 
 $(function () {
-  
-  if($('.edit-area').val() == undefined) {
-    $('.text-box').removeClass('hidden')
+  if ($(".edit-area").val() == undefined) {
+    $(".text-box").removeClass("hidden");
   }
 
-
-// Add Review
+  // Add Review
   $("#post").click((e) => {
     e.preventDefault();
     let title = $(".note-title").val();
@@ -15,12 +13,12 @@ $(function () {
     let data = $(".note-area").val();
     //getting :id from /movie/:id
     let movieid = window.location.pathname.slice(7);
-    
+
     $.ajax({
       type: "POST",
       url: `/movie/${movieid}`,
       dataType: "text",
-      data: { note: data, title:title, rating:rating},
+      data: { note: data, title: title, rating: rating },
       success: function () {
         console.log("post success");
       },
@@ -31,17 +29,16 @@ $(function () {
     );
   });
 
-
-// Edit Review
+  // Edit Review
   $(".edit-btn").click((e) => {
     e.preventDefault();
-    $('.edit-myreview').removeClass('hidden')
-  })
+    $(".edit-myreview").removeClass("hidden");
+  });
 
   $(".cancel-btn").click((e) => {
     e.preventDefault();
-    $('.edit-myreview').addClass('hidden')
-  })
+    $(".edit-myreview").addClass("hidden");
+  });
 
   $(".save-btn").click((e) => {
     e.preventDefault();
@@ -56,7 +53,7 @@ $(function () {
       type: "PUT",
       url: `/movie/${movieid}`,
       dataType: "text",
-      data: { edit: data, title:title, rating:rating },
+      data: { edit: data, title: title, rating: rating },
       success: function () {
         console.log("put success");
       },
@@ -65,12 +62,12 @@ $(function () {
         window.location.reload();
       }, 200)
     );
-  })
+  });
 
-// Delete Review
+  // Delete Review
   $(".del-btn").click((e) => {
     e.preventDefault();
-    console.log("delete button")
+    console.log("delete button");
     let movieid = window.location.pathname.slice(7);
 
     $.ajax({
@@ -138,7 +135,7 @@ $(function () {
   $(".typeahead").on("typeahead:select", function (event, suggestion) {
     console.log(suggestion);
     console.log(suggestion.value);
-    window.location.href = "https://www.themoviedb.org/movie/" + suggestion.id;
+    window.location.href = "/movie/" + suggestion.id;
   });
 });
 
