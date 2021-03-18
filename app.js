@@ -22,6 +22,8 @@ app.use(
 );
 
 const movieRouter = require("./routers/movieRouter")(express);
+const viewRouter = require("./routers/viewRouter")(express);
+app.use("/", viewRouter);
 
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
