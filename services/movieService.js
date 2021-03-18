@@ -78,7 +78,7 @@ module.exports = class MovieService {
         if (userid) {
             return this.knex("reviews")
                 .insert([{ user_id: userid, movie_id: movieid,review_title: title, rating: rating, text: text }])
-               
+
         } else {
             throw new Error("Cannot add note from non-existent user");
         }

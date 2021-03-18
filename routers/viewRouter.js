@@ -34,17 +34,20 @@ module.exports = (express) => {
   }
 
   // Serve Main page
-  router.get("/", isLoggedIn, function (req, res) {
+  router.get("/", function (req, res) {
+    // router.get("/", isLoggedIn, function (req, res) {
     console.log("GET MAIN");
-    getUserName(req.session.passport.user)
-      .then(() => noteService.list(req.session.passport.user))
-      .then((noteArr) => {
-        res.render("index", {
-          currentuser: userName,
-          array: noteArr,
-        });
-      })
-      .catch((err) => res.status(500).json(err));
+    // getUserName(req.session.passport.user)
+    //   .then(() => noteService.list(req.session.passport.user))
+      // .then((noteArr) => {
+        res.render("index");
+        // {
+      //     currentuser: "Julie",
+      //     array: noteArr,
+      //   });
+      // })
+      // .catch((err) => res.status(500).json(err));
+    
   });
 
   //Login page
