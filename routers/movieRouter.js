@@ -1,3 +1,4 @@
+"use strict";
 module.exports = (express) => {
   console.log("router running");
   const router = express.Router();
@@ -10,43 +11,54 @@ module.exports = (express) => {
   const MovieService = require("../services/movieService");
   const movieService = new MovieService(knex);
 
-  router.get("/:movieId", function (req, res) {
+  router
+    .route("/:movieId")
+    .get(getReview)
+    .post(postReview)
+    .put(putReview)
+    .delete(deleteReview);
+
+  function getReview(req, res) {
     function getMovieData() {
-      let apiData = ""
+      let apiData;
       return axios
         .get(
           `https://api.themoviedb.org/3/movie/${req.params.movieId}?api_key=d3fd18f172ad640f103d9cfa9fb37451`
         )
-        // .then((info) => {
-        //   return info.data
-        // })
         .then((info) => {
-          apiData = info.data
-          // console.log("data")
-          // console.log(apiData)
-          return movieService
-        .insert(info.data)
+          apiData = info.data;
+          //Check if movie data alrady in database, insert to DB if not
+          return movieService.checkdata(apiData.id);
         })
-        .then(()=>{
-          // console.log(apiData)
-          return apiData
+        .then((boolean) => {
+          if (!boolean) {
+            return movieService.insert(apiData);
+          } else {
+            return;
+          }
+        })
+        .then(() => {
+          //Send data to res.render
+          return apiData;
         })
         .catch((err) => {
           console.log("axios get err", err);
         });
     }
+
     function getMyReview() {
-      return movieService.list(req.params.movieId, 1)
-      .then((data) => {
-        return data
-      })
-      .catch((err) => res.status(500).json(err))
+      return movieService
+        .list(req.params.movieId, 1)
+        .then((data) => {
+          return data;
+        })
+        .catch((err) => res.status(500).json(err));
     }
+
     function getMovieReview() {
       return movieService
         .listall(req.params.movieId, 1)
         .then((data) => {
-          // console.log("get review", data)
           return data;
         })
         .catch((err) => res.status(500).json(err));
@@ -70,31 +82,43 @@ module.exports = (express) => {
         });
       })
       .catch((err) => res.status(500).json(err));
-  });
+  }
 
-  router.post("/:movieId", function (req, res) {
+  function postReview(req, res) {
     console.log("post review");
     return movieService
-      .add(req.params.movieId, 1, req.body.note, req.body.title, req.body.rating)
+      .add(
+        req.params.movieId,
+        1,
+        req.body.note,
+        req.body.title,
+        req.body.rating
+      )
       .then(() => res.redirect("/"))
       .catch((err) => res.status(500).json(err));
-  });
+  }
 
-  router.put("/:movieId", function (req, res) {
+  function putReview(req, res) {
     console.log("update review");
-    console.log(req.body)
+    console.log(req.body);
     return movieService
-      .update(req.params.movieId, 1, req.body.edit, req.body.title, req.body.rating)
+      .update(
+        req.params.movieId,
+        1,
+        req.body.edit,
+        req.body.title,
+        req.body.rating
+      )
       .then(() => res.send("put"))
       .catch((err) => res.status(500).json(err));
-  });
+  }
 
-  router.delete("/:movieId", function (req, res) {
+  function deleteReview(req, res) {
     console.log("delete review");
     return movieService
       .remove(req.params.movieId, 1)
       .then(() => res.send("delete"))
       .catch((err) => res.status(500).json(err));
-  });
+  }
   return router;
 };
