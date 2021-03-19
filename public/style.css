@@ -10,21 +10,111 @@ body {
   font-weight: 400;
   line-height: normal; }
 
+/* text */
+h2 {
+  text-transform: uppercase;
+  font-size: 22px; font-style: normal;
+  font-variant: normal;
+  font-weight:bold;
+  line-height: 15.4px;
+  color: black;
+  display: inline;
+}
+
+h2.orange {
+  text-transform: uppercase;
+  font-size: 22px; font-style: normal;
+  font-variant: normal;
+  font-weight:bold;
+  line-height: 15.4px;
+  color: #ffbe08;
+  display: inline;
+}
+
+/* Nav bar */
+.container1 {
+  margin-right: auto;
+  margin-left: auto;
+  align-items: center;
+}
+
+.container::before, .container::after {
+  content: " ";
+  display: table;
+}
+
+.container::after {
+  clear: both;
+}
+
+#navbar7 {
+  width: 350px;
+  color: #000;
+}
+
+.search{
+  display:block;
+  text-align:left;
+  width: 70%;
+  margin-right: 20%;
+}
+
+.form-control {
+  width: 40vw;
+}
+
+/* Carousel */
+.carousel-nav-icon {
+  height: 48px;
+  width: 15px;
+}
+
+a {
+color: #ffbe08;
+}
+
+.text-left {
+text-align: center!important;
+margin-left: 70px;
+}
+
+.carousel-item .col, .col-sm, .col-md{
+  margin: 8px;
+  height: 300px;
+  background-size: cover;
+  background-position: center center;
+}
+
+.bg-dark {
+  background-color: #ffbe08!important;
+}
+
+
 .main-content .container {
   background: rgb(236, 236, 236);
   border-radius: 5px;
   padding: 30px; }
 
-  .carousel-nav-icon {
-    height: 48px;
-    width: 48px;
- }
- .carousel-item .col, .col-sm, .col-md{
-       margin: 8px;
-       height: 300px;
-       background-size: cover;
-       background-position: center center;
-    }
+.carousel-nav-icon {
+  height: 48px;
+  width: 48px;
+}
+
+.carousel-item .col, .col-sm, .col-md{
+  margin: 8px;
+  height: 300px;
+  background-size: cover;
+  background-position: center center;
+}
+
+
+/* Index page picture */
+div.header {
+  width: 100%;
+  height: 300px;
+  background-size: cover;
+  background-image: url("/public/assets/popcornbg.jpg");
+}
 
 /* html,
 body {
@@ -118,7 +208,7 @@ nav {
 
 .tt-menu {
   /* used to be tt-dropdown-menu in older versions */
-  width: 422px;
+  width: 40vw;
   margin-top: 4px;
   padding: 4px 0;
   background-color: #fff;
