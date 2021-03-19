@@ -109,12 +109,12 @@ margin-left: 70px;
 
 
 /* Index page picture */
-div.header {
+/* div.header {
   width: 100%;
   height: 300px;
   background-size: cover;
   background-image: url("/public/assets/popcornbg.jpg");
-}
+} */
 
 /* html,
 body {
