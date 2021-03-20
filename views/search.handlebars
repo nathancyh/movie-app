@@ -1,0 +1,15 @@
+    <div class="container-fluid">
+    <div class="row">
+    <div class="col">
+        {{#each movieArr}}
+        <div class="row">
+            <div class="d-flex cards">
+                <textarea cols="40" rows="4" class="existingnote" data-textarea={{@index}}>{{this}}</textarea>
+                <button data-btn={{@index}} type="button" class="btn btn-danger deletebtn">Delete!</button>
+                </div>
+                <br>
+            </div>
+        {{/each}}
+    </div>
+    </div>
+    </div>

@@ -30,8 +30,8 @@ module.exports = (express) => {
           //Check if movie data alrady in database, insert to DB if not
           return movieService.checkdata(apiData.id);
         })
-        .then((boolean) => {
-          if (!boolean) {
+        .then((hvData) => {
+          if (!hvData) {
             return movieService.insert(apiData);
           } else {
             return;
@@ -48,7 +48,7 @@ module.exports = (express) => {
 
     function getMyReview() {
       return movieService
-        .list(req.params.movieId, 1)
+        .list(req.params.movieId, 1) //TODO: replace with real userid
         .then((data) => {
           return data;
         })
@@ -57,7 +57,7 @@ module.exports = (express) => {
 
     function getMovieReview() {
       return movieService
-        .listall(req.params.movieId, 1)
+        .listall(req.params.movieId, 1) //TODO: replace with real userid
         .then((data) => {
           return data;
         })
@@ -89,7 +89,7 @@ module.exports = (express) => {
     return movieService
       .add(
         req.params.movieId,
-        1,
+        1, //TODO: replace with real userid
         req.body.note,
         req.body.title,
         req.body.rating
@@ -104,7 +104,7 @@ module.exports = (express) => {
     return movieService
       .update(
         req.params.movieId,
-        1,
+        1, //TODO: replace with real userid
         req.body.edit,
         req.body.title,
         req.body.rating
@@ -116,7 +116,7 @@ module.exports = (express) => {
   function deleteReview(req, res) {
     console.log("delete review");
     return movieService
-      .remove(req.params.movieId, 1)
+      .remove(req.params.movieId, 1) //TODO: replace with real userid
       .then(() => res.send("delete"))
       .catch((err) => res.status(500).json(err));
   }

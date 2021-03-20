@@ -79,11 +79,14 @@ module.exports = class MovieService {
   //Insert data from movie API to our own database
   insert(data) {
     // console.log("insert done")
+    let genreid = data.genres.map((x) => (x = x.id));
+    console.log(genreid);
     return this.knex("movies").insert([
       {
         api_id: data.id,
         title: data.title,
-        genres: data.genres[0].name,
+        // genres: '{"' + genreid.join('","') + '"}',
+        genres: genreid,
         overview: data.overview,
         popularity: data.popularity,
         poster_path: data.poster_path,

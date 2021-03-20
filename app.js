@@ -23,6 +23,7 @@ app.use(
 
 const movieRouter = require("./routers/movieRouter")(express);
 const viewRouter = require("./routers/viewRouter")(express);
+const searchRouter = require("./routers/searchRouter")(express);
 app.use("/", viewRouter);
 
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
@@ -42,8 +43,9 @@ app.get("/", (req, res) => {
 setupPassport(app);
 // app.use("/", viewRouter); //Passport.js route
 
-//Review route
+//Routers
 app.use("/movie", movieRouter);
+app.use("/search", searchRouter);
 
 app.listen(port, () => {
   console.log(`App is listening to port ${port}`);
