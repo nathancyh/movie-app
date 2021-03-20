@@ -1,37 +1,66 @@
 <div class="container-fluid">
-    <label>Profile Picture</label>
-    <form action="/profile/upload" enctype="multipart/form-data" method="POST">
-        <input type="file" name="imageupload" accept="IMAGE/JPG" , "IMAGE/PNG" /> <br /><br />
-        <input type="submit" value="Submit" />
-    </form>
+    <div class="profile-pic-container">
+        <label>Profile Picture</label>
+        <form action="/profile/upload" enctype="multipart/form-data" method="POST">
+            <input type="file" name="imageupload" accept="IMAGE/JPG" , "IMAGE/PNG" , "IMAGE/JPEG" /> <br /><br />
+            <input class="profile-pic-btn" type="submit" value="Upload" />
+            <button class="profile-del-btn">DELETE</button>
+        </form>
+    </div>
     <br><br><br>
 
-    <label>Favourite Genres</label>
-    <select class="favGenres js-states form-control" id="id_label_multiple" multiple="multiple">
-        <option>Action</option>
-        <option>Adventure</option>
-        <option>Animation</option>
-        <option>Comedy</option>
-        <option>Crime</option>
-        <option>Documentary</option>
-        <option>Drama</option>
-        <option>Family</option>
-        <option>Fantasy</option>
-        <option>History</option>
-        <option>Horror</option>
-        <option>Music</option>
-        <option>Mystery</option>
-        <option>Romance</option>
-        <option>Science Fiction</option>
-        <option>TV Movie</option>
-        <option>Thriller</option>
-        <option>War</option>
-        <option>Western</option>
-    </select>
+    <div class="fav-genres-container">
+        <label>Favourite Genres</label>
+        <select class="fav-genres js-states form-control" id="id_label_multiple" multiple="multiple">
+            <option>Action</option>
+            <option>Adventure</option>
+            <option>Animation</option>
+            <option>Comedy</option>
+            <option>Crime</option>
+            <option>Documentary</option>
+            <option>Drama</option>
+            <option>Family</option>
+            <option>Fantasy</option>
+            <option>History</option>
+            <option>Horror</option>
+            <option>Music</option>
+            <option>Mystery</option>
+            <option>Romance</option>
+            <option>Science Fiction</option>
+            <option>TV Movie</option>
+            <option>Thriller</option>
+            <option>War</option>
+            <option>Western</option>
+        </select>
+    </div>
     <br><br><br>
 
-    <label>Favourite Movie</label>
-    <select class="favMovie"></select>
-    
+    <div class="fav-movie-container">
+        <label>Favourite Movie</label>
+        <input class="typeahead1 form-control me-2" type="search" placeholder="Search" aria-label="Search">
 
+        <br><br><br> 
+
+        <textarea class="introduce-area" cols="40" rows="5" name="introduce"
+            placeholder="Why do you like it?"></textarea>
+        <br><br><br>
+
+        <label>Screenshot of Your Fav Scene</label>
+        <form action="/profile/upload" enctype="multipart/form-data" method="POST">
+            <input type="file" name="imageupload" accept="IMAGE/JPG" , "IMAGE/PNG" , "IMAGE/JPEG" /> <br /><br />
+            <input class="screenshot1-upload-btn" type="submit" value="Upload" />
+            <button class="screenshot1-del-btn">DELETE</button>
+        </form>
+        <br><br><br>
+         <form action="/profile/upload" enctype="multipart/form-data" method="POST">
+            <input type="file" name="imageupload" accept="IMAGE/JPG" , "IMAGE/PNG" , "IMAGE/JPEG" /> <br /><br />
+            <input class="screenshot2-upload-btn" type="submit" value="Upload" />
+            <button class="screenshot2-del-btn">DELETE</button>
+        </form>
+
+
+    </div>
+    <br><br><br>
+    <button type="button" class="edit-cancel-btn btn btn-primary">Cancel</button>
+    <button type="button" class="update-btn btn btn-primary">Save Changes</button>
 </div>

@@ -11,14 +11,12 @@ module.exports = (express) => {
       cb(null, "uploads/");
     },
     filename: function (req, file, cb) {
-      console.log("filename");
-      console.log(req.user);
-      console.log(req);
       cb(null, req.session.passport.user + "_" + Date.now());
     },
   });
 
-  var upload = multer({ storage: storage }).single("imageupload");
+  var upload = multer({ storage: storage, limits: 1000000 }
+  ).single("imageupload");
 
   //Check if the user is authenticated
   function isLoggedIn(req, res, next) {
@@ -41,8 +39,6 @@ module.exports = (express) => {
 
   router.post("/upload", isLoggedIn, function (req, res) {
     upload(req, res, function (err) {
-      console.log("isLoggedIn");
-      console.log(req.session.passport.user);
       res.redirect("/profile");
       if (err) {
         return err;
