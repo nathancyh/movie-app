@@ -1,202 +1,875 @@
 {{!-- Main index page with movie images --}}
 
-
 {{!-- CAROUSEL --}}
-<div class="my-5 text-center container">
-   <div class="row mb-2">
-      <div class="col text-center">
-         <h1>Top 10 Popular Movies</h1>
-         <p class="lead">Of all time</p>
-      </div>
-   </div>
-   <div class="row d-flex align-items-center">
-      <div class="col-1 d-flex align-items-center justify-content-center">
-         <a href="#carouselExampleIndicators" role="button" data-slide="prev">
-            <div class="carousel-nav-icon">
-               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 129 129" xmlns:xlink="http://www.w3.org/1999/xlink">
-                  <path d="m88.6,121.3c0.8,0.8 1.8,1.2 2.9,1.2s2.1-0.4 2.9-1.2c1.6-1.6 1.6-4.2 0-5.8l-51-51 51-51c1.6-1.6 1.6-4.2 0-5.8s-4.2-1.6-5.8,0l-54,53.9c-1.6,1.6-1.6,4.2 0,5.8l54,53.9z"/>
-               </svg>
-            </div>
-         </a>
-      </div>
-      <div class="col-10">
-         <!--Start carousel-->
-         <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-
-            <div class="carousel-inner">
-               <div class="carousel-item active">
-                  <div class="row">
-                     <div style="background-image:url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/46992/flexfun04.jpg');" class="col-12 col-md d-flex align-items-center justify-content-center">
-                     </div>
-                     <div style="background-image:url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/46992/flexfun02.jpg');" class="col-12 col-md d-flex align-items-center justify-content-center">
-                     </div>
-                     <div style="background-image:url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/46992/flexfun02.jpg');" class="col-12 col-md d-flex align-items-center justify-content-center">
-                     </div>
-                     <div style="background-image:url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/46992/flexfun02.jpg');" class="col-12 col-md d-flex align-items-center justify-content-center">
-                     </div>
-                     <div style="background-image:url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/46992/flexfun05.jpg');" class="col-12 col-md d-flex align-items-center justify-content-center" class="col-12 col-md d-flex align-items-center justify-content-center">
-                        <h3 class="text-white">Text in the panel.</h3>
-                     </div>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h2>Top 10 <b>Newest Movies</b></h2>
+      <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="0">
+        <!-- Carousel indicators -->
+        {{!-- <ol class="carousel-indicators">
+          <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+          <li data-target="#myCarousel" data-slide-to="1"></li>
+          <li data-target="#myCarousel" data-slide-to="2"></li>
+        </ol> --}}
+        <!-- Wrapper for carousel items -->
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <div class="row">
+              <div class="col-sm-3">
+                <div class="thumb-wrapper">
+                  <div class="img-box">
+                    <img src="https://images-na.ssl-images-amazon.com/images/I/51-difUGanL._SY445_.jpg"
+                      class="img-fluid" alt="">
                   </div>
-               </div>
-               <div class="carousel-item">
-                  <div class="row">
-                     <div style="background-image:url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/46992/flexfun01.jpg');" class="col-12 col-md d-flex align-items-center justify-content-center">
-                     </div>
-                     <div style="background-image:url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/46992/flexfun03.jpg');" class="col-12 col-md d-flex align-items-center justify-content-center">
-                     </div>
-                     <div style="background-image:url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/46992/flexfun02.jpg');" class="col-12 col-md d-flex align-items-center justify-content-center">
-                     </div>
-                     <div style="background-image:url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/46992/flexfun02.jpg');" class="col-12 col-md d-flex align-items-center justify-content-center">
-                     </div>
-                     <div style="background-image:url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/46992/flexfun06.jpg');" class="col-12 col-md d-flex align-items-center justify-content-center" class="col-12 col-md d-flex align-items-center justify-content-center">
-                     </div>
+                  <div class="thumb-content">
+                    <h4>Movie Name</h4>
+                    <p class="movie-date">Date</p>
+                    <div class="star-rating">
+                      <ul class="list-inline">
+                        <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                        <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                        <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                        <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                        <li class="list-inline-item"><i class="fa fa-star-o"></i></li>
+                      </ul>
+                    </div>
                   </div>
-               </div>
+                </div>
+              </div>
+              <div class="col-sm-3">
+                <div class="thumb-wrapper">
+                  <div class="img-box">
+                    <img src="https://www.joblo.com/assets/images/oldsite/posters/images/full/1992-aladdin-poster2.jpg"
+                      class="img-fluid" alt="">
+                  </div>
+                  <div class="thumb-content">
+                    <h4>Aladdin</h4>
+                    <p class="movie-date">1995</p>
+                    <div class="star-rating">
+                      <ul class="list-inline">
+                        <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                        <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                        <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                        <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                        <li class="list-inline-item"><i class="fa fa-star-o"></i></li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-3">
+                <div class="thumb-wrapper">
+                  <div class="img-box">
+                    <img src="https://upload.wikimedia.org/wikipedia/en/8/8a/The_Avengers_%282012_film%29_poster.jpg"
+                      class="img-fluid" alt="">
+                  </div>
+                  <div class="thumb-content">
+                    <h4>The Avengers</h4>
+                    <p class="movie-date">2012</p>
+                    <div class="star-rating">
+                      <ul class="list-inline">
+                        <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                        <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                        <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                        <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                        <li class="list-inline-item"><i class="fa fa-star-half-o"></i></li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-3">
+                <div class="thumb-wrapper">
+                  <div class="img-box">
+                    <img
+                      src="https://static.rogerebert.com/uploads/movie/movie_poster/monsters-inc-2001/large_jDejwTPLzmkAXPwCbjnZiBekVnf.jpg"
+                      class="img-fluid" alt="">
+                  </div>
+                  <div class="thumb-content">
+                    <h4>Monsters, Inc.</h4>
+                    <p class="movie-date">2001</p>
+                    <div class="star-rating">
+                      <ul class="list-inline">
+                        <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                        <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                        <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                        <li class="list-inline-item"><i class="fa fa-star-o"></i></li>
+                        <li class="list-inline-item"><i class="fa fa-star-o"></i></li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
-         </div>
-         <!--End carousel-->
+          </div>
+          <div class="carousel-item">
+            <div class="row">
+              <div class="col-sm-3">
+                <div class="thumb-wrapper">
+                  <div class="img-box">
+                    <img src="/examples/images/products/play-station.jpg" class="img-fluid" alt="">
+                  </div>
+                  <div class="thumb-content">
+                    <h4>Movie Name</h4>
+                    <p class="movie-date">Date</p>
+                    <div class="star-rating">
+                      <ul class="list-inline">
+                        <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                        <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                        <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                        <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                        <li class="list-inline-item"><i class="fa fa-star-o"></i></li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-3">
+                <div class="thumb-wrapper">
+                  <div class="img-box">
+                    <img src="/examples/images/products/macbook-pro.jpg" class="img-fluid" alt="">
+                  </div>
+                  <div class="thumb-content">
+                    <h4>Movie Name</h4>
+                    <p class="movie-date">Date</p>
+                    <div class="star-rating">
+                      <ul class="list-inline">
+                        <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                        <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                        <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                        <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                        <li class="list-inline-item"><i class="fa fa-star-half-o"></i></li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-3">
+                <div class="thumb-wrapper">
+                  <div class="img-box">
+                    <img src="/examples/images/products/speaker.jpg" class="img-fluid" alt="">
+                  </div>
+                  <div class="thumb-content">
+                    <h4>Movie Name</h4>
+                    <p class="movie-date">Date</p>
+                    <div class="star-rating">
+                      <ul class="list-inline">
+                        <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                        <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                        <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                        <li class="list-inline-item"><i class="fa fa-star-o"></i></li>
+                        <li class="list-inline-item"><i class="fa fa-star-o"></i></li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-3">
+                <div class="thumb-wrapper">
+                  <div class="img-box">
+                    <img src="/examples/images/products/galaxy.jpg" class="img-fluid" alt="">
+                  </div>
+                  <div class="thumb-content">
+                    <h4>Movie Name</h4>
+                    <p class="movie-date">Date</p>
+                    <div class="star-rating">
+                      <ul class="list-inline">
+                        <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                        <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                        <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                        <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                        <li class="list-inline-item"><i class="fa fa-star-o"></i></li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="row">
+              <div class="col-sm-3">
+                <div class="thumb-wrapper">
+                  <div class="img-box">
+                    <img src="/examples/images/products/iphone.jpg" class="img-fluid" alt="">
+                  </div>
+                  <div class="thumb-content">
+                    <h4>Movie Name</h4>
+                    <p class="movie-date">Date</p>
+                    <div class="star-rating">
+                      <ul class="list-inline">
+                        <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                        <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                        <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                        <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                        <li class="list-inline-item"><i class="fa fa-star-o"></i></li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-3">
+                <div class="thumb-wrapper">
+                  <div class="img-box">
+                    <img src="/examples/images/products/canon.jpg" class="img-fluid" alt="">
+                  </div>
+                  <div class="thumb-content">
+                    <h4>Movie Name</h4>
+                    <p class="movie-date">Date</p>
+                    <div class="star-rating">
+                      <ul class="list-inline">
+                        <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                        <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                        <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                        <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                        <li class="list-inline-item"><i class="fa fa-star-o"></i></li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-3">
+                <div class="thumb-wrapper">
+                  <div class="img-box">
+                    <img src="/examples/images/products/pixel.jpg" class="img-fluid" alt="">
+                  </div>
+                  <div class="thumb-content">
+                    <h4>Movie Name</h4>
+                    <p class="movie-date">Date</p>
+                    <div class="star-rating">
+                      <ul class="list-inline">
+                        <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                        <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                        <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                        <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                        <li class="list-inline-item"><i class="fa fa-star-o"></i></li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-3">
+                <div class="thumb-wrapper">
+                  <div class="img-box">
+                    <img src="/examples/images/products/watch.jpg" class="img-fluid" alt="">
+                  </div>
+                  <div class="thumb-content">
+                    <h4>Movie Name</h4>
+                    <p class="movie-date">Date</p>
+                    <div class="star-rating">
+                      <ul class="list-inline">
+                        <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                        <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                        <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                        <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                        <li class="list-inline-item"><i class="fa fa-star-o"></i></li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Carousel controls -->
+        <a class="carousel-control-prev" href="#myCarousel" data-slide="prev">
+          <i class="fa fa-angle-left"></i>
+        </a>
+        <a class="carousel-control-next" href="#myCarousel" data-slide="next">
+          <i class="fa fa-angle-right"></i>
+        </a>
       </div>
-      <div class="col-1 d-flex align-items-center justify-content-center"><a  href="#carouselExampleIndicators" data-slide="next">
-         <div class="carousel-nav-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 129 129" xmlns:xlink="http://www.w3.org/1999/xlink">
-               <path d="m40.4,121.3c-0.8,0.8-1.8,1.2-2.9,1.2s-2.1-0.4-2.9-1.2c-1.6-1.6-1.6-4.2 0-5.8l51-51-51-51c-1.6-1.6-1.6-4.2 0-5.8 1.6-1.6 4.2-1.6 5.8,0l53.9,53.9c1.6,1.6 1.6,4.2 0,5.8l-53.9,53.9z"/>
-            </svg>
-         </div>
-         </a>
-      </div>
-   </div>
+    </div>
+  </div>
 </div>
+<hr>
 
-<div class="row py-2">
-        <div class="col-lg-4">
-          <figure class="rounded p-3 bg-white shadow-sm">
-            <img src="https://i.postimg.cc/CxckQJW1/6.png" alt="" class="w-100 card-img-top">
-            <figcaption class="p-4 card-img-bottom">
-              <h2 class="h5 font-weight-bold mb-2 font-italic">Movie 1</h2>
-              <p class="mb-0 text-small text-muted font-italic">Movie description</p>
-            </figcaption>
-          </figure>
-        </div>
-        <div class="col-lg-4">
-          <figure class="rounded p-3 bg-white shadow-sm">
-            <img src="https://i.postimg.cc/BbvGMSDt/6.png" alt="" class="w-100 card-img-top">
-            <figcaption class="p-4 card-img-bottom">
-              <h2 class="h5 font-weight-bold mb-2 font-italic">Movie 2</h2>
-              <p class="mb-0 text-small text-muted font-italic">Movie description</p>
-            </figcaption>
-          </figure>
-        </div>
-        <div class="col-lg-4">
-          <figure class="rounded p-3 bg-white shadow-sm">
-            <img src="https://i.postimg.cc/W3bKP94H/6.png" alt="" class="w-100 card-img-top">
-            <figcaption class="p-4 card-img-bottom">
-              <h2 class="h5 font-weight-bold mb-2 font-italic">Movie 3</h2>
-              <p class="mb-0 text-small text-muted font-italic">Movie description</p>
-            </figcaption>
-          </figure>
-        </div>
-      </div>
-      <div class="separator my-3"></div>
-
-<h2>Top 10 Most Reviewed Ttles</h2>
-<div class="row py-2">
-        <div class="col-lg-4">
-          <figure class="rounded p-3 bg-white shadow-sm">
-            <img src="https://i.postimg.cc/CxckQJW1/6.png" alt="" class="w-100 card-img-top">
-            <figcaption class="p-4 card-img-bottom">
-              <h2 class="h5 font-weight-bold mb-2 font-italic">Movie 1</h2>
-              <p class="mb-0 text-small text-muted font-italic">Movie description</p>
-            </figcaption>
-          </figure>
-        </div>
-        <div class="col-lg-4">
-          <figure class="rounded p-3 bg-white shadow-sm">
-            <img src="https://i.postimg.cc/BbvGMSDt/6.png" alt="" class="w-100 card-img-top">
-            <figcaption class="p-4 card-img-bottom">
-              <h2 class="h5 font-weight-bold mb-2 font-italic">Movie 2</h2>
-              <p class="mb-0 text-small text-muted font-italic">Movie description</p>
-            </figcaption>
-          </figure>
-        </div>
-        <div class="col-lg-4">
-          <figure class="rounded p-3 bg-white shadow-sm">
-            <img src="https://i.postimg.cc/W3bKP94H/6.png" alt="" class="w-100 card-img-top">
-            <figcaption class="p-4 card-img-bottom">
-              <h2 class="h5 font-weight-bold mb-2 font-italic">Movie 3</h2>
-              <p class="mb-0 text-small text-muted font-italic">Movie description</p>
-            </figcaption>
-          </figure>
-        </div>
-      </div>
-      <div class="separator my-3"></div>
-
-<h2>New Releases</h2>
-<div class="row py-2">
-        <div class="col-lg-4">
-          <figure class="rounded p-3 bg-white shadow-sm">
-            <img src="https://i.postimg.cc/CxckQJW1/6.png" alt="" class="w-100 card-img-top">
-            <figcaption class="p-4 card-img-bottom">
-              <h2 class="h5 font-weight-bold mb-2 font-italic">Movie 1</h2>
-              <p class="mb-0 text-small text-muted font-italic">Movie description</p>
-            </figcaption>
-          </figure>
-        </div>
-        <div class="col-lg-4">
-          <figure class="rounded p-3 bg-white shadow-sm">
-            <img src="https://i.postimg.cc/BbvGMSDt/6.png" alt="" class="w-100 card-img-top">
-            <figcaption class="p-4 card-img-bottom">
-              <h2 class="h5 font-weight-bold mb-2 font-italic">Movie 2</h2>
-              <p class="mb-0 text-small text-muted font-italic">Movie description</p>
-            </figcaption>
-          </figure>
-        </div>
-        <div class="col-lg-4">
-          <figure class="rounded p-3 bg-white shadow-sm">
-            <img src="https://i.postimg.cc/W3bKP94H/6.png" alt="" class="w-100 card-img-top">
-            <figcaption class="p-4 card-img-bottom">
-              <h2 class="h5 font-weight-bold mb-2 font-italic">Movie 3</h2>
-              <p class="mb-0 text-small text-muted font-italic">Movie description</p>
-            </figcaption>
-          </figure>
-        </div>
-      </div>
-      <div class="separator my-3"></div>
 {{!-- ///////// --}}
 
 
 
 
 
-<div class="container wrapper">
-      <div class="row">
-        <div class="col">
-          <h3>Hello, {{currentuser}}</h3>
-          <form
-            ref="note"
-            id="note">
-            <textarea id="notearea" cols="60" rows="10" name="note"></textarea>
-            <br>
-            <button id="post" type="button" class="btn btn-primary">Submit!</button>
-          </form>
-        </div>
-        <div class="col">
-          <h3>Displaying Notes from {{currentuser}}:</h3>
-          {{#if array}}
-          {{#each array}}
-        <div class="row">
-          <div class="d-flex cards">
-          <textarea cols="40" rows="4" class="existingnote" data-textarea={{this.id}}>{{this.noterow}}</textarea>
-          <button data-btn={{this.id}} type="button" class="btn btn-danger deletebtn">Delete!</button>
+
+
+
+
+{{!-- TOP 10 MOST REVIEWED MOVIES --}}
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h2>Top 10 <b>most reviewed movies</b></h2>
+      <div id="myCarousel-1" class="carousel slide" data-ride="carousel" data-interval="0">
+      <!-- Carousel indicators -->
+      {{!-- <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+        <li data-target="#myCarousel" data-slide-to="2"></li>
+      </ol>    --}}
+      <!-- Wrapper for carousel items -->
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <div class="row">
+            <div class="col-sm-3">
+              <div class="thumb-wrapper">
+                <div class="img-box">
+                  <img src="https://images-na.ssl-images-amazon.com/images/I/51-difUGanL._SY445_.jpg" class="img-fluid" alt="">
+                </div>
+                <div class="thumb-content">
+                  <h4>Movie Name</h4>
+                  <p class="movie-date">Date</p>
+                  <div class="star-rating">
+                    <ul class="list-inline">
+                      <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                      <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                      <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                      <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                      <li class="list-inline-item"><i class="fa fa-star-o"></i></li>
+                    </ul>
+                  </div>
+                </div>            
+              </div>
+            </div>
+            <div class="col-sm-3">
+              <div class="thumb-wrapper">
+                <div class="img-box">
+                  <img src="https://www.joblo.com/assets/images/oldsite/posters/images/full/1992-aladdin-poster2.jpg" class="img-fluid" alt="">
+                </div>
+                <div class="thumb-content">
+                  <h4>Aladdin</h4>
+                  <p class="movie-date">1995</p>
+                  <div class="star-rating">
+                    <ul class="list-inline">
+                      <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                      <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                      <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                      <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                      <li class="list-inline-item"><i class="fa fa-star-o"></i></li>
+                    </ul>
+                  </div>
+                </div>            
+              </div>
+            </div>    
+            <div class="col-sm-3">
+              <div class="thumb-wrapper">
+                <div class="img-box">
+                  <img src="https://upload.wikimedia.org/wikipedia/en/8/8a/The_Avengers_%282012_film%29_poster.jpg" class="img-fluid" alt="">
+                </div>
+                <div class="thumb-content">
+                  <h4>The Avengers</h4>
+                  <p class="movie-date">2012</p>
+                  <div class="star-rating">
+                    <ul class="list-inline">
+                      <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                      <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                      <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                      <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                      <li class="list-inline-item"><i class="fa fa-star-half-o"></i></li>
+                    </ul>
+                  </div>
+                </div>            
+              </div>
+            </div>                
+            <div class="col-sm-3">
+              <div class="thumb-wrapper">
+                <div class="img-box">
+                  <img src="https://static.rogerebert.com/uploads/movie/movie_poster/monsters-inc-2001/large_jDejwTPLzmkAXPwCbjnZiBekVnf.jpg" class="img-fluid" alt="">
+                </div>
+                <div class="thumb-content">
+                  <h4>Monsters, Inc.</h4>
+                  <p class="movie-date">2001</p>
+                  <div class="star-rating">
+                    <ul class="list-inline">
+                      <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                      <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                      <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                      <li class="list-inline-item"><i class="fa fa-star-o"></i></li>
+                      <li class="list-inline-item"><i class="fa fa-star-o"></i></li>
+                    </ul>
+                  </div>
+                </div>            
+              </div>
+            </div>
           </div>
-          <br>
         </div>
-        {{/each}}
-        {{/if}}
+        <div class="carousel-item">
+          <div class="row">
+            <div class="col-sm-3">
+              <div class="thumb-wrapper">
+                <div class="img-box">
+                  <img src="/examples/images/products/play-station.jpg" class="img-fluid" alt="">
+                </div>
+                <div class="thumb-content">
+                  <h4>Movie Name</h4>
+                  <p class="movie-date">Date</p>
+                  <div class="star-rating">
+                    <ul class="list-inline">
+                      <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                      <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                      <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                      <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                      <li class="list-inline-item"><i class="fa fa-star-o"></i></li>
+                    </ul>
+                  </div>
+                </div>            
+              </div>
+            </div>
+            <div class="col-sm-3">
+              <div class="thumb-wrapper">
+                <div class="img-box">
+                  <img src="/examples/images/products/macbook-pro.jpg" class="img-fluid" alt="">
+                </div>
+                <div class="thumb-content">
+                  <h4>Movie Name</h4>
+                  <p class="movie-date">Date</p>
+                  <div class="star-rating">
+                    <ul class="list-inline">
+                      <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                      <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                      <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                      <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                      <li class="list-inline-item"><i class="fa fa-star-half-o"></i></li>
+                    </ul>
+                  </div>
+                </div>            
+              </div>
+            </div>
+            <div class="col-sm-3">
+              <div class="thumb-wrapper">
+                <div class="img-box">
+                  <img src="/examples/images/products/speaker.jpg" class="img-fluid" alt="">
+                </div>
+                <div class="thumb-content">
+                  <h4>Movie Name</h4>
+                  <p class="movie-date">Date</p>
+                  <div class="star-rating">
+                    <ul class="list-inline">
+                      <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                      <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                      <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                      <li class="list-inline-item"><i class="fa fa-star-o"></i></li>
+                      <li class="list-inline-item"><i class="fa fa-star-o"></i></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-3">
+              <div class="thumb-wrapper">
+                <div class="img-box">
+                  <img src="/examples/images/products/galaxy.jpg" class="img-fluid" alt="">
+                </div>
+                <div class="thumb-content">
+                  <h4>Movie Name</h4>
+                  <p class="movie-date">Date</p>
+                  <div class="star-rating">
+                    <ul class="list-inline">
+                      <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                      <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                      <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                      <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                      <li class="list-inline-item"><i class="fa fa-star-o"></i></li>
+                    </ul>
+                  </div>
+                </div>            
+              </div>
+            </div>            
           </div>
         </div>
-        <div class="justify-content-center mt-3">
-          <a href='/logout'><button type="button" class="btn btn-danger logoutbtn">Logout</button></a>
+        <div class="carousel-item">
+          <div class="row">
+            <div class="col-sm-3">
+              <div class="thumb-wrapper">
+                <div class="img-box">
+                  <img src="/examples/images/products/iphone.jpg" class="img-fluid" alt="">
+                </div>
+                <div class="thumb-content">
+                  <h4>Movie Name</h4>
+                  <p class="movie-date">Date</p>
+                  <div class="star-rating">
+                    <ul class="list-inline">
+                      <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                      <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                      <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                      <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                      <li class="list-inline-item"><i class="fa fa-star-o"></i></li>
+                    </ul>
+                  </div>
+                </div>            
+              </div>
+            </div>
+            <div class="col-sm-3">
+              <div class="thumb-wrapper">
+                <div class="img-box">
+                  <img src="/examples/images/products/canon.jpg" class="img-fluid" alt="">
+                </div>
+                <div class="thumb-content">
+                  <h4>Movie Name</h4>
+                  <p class="movie-date">Date</p>
+                  <div class="star-rating">
+                    <ul class="list-inline">
+                      <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                      <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                      <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                      <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                      <li class="list-inline-item"><i class="fa fa-star-o"></i></li>
+                    </ul>
+                  </div>
+                </div>            
+              </div>
+            </div>
+            <div class="col-sm-3">
+              <div class="thumb-wrapper">
+                <div class="img-box">
+                  <img src="/examples/images/products/pixel.jpg" class="img-fluid" alt="">
+                </div>
+                <div class="thumb-content">
+                  <h4>Movie Name</h4>
+                  <p class="movie-date">Date</p>
+                  <div class="star-rating">
+                    <ul class="list-inline">
+                      <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                      <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                      <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                      <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                      <li class="list-inline-item"><i class="fa fa-star-o"></i></li>
+                    </ul>
+                  </div>
+                </div>            
+              </div>
+            </div>  
+            <div class="col-sm-3">
+              <div class="thumb-wrapper">
+                <div class="img-box">
+                  <img src="/examples/images/products/watch.jpg" class="img-fluid" alt="">
+                </div>
+                <div class="thumb-content">
+                  <h4>Movie Name</h4>
+                  <p class="movie-date">Date</p>
+                  <div class="star-rating">
+                    <ul class="list-inline">
+                      <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                      <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                      <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                      <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                      <li class="list-inline-item"><i class="fa fa-star-o"></i></li>
+                    </ul>
+                  </div>
+                </div>            
+              </div>
+            </div>
+          </div>
         </div>
       </div>
+      <!-- Carousel controls -->
+      <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+      <a class="carousel-control-prev" href="#myCarousel-1" data-slide="prev">
+        <i class="fa fa-angle-left"></i>
+      </a>
+      <a class="carousel-control-next" href="#myCarousel-1" data-slide="next">
+        <i class="fa fa-angle-right"></i>
+      </a>
+    </div>
+    </div>
+  </div>
+</div>
+<hr>
+
+
+
+
+{{!-- NEW RELEASES --}}
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h2>New <b>releases</b></h2>
+      <div id="myCarousel-2" class="carousel slide" data-ride="carousel" data-interval="0">
+      <!-- Carousel indicators -->
+      {{!-- <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+        <li data-target="#myCarousel" data-slide-to="2"></li>
+      </ol>    --}}
+      <!-- Wrapper for carousel items -->
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <div class="row">
+            <div class="col-sm-3">
+              <div class="thumb-wrapper">
+                <div class="img-box">
+                  <img src="https://images-na.ssl-images-amazon.com/images/I/51-difUGanL._SY445_.jpg" class="img-fluid" alt="">
+                </div>
+                <div class="thumb-content">
+                  <h4>Movie Name</h4>
+                  <p class="movie-date">Date</p>
+                  <div class="star-rating">
+                    <ul class="list-inline">
+                      <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                      <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                      <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                      <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                      <li class="list-inline-item"><i class="fa fa-star-o"></i></li>
+                    </ul>
+                  </div>
+                </div>            
+              </div>
+            </div>
+            <div class="col-sm-3">
+              <div class="thumb-wrapper">
+                <div class="img-box">
+                  <img src="https://www.joblo.com/assets/images/oldsite/posters/images/full/1992-aladdin-poster2.jpg" class="img-fluid" alt="">
+                </div>
+                <div class="thumb-content">
+                  <h4>Aladdin</h4>
+                  <p class="movie-date">1995</p>
+                  <div class="star-rating">
+                    <ul class="list-inline">
+                      <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                      <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                      <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                      <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                      <li class="list-inline-item"><i class="fa fa-star-o"></i></li>
+                    </ul>
+                  </div>
+                </div>            
+              </div>
+            </div>    
+            <div class="col-sm-3">
+              <div class="thumb-wrapper">
+                <div class="img-box">
+                  <img src="https://upload.wikimedia.org/wikipedia/en/8/8a/The_Avengers_%282012_film%29_poster.jpg" class="img-fluid" alt="">
+                </div>
+                <div class="thumb-content">
+                  <h4>The Avengers</h4>
+                  <p class="movie-date">2012</p>
+                  <div class="star-rating">
+                    <ul class="list-inline">
+                      <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                      <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                      <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                      <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                      <li class="list-inline-item"><i class="fa fa-star-half-o"></i></li>
+                    </ul>
+                  </div>
+                </div>            
+              </div>
+            </div>                
+            <div class="col-sm-3">
+              <div class="thumb-wrapper">
+                <div class="img-box">
+                  <img src="https://static.rogerebert.com/uploads/movie/movie_poster/monsters-inc-2001/large_jDejwTPLzmkAXPwCbjnZiBekVnf.jpg" class="img-fluid" alt="">
+                </div>
+                <div class="thumb-content">
+                  <h4>Monsters, Inc.</h4>
+                  <p class="movie-date">2001</p>
+                  <div class="star-rating">
+                    <ul class="list-inline">
+                      <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                      <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                      <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                      <li class="list-inline-item"><i class="fa fa-star-o"></i></li>
+                      <li class="list-inline-item"><i class="fa fa-star-o"></i></li>
+                    </ul>
+                  </div>
+                </div>            
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div class="row">
+            <div class="col-sm-3">
+              <div class="thumb-wrapper">
+                <div class="img-box">
+                  <img src="/examples/images/products/play-station.jpg" class="img-fluid" alt="">
+                </div>
+                <div class="thumb-content">
+                  <h4>Movie Name</h4>
+                  <p class="movie-date">Date</p>
+                  <div class="star-rating">
+                    <ul class="list-inline">
+                      <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                      <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                      <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                      <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                      <li class="list-inline-item"><i class="fa fa-star-o"></i></li>
+                    </ul>
+                  </div>
+                </div>            
+              </div>
+            </div>
+            <div class="col-sm-3">
+              <div class="thumb-wrapper">
+                <div class="img-box">
+                  <img src="/examples/images/products/macbook-pro.jpg" class="img-fluid" alt="">
+                </div>
+                <div class="thumb-content">
+                  <h4>Movie Name</h4>
+                  <p class="movie-date">Date</p>
+                  <div class="star-rating">
+                    <ul class="list-inline">
+                      <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                      <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                      <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                      <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                      <li class="list-inline-item"><i class="fa fa-star-half-o"></i></li>
+                    </ul>
+                  </div>
+                </div>            
+              </div>
+            </div>
+            <div class="col-sm-3">
+              <div class="thumb-wrapper">
+                <div class="img-box">
+                  <img src="/examples/images/products/speaker.jpg" class="img-fluid" alt="">
+                </div>
+                <div class="thumb-content">
+                  <h4>Movie Name</h4>
+                  <p class="movie-date">Date</p>
+                  <div class="star-rating">
+                    <ul class="list-inline">
+                      <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                      <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                      <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                      <li class="list-inline-item"><i class="fa fa-star-o"></i></li>
+                      <li class="list-inline-item"><i class="fa fa-star-o"></i></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-3">
+              <div class="thumb-wrapper">
+                <div class="img-box">
+                  <img src="/examples/images/products/galaxy.jpg" class="img-fluid" alt="">
+                </div>
+                <div class="thumb-content">
+                  <h4>Movie Name</h4>
+                  <p class="movie-date">Date</p>
+                  <div class="star-rating">
+                    <ul class="list-inline">
+                      <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                      <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                      <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                      <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                      <li class="list-inline-item"><i class="fa fa-star-o"></i></li>
+                    </ul>
+                  </div>
+                </div>            
+              </div>
+            </div>            
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div class="row">
+            <div class="col-sm-3">
+              <div class="thumb-wrapper">
+                <div class="img-box">
+                  <img src="/examples/images/products/iphone.jpg" class="img-fluid" alt="">
+                </div>
+                <div class="thumb-content">
+                  <h4>Movie Name</h4>
+                  <p class="movie-date">Date</p>
+                  <div class="star-rating">
+                    <ul class="list-inline">
+                      <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                      <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                      <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                      <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                      <li class="list-inline-item"><i class="fa fa-star-o"></i></li>
+                    </ul>
+                  </div>
+                </div>            
+              </div>
+            </div>
+            <div class="col-sm-3">
+              <div class="thumb-wrapper">
+                <div class="img-box">
+                  <img src="/examples/images/products/canon.jpg" class="img-fluid" alt="">
+                </div>
+                <div class="thumb-content">
+                  <h4>Movie Name</h4>
+                  <p class="movie-date">Date</p>
+                  <div class="star-rating">
+                    <ul class="list-inline">
+                      <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                      <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                      <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                      <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                      <li class="list-inline-item"><i class="fa fa-star-o"></i></li>
+                    </ul>
+                  </div>
+                </div>            
+              </div>
+            </div>
+            <div class="col-sm-3">
+              <div class="thumb-wrapper">
+                <div class="img-box">
+                  <img src="/examples/images/products/pixel.jpg" class="img-fluid" alt="">
+                </div>
+                <div class="thumb-content">
+                  <h4>Movie Name</h4>
+                  <p class="movie-date">Date</p>
+                  <div class="star-rating">
+                    <ul class="list-inline">
+                      <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                      <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                      <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                      <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                      <li class="list-inline-item"><i class="fa fa-star-o"></i></li>
+                    </ul>
+                  </div>
+                </div>            
+              </div>
+            </div>  
+            <div class="col-sm-3">
+              <div class="thumb-wrapper">
+                <div class="img-box">
+                  <img src="/examples/images/products/watch.jpg" class="img-fluid" alt="">
+                </div>
+                <div class="thumb-content">
+                  <h4>Movie Name</h4>
+                  <p class="movie-date">Date</p>
+                  <div class="star-rating">
+                    <ul class="list-inline">
+                      <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                      <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                      <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                      <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                      <li class="list-inline-item"><i class="fa fa-star-o"></i></li>
+                    </ul>
+                  </div>
+                </div>            
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Carousel controls -->
+      <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+      <a class="carousel-control-prev" href="#myCarousel-2" data-slide="prev">
+        <i class="fa fa-angle-left"></i>
+      </a>
+      <a class="carousel-control-next" href="#myCarousel-2" data-slide="next">
+        <i class="fa fa-angle-right"></i>
+      </a>
+    </div>
+    </div>
+  </div>
+</div>
+
+
 
