@@ -39,6 +39,7 @@ $(function () {
   $(".cancel-btn").click((e) => {
     e.preventDefault();
     $(".edit-myreview").addClass("hidden");
+    $(".my-review").removeClass("hidden");
   });
 
   $(".save-btn").click((e) => {

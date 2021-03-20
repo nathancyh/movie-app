@@ -23,7 +23,7 @@ app.use(
 
 const movieRouter = require("./routers/movieRouter")(express);
 const viewRouter = require("./routers/viewRouter")(express);
-app.use("/", viewRouter);
+const profileRouter = require("./routers/profileRouter")(express);
 
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
@@ -33,17 +33,27 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 //Temp. root route
-app.get("/", (req, res) => {
-  console.log("get '/'");
-  res.send("kim is tired!");
-});
+// app.get("/", (req, res) => {
+//   res.send("kim is tired!");
+// });
 
 //Passport.js setup & init
 setupPassport(app);
 // app.use("/", viewRouter); //Passport.js route
 
 //Review route
+app.use("/", viewRouter);
 app.use("/movie", movieRouter);
+app.use("/profile", profileRouter);
+
+//Temp. root route
+app.get("/", (req, res) => {
+  res.render('index')
+});
+
+app.get("/profile", (req, res) => {
+  res.render('profileedit')
+});
 
 app.listen(port, () => {
   console.log(`App is listening to port ${port}`);

@@ -15,16 +15,16 @@ module.exports = (app) => {
     "local-signup",
     new LocalStrategy(async (username, password, done) => {
       try {
-        let users = await knex("usertable").where({ username: username });
+        let users = await knex("users").where({ name: username });
         if (users.length > 0) {
           return done(null, false, { message: "Username already taken" });
         }
         let hash = await bcrypt.hashPassword(password);
         const newUser = {
-          username: username,
+          name: username,
           password: hash,
         };
-        let userId = await knex("usertable").insert(newUser).returning("id");
+        let userId = await knex("users").insert(newUser).returning("id");
         newUser.id = userId[0];
         done(null, newUser);
       } catch (err) {
@@ -38,7 +38,7 @@ module.exports = (app) => {
     "local-login",
     new LocalStrategy(async (username, password, done) => {
       try {
-        let users = await knex("usertable").where({ username: username });
+        let users = await knex("users").where({ name: username });
         if (users.length == 0) {
           return done(null, false, { message: "Incorrect credentials." });
         }
@@ -62,7 +62,7 @@ module.exports = (app) => {
 
   //Set req.session.passport.user
   passport.deserializeUser(async (id, done) => {
-    let users = await knex("usertable").where({ id: id });
+    let users = await knex("users").where({ id: id });
     if (users.length == 0) {
       return done(new Error(`Wrong user id ${id}`));
     }
