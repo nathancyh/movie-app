@@ -1,0 +1,33 @@
+.row {
+  height: auto;
+}
+
+.search-row {
+  height: auto;
+}
+
+/* #menu a {
+  color: white;
+  text-decoration: none;
+} */
+
+.search-sorting-option ul {
+  text-align: center;
+}
+
+.search-sorting-option li {
+  display: inline-block;
+  list-style: none;
+  line-height: 50px;
+}
+
+.search-sorting-option li::after {
+  padding-right: 10px;
+  padding-left: 10px;
+  content: "|";
+  float: right;
+}
+
+.search-sorting-option li:last-child::after {
+  display: none;
+}

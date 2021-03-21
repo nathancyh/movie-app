@@ -1,4 +1,5 @@
 "use strict";
+
 module.exports = (express) => {
   console.log("router running");
   const router = express.Router();
@@ -120,5 +121,20 @@ module.exports = (express) => {
       .then(() => res.send("delete"))
       .catch((err) => res.status(500).json(err));
   }
+
+  //Typeahead: To hide api key from main.js TOO SLOW
+  // router.route("/typeahead/:query").get(typeAheadGet);
+  // function typeAheadGet(req, res) {
+  //   return axios
+  //     .get(
+  //       `http://api.themoviedb.org/3/search/movie?query=${req.params.query}&api_key=f22e6ce68f5e5002e71c20bcba477e7d`
+  //     )
+  //     .then((info) => {
+  //       res.send(info.data);
+  //     })
+  //     .catch((err) => {
+  //       console.log("axios get err", err);
+  //     });
+  // }
   return router;
 };

@@ -1,15 +1,40 @@
-    <div class="container-fluid">
-    <div class="row">
-    <div class="col">
-        {{#each movieArr}}
-        <div class="row">
-            <div class="d-flex cards">
-                <textarea cols="40" rows="4" class="existingnote" data-textarea={{@index}}>{{this}}</textarea>
-                <button data-btn={{@index}} type="button" class="btn btn-danger deletebtn">Delete!</button>
-                </div>
-                <br>
-            </div>
-        {{/each}}
+<div class="container-fluid search-wrapper mt-3">
+    <div class="row search-row">
+        {{!-- <h3>Feature Film (Sorted by Number of Votes Descending)
+        </h3> --}}
+        {{#unless query}}
+        <h3>Results for <b>"{{query}}"</b></h3>
+        {{/unless}}
     </div>
+    <div class="row search-sorting-option">
+        <ul>
+            <li><b>Sort By:</b></li>
+            <li><a href="/search/star">A-Z</a></li>
+            <li><a href="/search/star">User Rating</a></li>
+            <li><a href="/search/star">Vote Count</a></li>
+            <li><a href="/search/star">Popularity</a></li>
+            <li><a href="/search/star">Release Date</a></li>
+            <li><a href="/search/star">Date of Your Rating</a></li>
+            <li><a href="/search/star">Your Rating</a></li>
+        </ul>
     </div>
+    {{#each searchArr}}
+    <div class="row search_card mb-3">
+        <div class="col-2">
+            <img class="img-fluid search_card_poster" src="https://image.tmdb.org/t/p/w154{{this.poster_path}}">
+        </div>
+        <div class="col-10">
+            <p>
+                <a href="../movie/{{this.id}}">
+                    {{math @index "+" 1}}. {{this.title}} ({{slicedate this.release_date}})
+                </a>
+            </p>
+            <p><img style="width: 13px;" src="/assets/sprite-yellow-star.jpg"></img>
+                {{this.vote_average}}
+            </p>
+            <p>{{genreconverter this.genre_ids}}</p>
+            <p>{{this.overview}}</p>
+        </div>
     </div>
+    {{/each}}
+</div>
