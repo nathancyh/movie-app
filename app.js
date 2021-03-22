@@ -10,6 +10,7 @@ const bodyParser = require("body-parser");
 const session = require("express-session");
 const setupPassport = require("./passport-js/passport");
 const port = process.env.PORT || 8080;
+const axios = require("axios");
 
 const app = express();
 
@@ -23,6 +24,7 @@ app.use(
 
 const movieRouter = require("./routers/movieRouter")(express);
 const viewRouter = require("./routers/viewRouter")(express);
+const indexRouter = require("./routers/indexRouter")(express);
 const searchRouter = require("./routers/searchRouter")(express);
 const profileRouter = require("./routers/profileRouter")(express);
 
@@ -39,17 +41,23 @@ app.use(express.static("public"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
+
+//testing
+app.get("/", (req, res)=>{
+  console.log("homepage")
+  return indexRouter.indexCarousel()
+});
+
 //Passport.js setup & init
 setupPassport(app);
-app.use("/", viewRouter); //Passport.js route
+// app.use("/", viewRouter); //Passport.js route
 
 //Routers
 app.use("/", indexRoute); //TODO:
-// app.use("/", viewRouter);
-app.use("/search", searchRouter);
+app.use("/home", indexRouter);
 app.use("/movie", movieRouter);
 app.use("/profile", profileRouter);
-
+app.use("/search", searchRouter);
 
 app.get("/profile", (req, res) => {
   res.render('profileedit')
