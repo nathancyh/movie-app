@@ -2,7 +2,7 @@
     <div class="profile-pic-container">
         <label>Profile Picture</label>
         <form action="/profile/upload" enctype="multipart/form-data" method="POST">
-            <input type="file" name="imageupload" accept="IMAGE/JPG" , "IMAGE/PNG" , "IMAGE/JPEG" /> <br /><br />
+            <input type="file" name="profileimageupload" accept="IMAGE/JPG" , "IMAGE/PNG" , "IMAGE/JPEG" /> <br /><br />
             <input class="profile-pic-btn" type="submit" value="Upload" />
             <button class="profile-del-btn">DELETE</button>
         </form>
@@ -37,27 +37,21 @@
 
     <div class="fav-movie-container">
         <label>Favourite Movie</label>
-        <input class="typeahead1 form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <input class="typeahead1 form-control me-2" type="search" placeholder="Search" aria-label="Search"
+            name="search">
 
-        <br><br><br> 
+        <br><br><br>
 
-        <textarea class="introduce-area" cols="40" rows="5" name="introduce"
-            placeholder="Why do you like it?"></textarea>
+        <textarea class="introduce-area" cols="40" rows="5" name="intro" placeholder="Why do you like it?"></textarea>
         <br><br><br>
 
         <label>Screenshot of Your Fav Scene</label>
-        <form action="/profile/upload" enctype="multipart/form-data" method="POST">
-            <input type="file" name="imageupload" accept="IMAGE/JPG" , "IMAGE/PNG" , "IMAGE/JPEG" /> <br /><br />
-            <input class="screenshot1-upload-btn" type="submit" value="Upload" />
-            <button class="screenshot1-del-btn">DELETE</button>
+        <form action="/profile/upload1" enctype="multipart/form-data" method="POST">
+            <input type="file" name="screenshot" accept="IMAGE/JPG" , "IMAGE/PNG" , "IMAGE/JPEG" /> <br /><br />
+            <input type="file" name="screenshot" accept="IMAGE/JPG" , "IMAGE/PNG" , "IMAGE/JPEG" />
+            <input class="screenshot-upload-btn" type="submit" value="Upload" />
+            <button class="screenshot-del-btn">DELETE</button>
         </form>
-        <br><br><br>
-         <form action="/profile/upload" enctype="multipart/form-data" method="POST">
-            <input type="file" name="imageupload" accept="IMAGE/JPG" , "IMAGE/PNG" , "IMAGE/JPEG" /> <br /><br />
-            <input class="screenshot2-upload-btn" type="submit" value="Upload" />
-            <button class="screenshot2-del-btn">DELETE</button>
-        </form>
-
 
     </div>
     <br><br><br>
