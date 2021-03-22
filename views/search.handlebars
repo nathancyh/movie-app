@@ -1,0 +1,51 @@
+<div class="container-fluid search-wrapper mt-3">
+    <div class="search-row">
+        {{#unless query}}
+        {{!-- <h3>Feature Film (Sorted by Number of Popularity Descending)</h3> --}}
+        <h3>Feature Film (Sorted by {{sortingDisplay}} Descending)</h3>
+        {{/unless}}
+        {{#if searchString}}
+        <h3>Results for <b>"{{searchString}}"</b></h3>
+        {{/if}}
+    </div>
+    <div class="row search-sorting-option">
+        <ul>
+            <li><b>Sort By:</b></li>
+            <li><a href="/search?q=popularity.desc">Popularity</a></li>
+            {{!-- <li><a href="/search/star">A-Z</a></li> --}}
+            <li><a href="/search?q=vote_average.desc">User Rating</a></li>
+            <li><a href="/search?q=vote_count.desc">Vote Count</a></li>
+            <li><a href="/search?q=release_date.desc">Release Date</a></li>
+            <li><a href="/search/star">Date of Your Rating</a></li>
+            <li><a href="/search/star">Your Rating</a></li>
+        </ul>
+    </div>
+    {{#each searchArr}}
+    <div class="row search_card mb-3">
+        <div class="col-2">
+            <a href="../movie/{{this.id}}">
+                <img class="img-fluid search_card_poster" width="154" height="auto"
+                    src="https://image.tmdb.org/t/p/w154{{this.poster_path}}">
+            </a>
+        </div>
+        <div class="col-10">
+            <p>
+                <a href="../movie/{{this.id}}">
+                    {{math @index "+" 1}}. {{this.title}} ({{slicedate this.release_date}})
+                </a>
+            </p>
+            <p><img style="width: 13px;" src="/assets/sprite-yellow-star.jpg"></img>
+                {{this.vote_average}}
+            </p>
+            <p>{{genreconverter this.genre_ids}}</p>
+            <p>{{this.overview}}</p>
+        </div>
+    </div>
+    {{/each}}
+    <div class="row search-sorting-option">
+        <ul>
+            <li><a href="/search?q=popularity.desc">Previous Page</a></li>
+            <li><a href="/search?q=vote_average.desc">Next Page</a></li>
+        </ul>
+    </div>
+</div>

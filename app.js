@@ -23,37 +23,50 @@ app.use(
 
 const movieRouter = require("./routers/movieRouter")(express);
 const viewRouter = require("./routers/viewRouter")(express);
+const searchRouter = require("./routers/searchRouter")(express);
 const profileRouter = require("./routers/profileRouter")(express);
 
-app.engine("handlebars", exphbs({ defaultLayout: "main" }));
+app.engine(
+  "handlebars",
+  exphbs({
+    defaultLayout: "main",
+    helpers: require("./config/handlebars-helpers"),
+  })
+);
 app.set("view engine", "handlebars");
 
 app.use(express.static("public"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-//Temp. root route
-// app.get("/", (req, res) => {
-//   res.send("kim is tired!");
-// });
-
 //Passport.js setup & init
 setupPassport(app);
-// app.use("/", viewRouter); //Passport.js route
+app.use("/", viewRouter); //Passport.js route
 
-//Review route
-app.use("/", viewRouter);
+//Routers
+app.use("/", indexRoute); //TODO:
+// app.use("/", viewRouter);
+app.use("/search", searchRouter);
 app.use("/movie", movieRouter);
 app.use("/profile", profileRouter);
 
-//Temp. root route
-app.get("/", (req, res) => {
-  res.render('index')
-});
 
 app.get("/profile", (req, res) => {
   res.render('profileedit')
 });
+
+//Check if the user is authenticated
+// function isLoggedIn(req, res, next) {
+//   if (req.isAuthenticated()) {
+//     return next();
+//   }
+//   res.redirect("/login");
+// }
+
+//Temp. root route
+// app.get("/", (req, res) => {
+//   res.send("Hello from the index page");
+// });
 
 app.listen(port, () => {
   console.log(`App is listening to port ${port}`);
