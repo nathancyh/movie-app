@@ -24,6 +24,7 @@ app.use(
 const movieRouter = require("./routers/movieRouter")(express);
 const viewRouter = require("./routers/viewRouter")(express);
 const searchRouter = require("./routers/searchRouter")(express);
+const profileRouter = require("./routers/profileRouter")(express);
 
 app.engine(
   "handlebars",
@@ -42,27 +43,17 @@ app.use(bodyParser.urlencoded({ extended: false }));
 setupPassport(app);
 app.use("/", viewRouter); //Passport.js route
 
-//Serve Main Page
-app.get("/", function (req, res) {
-  // router.get("/", isLoggedIn, function (req, res) {
-  console.log("GET MAIN");
-  // getUserName(req.session.passport.user)
-  //   .then(() => noteService.list(req.session.passport.user))
-  // .then((noteArr) => {
-  console.log(req.path);
-  res.render("index");
-  // {
-  //     currentuser: "Julie",
-  //     array: noteArr,
-  //   });
-  // })
-  // .catch((err) => res.status(500).json(err));
-});
-
 //Routers
-// app.use("/", indexRoute); //TODO:
+app.use("/", indexRoute); //TODO:
+// app.use("/", viewRouter);
 app.use("/search", searchRouter);
 app.use("/movie", movieRouter);
+app.use("/profile", profileRouter);
+
+
+app.get("/profile", (req, res) => {
+  res.render('profileedit')
+});
 
 //Check if the user is authenticated
 // function isLoggedIn(req, res, next) {
@@ -74,7 +65,7 @@ app.use("/movie", movieRouter);
 
 //Temp. root route
 // app.get("/", (req, res) => {
-//   res.send("kim is smart!");
+//   res.send("Hello from the index page");
 // });
 
 app.listen(port, () => {

@@ -7,13 +7,13 @@ module.exports = class NoteService {
     return this.knex
       .select(
         "notetable.user_id",
-        "usertable.username",
+        "users.username",
         "notetable.id",
         "notetable.noterow"
       )
       .from("notetable")
-      .innerJoin("usertable", "notetable.user_id", "usertable.id")
-      .where("usertable.id", userid)
+      .innerJoin("users", "notetable.user_id", "users.id")
+      .where("users.id", userid)
       .orderBy("notetable.id")
       .then((joineddata) => {
         if (joineddata.length > 0) {

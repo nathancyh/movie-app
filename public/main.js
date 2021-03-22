@@ -52,4 +52,5 @@ $(function () {
     console.log(suggestion.value);
     window.location.href = "/movie/" + suggestion.id;
   });
+
 });

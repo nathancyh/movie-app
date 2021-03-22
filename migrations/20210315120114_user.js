@@ -4,6 +4,9 @@ exports.up = function (knex) {
       table.increments("id");
       table.varchar("name").unique();
       table.varchar("password");
+      table.varchar("intro");
+      table.integer("fav_movie");
+      table.specificType("fav_genre", "varchar[]");
       table.timestamps(true, true);
     })
     .then(() => {

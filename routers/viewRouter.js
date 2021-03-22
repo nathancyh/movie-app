@@ -4,9 +4,8 @@ const passport = require("passport");
 const knexConfig = require("../knexfile").development;
 const knex = require("knex")(knexConfig);
 
-//Noteservice to render index
-// const NoteService = require("../services/noteService");
-// const noteService = new NoteService(knex);
+const MovieService = require ("../services/movieService");
+const movieService = new MovieService(knex);
 
 module.exports = (express) => {
   const router = express.Router();
