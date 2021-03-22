@@ -76,7 +76,7 @@ h2::after {
 
 /* Div */
 .row {
-  height: 390px;
+  height: 420px;
 }
 
 
@@ -116,7 +116,7 @@ margin-left: 70px;
   overflow: hidden;
 }
 .carousel .carousel-item .img-box {
-  height: 160px;
+  height: 200px;
   width: 100%;
   position: relative;
 }
@@ -226,10 +226,9 @@ margin-left: 70px;
   color: #ffc000;
 }
 
-/* Footer */
-/* <!-- footer --> */
+/* ========= Footer ========= */
 #footer {
-  background: #ffc000;
+  background: #ffbe08;
   padding-top: 20px;
   padding-bottom: 20px;
 }

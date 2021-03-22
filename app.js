@@ -10,6 +10,7 @@ const bodyParser = require("body-parser");
 const session = require("express-session");
 const setupPassport = require("./passport-js/passport");
 const port = process.env.PORT || 8080;
+const axios = require("axios");
 
 const app = express();
 
@@ -23,6 +24,7 @@ app.use(
 
 const movieRouter = require("./routers/movieRouter")(express);
 const viewRouter = require("./routers/viewRouter")(express);
+const indexRouter = require("./routers/indexRouter")(express);
 app.use("/", viewRouter);
 
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
@@ -33,17 +35,25 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 //Temp. root route
-app.get("/", (req, res) => {
-  console.log("get '/'");
-  res.send("kim is tired!");
+// app.get("/", (req, res) => {
+//   console.log("get '/'");
+//   res.send("kim is tired!");
+// });
+
+//routers
+app.use("/movie", movieRouter);
+app.use("/home", indexRouter);
+
+//testing
+app.get("/", (req, res)=>{
+  console.log("homepage")
+  return indexRouter.indexCarousel()
 });
 
 //Passport.js setup & init
 setupPassport(app);
 // app.use("/", viewRouter); //Passport.js route
 
-//Review route
-app.use("/movie", movieRouter);
 
 app.listen(port, () => {
   console.log(`App is listening to port ${port}`);
