@@ -1,7 +1,11 @@
 "use strict";
 
 $(function () {
-  //corejs-typeahead
+
+  $(".fav-genres").select2({
+    maximumSelectionLength: 3
+  });
+
   const movies = new Bloodhound({
     datumTokenizer: (datum) => Bloodhound.tokenizers.whitespace(datum.value),
     queryTokenizer: Bloodhound.tokenizers.whitespace,
@@ -38,22 +42,43 @@ $(function () {
   movies.initialize();
 
   // Instantiate the Typeahead UI
-  $(".typeahead").typeahead(null, {
+  $(".typeahead1").typeahead(null, {
     displayKey: "value",
     source: movies.ttAdapter(),
     templates: {
       suggestion: Handlebars.compile(
-        "<p style='padding:6px'><strong>{{value}}</strong> - {{release_date}}</p>"
-        // "<img src='{{poster}}'><p style='padding:6px'>{{value}}-<b>{{release_date}}</b> </p>"
+        "<p style='padding:6px'><img src='{{poster}}'><strong>{{value}}</strong></p>"
       ),
       footer: Handlebars.compile("<b>Searched for '{{query}}'</b>"),
     },
   });
-
-  $(".typeahead").on("typeahead:select", function (event, suggestion) {
-    console.log(suggestion);
-    console.log(suggestion.value);
-    window.location.href = "/movie/" + suggestion.id;
+  let value;
+  $(".typeahead1").on("typeahead:select", function (event, suggestion) {
+    // console.log(suggestion);
+    console.log(suggestion.id);
+    value = suggestion.id
+    return value;
   });
 
-});
+  $(".update-btn").click((e) => {
+    e.preventDefault();
+
+    let favGen = $(".fav-genres").val();
+    let favMovie = Number(value);
+    let intro = $(".introduce-area").val();
+
+
+    $.ajax({
+      type: "PUT",
+      url: "/profile",
+      data: { fav_movie: favMovie, fav_genre: favGen, intro: intro },
+      success: function () {
+        console.log("profile edit put")
+      }
+    }).done((data) => {
+      // window.location.reload();
+      console.log("done", data)
+    })
+
+  })
+})

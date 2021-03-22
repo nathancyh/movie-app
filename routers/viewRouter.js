@@ -5,8 +5,10 @@ const knexConfig = require("../knexfile").development;
 const knex = require("knex")(knexConfig);
 
 //Noteservice to render index
-const NoteService = require("../services/noteService");
-const noteService = new NoteService(knex);
+// const NoteService = require("../services/noteService");
+// const noteService = new NoteService(knex);
+const MovieService = require ("../services/movieService");
+const movieService = new MovieService(knex);
 
 module.exports = (express) => {
   const router = express.Router();
@@ -22,13 +24,12 @@ module.exports = (express) => {
 
   //Get user id to render on index
   function getUserName(userid) {
-    return knex("usertable")
-      .select("id", "username")
+    return knex("users")
+    .select("id", "name")
       .where("id", userid)
       .orderBy("id")
       .then((data) => {
-        userName = data[0].username;
-        return data[0].username;
+        return data
       })
       .catch((err) => console.error(err));
   }
