@@ -4,13 +4,12 @@ const passport = require("passport");
 const knexConfig = require("../knexfile").development;
 const knex = require("knex")(knexConfig);
 
-//Noteservice to render index
-const NoteService = require("../services/noteService");
-const noteService = new NoteService(knex);
+const MovieService = require ("../services/movieService");
+const movieService = new MovieService(knex);
 
 module.exports = (express) => {
   const router = express.Router();
-  let userName = "";
+  // let userName = "";
 
   //Check if the user is authenticated
   function isLoggedIn(req, res, next) {
@@ -21,34 +20,33 @@ module.exports = (express) => {
   }
 
   //Get user id to render on index
-  function getUserName(userid) {
-    return knex("usertable")
-      .select("id", "username")
-      .where("id", userid)
-      .orderBy("id")
-      .then((data) => {
-        userName = data[0].username;
-        return data[0].username;
-      })
-      .catch((err) => console.error(err));
-  }
+  // function getUserName(userid) {
+  //   return knex("usertable")
+  //     .select("id", "username")
+  //     .where("id", userid)
+  //     .orderBy("id")
+  //     .then((data) => {
+  //       userName = data[0].username;
+  //       return data[0].username;
+  //     })
+  //     .catch((err) => console.error(err));
+  // }
 
   // Serve Main page
-  router.get("/", function (req, res) {
-    // router.get("/", isLoggedIn, function (req, res) {
-    console.log("GET MAIN");
-    // getUserName(req.session.passport.user)
-    //   .then(() => noteService.list(req.session.passport.user))
-      // .then((noteArr) => {
-        res.render("index");
-        // {
-      //     currentuser: "Julie",
-      //     array: noteArr,
-      //   });
-      // })
-      // .catch((err) => res.status(500).json(err));
-    
-  });
+  // router.get("/", function (req, res) {
+  //   // router.get("/", isLoggedIn, function (req, res) {
+  //   console.log("GET MAIN");
+  //   // getUserName(req.session.passport.user)
+  //   //   .then(() => noteService.list(req.session.passport.user))
+  //   // .then((noteArr) => {
+  //   res.render("index");
+  //   // {
+  //   //     currentuser: "Julie",
+  //   //     array: noteArr,
+  //   //   });
+  //   // })
+  //   // .catch((err) => res.status(500).json(err));
+  // });
 
   //Login page
   router.get("/login", (req, res) => {
