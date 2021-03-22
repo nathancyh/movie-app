@@ -8,8 +8,8 @@ body {
   font-family: "Roboto", "Open Sans", sans-serif;
   font-size: 15px;
   font-weight: 400;
-  line-height: normal; }
-
+  line-height: normal;
+}
 
 /* ========= text ========= */
 body {
@@ -49,7 +49,8 @@ h2::after {
   align-items: center;
 }
 
-.container::before, .container::after {
+.container::before,
+.container::after {
   content: " ";
   display: table;
 }
@@ -63,9 +64,9 @@ h2::after {
   color: #000;
 }
 
-.search{
-  display:block;
-  text-align:left;
+.search {
+  display: block;
+  text-align: left;
   width: 70%;
   margin-right: 20%;
 }
@@ -79,7 +80,6 @@ h2::after {
   height: 390px;
 }
 
-
 /* ========= Carousel =========  */
 .carousel-nav-icon {
   height: 48px;
@@ -87,23 +87,23 @@ h2::after {
 }
 
 a {
-color: #ffbe08;
+  color: #ffbe08;
 }
 
 .text-left {
-text-align: center!important;
-margin-left: 70px;
+  text-align: center !important;
+  margin-left: 70px;
 }
 
 .bg-dark {
-  background-color: #ffbe08!important;
+  background-color: #ffbe08 !important;
 }
-
 
 .main-content .container {
   background: rgb(236, 236, 236);
   border-radius: 5px;
-  padding: 30px; }
+  padding: 30px;
+}
 
 /* Carousel */
 .carousel {
@@ -146,7 +146,8 @@ margin-left: 70px;
   margin-top: 5px;
   line-height: 16px;
 }
-.carousel .carousel-item .btn:hover, .carousel .carousel-item .btn:focus {
+.carousel .carousel-item .btn:hover,
+.carousel .carousel-item .btn:focus {
   color: #fff;
   background: #ffbe08;
   border-color: #ffbe08;
@@ -163,14 +164,16 @@ margin-left: 70px;
 .carousel .thumb-content {
   padding: 15px;
 }
-.carousel-control-prev, .carousel-control-next {
+.carousel-control-prev,
+.carousel-control-next {
   height: 80px;
   width: 40px;
   background: none;
   margin: auto 0;
   /* background: rgba(0, 0, 0, 0.2); */
 }
-.carousel-control-prev i, .carousel-control-next i {
+.carousel-control-prev i,
+.carousel-control-next i {
   font-size: 30px;
   position: absolute;
   top: 50%;
@@ -204,7 +207,8 @@ margin-left: 70px;
 .carousel .carousel-indicators {
   bottom: -50px;
 }
-.carousel-indicators li, .carousel-indicators li.active {
+.carousel-indicators li,
+.carousel-indicators li.active {
   width: 10px;
   height: 10px;
   margin: 4px;
@@ -265,7 +269,6 @@ margin-left: 70px;
   transition: all 0.5s ease-in-out 0s;
 }
 
-
 /* typeahead */
 .tt-query {
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
@@ -278,7 +281,6 @@ margin-left: 70px;
 }
 
 .tt-menu {
-  /* used to be tt-dropdown-menu in older versions */
   width: 40vw;
   margin-top: 4px;
   padding: 4px 0;
@@ -302,8 +304,14 @@ margin-left: 70px;
 .tt-suggestion:hover {
   color: #fff;
   background-color: #0097cf;
+  overflow: hidden;
 }
 
 .tt-suggestion p {
   margin: 0;
+}
+
+.tt-selectable {
+  width: 40vw;
+  border-radius: 10px;
 }

@@ -40,8 +40,7 @@ $(function () {
       source: movies.ttAdapter(),
       templates: {
         suggestion: Handlebars.compile(
-          "<p style='padding:6px'><strong>{{value}}</strong> - {{release_date}}</p>"
-          // "<img src='{{poster}}'><p style='padding:6px'>{{value}}-<b>{{release_date}}</b> </p>"
+          "<div class='row'><div class='text-center col-auto'><img src='{{poster}}' width=auto height=90px></div><h5 class='align-self-center'>{{value}}- <b>{{release_date}}</b> </h5><div class='col-auto'></div></div>"
         ),
         footer: Handlebars.compile("<b>Searched for '{{query}}'</b>"),
       },
