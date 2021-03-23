@@ -53,7 +53,6 @@ module.exports = (express) => {
     Promise.all([getTopTen(), getNowPlaying(), getUpComing()])
       .then(function (results) {
         const top = results[0].data.results;
-        console.log(top);
         const nowPlaying = results[1].data.results;
         const upComing = results[2].data.results;
 
