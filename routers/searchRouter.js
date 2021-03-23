@@ -8,11 +8,9 @@ module.exports = (express) => {
   router.route("/:search").get(getSearchQuery);
 
   function getSearch(req, res) {
-    console.log("req.query");
-    console.log(req.query);
     let sortOption = "popularity.desc";
     let sortingDisplay = "Popularity";
-    // let sortOption = "vote_count.desc";
+    let voteCountGate, genreOption;
 
     // /search/q=popularity.desc"
     switch (req.query.q) {
@@ -31,18 +29,17 @@ module.exports = (express) => {
       case "vote_average.desc":
         sortOption = "vote_average.desc";
         sortingDisplay = "User Rating";
+        voteCountGate = "&vote_count.gte=3000";
         break;
       case "vote_count.desc":
         sortOption = "vote_count.desc";
         sortingDisplay = "Vote Count";
         break;
     }
-    console.log("sortOption: ");
-    console.log(sortOption);
 
     return axios
       .get(
-        `https://api.themoviedb.org/3/discover/movie?api_key=f22e6ce68f5e5002e71c20bcba477e7d&language=en-US&sort_by=${sortOption}&include_adult=false&include_video=true&page=1`
+        `https://api.themoviedb.org/3/discover/movie?api_key=f22e6ce68f5e5002e71c20bcba477e7d&language=en-US&sort_by=${sortOption}&include_adult=false&include_video=true&page=1${voteCountGate}`
       )
       .then((info) => {
         console.log("Query Switch Page");

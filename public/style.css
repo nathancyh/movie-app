@@ -301,8 +301,13 @@ margin-left: 70px;
   line-height: 24px;
 }
 
-.tt-suggestion.tt-cursor,
 .tt-suggestion:hover {
+  color: #fff;
+  background-color: #0097cf;
+  overflow: hidden;
+}
+
+.tt-suggestion.tt-cursor {
   color: #fff;
   background-color: #0097cf;
   overflow: hidden;
@@ -314,5 +319,11 @@ margin-left: 70px;
 
 .tt-selectable {
   width: 40vw;
-  border-radius: 10px;
+  border-radius: 4px;
+  position: relative;
+  left: 14px;
+}
+
+.tt-selectable h5 {
+  font-size: 16px;
 }

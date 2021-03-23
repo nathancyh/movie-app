@@ -40,7 +40,7 @@ $(function () {
       source: movies.ttAdapter(),
       templates: {
         suggestion: Handlebars.compile(
-          "<div class='row'><div class='text-center col-auto'><img src='{{poster}}' width=auto height=90px></div><h5 class='align-self-center'>{{value}}- <b>{{release_date}}</b> </h5><div class='col-auto'></div></div>"
+          "<div class='row'><div class='text-center col-auto'><img src='{{poster}}' width=auto height=90px></div><h5 class='align-self-center'>{{value}}- <b>{{release_date}}</b> </h5></div></div>"
         ),
         footer: Handlebars.compile("<b>Searched for '{{query}}'</b>"),
       },
@@ -53,4 +53,10 @@ $(function () {
     window.location.href = "/movie/" + suggestion.id;
   });
 
+  $(".typeahead").on("keypress", function (e) {
+    console.log(e.target.value);
+    if (e.key === "Enter") {
+      window.location.href = "/search/" + e.target.value;
+    }
+  });
 });
