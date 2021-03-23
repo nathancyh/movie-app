@@ -90,8 +90,8 @@ module.exports = (express) => {
       )
       .then(() => {
         console.log("done");
-        // res.send("haha put edit profile");
-        res.redirect(303, "/");
+        res.send("haha put edit profile");
+        // res.redirect(303, "/");
       })
       .catch((err) => res.status(500).json(err));
   });
