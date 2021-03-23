@@ -16,8 +16,8 @@ module.exports = (express) => {
           `https://api.themoviedb.org/3/discover/movie?api_key=f22e6ce68f5e5002e71c20bcba477e7d&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=true&page=1`
         )
         .then((info) => {
-          console.log(info.data.results[0].title)
-          console.log("1")
+          console.log(info.data.results[0].title);
+          console.log("1");
           // console.log(info.data.results[0]);
           return info;
         })
@@ -32,7 +32,7 @@ module.exports = (express) => {
         .then((info) => {
           // res.send("hello from searchRouter");
           console.log(info.data.results[1].title);
-          console.log("2")
+          console.log("2");
           return info;
         })
         .catch((err) => res.status(500).json(err));
@@ -45,27 +45,25 @@ module.exports = (express) => {
         )
         .then((info) => {
           console.log(info.data.results[2].title);
-          console.log("3")
+          console.log("3");
           return info;
         })
         .catch((err) => res.status(500).json(err));
     }
     Promise.all([getTopTen(), getNowPlaying(), getUpComing()])
-    .then(function(results) {
+      .then(function (results) {
         const top = results[0].data.results;
-        console.log(top)
+        console.log(top);
         const nowPlaying = results[1].data.results;
         const upComing = results[2].data.results;
 
         res.render("index", {
-            getTop: top,
-            getNow: nowPlaying,
-            getUp: upComing,
+          getTop: top,
+          getNow: nowPlaying,
+          getUp: upComing,
         });
-    })
-    .catch((err) => res.status(500).json(err));
+      })
+      .catch((err) => res.status(500).json(err));
   }
   return router;
 };
-
-// "https://api.themoviedb.org/3/discover/movie?api_key=f22e6ce68f5e5002e71c20bcba477e7d&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_genres=28"

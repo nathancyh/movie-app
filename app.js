@@ -41,26 +41,25 @@ app.use(express.static("public"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-
 //testing
-app.get("/", (req, res)=>{
-  console.log("homepage")
-  return indexRouter.indexCarousel()
-});
+// app.get("/", (req, res) => {
+//   console.log("homepage");
+//   return indexRouter.indexCarousel();
+// });
 
 //Passport.js setup & init
 setupPassport(app);
 // app.use("/", viewRouter); //Passport.js route
 
 //Routers
-app.use("/", indexRoute); //TODO:
-app.use("/home", indexRouter);
+app.use("/", indexRouter); //TODO:
+// app.use("/home", indexRouter);
 app.use("/movie", movieRouter);
 app.use("/profile", profileRouter);
 app.use("/search", searchRouter);
 
 app.get("/profile", (req, res) => {
-  res.render('profileedit')
+  res.render("profileedit");
 });
 
 //Check if the user is authenticated
