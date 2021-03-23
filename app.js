@@ -39,22 +39,16 @@ app.engine(
 app.set("view engine", "handlebars");
 
 app.use(express.static("public"));
+app.use(express.static("uploads"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-
-//testing
-app.get("/", (req, res) => {
-  console.log("homepage");
-  return indexRouter.indexCarousel();
-});
 
 //Passport.js setup & init
 setupPassport(app);
 // app.use("/", viewRouter); //Passport.js route
 
 //Routers
-app.use("/", indexRoute); //TODO:
-app.use("/home", indexRouter);
+app.use("/", indexRouter); //TODO:
 app.use("/movie", movieRouter);
 app.use("/profile", profileRouter);
 app.use("/search", searchRouter);

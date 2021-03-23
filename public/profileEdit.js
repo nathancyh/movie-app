@@ -1,9 +1,8 @@
 "use strict";
 
 $(function () {
-
   $(".fav-genres").select2({
-    maximumSelectionLength: 3
+    maximumSelectionLength: 3,
   });
 
   const movies = new Bloodhound({
@@ -56,7 +55,7 @@ $(function () {
   $(".typeahead1").on("typeahead:select", function (event, suggestion) {
     // console.log(suggestion);
     console.log(suggestion.id);
-    value = suggestion.id
+    value = suggestion.id;
     return value;
   });
 
@@ -67,18 +66,37 @@ $(function () {
     let favMovie = Number(value);
     let intro = $(".introduce-area").val();
 
+    axios
+      .put("/profile/edit/1", {
+        //TODO
+        fav_movie: favMovie,
+        fav_genre: favGen,
+        intro: intro,
+      })
+      .then(function (response) {
+        window.location.href = "/profile/1"; //TODO
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
 
-    $.ajax({
-      type: "PUT",
-      url: "/profile",
-      data: { fav_movie: favMovie, fav_genre: favGen, intro: intro },
-      success: function () {
-        console.log("profile edit put")
-      }
-    }).done((data) => {
-      // window.location.reload();
-      console.log("done", data)
-    })
-
-  })
-})
+    // $.ajax({
+    //   type: "PUT",
+    //   url: "/profile/edit/1",
+    //   data: { fav_movie: favMovie, fav_genre: favGen, intro: intro },
+    //   success: function () {
+    //     console.log("profile edit put");
+    //   },
+    // })
+    //   .done(() => {
+    //     // window.location.reload();
+    //     console.log("put profile done");
+    //   })
+    //   .fail((e) => {
+    //     console.log("hihihihi", e);
+    //   })
+    //   .always(() => {
+    //     console.log("always profile edit");
+    //   });
+  });
+});

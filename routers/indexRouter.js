@@ -66,5 +66,3 @@ module.exports = (express) => {
   }
   return router;
 };
-
-// "https://api.themoviedb.org/3/discover/movie?api_key=f22e6ce68f5e5002e71c20bcba477e7d&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_genres=28"
