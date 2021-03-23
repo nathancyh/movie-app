@@ -40,7 +40,7 @@ module.exports = class MovieService {
       .where("movies.api_id", movieid)
       .andWhere("reviews.user_id", userid)
       .then((data) => {
-        console.log(data);
+        // console.log(data);
         return data;
       });
   }

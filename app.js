@@ -38,6 +38,7 @@ app.engine(
 app.set("view engine", "handlebars");
 
 app.use(express.static("public"));
+app.use(express.static("uploads"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
@@ -58,9 +59,9 @@ app.use("/movie", movieRouter);
 app.use("/profile", profileRouter);
 app.use("/search", searchRouter);
 
-app.get("/profile", (req, res) => {
-  res.render("profileedit");
-});
+// app.get("/profile/edit", (req, res) => {
+//   res.render("profileedit");
+// });
 
 //Check if the user is authenticated
 // function isLoggedIn(req, res, next) {
