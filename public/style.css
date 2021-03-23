@@ -262,6 +262,11 @@ a {
   color: #ffc000;
 }
 
+/* ========= Genre Box ========= */
+.genre_div {
+  cursor: pointer;
+}
+
 /* ========= Footer ========= */
 #footer {
   background: #ffbe08;
