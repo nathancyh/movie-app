@@ -23,10 +23,11 @@ app.use(
 );
 
 const movieRouter = require("./routers/movieRouter")(express);
-const viewRouter = require("./routers/viewRouter")(express);
+const viewRouter = require("./routers/loginRouter")(express);
 const indexRouter = require("./routers/indexRouter")(express);
 const searchRouter = require("./routers/searchRouter")(express);
 const profileRouter = require("./routers/profileRouter")(express);
+const wishlistRouter = require("./routers/wishlistRouter")(express);
 
 app.engine(
   "handlebars",
@@ -42,26 +43,16 @@ app.use(express.static("uploads"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-//testing
-// app.get("/", (req, res) => {
-//   console.log("homepage");
-//   return indexRouter.indexCarousel();
-// });
-
 //Passport.js setup & init
 setupPassport(app);
 // app.use("/", viewRouter); //Passport.js route
 
 //Routers
 app.use("/", indexRouter); //TODO:
-// app.use("/home", indexRouter);
 app.use("/movie", movieRouter);
 app.use("/profile", profileRouter);
 app.use("/search", searchRouter);
-
-// app.get("/profile/edit", (req, res) => {
-//   res.render("profileedit");
-// });
+app.use("/wishlist", wishlistRouter);
 
 //Check if the user is authenticated
 // function isLoggedIn(req, res, next) {
