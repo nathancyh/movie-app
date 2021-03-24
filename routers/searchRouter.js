@@ -8,9 +8,15 @@ module.exports = (express) => {
   router.route("/:search").get(getSearchQuery);
 
   function getSearch(req, res) {
+    console.log(req.session);
+    console.log("originalURL");
+    console.log(req.originalUrl);
     let sortOption = "popularity.desc";
     let sortingDisplay = "Popularity";
-    let voteCountGate, genreOption;
+    let voteCountGate = "";
+    let genreOption = "";
+
+    console.log(req.get("Referrer")); //TODO:
 
     // /search/sort=popularity.desc"
     switch (req.query.sort) {
@@ -29,7 +35,8 @@ module.exports = (express) => {
       case "vote_average.desc":
         sortOption = "vote_average.desc";
         sortingDisplay = "Sorted by User Rating Descending";
-        voteCountGate = "&vote_count.gte=3000";
+        voteCountGate = "&vote_count.gte=300";
+        console.log(voteCountGate);
         break;
       case "vote_count.desc":
         sortOption = "vote_count.desc";
@@ -77,10 +84,10 @@ module.exports = (express) => {
         break;
     }
 
+    let getURL = `https://api.themoviedb.org/3/discover/movie?api_key=f22e6ce68f5e5002e71c20bcba477e7d&language=en-US&sort_by=${sortOption}&include_adult=false&include_video=true&page=1${voteCountGate}${genreOption}`;
+
     return axios
-      .get(
-        `https://api.themoviedb.org/3/discover/movie?api_key=f22e6ce68f5e5002e71c20bcba477e7d&language=en-US&sort_by=${sortOption}&include_adult=false&include_video=true&page=1${voteCountGate}${genreOption}`
-      )
+      .get(getURL)
       .then((info) => {
         console.log("Query Switch Page");
         // console.log(info.data.results[0].title);

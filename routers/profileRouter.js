@@ -1,7 +1,5 @@
 "use strict";
 
-// const { app } = require("../app");
-
 module.exports = (express) => {
   const router = express.Router();
   const multer = require("multer");
@@ -15,14 +13,17 @@ module.exports = (express) => {
   const profileService = new ProfileService(knex);
 
   //Check if the user is authenticated
-  function isLoggedIn(req, res, next) {
-    if (req.isAuthenticated()) {
-      return next();
-    }
-    res.redirect("/login");
-  }
+  // function isLoggedIn(req, res, next) {
+  //   if (req.isAuthenticated()) {
+  //     return next();
+  //   }
+  //   res.redirect("/login");
+  // }
 
   router.get("/:userid", function (req, res) {
+    console.log(req.session);
+    console.log("originalURL");
+    console.log(req.originalUrl);
     let screenshot1, screenshot2, profile;
     fs.promises
       .readdir("./uploads/profiles")
@@ -55,7 +56,6 @@ module.exports = (express) => {
     validateScreenshot.then((data) => {
       console.log();
     });
-
     return profileService
       .getdata(req.params.userid)
       .then((data) => {
@@ -65,6 +65,7 @@ module.exports = (express) => {
           screenshot1: screenshot1,
           screenshot2: screenshot2,
           userid: data[0].id,
+          username: data[0].name,
           fav_movie: data[0].fav_movie,
           fav_genre: data[0].fav_genre,
           intro: data[0].intro,
@@ -73,28 +74,32 @@ module.exports = (express) => {
       .catch((err) => res.status(500).json(err));
   });
 
-  router.get("/edit/:userid", (req, res) => {
-    res.render("profileedit", {
-      userid: 1, //TODO
-    });
-  });
+  router.route("/edit/:userid").get(getProfileEdit).put(putProfileEdit);
 
-  router.put("/edit/:userid", (req, res) => {
+  function getProfileEdit(req, res) {
+    res.render("profileedit", {
+      userid: 1, //TODO:
+    });
+  }
+
+  function putProfileEdit(req, res) {
     console.log("edit user put params");
+    console.log(req.body.fav_genre);
     return profileService
       .add(
         req.params.userid,
         req.body.fav_movie,
-        req.body["fav_genre[]"],
+        // req.body["fav_genre[]"],
+        req.body.fav_genre,
         req.body.intro
       )
       .then(() => {
         console.log("done");
-        res.send("haha put edit profile");
+        res.send("put edit profile");
         // res.redirect(303, "/");
       })
       .catch((err) => res.status(500).json(err));
-  });
+  }
 
   router.post("/upload", function (req, res) {
     profileupload(req, res, function (err) {

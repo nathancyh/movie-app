@@ -23,7 +23,7 @@ app.use(
 );
 
 const movieRouter = require("./routers/movieRouter")(express);
-const viewRouter = require("./routers/loginRouter")(express);
+const loginRouter = require("./routers/loginRouter")(express);
 const indexRouter = require("./routers/indexRouter")(express);
 const searchRouter = require("./routers/searchRouter")(express);
 const profileRouter = require("./routers/profileRouter")(express);
@@ -45,7 +45,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 //Passport.js setup & init
 setupPassport(app);
-// app.use("/", viewRouter); //Passport.js route
+app.use("/", loginRouter); //Passport.js route
 
 //Routers
 app.use("/", indexRouter); //TODO:
@@ -61,11 +61,6 @@ app.use("/wishlist", wishlistRouter);
 //   }
 //   res.redirect("/login");
 // }
-
-//Temp. root route
-// app.get("/", (req, res) => {
-//   res.send("Hello from the index page");
-// });
 
 app.listen(port, () => {
   console.log(`App is listening to port ${port}`);

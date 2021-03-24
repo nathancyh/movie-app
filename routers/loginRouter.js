@@ -7,10 +7,17 @@ const knex = require("knex")(knexConfig);
 // const MovieService = require ("../services/movieService");
 // const movieService = new MovieService(knex);
 
+module.exports.isLoggedIn = function (req, res, next) {
+  if (req.isAuthenticated()) {
+    return next();
+  }
+  res.redirect("/login");
+};
+
 module.exports = (express) => {
   const router = express.Router();
 
-  //Check if the user is authenticated
+  // Check if the user is authenticated
   function isLoggedIn(req, res, next) {
     if (req.isAuthenticated()) {
       return next();
@@ -31,25 +38,9 @@ module.exports = (express) => {
   //     .catch((err) => console.error(err));
   // }
 
-  // Serve Main page
-  // router.get("/", function (req, res) {
-  //   // router.get("/", isLoggedIn, function (req, res) {
-  //   console.log("GET MAIN");
-  //   // getUserName(req.session.passport.user)
-  //   //   .then(() => noteService.list(req.session.passport.user))
-  //   // .then((noteArr) => {
-  //   res.render("index");
-  //   // {
-  //   //     currentuser: "Julie",
-  //   //     array: noteArr,
-  //   //   });
-  //   // })
-  //   // .catch((err) => res.status(500).json(err));
-  // });
-
   //Login page
   router.get("/login", (req, res) => {
-    res.render("login");
+    res.render("login", { layout: "empty" });
   });
 
   router.post(
@@ -58,11 +49,14 @@ module.exports = (express) => {
       successRedirect: "/",
       failureRedirect: "/error",
     })
+    // function (req, res) {
+    //   console.log(req);
+    // }
   );
 
   //Signup page
   router.get("/signup", (req, res) => {
-    res.render("signup");
+    res.render("signup", { layout: "empty" });
   });
 
   router.post(
@@ -80,7 +74,8 @@ module.exports = (express) => {
   });
 
   router.get("/error", (req, res) => {
-    res.send("You are not logged in!");
+    // res.send("You are not logged in!");
+    res.render("error", { layout: "empty" });
   });
 
   return router;

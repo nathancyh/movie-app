@@ -45,7 +45,9 @@ $(function () {
   $(".save-btn").click((e) => {
     e.preventDefault();
     let title = $(".edit-title").val();
-    let rating = $(".edit-rating").val();
+    // let rating = $(".edit-rating").val();
+    let rating = $(".full").val();
+    console.log(rating);
     let data = $(".edit-area").val();
     let movieid = window.location.pathname.slice(7);
 
