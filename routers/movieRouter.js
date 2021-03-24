@@ -20,6 +20,7 @@ module.exports = (express) => {
     .delete(deleteReview);
 
   function getReview(req, res) {
+    let user = req.user;
     function getMovieData() {
       let apiData;
       return axios
@@ -71,6 +72,7 @@ module.exports = (express) => {
         const myReview = results[1];
         const movieReview = results[2];
         res.render("review", {
+          user: user,
           poster: `https://image.tmdb.org/t/p/w300${data.poster_path}`,
           title: data.title,
           averageReview: data.vote_average,

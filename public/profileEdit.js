@@ -1,6 +1,13 @@
 "use strict";
 
 $(function () {
+  $(".edit-profile").click((e) => {
+    // e.preventDefault();
+    let userid = window.location.pathname.slice(9);
+    console.log(userid);
+    window.location.href = `/profile/edit/${userid}`;
+  });
+
   $(".fav-genres").select2({
     maximumSelectionLength: 3,
   });

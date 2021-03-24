@@ -1,24 +1,21 @@
 "use strict";
 
-const { data } = require("jquery");
-
 module.exports = (express) => {
   const router = express.Router();
   const axios = require("axios");
 
   router.route("/").get(indexCarousel);
-  //   router.route("/:query").get(getTopTenQuery);
 
   function indexCarousel(req, res) {
+    let user = req.user;
     function getTopTen() {
       return axios
         .get(
           `https://api.themoviedb.org/3/discover/movie?api_key=f22e6ce68f5e5002e71c20bcba477e7d&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=true&page=1`
         )
         .then((info) => {
-          console.log(info.data.results[0].title);
-          console.log("1");
-          // console.log(info.data.results[0]);
+          // console.log(info.data.results[0].title);
+          // console.log("1")
           return info;
         })
         .catch((err) => res.status(500).json(err));
@@ -30,9 +27,8 @@ module.exports = (express) => {
           `https://api.themoviedb.org/3/movie/now_playing?api_key=f22e6ce68f5e5002e71c20bcba477e7d&language=en-US&page=1`
         )
         .then((info) => {
-          // res.send("hello from searchRouter");
-          console.log(info.data.results[1].title);
-          console.log("2");
+          // console.log(info.data.results[1].title);
+          // console.log("2");
           return info;
         })
         .catch((err) => res.status(500).json(err));
@@ -44,8 +40,8 @@ module.exports = (express) => {
           `https://api.themoviedb.org/3/movie/upcoming?api_key=f22e6ce68f5e5002e71c20bcba477e7d&language=en-US&page=1`
         )
         .then((info) => {
-          console.log(info.data.results[2].title);
-          console.log("3");
+          // console.log(info.data.results[2].title);
+          // console.log("3");
           return info;
         })
         .catch((err) => res.status(500).json(err));
@@ -57,6 +53,7 @@ module.exports = (express) => {
         const upComing = results[2].data.results;
 
         res.render("index", {
+          user: user,
           getTop: top,
           getNow: nowPlaying,
           getUp: upComing,

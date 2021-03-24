@@ -1,11 +1,10 @@
 "use strict";
 
-// const { app } = require("../app");
-
 module.exports = (express) => {
   const router = express.Router();
   const multer = require("multer");
   const fs = require("fs");
+  const { isLoggedIn } = require("./loginRouter");
 
   // Knex Setup
   const knexConfig = require("../knexfile").development;
@@ -14,28 +13,32 @@ module.exports = (express) => {
   const ProfileService = require("../services/profileService");
   const profileService = new ProfileService(knex);
 
-  //Check if the user is authenticated
-  function isLoggedIn(req, res, next) {
-    if (req.isAuthenticated()) {
-      return next();
-    }
-    res.redirect("/login");
-  }
+  router.route("/:userid").get(getProfile);
+  router
+    .route("/edit/:userid")
+    .get(isLoggedIn, getProfileEdit)
+    .put(isLoggedIn, putProfileEdit);
+  router.route("/upload").post(isLoggedIn, postProfilepic);
+  router.route("/upload1").post(isLoggedIn, postScreenshots);
 
-  router.get("/:userid", function (req, res) {
-    let screenshot1, screenshot2, profile;
-    fs.promises
+  function getProfile(req, res) {
+    let user = req.user;
+    let screenshot1, screenshot2, profilepic;
+
+    //Check if propic exist, if not render placeholder
+    let validateProfiles = fs.promises
       .readdir("./uploads/profiles")
       .then((data) => {
-        profile = data.find((file) => file == `${req.params.userid}.jpg`);
-        if (profile === undefined) {
-          profile = `profileplaceholder.jpg`;
+        profilepic = data.find((file) => file == `${req.params.userid}.jpg`);
+        if (profilepic === undefined) {
+          profilepic = `profileplaceholder.jpg`;
         }
       })
       .catch((error) => {
         console.log(error);
       });
 
+    //Check if screenshots exist, if not render placeholder
     let validateScreenshot = fs.promises
       .readdir("./uploads/screenshot")
       .then((data) => {
@@ -52,65 +55,68 @@ module.exports = (express) => {
         console.log(error);
       });
 
-    validateScreenshot.then((data) => {
-      console.log();
-    });
+    validateProfiles
+      .then(() => validateScreenshot)
+      .then(() => {
+        return profileService
+          .getdata(req.params.userid)
+          .then((data) => {
+            res.render("profile", {
+              user: user,
+              profile: profilepic,
+              screenshot1: screenshot1,
+              screenshot2: screenshot2,
+              userid: data[0].id,
+              username: data[0].name,
+              fav_movie: data[0].fav_movie,
+              fav_genre: data[0].fav_genre,
+              intro: data[0].intro,
+            });
+          })
+          .catch((err) => res.status(500).json(err));
+      });
+  }
 
-    return profileService
-      .getdata(req.params.userid)
-      .then((data) => {
-        // res.send("hello kim")
-        res.render("profile", {
-          profile: profile,
-          screenshot1: screenshot1,
-          screenshot2: screenshot2,
-          userid: data[0].id,
-          fav_movie: data[0].fav_movie,
-          fav_genre: data[0].fav_genre,
-          intro: data[0].intro,
-        });
-      })
-      .catch((err) => res.status(500).json(err));
-  });
-
-  router.get("/edit/:userid", (req, res) => {
+  function getProfileEdit(req, res) {
+    let user = req.user;
     res.render("profileedit", {
-      userid: 1, //TODO
+      user: user,
+      userid: 1, //TODO: change to real userid
     });
-  });
+  }
 
-  router.put("/edit/:userid", (req, res) => {
+  function putProfileEdit(req, res) {
     console.log("edit user put params");
+    console.log(req.body.fav_genre);
     return profileService
       .add(
         req.params.userid,
         req.body.fav_movie,
-        req.body["fav_genre[]"],
+        req.body.fav_genre,
         req.body.intro
       )
       .then(() => {
         console.log("done");
-        res.send("haha put edit profile");
-        // res.redirect(303, "/");
+        res.send("put edit profile");
       })
       .catch((err) => res.status(500).json(err));
-  });
+  }
 
-  router.post("/upload", function (req, res) {
+  function postProfilepic(req, res) {
     profileupload(req, res, function (err) {
       if (err) {
         return err;
       }
     });
-  });
+  }
 
-  router.post("/upload1", function (req, res) {
+  function postScreenshots(req, res) {
     screenshotupload(req, res, function (err) {
       if (err) {
         return err;
       }
     });
-  });
+  }
 
   //Multer Configs
   var storage = multer.diskStorage({
@@ -123,10 +129,10 @@ module.exports = (express) => {
     },
     filename: function (req, file, cb) {
       if (file.fieldname == "profileimageupload") {
-        cb(null, "1" + ".jpg");
+        cb(null, "1" + ".jpg"); //TODO: change to real userid
       } else {
         for (let i = 0; i < req.files.screenshot.length; i++) {
-          cb(null, "1" + "_" + i + ".jpg");
+          cb(null, "1" + "_" + i + ".jpg"); //TODO: change to real userid
         }
       }
     },
