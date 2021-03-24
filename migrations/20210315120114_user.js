@@ -27,7 +27,7 @@ exports.up = function (knex) {
       });
     })
     .then(() => {
-      return knex.schema.createTable("wishlists", (table) => {
+      return knex.schema.createTable("watchlists", (table) => {
         table.increments("id");
         table.integer("user_id").unsigned();
         table.foreign("user_id").references("users.id");
@@ -53,6 +53,7 @@ exports.up = function (knex) {
 exports.down = function (knex) {
   return knex.schema
     .dropTable("reviews")
+    .then(() => knex.schema.dropTable("watchlists"))
     .then(() => knex.schema.dropTable("movies"))
     .then(() => knex.schema.dropTable("users"));
 };
