@@ -27,6 +27,15 @@ exports.up = function (knex) {
       });
     })
     .then(() => {
+      return knex.schema.createTable("wishlists", (table) => {
+        table.increments("id");
+        table.integer("user_id").unsigned();
+        table.foreign("user_id").references("users.id");
+        table.integer("movie_id").unsigned();
+        table.foreign("movie_id").references("movies.api_id");
+      });
+    })
+    .then(() => {
       return knex.schema.createTable("reviews", (table) => {
         table.increments("id");
         table.integer("user_id").unsigned();
