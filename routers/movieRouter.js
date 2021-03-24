@@ -70,10 +70,10 @@ module.exports = (express) => {
         const data = results[0];
         const myReview = results[1];
         const movieReview = results[2];
-
         res.render("review", {
           poster: `https://image.tmdb.org/t/p/w300${data.poster_path}`,
           title: data.title,
+          averageReview: data.vote_average,
           genres: data.genres[0].name,
           releaseDate: data.release_date.slice(0, 4),
           overview: data.overview,
