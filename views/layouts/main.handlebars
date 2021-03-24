@@ -49,7 +49,11 @@
           </div>
           <div class="rightmargindiv">
             <li class="nav-item">
-              <a class="nav-link" href="#">Login <i class="fas fa-user-circle"></i></a>
+              {{#if user}}
+              <a class="nav-link" href="/profile/{{user.id}}">Hello {{user.name}}</a>
+              {{else}}
+              <a class="nav-link" href="/login">Login <i class="fas fa-user-circle"></i></a>
+              {{/if}}
             </li>
           </div>
         </ul>
@@ -59,6 +63,9 @@
   <main class="main-content">
     <div class="container">
       <div class="page">
+        {{#if user}}
+        <a href='/logout'><button type="button" class="btn btn-danger logoutbtn mb-3">Logout</button></a>
+        {{/if}}
         <div class="breadcrumbs">
           <a href="/">Home</a>
           <i class="fas fa-angle-double-right"></i> <span>Breadcrumbs Here</span>
@@ -74,7 +81,6 @@
   <div id="footer" class="text-center">
     <div class="container">
       <div class="grid-container">
-
         <div class="grid-child-left">
           <h2>About the Movie App</h2>
 

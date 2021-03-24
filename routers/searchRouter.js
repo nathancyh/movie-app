@@ -9,14 +9,16 @@ module.exports = (express) => {
 
   function getSearch(req, res) {
     console.log(req.session);
+    console.log(req.user);
     console.log("originalURL");
     console.log(req.originalUrl);
+    let user = req.user;
     let sortOption = "popularity.desc";
     let sortingDisplay = "Popularity";
     let voteCountGate = "";
     let genreOption = "";
 
-    console.log(req.get("Referrer")); //TODO:
+    console.log(req.get("Referrer")); //TODO: usr referrer to to do genre > sort
 
     // /search/sort=popularity.desc"
     switch (req.query.sort) {
@@ -92,6 +94,7 @@ module.exports = (express) => {
         console.log("Query Switch Page");
         // console.log(info.data.results[0].title);
         res.render("search", {
+          user: user,
           searchArr: info.data.results,
           sortingDisplay: sortingDisplay,
         });
@@ -101,6 +104,7 @@ module.exports = (express) => {
 
   // /search/star+wars
   function getSearchQuery(req, res) {
+    let user = req.user;
     return axios
       .get(
         `http://api.themoviedb.org/3/search/movie?query=${req.params.search}&api_key=f22e6ce68f5e5002e71c20bcba477e7d`
@@ -109,6 +113,7 @@ module.exports = (express) => {
         console.log("Search String Page");
         // console.log(info.data.results[0].title);
         res.render("search", {
+          user: user,
           searchString: req.params.search,
           searchArr: info.data.results,
         });

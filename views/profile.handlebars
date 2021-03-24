@@ -1,10 +1,12 @@
 <div class="container-fluid ">
+    {{#if user}}
     <button type="button" class="btn btn-success edit-profile">Edit Profile</button>
+    {{/if}}
     <div class="row profile_row1">
-        <div class="col-3 profile-pic-container">
-            <img class=" img-fluid profile-pic" width="154" height="auto" src="/profiles/{{profile}}">
+        <div class="col-md-3 profile-pic-container">
+            <img class=" img-fluid profile-pic" src="/profiles/{{profile}}">
         </div>
-        <div class="user-container col-8">
+        <div class="user-container col-md-8">
             <p class="h2">{{username}}</p>
             <p>My Favourite Genres: {{fav_genre}}</p>
             <p>My Favourite Movie: {{fav_movie}}</p>

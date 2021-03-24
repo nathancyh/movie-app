@@ -10,7 +10,6 @@ const bodyParser = require("body-parser");
 const session = require("express-session");
 const setupPassport = require("./passport-js/passport");
 const port = process.env.PORT || 8080;
-const axios = require("axios");
 
 const app = express();
 
@@ -48,19 +47,11 @@ setupPassport(app);
 app.use("/", loginRouter); //Passport.js route
 
 //Routers
-app.use("/", indexRouter); //TODO:
+app.use("/", indexRouter);
 app.use("/movie", movieRouter);
 app.use("/profile", profileRouter);
 app.use("/search", searchRouter);
 app.use("/wishlist", wishlistRouter);
-
-//Check if the user is authenticated
-// function isLoggedIn(req, res, next) {
-//   if (req.isAuthenticated()) {
-//     return next();
-//   }
-//   res.redirect("/login");
-// }
 
 app.listen(port, () => {
   console.log(`App is listening to port ${port}`);

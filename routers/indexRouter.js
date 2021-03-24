@@ -7,8 +7,7 @@ module.exports = (express) => {
   router.route("/").get(indexCarousel);
 
   function indexCarousel(req, res) {
-    console.log(req.session);
-    console.log(req.user);
+    let user = req.user;
     function getTopTen() {
       return axios
         .get(
@@ -54,6 +53,7 @@ module.exports = (express) => {
         const upComing = results[2].data.results;
 
         res.render("index", {
+          user: user,
           getTop: top,
           getNow: nowPlaying,
           getUp: upComing,
