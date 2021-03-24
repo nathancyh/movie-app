@@ -24,7 +24,7 @@ $(function () {
       },
     }).done(
       setTimeout(() => {
-        window.location.reload();
+        // window.location.reload();
       }, 200)
     );
   });
@@ -45,7 +45,8 @@ $(function () {
   $(".save-btn").click((e) => {
     e.preventDefault();
     let title = $(".edit-title").val();
-    let rating = $(".edit-rating").val();
+    console.log(rating);
+    let rating = $(".full").val();
     let data = $(".edit-area").val();
     let movieid = window.location.pathname.slice(7);
 
@@ -82,4 +83,9 @@ $(function () {
       }, 200)
     );
   });
+});
+
+// Rating Initialization
+$(document).ready(function () {
+  $("#rateMe1").mdbRate();
 });
