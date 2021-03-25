@@ -18,7 +18,7 @@ module.exports = (express) => {
     .route("/edit/:userid")
     .get(isLoggedIn, getProfileEdit)
     .put(isLoggedIn, putProfileEdit);
-  router.route("/upload").post(isLoggedIn, postProfilepic);
+  // router.route("/upload").post(isLoggedIn, postProfilepic);
   router.route("/upload1").post(isLoggedIn, postScreenshots);
 
   function getProfile(req, res) {
@@ -27,9 +27,9 @@ module.exports = (express) => {
 
     //Check if propic exist, if not render placeholder
     let validateProfiles = fs.promises
-      .readdir("./uploads/profiles")
+      .readdir("./uploads")
       .then((data) => {
-        profilepic = data.find((file) => file == `${req.params.userid}.jpg`);
+        profilepic = data.find((file) => file == `${req.params.userid}_p.jpg`);
         if (profilepic === undefined) {
           profilepic = `profileplaceholder.jpg`;
         }
@@ -40,7 +40,7 @@ module.exports = (express) => {
 
     //Check if screenshots exist, if not render placeholder
     let validateScreenshot = fs.promises
-      .readdir("./uploads/screenshot")
+      .readdir("./uploads")
       .then((data) => {
         screenshot1 = data.find((file) => file == `${req.params.userid}_0.jpg`);
         screenshot2 = data.find((file) => file == `${req.params.userid}_1.jpg`);
@@ -81,7 +81,7 @@ module.exports = (express) => {
     let user = req.user;
     res.render("profileedit", {
       user: user,
-      userid: 1, //TODO: change to real userid
+      userid: req.user.id,
     });
   }
 
@@ -102,13 +102,13 @@ module.exports = (express) => {
       .catch((err) => res.status(500).json(err));
   }
 
-  function postProfilepic(req, res) {
-    profileupload(req, res, function (err) {
-      if (err) {
-        return err;
-      }
-    });
-  }
+  // function postProfilepic(req, res) {
+  //   profileupload(req, res, function (err) {
+  //     if (err) {
+  //       return err;
+  //     }
+  //   });
+  // }
 
   function postScreenshots(req, res) {
     screenshotupload(req, res, function (err) {
@@ -121,32 +121,34 @@ module.exports = (express) => {
   //Multer Configs
   var storage = multer.diskStorage({
     destination: function (req, file, cb) {
-      if (file.fieldname == "profileimageupload") {
-        cb(null, "uploads/profiles/");
-      } else {
-        cb(null, "uploads/screenshot/");
-      }
+      cb(null, "uploads");
     },
     filename: function (req, file, cb) {
+      console.log(file);
       if (file.fieldname == "profileimageupload") {
-        cb(null, "1" + ".jpg"); //TODO: change to real userid
-      } else {
-        for (let i = 0; i < req.files.screenshot.length; i++) {
-          cb(null, "1" + "_" + i + ".jpg"); //TODO: change to real userid
-        }
+        cb(null, `${req.user.id}_p.jpg`);
+      } else if (file.fieldname == "screenshot0") {
+        cb(null, `${req.user.id}_0.jpg`);
+      } else if (file.fieldname == "screenshot1") {
+        cb(null, `${req.user.id}_1.jpg`);
       }
+      // cb(null, file.fieldname + "-" + Date.now() + ".jpg");
     },
   });
 
-  var profileupload = multer({
-    storage: storage,
-    limits: { fileSize: 1000000 },
-  }).single("profileimageupload");
+  // var profileupload = multer({
+  //   storage: storage,
+  //   limits: { fileSize: 1000000 },
+  // }).single("profileimageupload");
 
   var screenshotupload = multer({
     storage: storage,
     limits: { fileSize: 1000000 },
-  }).fields([{ name: "screenshot", maxCount: 2 }]);
+  }).fields([
+    { name: "profileimageupload", maxCount: 1 },
+    { name: "screenshot0", maxCount: 1 },
+    { name: "screenshot1", maxCount: 1 },
+  ]);
 
   return router;
 };

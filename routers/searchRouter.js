@@ -10,6 +10,7 @@ module.exports = (express) => {
   function getSearch(req, res) {
     console.log(req.session);
     console.log(req.user);
+
     console.log("originalURL");
     console.log(req.originalUrl);
     let user = req.user;

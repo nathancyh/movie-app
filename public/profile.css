@@ -1,14 +1,15 @@
 .profile-pic {
-  /* width: 200px;
-  height: auto; */
-  border-radius: 50%;
+  /* width: 200px; */
   object-fit: cover;
 }
 
 .profile-pic-container {
-  /* width: 300px;
-  height: 300px; */
-  border-radius: 100px;
+  overflow: hidden;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.profile-pic-col {
   padding: 20px;
 }
 
@@ -24,5 +25,6 @@
 }
 
 .profile-row1 {
-  max-width: 300px;
+  /* max-width: 300px; */
+  width: 80%;
 }

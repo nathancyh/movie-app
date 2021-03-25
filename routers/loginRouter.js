@@ -45,7 +45,8 @@ module.exports = (express) => {
           return next(err);
         }
         let redirectTarget = req.get("referrer").split("redirect=")[1];
-        return res.redirect(redirectTarget);
+        console.log("redirectTarget", redirectTarget);
+        return res.redirect(redirectTarget || "/");
       });
     })(req, res, next);
   });
