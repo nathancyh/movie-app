@@ -24,10 +24,13 @@
                         {{this.vote_average}} <i class="fa fa-star"></i>
                       </div>
                     </div>
-                    <a href="/movie/{{this.id}}">
-                      <h4>{{this.title}}</h4>
-                    </a>
-                    <p class="movie-date">{{slicedate this.release_date}}</p>
+                    <div class="carousel-title-box">
+                      <a href="/movie/{{this.id}}">
+                        <h4 class="carousel-title">{{this.title}}</h4>
+                      </a>
+                    </div>
+                    {{!-- <p class="movie-date">({{slicedate this.release_date}})</p> --}}
+                    <button class="index-watchlist-add btn">Add to Watchlist</button>
                   </div>
                 </div>
               </div>
@@ -84,7 +87,8 @@
                     <a href="/movie/{{this.id}}">
                       <h4>{{this.title}}</h4>
                     </a>
-                    <p class="movie-date">{{slicedate this.release_date}}</p>
+                    {{!-- <p class="movie-date">{{slicedate this.release_date}}</p> --}}
+                    <button class="index-watchlist-add btn">Add to Watchlist</button>
                   </div>
                 </div>
               </div>

@@ -47,7 +47,7 @@ module.exports = class MovieService {
 
   //all reviews for the movie
   listall(movieid, userid) {
-    return this.knex
+    let query = this.knex
       .select(
         "reviews.user_id",
         "reviews.movie_id",
@@ -60,10 +60,19 @@ module.exports = class MovieService {
       .innerJoin("movies", "reviews.movie_id", "movies.api_id")
       .innerJoin("users", "reviews.user_id", "users.id")
       .where("movies.api_id", movieid)
-      .whereNot("reviews.user_id", userid)
-      .orderBy("reviews.created_at")
+      .orderBy("reviews.created_at");
+
+    if (userid) {
+      query.whereNot("reviews.user_id", userid);
+    }
+
+    return query
       .then((data) => {
         return data;
+      })
+      .then(null, function (err) {
+        //query fail
+        console.log(err);
       });
   }
 

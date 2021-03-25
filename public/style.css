@@ -3,6 +3,10 @@ html {
   scroll-behavior: smooth;
 }
 
+main {
+  min-height: 93vh;
+}
+
 body {
   background-color: #fff;
   background-image: url();
@@ -134,13 +138,13 @@ a {
 .main-content .container {
   background: rgb(236, 236, 236);
   /* border-radius: 5px; */
-  padding: 30px;
+  padding: 20px;
 }
 
 /* Carousel */
 .carousel {
-  margin: 50px auto;
-  padding: 0 40px;
+  margin: 15px auto;
+  padding: 0 30px;
 }
 .carousel .carousel-item {
   /* min-height: 330px; */
@@ -148,7 +152,7 @@ a {
   overflow: hidden;
 }
 .carousel .carousel-item .img-box {
-  height: 250px;
+  height: 285px;
   width: 100%;
   position: relative;
 }
@@ -161,22 +165,25 @@ a {
   margin: 0 auto;
   left: 0;
   right: 0;
+  border-radius: 4px;
 }
+
 .carousel .carousel-item h4 {
   font-size: 18px;
   margin: 10px 0;
 }
 .carousel .carousel-item .btn {
   color: #333;
-  border-radius: 0;
-  font-size: 11px;
+  border-radius: 3px;
+  font-size: 13px;
   text-transform: uppercase;
   font-weight: bold;
   background: none;
   border: 1px solid #ccc;
-  padding: 5px 10px;
-  margin-top: 5px;
+  padding: 7px 10px;
+  margin-top: 10px;
   line-height: 16px;
+  background-color: #7575752d;
 }
 
 .carousel .carousel-item .btn:hover,
@@ -195,7 +202,9 @@ a {
   text-align: center;
 }
 .carousel .thumb-content {
-  padding: 15px;
+  padding: 5px;
+  padding-top: 15px;
+  font-size: 18px;
 }
 
 .carousel-control-prev,
@@ -228,7 +237,7 @@ a {
   margin-right: -3px;
 }
 .carousel .movie-date {
-  font-size: 13px;
+  font-size: 16px;
   padding: 2px 0;
 }
 .carousel .movie-date strike {
@@ -264,6 +273,11 @@ a {
 .star-rating i {
   font-size: 14px;
   color: #ffc000;
+}
+
+.carousel-title-box {
+  height: 50px;
+  vertical-align: middle;
 }
 
 /* ========= Genre Box ========= */

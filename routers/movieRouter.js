@@ -12,12 +12,23 @@ module.exports = (express) => {
   const MovieService = require("../services/movieService");
   const movieService = new MovieService(knex);
 
+  //Band-Aid dulicate of the isLoggedIn from loginRouter
+  const isLoggedIn = function (req, res, next) {
+    if (req.isAuthenticated()) {
+      return next();
+    }
+    const url = req.originalUrl;
+    console.log("redirect-query", url);
+    // res.redirect(`/login?redirect=${url}`);
+    res.redirect(`/login`);
+  };
+
   router
     .route("/:movieId")
     .get(getReview)
-    .post(postReview)
-    .put(putReview)
-    .delete(deleteReview);
+    .post(isLoggedIn, postReview)
+    .put(isLoggedIn, putReview)
+    .delete(isLoggedIn, deleteReview);
 
   function getReview(req, res) {
     let user = req.user;
@@ -49,21 +60,34 @@ module.exports = (express) => {
     }
 
     function getMyReview() {
-      return movieService
-        .list(req.params.movieId, 1) //TODO: replace with real userid
-        .then((data) => {
-          return data;
-        })
-        .catch((err) => res.status(500).json(err));
+      if (req.isAuthenticated()) {
+        return movieService
+          .list(req.params.movieId, req.user.id)
+          .then((data) => {
+            return data;
+          })
+          .catch((err) => res.status(500).json(err));
+      } else {
+        return "";
+      }
     }
 
     function getMovieReview() {
-      return movieService
-        .listall(req.params.movieId, 1) //TODO: replace with real userid
-        .then((data) => {
-          return data;
-        })
-        .catch((err) => res.status(500).json(err));
+      if (req.isAuthenticated()) {
+        return movieService
+          .listall(req.params.movieId, req.user.id) //TODO: replace with real userid
+          .then((data) => {
+            return data;
+          })
+          .catch((err) => res.status(500).json(err));
+      } else {
+        return movieService
+          .listall(req.params.movieId) //TODO: replace with real userid
+          .then((data) => {
+            return data;
+          })
+          .catch((err) => res.status(500).json(err));
+      }
     }
 
     Promise.all([getMovieData(), getMyReview(), getMovieReview()])
@@ -88,11 +112,10 @@ module.exports = (express) => {
   }
 
   function postReview(req, res) {
-    console.log("post review");
     return movieService
       .add(
         req.params.movieId,
-        1, //TODO: replace with real userid
+        req.user.id,
         req.body.note,
         req.body.title,
         req.body.rating
@@ -102,12 +125,11 @@ module.exports = (express) => {
   }
 
   function putReview(req, res) {
-    console.log("update review");
     console.log(req.body);
     return movieService
       .update(
         req.params.movieId,
-        1, //TODO: replace with real userid
+        req.user.id,
         req.body.edit,
         req.body.title,
         req.body.rating
@@ -119,7 +141,7 @@ module.exports = (express) => {
   function deleteReview(req, res) {
     console.log("delete review");
     return movieService
-      .remove(req.params.movieId, 1) //TODO: replace with real userid
+      .remove(req.params.movieId, req.user.id)
       .then(() => res.send("delete"))
       .catch((err) => res.status(500).json(err));
   }
