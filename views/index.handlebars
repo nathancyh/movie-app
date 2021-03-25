@@ -7,263 +7,88 @@
       <h2>Top <b>Rated Movies</b></h2>
       <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="0">
         <div class="carousel-inner">
+          {{!-- Second Each Start --}}
           <div class="carousel-item active">
             <div class="row">
+              {{!-- TEMPLATE START --}}
+              {{#each getTop.[0]}}
               <div class="col-sm-3">
                 <div class="thumb-wrapper">
                   <div class="img-box">
-                    <a href="/movie/{{getTop.[0].id}}">
-                      <img src="https://image.tmdb.org/t/p/w342{{getTop.[0].poster_path}}" class="img-fluid" alt="">
+                    <a href="/movie/{{this.id}}">
+                      <img src="https://image.tmdb.org/t/p/w342{{this.poster_path}}" class="img-fluid" alt="">
                     </a>
                   </div>
                   <div class="thumb-content">
                     <div class="star-rating">
                       <div class="list-inline">
-                        {{getTop.[0].vote_average}} <i class="fa fa-star"></i>
+                        {{this.vote_average}} <i class="fa fa-star"></i>
                       </div>
                     </div>
                     <a href="/movie/{{getTop.[0].id}}">
-                      <h4>{{getTop.[0].title}}</h4>
+                      <h4>{{this.title}}</h4>
                     </a>
-                    <p class="movie-date">{{getTop.[0].release_date}}</p>
+                    <p class="movie-date">{{slicedate this.release_date}}</p>
                   </div>
                 </div>
               </div>
-              <div class="col-sm-3">
-                <div class="thumb-wrapper">
-                  <div class="img-box">
-                    <a href="/movie/{{getTop.[1].id}}">
-                      <img src="https://image.tmdb.org/t/p/w342{{getTop.[1].poster_path}}" class="img-fluid" alt="">
-                    </a>
-                  </div>
-                  <div class="thumb-content">
-                    <div class="star-rating">
-                      <div class="list-inline">
-                        {{getTop.[1].vote_average}} <i class="fa fa-star"></i>
-                      </div>
-                    </div>
-                    <a href="/movie/{{getTop.[1].id}}">
-                      <h4>{{getTop.[1].title}}</h4>
-                    </a>
-                    <p class="movie-date">{{getTop.[1].release_date}}</p>
-                  </div>
-                </div>
-              </div>
-              <div class="col-sm-3">
-                <div class="thumb-wrapper">
-                  <div class="img-box">
-                    <a href="/movie/{{getTop.[2].id}}">
-                      <img src="https://image.tmdb.org/t/p/w342{{getTop.[2].poster_path}}" class="img-fluid" alt="">
-                    </a>
-                  </div>
-                  <div class="thumb-content">
-                    <div class="star-rating">
-                      <div class="list-inline">
-                        {{getTop.[2].vote_average}} <i class="fa fa-star"></i>
-                      </div>
-                    </div>
-                    <a href="/movie/{{getTop.[2].id}}">
-                      <h4>{{getTop.[2].title}}</h4>
-                    </a>
-                    <p class="movie-date">{{getTop.[2].release_date}}</p>
-                  </div>
-                </div>
-              </div>
-              <div class="col-sm-3">
-                <div class="thumb-wrapper">
-                  <div class="img-box">
-                    <a href="/movie/{{getTop.[3].id}}">
-                      <img src="https://image.tmdb.org/t/p/w342{{getTop.[3].poster_path}}" class="img-fluid" alt="">
-                    </a>
-                  </div>
-                  <div class="thumb-content">
-                    <div class="star-rating">
-                      <div class="list-inline">
-                        {{getTop.[3].vote_average}} <i class="fa fa-star"></i>
-                      </div>
-                    </div>
-                    <a href="/movie/{{getTop.[3].id}}">
-                      <h4>{{getTop.[3].title}}</h4>
-                    </a>
-                    <p class="movie-date">{{getTop.[3].release_date}}</p>
-                  </div>
-                </div>
-              </div>
+              {{!-- TEMPLATE END --}}
+              {{/each }}
             </div>
           </div>
-          {{!-- second part of carousel --}}
+          {{!-- Second Each End --}}
+          {{!-- second part of carousel1 --}}
           <div class="carousel-item">
             <div class="row">
+              {{#each getTop.[1]}}
               <div class="col-sm-3">
                 <div class="thumb-wrapper">
                   <div class="img-box">
-                    <a href="/movie/{{getTop.[4].id}}">
-                      <img src="https://image.tmdb.org/t/p/w342{{getTop.[4].poster_path}}" class="img-fluid" alt="">
+                    <a href="/movie/{{this.id}}">
+                      <img src="https://image.tmdb.org/t/p/w342{{this.poster_path}}" class="img-fluid" alt="">
                     </a>
                   </div>
                   <div class="thumb-content">
                     <div class="star-rating">
                       <div class="list-inline">
-                        {{getTop.[4].vote_average}} <i class="fa fa-star"></i>
+                        {{this.vote_average}} <i class="fa fa-star"></i>
                       </div>
                     </div>
                     <a href="/movie/{{getTop.[4].id}}">
-                      <h4>{{getTop.[4].title}}</h4>
+                      <h4>{{this.title}}</h4>
                     </a>
-                    <p class="movie-date">{{getTop.[4].release_date}}</p>
+                    <p class="movie-date">{{slicedate this.release_date}}</p>
                   </div>
                 </div>
               </div>
-
-              <div class="col-sm-3">
-                <div class="thumb-wrapper">
-                  <div class="img-box">
-                    <a href="/movie/{{getTop.[5].id}}">
-                      <img src="https://image.tmdb.org/t/p/w342{{getTop.[5].poster_path}}" class="img-fluid" alt="">
-                    </a>
-                  </div>
-                  <div class="thumb-content">
-                    <div class="star-rating">
-                      <div class="list-inline">
-                        {{getTop.[5].vote_average}} <i class="fa fa-star"></i>
-                      </div>
-                    </div>
-                    <a href="/movie/{{getTop.[5].id}}">
-                      <h4>{{getTop.[5].title}}</h4>
-                    </a>
-                    <p class="movie-date">{{getTop.[5].release_date}}</p>
-                  </div>
-                </div>
-              </div>
-
-              <div class="col-sm-3">
-                <div class="thumb-wrapper">
-                  <div class="img-box">
-                    <a href="/movie/{{getTop.[6].id}}">
-                      <img src="https://image.tmdb.org/t/p/w342{{getTop.[6].poster_path}}" class="img-fluid" alt="">
-                    </a>
-                  </div>
-                  <div class="thumb-content">
-                    <div class="star-rating">
-                      <div class="list-inline">
-                        {{getTop.[6].vote_average}} <i class="fa fa-star"></i>
-                      </div>
-                    </div>
-                    <a href="/movie/{{getTop.[6].id}}">
-                      <h4>{{getTop.[6].title}}</h4>
-                    </a>
-                    <p class="movie-date">{{getTop.[6].release_date}}</p>
-                  </div>
-                </div>
-              </div>
-
-              <div class="col-sm-3">
-                <div class="thumb-wrapper">
-                  <div class="img-box">
-                    <a href="/movie/{{getTop.[7].id}}">
-                      <img src="https://image.tmdb.org/t/p/w342{{getTop.[7].poster_path}}" class="img-fluid" alt="">
-                    </a>
-                  </div>
-                  <div class="thumb-content">
-                    <div class="star-rating">
-                      <div class="list-inline">
-                        {{getTop.[7].vote_average}} <i class="fa fa-star"></i>
-                      </div>
-                    </div>
-                    <a href="/movie/{{getTop.[7].id}}">
-                      <h4>{{getTop.[7].title}}</h4>
-                    </a>
-                    <p class="movie-date">{{getTop.[7].release_date}}</p>
-                  </div>
-                </div>
-              </div>
+              {{/each }}
             </div>
           </div>
-
+          {{!-- Third Part of carousel 1 --}}
           <div class="carousel-item">
             <div class="row">
+              {{#each getTop.[2]}}
               <div class="col-sm-3">
                 <div class="thumb-wrapper">
                   <div class="img-box">
+                    <a href="/movie/{{this.id}}">
+                      <img src="https://image.tmdb.org/t/p/w342{{this.poster_path}}" class="img-fluid" alt="">
+                    </a>
+                  </div>
+                  <div class="thumb-content">
+                    <div class="star-rating">
+                      <div class="list-inline">
+                        {{this.vote_average}} <i class="fa fa-star"></i>
+                      </div>
+                    </div>
                     <a href="/movie/{{getTop.[8].id}}">
-                      <img src="https://image.tmdb.org/t/p/w342{{getTop.[8].poster_path}}" class="img-fluid" alt="">
+                      <h4>{{this.title}}</h4>
                     </a>
-                  </div>
-                  <div class="thumb-content">
-                    <div class="star-rating">
-                      <div class="list-inline">
-                        {{getTop.[8].vote_average}} <i class="fa fa-star"></i>
-                      </div>
-                    </div>
-                    <a href="/movie/{{getTop.[6].id}}">
-                      <h4>{{getTop.[8].title}}</h4>
-                    </a>
-                    <p class="movie-date">{{getTop.[8].release_date}}</p>
+                    <p class="movie-date">{{slicedate this.release_date}}</p>
                   </div>
                 </div>
               </div>
-              <div class="col-sm-3">
-                <div class="thumb-wrapper">
-                  <div class="img-box">
-                    <a href="/movie/{{getTop.[9].id}}">
-                      <img src="https://image.tmdb.org/t/p/w342{{getTop.[9].poster_path}}" class="img-fluid" alt="">
-                    </a>
-                  </div>
-                  <div class="thumb-content">
-                    <div class="star-rating">
-                      <div class="list-inline">
-                        {{getTop.[9].vote_average}} <i class="fa fa-star"></i>
-                      </div>
-                    </div>
-                    <a href="/movie/{{getTop.[9].id}}">
-                      <h4>{{getTop.[9].title}}</h4>
-                    </a>
-                    <p class="movie-date">{{getTop.[9].release_date}}</p>
-                  </div>
-                </div>
-              </div>
-              <div class="col-sm-3">
-                <div class="thumb-wrapper">
-                  <div class="img-box">
-                    <a href="/movie/{{getTop.[10].id}}">
-                      <img src="https://image.tmdb.org/t/p/w342{{getTop.[10].poster_path}}" class="img-fluid" alt="">
-                    </a>
-                  </div>
-                  <div class="thumb-content">
-                    <div class="star-rating">
-                      <div class="list-inline">
-                        {{getTop.[10].vote_average}} <i class="fa fa-star"></i>
-                      </div>
-                    </div>
-                    <a href="/movie/{{getTop.[10].id}}">
-                      <h4>{{getTop.[10].title}}</h4>
-                    </a>
-                    <p class="movie-date">{{getTop.[10].release_date}}</p>
-                  </div>
-                </div>
-              </div>
-              <div class="col-sm-3">
-                <div class="thumb-wrapper">
-                  <div class="img-box">
-                    <a href="/movie/{{getTop.[11].id}}">
-                      <img src="https://image.tmdb.org/t/p/w342{{getTop.[11].poster_path}}" class="img-fluid" alt="">
-                    </a>
-                  </div>
-                  <div class="thumb-content">
-                    <div class="star-rating">
-                      <div class="list-inline">
-                        {{getTop.[11].vote_average}} <i class="fa fa-star"></i>
-                      </div>
-                    </div>
-                    <a href="/movie/{{getTop.[11].id}}">
-                      <h4>{{getTop.[11].title}}</h4>
-                    </a>
-                    <p class="movie-date">{{getTop.[11].release_date}}</p>
-
-
-                  </div>
-                </div>
-              </div>
+              {{/each }}
             </div>
           </div>
         </div>
@@ -282,13 +107,6 @@
 
 
 {{!-- TOP 10 MOST REVIEWED MOVIES --}}
-{{#each gettopten}}
-<div>{{this}}</div>
-{{/each}}
-
-{{#each gettoprated}}
-<div>{{this}}</div>
-{{/each}}
 {{!-- CAROUSEL --}}
 <div class="container">
   <div class="row">
@@ -305,259 +123,82 @@
         <div class="carousel-inner">
           <div class="carousel-item active">
             <div class="row">
+              {{#each getNow.[0]}}
               <div class="col-sm-3">
                 <div class="thumb-wrapper">
                   <div class="img-box">
-                    <a href="/movie/{{getNow.[0].id}}">
-                      <img src="https://image.tmdb.org/t/p/w342{{getNow.[0].poster_path}}" class="img-fluid" alt="">
+                    <a href="/movie/{{this.id}}">
+                      <img src="https://image.tmdb.org/t/p/w342{{this.poster_path}}" class="img-fluid" alt="">
                     </a>
                   </div>
                   <div class="thumb-content">
                     <div class="star-rating">
                       <div class="list-inline">
-                        {{getNow.[0].vote_average}} <i class="fa fa-star"></i>
+                        {{this.vote_average}} <i class="fa fa-star"></i>
                       </div>
                     </div>
-                    <a href="/movie/{{getNow.[0].id}}">
-                      <h4>{{getNow.[0].title}}</h4>
+                    <a href="/movie/{{this.id}}">
+                      <h4>{{this.title}}</h4>
                     </a>
-                    <p class="movie-date">{{getNow.[0].release_date}}</p>
+                    <p class="movie-date">{{slicedate this.release_date}}</p>
                   </div>
                 </div>
               </div>
-              <div class="col-sm-3">
-                <div class="thumb-wrapper">
-                  <div class="img-box">
-                    <a href="/movie/{{getNow.[1].id}}">
-                      <img src="https://image.tmdb.org/t/p/w342{{getNow.[1].poster_path}}" class="img-fluid" alt="">
-                    </a>
-                  </div>
-                  <div class="thumb-content">
-                    <div class="star-rating">
-                      <div class="list-inline">
-                        {{getNow.[1].vote_average}} <i class="fa fa-star"></i>
-                      </div>
-                    </div>
-                    <a href="/movie/{{getNow.[1].id}}">
-                      <h4>{{getNow.[1].title}}</h4>
-                    </a>
-                    <p class="movie-date">{{getNow.[1].release_date}}</p>
-                  </div>
-                </div>
-              </div>
-              <div class="col-sm-3">
-                <div class="thumb-wrapper">
-                  <div class="img-box">
-                    <a href="/movie/{{getNow.[2].id}}">
-                      <img src="https://image.tmdb.org/t/p/w342{{getNow.[2].poster_path}}" class="img-fluid" alt="">
-                    </a>
-                  </div>
-                  <div class="thumb-content">
-                    <div class="star-rating">
-                      <div class="list-inline">
-                        {{getNow.[2].vote_average}} <i class="fa fa-star"></i>
-                      </div>
-                    </div>
-                    <a href="/movie/{{getNow.[2].id}}">
-                      <h4>{{getNow.[2].title}}</h4>
-                    </a>
-                    <p class="movie-date">{{getNow.[2].release_date}}</p>
-                  </div>
-                </div>
-              </div>
-              <div class="col-sm-3">
-                <div class="thumb-wrapper">
-                  <div class="img-box">
-                    <a href="/movie/{{getNow.[3].id}}">
-                      <img src="https://image.tmdb.org/t/p/w342{{getNow.[3].poster_path}}" class="img-fluid" alt="">
-                    </a>
-                  </div>
-                  <div class="thumb-content">
-                    <div class="star-rating">
-                      <div class="list-inline">
-                        {{getNow.[3].vote_average}} <i class="fa fa-star"></i>
-                      </div>
-                    </div>
-                    <a href="/movie/{{getNow.[3].id}}">
-                      <h4>{{getNow.[3].title}}</h4>
-                    </a>
-                    <p class="movie-date">{{getNow.[3].release_date}}</p>
-                  </div>
-                </div>
-              </div>
+              {{/each}}
             </div>
           </div>
-          {{!-- second part of carousel --}}
+          {{!-- second part of carousel2 --}}
           <div class="carousel-item">
             <div class="row">
+              {{#each getNow.[1]}}
               <div class="col-sm-3">
                 <div class="thumb-wrapper">
                   <div class="img-box">
-                    <a href="/movie/{{getNow.[4].id}}">
-                      <img src="https://image.tmdb.org/t/p/w342{{getNow.[4].poster_path}}" class="img-fluid" alt="">
+                    <a href="/movie/{{this.id}}">
+                      <img src="https://image.tmdb.org/t/p/w342{{this.poster_path}}" class="img-fluid" alt="">
                     </a>
                   </div>
                   <div class="thumb-content">
                     <div class="star-rating">
                       <div class="list-inline">
-                        {{getNow.[4].vote_average}} <i class="fa fa-star"></i>
+                        {{this.vote_average}} <i class="fa fa-star"></i>
                       </div>
                     </div>
                     <a href="/movie/{{getNow.[4].id}}">
-                      <h4>{{getNow.[4].title}}</h4>
+                      <h4>{{this.title}}</h4>
                     </a>
-                    <p class="movie-date">{{getNow.[4].release_date}}</p>
+                    <p class="movie-date">{{slicedate this.release_date}}</p>
                   </div>
                 </div>
               </div>
-
-              <div class="col-sm-3">
-                <div class="thumb-wrapper">
-                  <div class="img-box">
-                    <a href="/movie/{{getNow.[5].id}}">
-                      <img src="https://image.tmdb.org/t/p/w342{{getNow.[5].poster_path}}" class="img-fluid" alt="">
-                    </a>
-                  </div>
-                  <div class="thumb-content">
-                    <div class="star-rating">
-                      <div class="list-inline">
-                        {{getNow.[5].vote_average}} <i class="fa fa-star"></i>
-                      </div>
-                    </div>
-                    <a href="/movie/{{getNow.[5].id}}">
-                      <h4>{{getNow.[5].title}}</h4>
-                    </a>
-                    <p class="movie-date">{{getNow.[5].release_date}}</p>
-                  </div>
-                </div>
-              </div>
-
-              <div class="col-sm-3">
-                <div class="thumb-wrapper">
-                  <div class="img-box">
-                    <a href="/movie/{{getNow.[6].id}}">
-                      <img src="https://image.tmdb.org/t/p/w342{{getNow.[6].poster_path}}" class="img-fluid" alt="">
-                    </a>
-                  </div>
-                  <div class="thumb-content">
-                    <div class="star-rating">
-                      <div class="list-inline">
-                        {{getNow.[6].vote_average}} <i class="fa fa-star"></i>
-                      </div>
-                    </div>
-                    <a href="/movie/{{getNow.[6].id}}">
-                      <h4>{{getNow.[6].title}}</h4>
-                    </a>
-                    <p class="movie-date">{{getNow.[6].release_date}}</p>
-                  </div>
-                </div>
-              </div>
-
-              <div class="col-sm-3">
-                <div class="thumb-wrapper">
-                  <div class="img-box">
-                    <a href="/movie/{{getNow.[7].id}}">
-                      <img src="https://image.tmdb.org/t/p/w342{{getNow.[7].poster_path}}" class="img-fluid" alt="">
-                    </a>
-                  </div>
-                  <div class="thumb-content">
-                    <div class="star-rating">
-                      <div class="list-inline">
-                        {{getNow.[7].vote_average}} <i class="fa fa-star"></i>
-                      </div>
-                    </div>
-                    <a href="/movie/{{getNow.[7].id}}">
-                      <h4>{{getNow.[7].title}}</h4>
-                    </a>
-                    <p class="movie-date">{{getNow.[7].release_date}}</p>
-                  </div>
-                </div>
-              </div>
+              {{/each}}
             </div>
           </div>
 
           <div class="carousel-item">
             <div class="row">
+              {{#each getNow.[2]}}
               <div class="col-sm-3">
                 <div class="thumb-wrapper">
                   <div class="img-box">
-                    <a href="/movie/{{getNow.[8].id}}">
-                      <img src="https://image.tmdb.org/t/p/w342{{getNow.[8].poster_path}}" class="img-fluid" alt="">
+                    <a href="/movie/{{this.id}}">
+                      <img src="https://image.tmdb.org/t/p/w342{{this.poster_path}}" class="img-fluid" alt="">
                     </a>
                   </div>
                   <div class="thumb-content">
                     <div class="star-rating">
                       <div class="list-inline">
-                        {{getNow.[8].vote_average}} <i class="fa fa-star"></i>
+                        {{this.vote_average}} <i class="fa fa-star"></i>
                       </div>
                     </div>
-                    <a href="/movie/{{getNow.[6].id}}">
-                      <h4>{{getNow.[8].title}}</h4>
+                    <a href="/movie/{{this.id}}">
+                      <h4>{{this.title}}</h4>
                     </a>
-                    <p class="movie-date">{{getNow.[8].release_date}}</p>
+                    <p class="movie-date">{{this.release_date}}</p>
                   </div>
                 </div>
               </div>
-              <div class="col-sm-3">
-                <div class="thumb-wrapper">
-                  <div class="img-box">
-                    <a href="/movie/{{getNow.[9].id}}">
-                      <img src="https://image.tmdb.org/t/p/w342{{getNow.[9].poster_path}}" class="img-fluid" alt="">
-                    </a>
-                  </div>
-                  <div class="thumb-content">
-                    <div class="star-rating">
-                      <div class="list-inline">
-                        {{getNow.[9].vote_average}} <i class="fa fa-star"></i>
-                      </div>
-                    </div>
-                    <a href="/movie/{{getNow.[9].id}}">
-                      <h4>{{getNow.[9].title}}</h4>
-                    </a>
-                    <p class="movie-date">{{getNow.[9].release_date}}</p>
-                  </div>
-                </div>
-              </div>
-              <div class="col-sm-3">
-                <div class="thumb-wrapper">
-                  <div class="img-box">
-                    <a href="/movie/{{getNow.[10].id}}">
-                      <img src="https://image.tmdb.org/t/p/w342{{getNow.[10].poster_path}}" class="img-fluid" alt="">
-                    </a>
-                  </div>
-                  <div class="thumb-content">
-                    <div class="star-rating">
-                      <div class="list-inline">
-                        {{getNow.[10].vote_average}} <i class="fa fa-star"></i>
-                      </div>
-                    </div>
-                    <a href="/movie/{{getNow.[10].id}}">
-                      <h4>{{getNow.[10].title}}</h4>
-                    </a>
-                    <p class="movie-date">{{getNow.[10].release_date}}</p>
-                  </div>
-                </div>
-              </div>
-              <div class="col-sm-3">
-                <div class="thumb-wrapper">
-                  <div class="img-box">
-                    <a href="/movie/{{getNow.[11].id}}">
-                      <img src="https://image.tmdb.org/t/p/w342{{getNow.[11].poster_path}}" class="img-fluid" alt="">
-                    </a>
-                  </div>
-                  <div class="thumb-content">
-                    <div class="star-rating">
-                      <div class="list-inline">
-                        {{getNow.[11].vote_average}} <i class="fa fa-star"></i>
-                      </div>
-                    </div>
-                    <a href="/movie/{{getNow.[11].id}}">
-                      <h4>{{getNow.[11].title}}</h4>
-                    </a>
-                    <p class="movie-date">{{getNow.[11].release_date}}</p>
-                  </div>
-                </div>
-              </div>
+              {{/each}}
             </div>
           </div>
         </div>

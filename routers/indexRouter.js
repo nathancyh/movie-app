@@ -48,15 +48,22 @@ module.exports = (express) => {
     }
     Promise.all([getTopTen(), getNowPlaying(), getUpComing()])
       .then(function (results) {
-        const top = results[0].data.results;
-        const nowPlaying = results[1].data.results;
-        const upComing = results[2].data.results;
+        const top = [];
+        const nowPlaying = [];
+        // console.log(results[0].data.results);
+        top[0] = results[0].data.results.slice(0, 4);
+        top[1] = results[0].data.results.slice(4, 8);
+        top[2] = results[0].data.results.slice(8, 12);
+        nowPlaying[0] = results[1].data.results.slice(0, 4);
+        nowPlaying[1] = results[1].data.results.slice(4, 8);
+        nowPlaying[2] = results[1].data.results.slice(8, 12);
+        // const upComing = results[2].data.results;
 
         res.render("index", {
           user: user,
           getTop: top,
           getNow: nowPlaying,
-          getUp: upComing,
+          // getUp: upComing,
         });
       })
       .catch((err) => res.status(500).json(err));
