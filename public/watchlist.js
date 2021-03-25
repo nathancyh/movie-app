@@ -3,31 +3,38 @@
 $(function () {
   $(".watchlist-liked-btn").click((e) => {
     e.preventDefault();
-    console.log("del btn pressed");
     $.ajax({
       type: "DELETE",
       url: `/watchlist/${e.currentTarget.dataset.movieid}`,
       success: function () {
-        console.log("watchlist item delete success");
-        $(e.currentTarget.classList).addClass("hidden");
-        $(e.currentTarget.classList).removeClass("hidden");
+        let id = e.currentTarget.id;
+        console.log("like", id);
+        e.currentTarget.id = `${e.currentTarget.id}hidden`;
+
+        document.getElementById(`${id}hidden`).classList.add("hidden");
+
+        let addbtn = document.getElementById(`${id}`);
+        console.l;
+        addbtn.classList.remove("hidden");
       },
     }).done(console.log("watchlist delete done"));
   });
 
   $(".watchlist-add-btn").click((e) => {
     e.preventDefault();
-    console.log("add btn pressed");
-    console.log("currentTar");
-    console.log(e.currentTarget);
     $.ajax({
       type: "PUT",
       url: `/watchlist/${e.currentTarget.dataset.movieid}`,
       success: function () {
-        console.log("watchlist item add success");
-        $(e.currentTarget.classList).addClass("hidden");
-        $(e.currentTarget.classList).removeClass("hidden");
+        let id = e.currentTarget.id;
+        console.log(id);
+        e.currentTarget.id = `${e.currentTarget.id}`;
+
+        document.getElementById(`${id}`).classList.add("hidden");
+
+        let likebtn = document.getElementById(`${id}hidden`);
+        likebtn.classList.remove("hidden");
       },
-    }).done(console.log("watchlist delete done"));
+    }).done(console.log("watchlist add done"));
   });
 });
