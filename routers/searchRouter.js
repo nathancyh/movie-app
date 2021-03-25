@@ -4,8 +4,16 @@ module.exports = (express) => {
   const router = express.Router();
   const axios = require("axios");
 
+  const knexConfig = require("../knexfile").development;
+  const knex = require("knex")(knexConfig);
+
+  const WatchlistService = require("../services/watchlistService");
+  const watchlistService = new WatchlistService(knex);
+
   router.route("/").get(getSearch);
   router.route("/:search").get(getSearchQuery);
+  router.route("/:movieid").put(addWatchItem);
+  // router.route("/:movieid").delete(deleteWatchItem);
 
   function getSearch(req, res) {
     console.log(req.session);
@@ -120,6 +128,25 @@ module.exports = (express) => {
       })
       .catch((err) => console.log(err));
   }
+
+  // ADD TO WATCHLIST BUTTON
+  function addWatchItem(req, res) {
+    return watchlistService
+      .addWatchlist(1, req.params.movieid) //TODO
+      .then(() => {
+        res.send("watchlist item added");
+      })
+      .catch((err) => res.status(500).json(err));
+  }
+
+  // function deleteWatchItem(req, res) {
+  //   return watchlistService
+  //     .removeWatchlist(1, req.params.movieid) //TODO
+  //     .then(() => {
+  //       res.send("watchlist item deleted");
+  //     })
+  //     .catch((err) => res.status(500).json(err));
+  // }
 
   return router;
 };
