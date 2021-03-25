@@ -26,3 +26,47 @@
 .search-sorting-option li:last-child::after {
   display: none;
 }
+
+.search_card_poster {
+  position: relative;
+}
+
+.hidden {
+  display: none;
+}
+
+.search-liked-btn {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 15px;
+  right: 0;
+  width: 40px;
+  height: 40px;
+  border: none;
+  background-color: #84878d;
+  opacity: 0.9;
+}
+
+.search-liked-btn i {
+  font-size: 30px;
+  color: #ffc000;
+}
+
+.search-add-btn {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 15px;
+  right: 0;
+  width: 40px;
+  height: 40px;
+  border: none;
+  background-color: #84878d;
+  opacity: 0.9;
+}
+
+.search-add-btn i {
+  font-size: 30px;
+  color: #ffc000;
+}
