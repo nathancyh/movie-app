@@ -86,47 +86,60 @@
         </form>
 
     </div>
-</div>
-<div class="review-container">
+
+    <div class="review-container">
+        {{#each myReviewArr}}
+        <div class="edit-myreview hidden">
+            <form ref="edit" id="edit">
+                <textarea class="edit-title" name="title">{{this.review_title}}</textarea>
+                <textarea class="edit-rating" name="rating">{{this.rating}}</textarea>
+                <br>
+                <textarea class="edit-area" cols="60" rows="10" name="edit">{{this.text}}</textarea>
+                <br>
+                <button type="button" class="save-btn btn btn-outline-warning">SAVE CHANGES</button>
+                <button type="button" class="cancel-btn btn btn-outline-warning">CANCEL</button>
+            </form>
+        </div>
+    </div>
+    {{/each}}
+
+
     {{#each myReviewArr}}
-    <div class="edit-myreview hidden">
-        <form ref="edit" id="edit">
-            <textarea class="edit-title" name="title">{{this.review_title}}</textarea>
-            <textarea class="edit-rating" name="rating">{{this.rating}}</textarea>
-            <br>
-            <textarea class="edit-area" cols="60" rows="10" name="edit">{{this.text}}</textarea>
-            <br>
-            <button type="button" class="save-btn btn btn-primary">SAVE CHANGES</button>
-            <button type="button" class="cancel-btn btn btn-primary">CANCEL</button>
-        </form>
+    <div class="my-review">
+        <article class="card card-body">
+            <div class="row">
+                <div class="col-md-6">
+                    <p><b>Review Title:</b> {{this.review_title}}</p>
+                    <div class="star-rating">
+                        <div class="list-inline">
+                            <p><b>Your rating:</b> {{this.rating}} <i class="fa fa-star"></i></p>
+                        </div>
+                    </div>
+                    <p><b>Username:</b> {{this.name}}</p>
+                    <p class="display-area"><b>Your review:</b> {{this.text}}</p>
+
+                    <button class="edit-btn btn btn-outline-warning">edit your review</button>
+                    <button class="del-btn btn btn-outline-warning">delete</button>
+                </div>
+                {{/each}}
+
+                {{#each reviewArr}}
+                <div class="review-box">
+                    <p>Title: {{this.review_title}}</p>
+                    <p>Rating: {{this.rating}}</p><br>
+                    <p>by {{this.name}}</p>
+                    <p class="display-area">{{this.text}}</p>
+                </div>
+                {{/each}}
+            </div>
     </div>
 </div>
-{{/each}}
-
-{{#each myReviewArr}}
-<div class="my-review">
-    <p>Title: {{this.review_title}}</p>
-    <p>Rating: {{this.rating}}</p><br>
-    <p>by {{this.name}}</p>
-    <p class="display-area">{{this.text}}</p>
-
-    <button class="edit-btn">EDIT</button>
-    <button class="del-btn">DELETE</button>
-</div>
-{{/each}}
-
-{{#each reviewArr}}
-<div class="review-box">
-    <p>Title: {{this.review_title}}</p>
-    <p>Rating: {{this.rating}}</p><br>
-    <p>by {{this.name}}</p>
-    <p class="display-area">{{this.text}}</p>
-</div>
-{{/each}}
 </div>
 </div>
 </div>
 </div>
 </div>
 </div>
+</div> <!-- col // -->
 </div>
+</article>
