@@ -2,15 +2,22 @@
 
 $(function () {
   if ($(".edit-area").val() == undefined) {
-    $(".text-box").removeClass("hidden");
+    $(".review").removeClass("hidden");
   }
 
   // Add Review
   $("#post").click((e) => {
     e.preventDefault();
     let title = $(".note-title").val();
-    let rating = $(".note-rating").val();
     let data = $(".note-area").val();
+    //getting star rating value
+    let rating;
+    let starValue = $("input[type = 'radio']");
+    for (let i = 0; i < starValue.length; i++) {
+      if (starValue[i].checked) {
+        rating = starValue[i].value;
+      }
+    }
     //getting :id from /movie/:id
     let movieid = window.location.pathname.slice(7);
 
@@ -19,12 +26,13 @@ $(function () {
       url: `/movie/${movieid}`,
       dataType: "text",
       data: { note: data, title: title, rating: rating },
+      // data: { note: data, title: title, rating: rating },
       success: function () {
         console.log("post success");
       },
     }).done(
       setTimeout(() => {
-        // window.location.reload();
+        window.location.reload();
       }, 200)
     );
   });
@@ -86,6 +94,6 @@ $(function () {
 });
 
 // Rating Initialization
-$(document).ready(function () {
-  $("#rateMe1").mdbRate();
-});
+// $(document).ready(function () {
+//   $("#rateMe1").mdbRate();
+// });

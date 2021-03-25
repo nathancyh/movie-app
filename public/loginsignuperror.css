@@ -13,3 +13,96 @@
   font-family: "Press Start 2P", cursive;
   color: white;
 }
+
+/* Log-in page */
+.login-wrapper {
+  background-color: #ffbe08;
+  min-height: 100vh;
+  overflow: hidden;
+}
+.loginbox {
+  background-color: rgba(252, 251, 249, 0.76);
+  width: 380px;
+  height: auto;
+  border-radius: 20px;
+  padding: 10px;
+  margin: 25vh 10vw;
+}
+
+.login-form {
+  padding-top: 20px;
+}
+
+input.login-field {
+  background-color: transparent;
+  border: none;
+  border-bottom: 2px solid black;
+  margin: 20px 0px;
+  width: 80%;
+  font-size: 20px;
+}
+
+input.login-field:focus {
+  background-color: transparent;
+  outline: none;
+  border-bottom: 3px solid navy;
+  font-size: 25px;
+}
+
+.login-btn {
+  background-color: rgb(4, 4, 94);
+  width: 100px;
+  border: none;
+}
+
+.signup-link {
+  background-color: transparent;
+  border: none;
+  color: navy;
+}
+
+.signup-link:hover {
+  font-size: 18px;
+  text-decoration: none;
+}
+
+/* Signup page */
+.signup-wrapper {
+  background-color: #f8ce5a;
+  min-height: 100vh;
+  overflow: hidden;
+}
+.signupbox {
+  background-color: rgba(252, 251, 249, 0.76);
+  width: 380px;
+  height: auto;
+  border-radius: 20px;
+  padding: 10px;
+  margin: 25vh 10vw;
+}
+
+.signup-form {
+  padding-top: 20px;
+}
+
+input.signup-field {
+  background-color: transparent;
+  border: none;
+  border-bottom: 2px solid black;
+  margin: 20px 0px;
+  width: 80%;
+  font-size: 20px;
+}
+
+input.signup-field:focus {
+  background-color: transparent;
+  outline: none;
+  border-bottom: 3px solid navy;
+  font-size: 25px;
+}
+
+.signup-btn {
+  background-color: rgb(4, 4, 94);
+  width: 100px;
+  border: none;
+}

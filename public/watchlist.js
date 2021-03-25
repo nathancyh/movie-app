@@ -8,13 +8,13 @@ $(function () {
       url: `/watchlist/${e.currentTarget.dataset.movieid}`,
       success: function () {
         let id = e.currentTarget.id;
-        console.log(id);
+        console.log("like", id);
         e.currentTarget.id = `${e.currentTarget.id}hidden`;
 
         document.getElementById(`${id}hidden`).classList.add("hidden");
 
         let addbtn = document.getElementById(`${id}`);
-
+        console.l;
         addbtn.classList.remove("hidden");
       },
     }).done(console.log("watchlist delete done"));

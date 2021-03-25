@@ -46,7 +46,7 @@
             </div>
         </div>
         {{!-- <div class="review_star row"> --}}
-            <div class="review col-12">
+            <div class="review hidden col-12">
                 <div class="float-left">
                     <div class="review starrating risingstar d-flex justify-content-center flex-row-reverse col-12">
                         <input type="radio" id="star5" name="rating" value="5" /><label for="star5"
@@ -64,24 +64,24 @@
                 {{!--
             </div> --}}
         </div>
-        <div class="review col-12">
+        <div class="review hidden col-12">
             Insert the name of your title
         </div>
-        <div class="review col-12">
+        <div class="review hidden col-12">
             <form ref="note" id="note">
         </div>
-        <div class="review col-12"><textarea class="note-title" cols="60" rows="1" name="title"
+        <div class="review hidden col-12"><textarea class="note-title" cols="60" rows="1" name="title"
                 placeholder="Review Title">{{this.review_title}}</textarea></div>
         {{!-- <textarea class="note-rating" name="rating"
             placeholder="Rating(Please enter 1-10)">{{this.rating}}</textarea> --}}
         <div class="review col-12">
             Write your review
         </div>
-        <div class="review col-12"><textarea class="note-area" cols="60" rows="10" name="note"
+        <div class="review hidden col-12"><textarea class="note-area" cols="60" rows="10" name="note"
                 placeholder="This movie is..."></textarea></div>
     </div>
 
-    <div class="review col-12">
+    <div class="review hidden col-12">
         <button id="post" type="button" class="btn btn-outline-warning">submit</button>
         </form>
 
@@ -96,25 +96,17 @@
             <br>
             <textarea class="edit-area" cols="60" rows="10" name="edit">{{this.text}}</textarea>
             <br>
-
-
-            {{!-- <button type="button" class="save-btn btn btn-primary">SAVE CHANGES</button>
+            <button type="button" class="save-btn btn btn-primary">SAVE CHANGES</button>
             <button type="button" class="cancel-btn btn btn-primary">CANCEL</button>
         </form>
     </div>
-    {{/each}} --}}
-
-    <button type="button" class="save-btn btn btn-primary">SAVE CHANGES</button>
-    <button type="button" class="cancel-btn btn btn-primary">CANCEL</button>
-    </form>
-</div>
 </div>
 {{/each}}
 
 {{#each myReviewArr}}
 <div class="my-review">
     <p>Title: {{this.review_title}}</p>
-    <p>Rating: {{this.rating}}/10</p><br>
+    <p>Rating: {{this.rating}}</p><br>
     <p>by {{this.name}}</p>
     <p class="display-area">{{this.text}}</p>
 
@@ -126,7 +118,7 @@
 {{#each reviewArr}}
 <div class="review-box">
     <p>Title: {{this.review_title}}</p>
-    <p>Rating: {{this.rating}}/10</p><br>
+    <p>Rating: {{this.rating}}</p><br>
     <p>by {{this.name}}</p>
     <p class="display-area">{{this.text}}</p>
 </div>

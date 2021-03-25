@@ -59,4 +59,10 @@ $(function () {
       window.location.href = "/search/" + e.target.value;
     }
   });
+
+  $(".watchlist-btn").on("click", (e) => {
+    e.preventDefault();
+
+    window.location.href = "/watchlist";
+  });
 });
