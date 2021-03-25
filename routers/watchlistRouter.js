@@ -2,7 +2,8 @@
 
 module.exports = (express) => {
   const router = express.Router();
-  const axios = require("axios");
+  // const axios = require("axios");
+  const { isLoggedIn } = require("./loginRouter");
 
   // Knex Setup
   const knexConfig = require("../knexfile").development;
@@ -11,13 +12,13 @@ module.exports = (express) => {
   const WatchlistService = require("../services/watchlistService");
   const watchlistService = new WatchlistService(knex);
 
-  router.route("/").get(getWatchlist);
+  router.route("/").get(isLoggedIn, getWatchlist);
   router.route("/:movieid").put(addWatchItem);
   router.route("/:movieid").delete(deleteWatchItem);
 
   function getWatchlist(req, res) {
     return watchlistService
-      .watchlistUser(1) //TODO
+      .watchlistUser(req.user.id)
       .then((data) => {
         let wishArr = data.map((x) => (x = x.movie_id));
         return watchlistService.watchlistMovie(wishArr);
@@ -33,7 +34,7 @@ module.exports = (express) => {
 
   function addWatchItem(req, res) {
     return watchlistService
-      .addWatchlist(1, req.params.movieid) //TODO
+      .addWatchlist(req.user.id, req.params.movieid)
       .then(() => {
         res.send("watchlist item added");
       })
@@ -42,7 +43,7 @@ module.exports = (express) => {
 
   function deleteWatchItem(req, res) {
     return watchlistService
-      .removeWatchlist(1, req.params.movieid) //TODO
+      .removeWatchlist(req.user.id, req.params.movieid)
       .then(() => {
         res.send("watchlist item deleted");
       })
