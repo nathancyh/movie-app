@@ -9,8 +9,9 @@
             <div class="poster-container">
                 <img class="img-fluid watchlist_poster" width="180px" height="auto"
                     src="https://image.tmdb.org/t/p/w300{{this.poster_path}}">
-                <button class="watchlist-liked-btn" data-movieid={{this.api_id}}><i class="fas fa-check"></i></button>
-                <button class="watchlist-add-btn hidden" data-movieid={{this.api_id}}><i
+                <button id={{this.api_id}} class="watchlist-liked-btn" data-movieid={{this.api_id}}><i
+                        class="fas fa-check"></i></button>
+                <button id={{this.api_id}} class="watchlist-add-btn hidden" data-movieid={{this.api_id}}><i
                         class="fas fa-plus"></i></button>
             </div>
 
