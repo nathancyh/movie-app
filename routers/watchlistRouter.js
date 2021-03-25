@@ -13,8 +13,8 @@ module.exports = (express) => {
   const watchlistService = new WatchlistService(knex);
 
   router.route("/").get(isLoggedIn, getWatchlist);
-  router.route("/:movieid").put(addWatchItem);
-  router.route("/:movieid").delete(deleteWatchItem);
+  router.route("/:movieid").put(isLoggedIn, addWatchItem);
+  router.route("/:movieid").delete(isLoggedIn, deleteWatchItem);
 
   function getWatchlist(req, res) {
     return watchlistService
@@ -24,8 +24,8 @@ module.exports = (express) => {
         return watchlistService.watchlistMovie(wishArr);
       })
       .then((wishMovieArr) => {
-        console.log(wishMovieArr);
         res.render("watchlist", {
+          user: req.user,
           wishMovieArr: wishMovieArr,
         });
       })
