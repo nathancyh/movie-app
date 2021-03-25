@@ -4,10 +4,10 @@
 <div class="container">
   <div class="row">
     <div class="col-md-12">
-      <h2>Top <b>Rated Movies</b></h2>
+      <h2>New <b>Releases</b></h2>
       <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="0">
         <div class="carousel-inner">
-          {{#each getTop}}
+          {{#each getNow}}
           <div class="carousel-item {{#if @first}}active{{/if}}">
             <div class="row">
               {{#each this}}
@@ -54,7 +54,7 @@
 <div class="container">
   <div class="row">
     <div class="col-md-12">
-      <h2>New <b>Releases</b></h2>
+      <h2>Top <b>Rated Movies</b></h2>
       <div id="myCarousel-1" class="carousel slide" data-ride="carousel" data-interval="0">
         <!-- Carousel indicators -->
         {{!-- <ol class="carousel-indicators">
@@ -64,7 +64,7 @@
         </ol> --}}
         <!-- Wrapper for carousel items -->
         <div class="carousel-inner">
-          {{#each getNow}}
+          {{#each getTop}}
           <div class="carousel-item {{#if @first}}active{{/if}}">
             <div class="row">
               {{#each this}}
