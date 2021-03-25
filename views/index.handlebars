@@ -7,11 +7,10 @@
       <h2>Top <b>Rated Movies</b></h2>
       <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="0">
         <div class="carousel-inner">
-          {{!-- Second Each Start --}}
-          <div class="carousel-item active">
+          {{#each getTop}}
+          <div class="carousel-item {{#if @first}}active{{/if}}">
             <div class="row">
-              {{!-- TEMPLATE START --}}
-              {{#each getTop.[0]}}
+              {{#each this}}
               <div class="col-sm-3">
                 <div class="thumb-wrapper">
                   <div class="img-box">
@@ -25,36 +24,7 @@
                         {{this.vote_average}} <i class="fa fa-star"></i>
                       </div>
                     </div>
-                    <a href="/movie/{{getTop.[0].id}}">
-                      <h4>{{this.title}}</h4>
-                    </a>
-                    <p class="movie-date">{{slicedate this.release_date}}</p>
-                  </div>
-                </div>
-              </div>
-              {{!-- TEMPLATE END --}}
-              {{/each }}
-            </div>
-          </div>
-          {{!-- Second Each End --}}
-          {{!-- second part of carousel1 --}}
-          <div class="carousel-item">
-            <div class="row">
-              {{#each getTop.[1]}}
-              <div class="col-sm-3">
-                <div class="thumb-wrapper">
-                  <div class="img-box">
                     <a href="/movie/{{this.id}}">
-                      <img src="https://image.tmdb.org/t/p/w342{{this.poster_path}}" class="img-fluid" alt="">
-                    </a>
-                  </div>
-                  <div class="thumb-content">
-                    <div class="star-rating">
-                      <div class="list-inline">
-                        {{this.vote_average}} <i class="fa fa-star"></i>
-                      </div>
-                    </div>
-                    <a href="/movie/{{getTop.[4].id}}">
                       <h4>{{this.title}}</h4>
                     </a>
                     <p class="movie-date">{{slicedate this.release_date}}</p>
@@ -64,33 +34,7 @@
               {{/each }}
             </div>
           </div>
-          {{!-- Third Part of carousel 1 --}}
-          <div class="carousel-item">
-            <div class="row">
-              {{#each getTop.[2]}}
-              <div class="col-sm-3">
-                <div class="thumb-wrapper">
-                  <div class="img-box">
-                    <a href="/movie/{{this.id}}">
-                      <img src="https://image.tmdb.org/t/p/w342{{this.poster_path}}" class="img-fluid" alt="">
-                    </a>
-                  </div>
-                  <div class="thumb-content">
-                    <div class="star-rating">
-                      <div class="list-inline">
-                        {{this.vote_average}} <i class="fa fa-star"></i>
-                      </div>
-                    </div>
-                    <a href="/movie/{{getTop.[8].id}}">
-                      <h4>{{this.title}}</h4>
-                    </a>
-                    <p class="movie-date">{{slicedate this.release_date}}</p>
-                  </div>
-                </div>
-              </div>
-              {{/each }}
-            </div>
-          </div>
+          {{/each}}
         </div>
         <!-- Carousel controls -->
         <a class="carousel-control-prev" href="#myCarousel" data-slide="prev">
@@ -105,7 +49,6 @@
 </div>
 <hr>
 
-
 {{!-- TOP 10 MOST REVIEWED MOVIES --}}
 {{!-- CAROUSEL --}}
 <div class="container">
@@ -115,15 +58,16 @@
       <div id="myCarousel-1" class="carousel slide" data-ride="carousel" data-interval="0">
         <!-- Carousel indicators -->
         {{!-- <ol class="carousel-indicators">
-          <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-          <li data-target="#myCarousel" data-slide-to="1"></li>
-          <li data-target="#myCarousel" data-slide-to="2"></li>
+          <li data-target="#myCarousel-1" data-slide-to="0" class="active"></li>
+          <li data-target="#myCarousel-1" data-slide-to="1"></li>
+          <li data-target="#myCarousel-1" data-slide-to="2"></li>
         </ol> --}}
         <!-- Wrapper for carousel items -->
         <div class="carousel-inner">
-          <div class="carousel-item active">
+          {{#each getNow}}
+          <div class="carousel-item {{#if @first}}active{{/if}}">
             <div class="row">
-              {{#each getNow.[0]}}
+              {{#each this}}
               <div class="col-sm-3">
                 <div class="thumb-wrapper">
                   <div class="img-box">
@@ -147,60 +91,7 @@
               {{/each}}
             </div>
           </div>
-          {{!-- second part of carousel2 --}}
-          <div class="carousel-item">
-            <div class="row">
-              {{#each getNow.[1]}}
-              <div class="col-sm-3">
-                <div class="thumb-wrapper">
-                  <div class="img-box">
-                    <a href="/movie/{{this.id}}">
-                      <img src="https://image.tmdb.org/t/p/w342{{this.poster_path}}" class="img-fluid" alt="">
-                    </a>
-                  </div>
-                  <div class="thumb-content">
-                    <div class="star-rating">
-                      <div class="list-inline">
-                        {{this.vote_average}} <i class="fa fa-star"></i>
-                      </div>
-                    </div>
-                    <a href="/movie/{{getNow.[4].id}}">
-                      <h4>{{this.title}}</h4>
-                    </a>
-                    <p class="movie-date">{{slicedate this.release_date}}</p>
-                  </div>
-                </div>
-              </div>
-              {{/each}}
-            </div>
-          </div>
-
-          <div class="carousel-item">
-            <div class="row">
-              {{#each getNow.[2]}}
-              <div class="col-sm-3">
-                <div class="thumb-wrapper">
-                  <div class="img-box">
-                    <a href="/movie/{{this.id}}">
-                      <img src="https://image.tmdb.org/t/p/w342{{this.poster_path}}" class="img-fluid" alt="">
-                    </a>
-                  </div>
-                  <div class="thumb-content">
-                    <div class="star-rating">
-                      <div class="list-inline">
-                        {{this.vote_average}} <i class="fa fa-star"></i>
-                      </div>
-                    </div>
-                    <a href="/movie/{{this.id}}">
-                      <h4>{{this.title}}</h4>
-                    </a>
-                    <p class="movie-date">{{this.release_date}}</p>
-                  </div>
-                </div>
-              </div>
-              {{/each}}
-            </div>
-          </div>
+          {{/each}}
         </div>
         <!-- Carousel controls -->
         <a class="carousel-control-prev" href="#myCarousel-1" data-slide="prev">
@@ -213,9 +104,6 @@
     </div>
   </div>
 </div>
-
-
-
 
 {{!-- Genres --}}
 <section id="genres">
