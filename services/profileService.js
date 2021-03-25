@@ -6,7 +6,7 @@ module.exports = class ProfileService {
   getdata(userid) {
     return this.knex("users")
       .where("id", userid)
-      .select("id", "fav_movie", "fav_genre", "intro")
+      .select("id", "name", "fav_movie", "fav_genre", "intro")
       .then((data) => {
         return data;
       })

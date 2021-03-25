@@ -9,6 +9,7 @@
   <title>Movie-app</title>
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
   {{!-- BOOTSTRAP 4 --}}
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
     integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -19,7 +20,9 @@
   <link rel="stylesheet" href="/review.css">
   <link rel="stylesheet" href="/search.css">
   <link rel="stylesheet" href="/profile.css">
+  <link rel="stylesheet" href="/loginsignuperror.css">
   <link rel="stylesheet" href="/watchlist.css">
+
 
 <body>
 
@@ -47,7 +50,11 @@
           </div>
           <div class="rightmargindiv">
             <li class="nav-item">
-              <a class="nav-link" href="#">Login <i class="fas fa-user-circle"></i></a>
+              {{#if user}}
+              <a class="nav-link" href="/profile/{{user.id}}">Hello {{user.name}}</a>
+              {{else}}
+              <a class="nav-link" href="/login">Login <i class="fas fa-user-circle"></i></a>
+              {{/if}}
             </li>
           </div>
         </ul>
@@ -57,12 +64,16 @@
   <main class="main-content">
     <div class="container">
       <div class="page">
+        {{#if user}}
+        <a href='/logout'><button type="button" class="btn btn-danger logoutbtn mb-3">Logout</button></a>
+        {{/if}}
         <div class="breadcrumbs">
-          <a href="/app.js">Home</a>
-          <i class="fas fa-angle-double-right"></i> <span>handlebar</span>
+          <a href="/">Home</a>
+          <i class="fas fa-angle-double-right"></i> <span>Breadcrumbs Here</span>
         </div>
         {{{body}}}
       </div>
+    </div>
   </main>
 
 
@@ -71,7 +82,6 @@
   <div id="footer" class="text-center">
     <div class="container">
       <div class="grid-container">
-
         <div class="grid-child-left">
           <h2>About the Movie App</h2>
 
