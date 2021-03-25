@@ -1,16 +1,18 @@
-<div class="container wrapper d-flex loginbox">
-<form action="/signup" method="post">
-   <div>
-    <h1>SIGNUP</h1>
+<div class="signup-wrapper">
+    <div class="container d-flex justify-content-center">
+        <form class="signupbox" action="/signup" method="post">
+            <div>
+                <h2>SIGN UP</h2>
+            </div>
+            <div class="mb-3 signup-form d-flex justify-content-center">
+                <input class="signup-field" type="text" name="username" placeholder="New User Name" />
+            </div>
+            <div class="mb-3 signup-form d-flex justify-content-center">
+                <input class="signup-field" type="password" name="password" placeholder="New Password" />
+            </div>
+            <div class="mb-3 signup-form d-flex justify-content-center">
+                <input class="btn btn-success signup-btn" type="submit" value="Submit" />
+            </div>
+        </form>
     </div>
-    <div class="mb-3">
-        <input type="text" name="username" placeholder="New User Name"/>
-    </div>
-    <div class="mb-3">
-        <input type="password" name="password" placeholder="New Password"/>
-    </div>
-    <div>
-        <input class="btn btn-success" type="submit" value="Submit"/>
-    </div>
-</form>
 </div>

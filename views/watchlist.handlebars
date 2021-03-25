@@ -9,9 +9,13 @@
             <div class="poster-container">
                 <img class="img-fluid watchlist_poster" width="180px" height="auto"
                     src="https://image.tmdb.org/t/p/w300{{this.poster_path}}">
-                <button class="watchlist-liked-btn" data-movieid={{this.api_id}}><i class="fas fa-check"></i></button>
-                <button class="watchlist-add-btn hidden" data-movieid={{this.api_id}}><i
-                        class="fas fa-plus"></i></button>
+                {{!-- <button id={{this.api_id}} class="watchlist-liked-btn" data-movieid={{this.api_id}}><i
+                        class="fas fa-check"></i></button>
+                <button id={{this.api_id}} class="watchlist-add-btn hidden" data-movieid={{this.api_id}}><i
+                        class="fas fa-plus"></i></button> --}}
+                <button id={{this.api_id}} class="watchlist-del-btn" data-movieid={{this.api_id}}><i
+                        class="fas fa-minus"></i></button>
+
             </div>
 
             {{!--
@@ -27,8 +31,8 @@
                 <img style="width: 30px;" src="/assets/sprite-yellow-star.jpg"></img>
                 {{this.vote_average}}
             </p>
-            <p><strong style="font-size: 20px">Genres:</strong><br><br> {{genreconverter this.genres}}</p>
-            <p><strong style="font-size: 20px">Overview:</strong><br><br> {{this.overview}}</p>
+            <p><b style="font-size: 15px">Genres:</b><br><br> {{genreconverter this.genres}}</p>
+            <p><b style="font-size: 15px">Overview:</b><br><br> {{this.overview}}</p>
         </div>
     </div>
     {{/each}}

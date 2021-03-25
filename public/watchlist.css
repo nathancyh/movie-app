@@ -17,12 +17,30 @@
 .poster-container {
   position: relative;
 }
-
+/* 
 .hidden {
   display: none;
+} */
+
+.watchlist-del-btn {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 50px;
+  height: 50px;
+  border: none;
+  background-color: #84878d;
+  opacity: 0.9;
 }
 
-.watchlist-liked-btn {
+.watchlist-del-btn i {
+  font-size: 30px;
+  color: #ffc000;
+}
+
+/* .watchlist-liked-btn {
   position: absolute;
   top: 5px;
   bottom: 0;
@@ -38,9 +56,9 @@
 .watchlist-liked-btn i {
   font-size: 30px;
   color: #ffc000;
-}
+} */
 
-.watchlist-add-btn {
+/* .watchlist-add-btn {
   position: absolute;
   top: 5px;
   bottom: 0;
@@ -56,4 +74,4 @@
 .watchlist-add-btn i {
   font-size: 30px;
   color: #ffc000;
-}
+} */

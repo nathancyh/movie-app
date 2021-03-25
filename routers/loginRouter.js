@@ -20,8 +20,8 @@ module.exports = (express) => {
 
   //Login page
   router.get("/login", (req, res) => {
-    res.render("login");
-    // res.render("login", { layout: "empty" });
+    // res.render("login");
+    res.render("login", { layout: "empty" });
   });
 
   // router.post(
@@ -53,8 +53,8 @@ module.exports = (express) => {
 
   //Signup page
   router.get("/signup", (req, res) => {
-    res.render("signup");
-    // res.render("signup", { layout: "empty" });
+    // res.render("signup");
+    res.render("signup", { layout: "empty" });
   });
 
   router.post(
