@@ -18,7 +18,7 @@ module.exports = (express) => {
       return next();
     }
     const url = req.originalUrl;
-    console.log("redirect-query", url);
+    // console.log("redirect-query", url);
     // res.redirect(`/login?redirect=${url}`);
     res.redirect(`/login`);
   };
@@ -125,7 +125,6 @@ module.exports = (express) => {
   }
 
   function putReview(req, res) {
-    console.log(req.body);
     return movieService
       .update(
         req.params.movieId,

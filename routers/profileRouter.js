@@ -86,8 +86,8 @@ module.exports = (express) => {
   }
 
   function putProfileEdit(req, res) {
-    console.log("edit user put params");
-    console.log(req.body.fav_genre);
+    // console.log("edit user put params");
+    // console.log(req.body.fav_genre);
     return profileService
       .add(
         req.params.userid,
