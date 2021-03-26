@@ -65,7 +65,7 @@ module.exports = (express) => {
       .then((data) => {
         userData = data;
         console.log("userData");
-        console.log(userData[0].fav_movie);
+
         return axios
           .get(
             `https://api.themoviedb.org/3/movie/${userData[0].fav_movie}?api_key=d3fd18f172ad640f103d9cfa9fb37451`
@@ -82,14 +82,14 @@ module.exports = (express) => {
         res.render("profile", {
           user: user,
           profile: profilepic,
-          // poster: `https://image.tmdb.org/t/p/w300${apiData.poster_path}`,
+          poster: `https://image.tmdb.org/t/p/w300${apiData.poster_path}`,
           screenshot1: screenshot1,
           screenshot2: screenshot2,
-          // userid: userData[0].id,
-          // username: userData[0].name,
-          // fav_movie: apiData.original_title,
-          // fav_genre: userData[0].fav_genre,
-          // intro: userData[0].intro,
+          userid: userData[0].id,
+          username: userData[0].name,
+          fav_movie: apiData.original_title,
+          fav_genre: userData[0].fav_genre,
+          intro: userData[0].intro,
         });
       })
       .catch((err) => res.status(500).json(err));

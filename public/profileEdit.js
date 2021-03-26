@@ -78,7 +78,9 @@ $(function () {
         intro: intro,
       })
       .then(function (response) {
-        window.location.href = "/profile/1"; //TODO:
+        setTimeout(function () {
+          window.location.href = "/";
+        }, 500);
       })
       .catch(function (error) {
         console.log(error);
