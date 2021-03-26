@@ -47,21 +47,30 @@
                 </li>
               </div>
               <div class="rightmargindiv">
-                <li class="nav-item">
-                  {{#if user}}
-                  <a class="nav-link" href="/watchlist">Watch list <i class="fas fa-plus"></i></a>
-                  {{/if}}
-                </li>
-              </div>
-              <div class="rightmargindiv">
-                <li class="nav-item">
-                  {{#if user}}
-                  <a class="nav-link" href="/profile/{{user.id}}">Hello {{user.name}}</a>
+
+                <li class="nav-item dropdown">{{#if user}}
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
+                    <b>Hello {{user.name}} <i class="far fa-smile"></i></b></a>
+                  </a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdown2">
+                    <a class="dropdown-item" href="/profile/{{user.id}}">Edit Profile
+                      <div class="dropdown-divider"></div>
+                      <a class="dropdown-item" href="/logout">Logout</a>
+                  </div>
                   {{else}}
                   <a class="nav-link" href="/login">Login <i class="fas fa-user-circle"></i></a>
                   {{/if}}
+
                 </li>
               </div>
+              <div class="rightmargindiv">
+                {{#if user}}
+                <a class="nav-link" href="/watchlist">Watch list <i class="fas fa-plus"></i></a>
+                {{/if}}
+              </div>
+
+
             </ul>
           </div>
       </div>
@@ -69,9 +78,9 @@
   <main class="main-content">
     <div class="container">
       <div class="page">
-        {{#if user}}
+        {{!-- {{#if user}}
         <a href='/logout'><button type="button" class="btn btn-danger logoutbtn mb-3">Logout</button></a>
-        {{/if}}
+        {{/if}} --}}
         {{!-- <div class="breadcrumbs">
           <a href="/">Home</a>
           <i class="fas fa-angle-double-right"></i> <span>Breadcrumbs Here</span>
