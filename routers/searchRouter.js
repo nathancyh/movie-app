@@ -7,6 +7,9 @@ module.exports = (express) => {
   const knexConfig = require("../knexfile").development;
   const knex = require("knex")(knexConfig);
 
+  const WatchlistService = require("../services/watchlistService");
+  const watchlistService = new WatchlistService(knex);
+
   router.route("/").get(getSearch);
   router.route("/:search").get(getSearchQuery);
 
@@ -18,7 +21,6 @@ module.exports = (express) => {
 
     // console.log("originalURL");
     // console.log(req.originalUrl);
-    let user = req.user;
     let sortOption = "popularity.desc";
     let sortingDisplay = "Popularity";
     let voteCountGate = "";
@@ -93,18 +95,29 @@ module.exports = (express) => {
     }
 
     let getURL = `https://api.themoviedb.org/3/discover/movie?api_key=f22e6ce68f5e5002e71c20bcba477e7d&language=en-US&sort_by=${sortOption}&include_adult=false&include_video=true&page=1${voteCountGate}${genreOption}`;
-
+    let searchArr;
     return axios
       .get(getURL)
       .then((info) => {
+        console.log("infodataresults");
+        console.log(info.data.results[0]);
+        info.data.results = searchArr;
+        // console.log(searchArr);
         // console.log("Query Switch Page");
         // console.log(info.data.results[0].title);
-        let idArr = info.data.results.map((x) => (x = x.id));
-        console.log("idArr");
-        console.log(idArr);
+        return watchlistService
+          .findWatchlistBoolean(1, info) //FIXME: real userid
+          .then((boolArr) => {
+            return boolArr;
+          })
+          .catch((err) => console.log(err));
+      })
+      .then((boolArr) => {
+        console.log("searchRouterboolArr");
+        console.log(boolArr);
         res.render("search", {
-          user: user,
-          searchArr: info.data.results,
+          user: req.user,
+          searchArr: searchArr,
           sortingDisplay: sortingDisplay,
         });
       })

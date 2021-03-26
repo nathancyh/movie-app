@@ -3,7 +3,7 @@ module.exports = class WatchService {
     this.knex = knex;
   }
 
-  //Getting Watchlist bridge table
+  //Get movies watchlisted by user
   watchlistUser(userid) {
     return this.knex("watchlists")
       .select("user_id", "movie_id")
@@ -13,23 +13,20 @@ module.exports = class WatchService {
       });
   }
 
-  //Getting Movies Table
+  //Getting array of detail from an array of
   watchlistMovie(wishArr) {
-    return (
-      this.knex("movies")
-        .select(
-          "api_id",
-          "title",
-          "genres",
-          "overview",
-          "poster_path",
-          "release_date",
-          "vote_average"
-        )
-        // .select("*")
-        .whereIn("api_id", wishArr)
-        .then((data) => data)
-    );
+    return this.knex("movies")
+      .select(
+        "api_id",
+        "title",
+        "genres",
+        "overview",
+        "poster_path",
+        "release_date",
+        "vote_average"
+      )
+      .whereIn("api_id", wishArr)
+      .then((data) => data);
   }
 
   //Check if  data already in watchlist
@@ -56,5 +53,24 @@ module.exports = class WatchService {
       .where("movie_id", movieId)
       .andWhere("user_id", userid)
       .del();
+  }
+
+  findWatchlistBoolean(userid, apiData) {
+    console.log(apiData);
+    let apiIdArr = apiData.data.results.map((x) => (x = x.id));
+    let boolArr = [];
+    return this.watchlistUser(userid).then((userWatchlist) => {
+      // console.log("apiIdArr");
+      // console.log(apiIdArr);
+      // console.log("user data");
+      let userWatchlistArr = userWatchlist.map((x) => (x = x.movie_id));
+      // console.log(userWatchlistArr);
+
+      apiIdArr.forEach((element) => {
+        boolArr.push(userWatchlistArr.includes(element));
+      });
+      console.log(boolArr);
+      return boolArr;
+    });
   }
 };
