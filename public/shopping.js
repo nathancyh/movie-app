@@ -246,3 +246,4 @@ $("#btn-payment").click((e) => {
 // $("#btn-payment").on("click", function () {
 //   console.log("Hellloo");
 // });
+

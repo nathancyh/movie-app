@@ -2,19 +2,21 @@
 
 module.exports = (express) => {
   const router = express.Router();
-  // const axios = require("axios");
+  const axios = require("axios");
   const { isLoggedIn } = require("./loginRouter");
 
   // Knex Setup
   const knexConfig = require("../knexfile").development;
   const knex = require("knex")(knexConfig);
 
+  const MovieService = require("../services/movieService");
+  const movieService = new MovieService(knex);
   const WatchlistService = require("../services/watchlistService");
   const watchlistService = new WatchlistService(knex);
 
   router.route("/").get(isLoggedIn, getWatchlist);
-  router.route("/:movieid").put(isLoggedIn, addWatchItem);
-  router.route("/:movieid").delete(isLoggedIn, deleteWatchItem);
+  router.route("/:movieId").post(isLoggedIn, addWatchItem); //FIXME: isLoggedIn
+  router.route("/:movieId").delete(isLoggedIn, deleteWatchItem); //FIXME: isLoggedIn
 
   function getWatchlist(req, res) {
     return watchlistService
@@ -33,17 +35,54 @@ module.exports = (express) => {
   }
 
   function addWatchItem(req, res) {
-    return watchlistService
-      .addWatchlist(req.user.id, req.params.movieid)
-      .then(() => {
-        res.send("watchlist item added");
+    let apiData;
+    return axios
+      .get(
+        `https://api.themoviedb.org/3/movie/${
+          req.params.movieId || 11
+        }?api_key=d3fd18f172ad640f103d9cfa9fb37451`
+      )
+      .then((info) => {
+        console.log("INSERT DATA FROM WATCHLIST ROUTER");
+        apiData = info.data;
+        return movieService.checkdata(apiData.id);
       })
-      .catch((err) => res.status(500).json(err));
+      .then((hvData) => {
+        //insert into movies table
+        if (!hvData) {
+          return movieService.insert(apiData);
+        }
+      })
+      .then(() => {
+        return watchlistService.checkwatchlist(req.user.id, req.params.movieId);
+      })
+      .then((hvData) => {
+        //insert into watchlist
+        let query = knex("watchlists").insert({
+          user_id: req.user.id, //TODO:need real userid
+          // user_id: 1, //TODO:need real userid
+          movie_id: req.params.movieId,
+        });
+
+        if (!hvData) {
+          return query
+            .then(() => "")
+            .then(null, function (err) {
+              //query fail
+              console.log(err);
+              return "";
+            });
+        }
+      })
+      .then(() => res.send("watchlist item added"))
+      .catch((err) => {
+        console.log(err);
+      });
   }
 
   function deleteWatchItem(req, res) {
     return watchlistService
-      .removeWatchlist(req.user.id, req.params.movieid)
+      .removeWatchlist(req.user.id, req.params.movieId)
       .then(() => {
         res.send("watchlist item deleted");
       })

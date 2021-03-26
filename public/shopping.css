@@ -150,6 +150,7 @@ body {
 .cart-btn {
   position: relative;
   cursor: pointer;
+
   font-size: 18px;
   color: white;
 }
@@ -590,3 +591,4 @@ body {
     margin-top: 20px;
   }
 }
+
