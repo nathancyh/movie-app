@@ -2,7 +2,6 @@
 {{!-- - need to connect stars --}}
 {{!-- font awesome --}}
 <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-
 <div class="reviewTitle">
     <h2><b>{{title}}</h2></b>
 </div>
@@ -23,23 +22,13 @@
                 <p><b>Genres:</b> {{genres}}</p>
                 <p><b>Release Date:</b> {{releaseDate}}</p>
                 <p><b>Overview:</b><br> {{overview}}</p>
-
             </div>
         </div>
     </div>
 </div>
-
-
-
-
-
-
-
 {{!-- MOVIE REVIEW --}}
-
 <div class="container-fluid info-container flex-column d-flex justify-content-center">
     <div class="row">
-
         <div class="comment-container col-12">
             <div class="review-title col-6 row">
                 <h2>Write a <b>Review</b></h2>
@@ -80,7 +69,6 @@
         <div class="review hidden col-12"><textarea class="note-area" cols="60" rows="10" name="note"
                 placeholder="This movie is..."></textarea></div>
     </div>
-
     <div class="review hidden col-12">
         <button id="post" type="button" class="btn btn-outline-warning">submit</button>
         </form>
@@ -101,9 +89,8 @@
             </form>
         </div>
     </div>
+
     {{/each}}
-
-
     {{#each myReviewArr}}
     <div class="my-review">
         <article class="card card-body">
@@ -125,9 +112,9 @@
 
                 {{#each reviewArr}}
                 <div class="review-box">
-                    <p>Title: {{this.review_title}}</p>
-                    <p>Rating: {{this.rating}}</p><br>
-                    <p>by {{this.name}}</p>
+                    <p><b>Title:</b> {{this.review_title}}</p>
+                    <p><b>Rating:</b> {{this.rating}} <i class="fa fa-star"></i></p><br>
+                    <p><b>Written by:</b> {{this.name}}</p>
                     <p class="display-area">{{this.text}}</p>
                 </div>
                 {{/each}}

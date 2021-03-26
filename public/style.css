@@ -12,7 +12,7 @@ body {
   background-image: url();
   background-position: top center;
   background-repeat: no-repeat;
-  color: #84878d;
+  color: #787a7d;
   font-family: "Roboto", "Open Sans", sans-serif;
   font-size: 15px;
   font-weight: 400;
@@ -57,57 +57,36 @@ active {
 }
 
 /* ========= Nav bar ========= */
-.container1 {
-  margin-right: auto;
-  margin-left: auto;
+.navbar {
+  /* position: sticky; */
+  top: 0;
+  height: 60px;
+  width: 100%;
+  display: flex;
   align-items: center;
+  background: rgb(231, 226, 221);
+  z-index: 1;
 }
 
-.container::before,
-.container::after {
-  content: " ";
-  display: table;
+.navbar-center {
+  width: 100%;
+  max-width: 2000px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /* padding: 0 1.5rem; */
 }
 
-.container::after {
-  clear: both;
-}
-
-#navbar7 {
-  width: 350px;
-  color: #000;
-}
-
-.nav-link {
-  display: contents;
-  padding: 0rem 0rem;
-}
-
-.rightnav {
-  display: inline-block;
-  /* margin-right: 3rem;*/
-  width: 150px;
-}
-
-.navbar-nav {
-  display: -webkit-inline-box;
-}
-.rightmargindiv {
-  margin-right: 5px;
-  margin-left: 5px;
-}
-.search {
-  display: block;
-  text-align: left;
-  width: 70%;
-  margin-right: 20%;
+.nav-icon {
+  font-size: 1rem;
 }
 
 .form-control {
   width: 40vw;
 }
 
-/* Div */
+/*  ========= Div =========  */
 .row {
   height: 420px;
 }
@@ -136,9 +115,9 @@ a {
 }
 
 .main-content .container {
-  background: rgb(236, 236, 236);
+  background: rgb(236, 236, 236) !important;
   /* border-radius: 5px; */
-  padding: 20px;
+  padding: 30px;
 }
 
 /* Carousel */
