@@ -27,39 +27,42 @@
 <body>
 
   {{!-- NAV --}}
-  <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-    <button class="navbar-toggler order-0" type="button" data-toggle="collapse" data-target="#navbar7">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="d-flex flex-grow-1 w-75 p-2">
-      <a href="/" class="navbar-brand">Movie App</a>
-    </div>
-    <div class="search">
-      <form class="d-flex">
-        <input class="typeahead form-control me-2" type="search" placeholder="Search" aria-label="Search">
-      </form>
-    </div>
-    </div>
-    <div class="navbar-collapse collapse flex-shrink-1 flex-grow-0 order-last" id="navbar7">
-      <div class="rightnav">
-        <ul class="navbar-nav ml-auto navbar-right">
-          <div class="rightmargindiv">
-            <li class="nav-item">
-              <a class="nav-link watchlist-btn" href="#">Watch list <i class="fas fa-plus"></i></a>
-            </li>
-          </div>
-          <div class="rightmargindiv">
-            <li class="nav-item">
-              {{#if user}}
-              <a class="nav-link" href="/profile/{{user.id}}">Hello {{user.name}}</a>
-              {{else}}
-              <a class="nav-link" href="/login">Login <i class="fas fa-user-circle"></i></a>
-              {{/if}}
-            </li>
-          </div>
-        </ul>
+  <nav class="navbar navbar-expand-md navbar-dark bg-dark ">
+    <div class="navbar-center">
+      <span class="nav-icon">
+        <a href="/" class="navbar-brand">Movie App</a>
+      </span>
+      <div class="search">
+        <form class="">
+          <input class="typeahead form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        </form>
       </div>
-    </div>
+      <div class="cart-btn">
+        <span class="nav-icon">
+          <div class="rightnav">
+            <ul class="navbar-nav navbar-right">
+              <div class="rightmargindiv">
+                <li class="nav-item">
+                  <a href="/shopping" class="nav-link">Store <i class="fas fa-store"></i></a>
+                </li>
+              </div>
+              <div class="rightmargindiv">
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Watch list <i class="fas fa-plus"></i></a>
+                </li>
+              </div>
+              <div class="rightmargindiv">
+                <li class="nav-item">
+                  {{#if user}}
+                  <a class="nav-link" href="/profile/{{user.id}}">Hello {{user.name}}</a>
+                  {{else}}
+                  <a class="nav-link" href="/login">Login <i class="fas fa-user-circle"></i></a>
+                  {{/if}}
+                </li>
+              </div>
+            </ul>
+          </div>
+      </div>
   </nav>
   <main class="main-content">
     <div class="container">
@@ -67,10 +70,10 @@
         {{#if user}}
         <a href='/logout'><button type="button" class="btn btn-danger logoutbtn mb-3">Logout</button></a>
         {{/if}}
-        <div class="breadcrumbs">
+        {{!-- <div class="breadcrumbs">
           <a href="/">Home</a>
           <i class="fas fa-angle-double-right"></i> <span>Breadcrumbs Here</span>
-        </div>
+        </div> --}}
         {{{body}}}
       </div>
     </div>

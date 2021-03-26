@@ -54,7 +54,7 @@ $(function () {
     e.preventDefault();
     let title = $(".edit-title").val();
     console.log(rating);
-    let rating = $(".full").val();
+    let rating = $(".1").val();
     let data = $(".edit-area").val();
     let movieid = window.location.pathname.slice(7);
 
@@ -92,6 +92,15 @@ $(function () {
     );
   });
 });
+
+//stars
+// starButtons() {
+//   const buttons = [...document.querySelectorAll(".radio");
+// console.log(buttons);
+// buttons.forEach((button) => {
+//   // let id = button.dataset.id;
+// })
+// }
 
 // Rating Initialization
 // $(document).ready(function () {

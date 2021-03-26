@@ -22,23 +22,18 @@ $(function () {
       wildcard: "%QUERY",
       // Map the remote source JSON array to a JavaScript object array
       filter: (movies) => {
-        console.log(movies.results[0].release_date);
         return $.map(movies.results, function (movie) {
-          if (movie.release_date) {
-            return {
-              value: movie.original_title,
-              id: movie.id,
-              release_date: movie.release_date.slice(0, 4),
-              poster: `http://image.tmdb.org/t/p/w92${movie.poster_path}`,
-            };
-          } else {
-            return {
-              value: movie.original_title,
-              id: movie.id,
-              release_date: movie.release_date,
-              poster: `http://image.tmdb.org/t/p/w92${movie.poster_path}`,
-            };
-          }
+          let releaseDate;
+          releaseDate = movie.release_date
+            ? movie.release_date.slice(0, 4)
+            : "N/A";
+
+          return {
+            value: movie.original_title,
+            id: movie.id,
+            release_date: releaseDate,
+            poster: `http://image.tmdb.org/t/p/w92${movie.poster_path}`,
+          };
         });
       },
     },
@@ -58,21 +53,22 @@ $(function () {
       footer: Handlebars.compile("<b>Searched for '{{query}}'</b>"),
     },
   });
+
   let value;
   $(".typeahead1").on("typeahead:select", function (event, suggestion) {
-    // console.log(suggestion);
     console.log(suggestion.id);
     value = suggestion.id;
     return value;
   });
 
-  $(".update-btn").click((e) => {
+  $(".update-btn").on("click", (e) => {
     e.preventDefault();
+
+    $(".screenshot-upload-btn").trigger("click");
 
     let favGen = $(".fav-genres").val();
     let favMovie = Number(value);
     let intro = $(".introduce-area").val();
-
     axios
       .put("/profile/edit/1", {
         //TODO
@@ -86,24 +82,5 @@ $(function () {
       .catch(function (error) {
         console.log(error);
       });
-
-    // $.ajax({
-    //   type: "PUT",
-    //   url: "/profile/edit/1",
-    //   data: { fav_movie: favMovie, fav_genre: favGen, intro: intro },
-    //   success: function () {
-    //     console.log("profile edit put");
-    //   },
-    // })
-    //   .done(() => {
-    //     // window.location.reload();
-    //     console.log("put profile done");
-    //   })
-    //   .fail((e) => {
-    //     console.log("hihihihi", e);
-    //   })
-    //   .always(() => {
-    //     console.log("always profile edit");
-    //   });
   });
 });

@@ -45,7 +45,10 @@ module.exports = (express) => {
           return next(err);
         }
         let redirectTarget = req.get("referrer").split("redirect=")[1];
-        return res.redirect(redirectTarget);
+        console.log("redirectTarget", redirectTarget);
+        return req.method == "GET"
+          ? res.redirect(redirectTarget || "/")
+          : res.redirect("/");
       });
     })(req, res, next);
   });
@@ -67,7 +70,7 @@ module.exports = (express) => {
   //Logout redirect
   router.get("/logout", (req, res) => {
     req.logout();
-    res.redirect("/login");
+    res.redirect("/");
   });
 
   router.get("/error", (req, res) => {

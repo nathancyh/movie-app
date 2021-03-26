@@ -143,3 +143,7 @@ h1[alt="Simple"] {
   border-radius: 0.37rem;
   padding: 1rem;
 }
+
+.starrating > input:hover ~ label {
+  color: #ffca08;
+} /* Set yellow color when star hover */

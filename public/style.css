@@ -3,12 +3,16 @@ html {
   scroll-behavior: smooth;
 }
 
+main {
+  min-height: 93vh;
+}
+
 body {
   background-color: #fff;
   background-image: url();
   background-position: top center;
   background-repeat: no-repeat;
-  color: #84878d;
+  color: #787a7d;
   font-family: "Roboto", "Open Sans", sans-serif;
   font-size: 15px;
   font-weight: 400;
@@ -53,57 +57,36 @@ active {
 }
 
 /* ========= Nav bar ========= */
-.container1 {
-  margin-right: auto;
-  margin-left: auto;
+.navbar {
+  /* position: sticky; */
+  top: 0;
+  height: 60px;
+  width: 100%;
+  display: flex;
   align-items: center;
+  background: rgb(231, 226, 221);
+  z-index: 1;
 }
 
-.container::before,
-.container::after {
-  content: " ";
-  display: table;
+.navbar-center {
+  width: 100%;
+  max-width: 2000px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /* padding: 0 1.5rem; */
 }
 
-.container::after {
-  clear: both;
-}
-
-#navbar7 {
-  width: 350px;
-  color: #000;
-}
-
-.nav-link {
-  display: contents;
-  padding: 0rem 0rem;
-}
-
-.rightnav {
-  display: inline-block;
-  /* margin-right: 3rem;*/
-  width: 150px;
-}
-
-.navbar-nav {
-  display: -webkit-inline-box;
-}
-.rightmargindiv {
-  margin-right: 5px;
-  margin-left: 5px;
-}
-.search {
-  display: block;
-  text-align: left;
-  width: 70%;
-  margin-right: 20%;
+.nav-icon {
+  font-size: 1rem;
 }
 
 .form-control {
   width: 40vw;
 }
 
-/* Div */
+/*  ========= Div =========  */
 .row {
   height: 420px;
 }
@@ -132,15 +115,15 @@ a {
 }
 
 .main-content .container {
-  background: rgb(236, 236, 236);
+  background: rgb(236, 236, 236) !important;
   /* border-radius: 5px; */
   padding: 30px;
 }
 
 /* Carousel */
 .carousel {
-  margin: 50px auto;
-  padding: 0 40px;
+  margin: 15px auto;
+  padding: 0 30px;
 }
 .carousel .carousel-item {
   /* min-height: 330px; */
@@ -148,7 +131,7 @@ a {
   overflow: hidden;
 }
 .carousel .carousel-item .img-box {
-  height: 250px;
+  height: 285px;
   width: 100%;
   position: relative;
 }
@@ -161,22 +144,25 @@ a {
   margin: 0 auto;
   left: 0;
   right: 0;
+  border-radius: 4px;
 }
+
 .carousel .carousel-item h4 {
   font-size: 18px;
   margin: 10px 0;
 }
 .carousel .carousel-item .btn {
   color: #333;
-  border-radius: 0;
-  font-size: 11px;
+  border-radius: 3px;
+  font-size: 13px;
   text-transform: uppercase;
   font-weight: bold;
   background: none;
   border: 1px solid #ccc;
-  padding: 5px 10px;
-  margin-top: 5px;
+  padding: 7px 10px;
+  margin-top: 10px;
   line-height: 16px;
+  background-color: #7575752d;
 }
 
 .carousel .carousel-item .btn:hover,
@@ -195,7 +181,9 @@ a {
   text-align: center;
 }
 .carousel .thumb-content {
-  padding: 15px;
+  padding: 5px;
+  padding-top: 15px;
+  font-size: 18px;
 }
 
 .carousel-control-prev,
@@ -228,7 +216,7 @@ a {
   margin-right: -3px;
 }
 .carousel .movie-date {
-  font-size: 13px;
+  font-size: 16px;
   padding: 2px 0;
 }
 .carousel .movie-date strike {
@@ -264,6 +252,11 @@ a {
 .star-rating i {
   font-size: 14px;
   color: #ffc000;
+}
+
+.carousel-title-box {
+  height: 50px;
+  vertical-align: middle;
 }
 
 /* ========= Genre Box ========= */
