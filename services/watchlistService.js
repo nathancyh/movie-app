@@ -3,6 +3,7 @@ module.exports = class WatchService {
     this.knex = knex;
   }
 
+  //Getting Watchlist bridge table
   watchlistUser(userid) {
     return this.knex("watchlists")
       .select("user_id", "movie_id")
@@ -12,6 +13,7 @@ module.exports = class WatchService {
       });
   }
 
+  //Getting Movies Table
   watchlistMovie(wishArr) {
     return (
       this.knex("movies")
@@ -30,16 +32,28 @@ module.exports = class WatchService {
     );
   }
 
-  addWatchlist(userid, watchlistMovie) {
+  //Check if  data already in watchlist
+  checkwatchlist(userid, movieId) {
+    return this.knex("watchlists")
+      .where("user_id", userid)
+      .andWhere("movie_id", movieId)
+      .then((data) => {
+        return data.length > 0 ? true : false;
+      });
+  }
+
+  //Add data to watchlist bridge table
+  addWatchlist(userid, movieId) {
     return this.knex("watchlists").insert({
       user_id: userid,
-      movie_id: watchlistMovie,
+      movie_id: movieId,
     });
   }
 
-  removeWatchlist(userid, watchlistMovie) {
+  //Remove data from watchlist bridge table
+  removeWatchlist(userid, movieId) {
     return this.knex("watchlists")
-      .where("movie_id", watchlistMovie)
+      .where("movie_id", movieId)
       .andWhere("user_id", userid)
       .del();
   }

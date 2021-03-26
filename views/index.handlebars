@@ -30,7 +30,7 @@
                       </a>
                     </div>
                     {{!-- <p class="movie-date">({{slicedate this.release_date}})</p> --}}
-                    <button class="index-watchlist-add btn">Add to Watchlist</button>
+                    <button class="index-watchlist-add btn" data-movieid={{this.id}}>Add to Watchlist</button>
                   </div>
                 </div>
               </div>
@@ -88,7 +88,7 @@
                       <h4>{{this.title}}</h4>
                     </a>
                     {{!-- <p class="movie-date">{{slicedate this.release_date}}</p> --}}
-                    <button class="index-watchlist-add btn">Add to Watchlist</button>
+                    <button class="index-watchlist-add btn" data-movieid={{this.id}}>Add to Watchlist</button>
                   </div>
                 </div>
               </div>
@@ -98,7 +98,7 @@
           {{/each}}
         </div>
         <!-- Carousel controls -->
-        <a class="carousel-control-prev" href="#myCarousel-1" data-slide="prev">
+        <a class=" carousel-control-prev" href="#myCarousel-1" data-slide="prev">
           <i class="fa fa-angle-left"></i>
         </a>
         <a class="carousel-control-next" href="#myCarousel-1" data-slide="next">

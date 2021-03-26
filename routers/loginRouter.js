@@ -13,7 +13,7 @@ module.exports = (express) => {
       return next();
     }
     const url = req.originalUrl;
-    console.log("redirect-query", url);
+    // console.log("redirect-query", url);
     res.redirect(`/login?redirect=${url}`);
     // res.redirect("/login");
   };
@@ -45,7 +45,7 @@ module.exports = (express) => {
           return next(err);
         }
         let redirectTarget = req.get("referrer").split("redirect=")[1];
-        console.log("redirectTarget", redirectTarget);
+        // console.log("redirectTarget", redirectTarget);
         return req.method == "GET"
           ? res.redirect(redirectTarget || "/")
           : res.redirect("/");
