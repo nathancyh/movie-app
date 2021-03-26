@@ -1,0 +1,84 @@
+{
+  "items": [
+    {
+      "sys": { "id": "1" },
+      "fields": {
+        "title": "White Hoodie",
+        "price": 10.99,
+        "image": {
+          "fields": { "file": { "url": "/assets/images/product-1.jpeg" } }
+        }
+      }
+    },
+    {
+      "sys": { "id": "2" },
+      "fields": {
+        "title": "Black Jacket",
+        "price": 20.99,
+        "image": {
+          "fields": { "file": { "url": "/assets/images/product-2.jpeg" } }
+        }
+      }
+    },
+    {
+      "sys": { "id": "3" },
+      "fields": {
+        "title": "Green Bomber",
+        "price": 21.99,
+        "image": {
+          "fields": { "file": { "url": "/assets/images/product-3.jpeg" } }
+        }
+      }
+    },
+    {
+      "sys": { "id": "4" },
+      "fields": {
+        "title": "Pink Sweater",
+        "price": 14.99,
+        "image": {
+          "fields": { "file": { "url": "/assets/images/product-4.jpeg" } }
+        }
+      }
+    },
+    {
+      "sys": { "id": "5" },
+      "fields": {
+        "title": "Wind Breaker",
+        "price": 39.99,
+        "image": {
+          "fields": { "file": { "url": "/assets/images/product-5.jpeg" } }
+        }
+      }
+    },
+    {
+      "sys": { "id": "6" },
+      "fields": {
+        "title": "Towel",
+        "price": 12.99,
+        "image": {
+          "fields": { "file": { "url": "/assets/images/product-6.jpeg" } }
+        }
+      }
+    },
+    {
+      "sys": { "id": "7" },
+      "fields": {
+        "title": "Tote Bag",
+        "price": 10.99,
+        "image": {
+          "fields": { "file": { "url": "/assets/images/product-7.jpeg" } }
+        }
+      }
+    },
+    {
+      "sys": { "id": "8" },
+      "fields": {
+        "title": "Hat",
+        "price": 9.99,
+        "image": {
+          "fields": { "file": { "url": "/assets/images/product-8.jpeg" } }
+        }
+      }
+    }
+  ]
+}
