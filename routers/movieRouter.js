@@ -97,6 +97,7 @@ module.exports = (express) => {
         const movieReview = results[2];
         res.render("review", {
           user: user,
+          userid: data.user_id,
           poster: `https://image.tmdb.org/t/p/w300${data.poster_path}`,
           title: data.title,
           averageReview: data.vote_average,

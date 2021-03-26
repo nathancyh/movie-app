@@ -71,13 +71,14 @@ $(function () {
     let intro = $(".introduce-area").val();
     axios
       .put("/profile/edit/1", {
+        //TODO:
         //TODO
         fav_movie: favMovie,
         fav_genre: favGen,
         intro: intro,
       })
       .then(function (response) {
-        window.location.href = "/profile/1"; //TODO
+        window.location.href = "/profile/1"; //TODO:
       })
       .catch(function (error) {
         console.log(error);

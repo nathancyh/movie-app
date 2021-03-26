@@ -114,7 +114,7 @@
                 <div class="review-box">
                     <p><b>Title:</b> {{this.review_title}}</p>
                     <p><b>Rating:</b> {{this.rating}} <i class="fa fa-star"></i></p><br>
-                    <p><b>Written by:</b> {{this.name}}</p>
+                    <p><b>Written by:</b> <a href="../profile/{{this.user_id}}">{{this.name}}</a></p>
                     <p class="display-area">{{this.text}}</p>
                 </div>
                 {{/each}}
