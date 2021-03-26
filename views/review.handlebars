@@ -30,8 +30,8 @@
 <div class="container-fluid info-container flex-column d-flex justify-content-center">
     <div class="row">
         <div class="comment-container col-12">
-            <div class="review-title col-6 row">
-                <h2>Write a <b>Review</b></h2>
+            <div class="review-title col-12 row">
+                <h2>Write a Review for<b> {{title}}</b></h2>
             </div>
         </div>
         {{!-- <div class="review_star row"> --}}
@@ -64,7 +64,7 @@
         {{!-- <textarea class="note-rating" name="rating"
             placeholder="Rating(Please enter 1-10)">{{this.rating}}</textarea> --}}
         <div class="review col-12">
-            Write your review
+            {{!-- <h5>Write your review for {{title}}</h5> --}}
         </div>
         <div class="review hidden col-12"><textarea class="note-area" cols="60" rows="10" name="note"
                 placeholder="This movie is..."></textarea></div>
@@ -84,8 +84,8 @@
                 <br>
                 <textarea class="edit-area" cols="60" rows="10" name="edit">{{this.text}}</textarea>
                 <br>
-                <button type="button" class="save-btn btn btn-outline-warning">SAVE CHANGES</button>
-                <button type="button" class="cancel-btn btn btn-outline-warning">CANCEL</button>
+                <button type="button" class="save-btn btn btn-outline-warning">save changes</button>
+                <button type="button" class="cancel-btn btn btn-outline-warning">cancel</button>
             </form>
         </div>
     </div>
@@ -108,17 +108,22 @@
                     <button class="edit-btn btn btn-outline-warning">edit your review</button>
                     <button class="del-btn btn btn-outline-warning">delete</button>
                 </div>
+
                 {{/each}}
 
                 {{#each reviewArr}}
-                <div class="review-box">
-                    <p><b>Title:</b> {{this.review_title}}</p>
-                    <p><b>Rating:</b> {{this.rating}} <i class="fa fa-star"></i></p><br>
-                    <p><b>Written by:</b> {{this.name}}</p>
-                    <p class="display-area">{{this.text}}</p>
-                </div>
-                {{/each}}
+                <article class="card card-body">
+
+                    <div class="review-box">
+
+                        <p><b>Review Title:</b> {{this.review_title}}</p>
+                        <p><b>Rating:</b> {{this.rating}} <i class="fa fa-star"></i></p>
+                        <p><b>Written by:</b> {{this.name}}</p>
+                        <p class="display-area"><b>Review: </b>{{this.text}}</p>
+                    </div>
+                    {{/each}}
             </div>
+        </article>
     </div>
 </div>
 </div>

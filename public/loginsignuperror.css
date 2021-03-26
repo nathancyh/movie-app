@@ -55,44 +55,50 @@ input.login-field {
 input.login-field:focus {
   background-color: transparent;
   outline: none;
-  border-bottom: 3px solid navy;
+  border-bottom: 3px solid orange;
 }
 
 .login-btn {
-  background-color: rgb(4, 4, 94);
+  background-color: rgb(85, 85, 85);
   width: 100px;
   border: none;
+}
+
+.btn-primary:hover {
+  color: #fff;
+  background-color: #ffbe08;
+  /* border-color: #0062cc; */
 }
 
 .signup-link {
   background-color: transparent;
   border: none;
-  color: navy;
+  color: #ffbe08;
 }
 
 .signup-link:hover {
-  /* font-size: 22px; */
+  font-size: 22px;
   text-decoration: none;
 }
 
-/* Signup page */
-.signup-wrapper {
-  background-color: #f8ce5a;
+Signup page .signup-wrapper {
+  background-color: #ffbe08;
   min-height: 100vh;
   overflow: hidden;
 }
 .signupbox {
-  background-color: rgba(252, 251, 249, 0.76);
+  background-color: white;
   width: 380px;
   height: auto;
   border-radius: 20px;
   padding: 10px;
   margin: 25vh 10vw;
+  box-shadow: 2px 2px 4px 0px rgb(0 0 0 / 50%);
 }
 
-.signup-form {
-  padding-top: 20px;
-}
+/* .signup-form {
+  padding-top: 25px;
+} */
 
 input.signup-field {
   background-color: transparent;
@@ -100,18 +106,30 @@ input.signup-field {
   border-bottom: 2px solid black;
   margin: 20px 0px;
   width: 80%;
-  font-size: 20px;
+  font-size: 25px;
 }
 
 input.signup-field:focus {
   background-color: transparent;
   outline: none;
-  border-bottom: 3px solid navy;
+  border-bottom: 3px solid orange;
   font-size: 25px;
 }
 
 .signup-btn {
-  background-color: rgb(4, 4, 94);
+  background-color: rgb(85, 85, 85);
   width: 100px;
   border: none;
+}
+
+.btn-success {
+  color: #fff;
+  background-color: rgb(85, 85, 85);
+  /* border-color: #ffbe08 !important; */
+}
+
+.btn-success:hover {
+  color: #fff;
+  background-color: #ffbe08;
+  /* border-color: #ffbe08 !important; */
 }
