@@ -4,6 +4,7 @@ module.exports = (express) => {
   const router = express.Router();
   const multer = require("multer");
   const fs = require("fs");
+  const axios = require("axios");
   const { isLoggedIn } = require("./loginRouter");
 
   // Knex Setup
@@ -24,7 +25,6 @@ module.exports = (express) => {
   function getProfile(req, res) {
     let user = req.user;
     let screenshot1, screenshot2, profilepic;
-
     //Check if propic exist, if not render placeholder
     let validateProfiles = fs.promises
       .readdir("./uploads")
@@ -55,39 +55,54 @@ module.exports = (express) => {
         console.log(error);
       });
 
+    let userData, apiData;
     validateProfiles
       .then(() => validateScreenshot)
       .then(() => {
-        return profileService
-          .getdata(req.params.userid)
-          .then((data) => {
-            res.render("profile", {
-              user: user,
-              profile: profilepic,
-              screenshot1: screenshot1,
-              screenshot2: screenshot2,
-              userid: data[0].id,
-              username: data[0].name,
-              fav_movie: data[0].fav_movie,
-              fav_genre: data[0].fav_genre,
-              intro: data[0].intro,
-            });
+        console.log("before getdata");
+        return profileService.getdata(req.params.userid);
+      })
+      .then((data) => {
+        userData = data;
+        console.log("userData");
+        console.log(userData[0].fav_movie);
+        return axios
+          .get(
+            `https://api.themoviedb.org/3/movie/${userData[0].fav_movie}?api_key=d3fd18f172ad640f103d9cfa9fb37451`
+          )
+          .then((data2) => {
+            apiData = data2.data;
+            console.log(apiData.poster_path);
+            return data2;
           })
-          .catch((err) => res.status(500).json(err));
-      });
+          .catch((err) => console.log(err));
+        // return moviedata.original_title, moviedata.poster_path;
+      })
+      .then(() => {
+        res.render("profile", {
+          user: user,
+          profile: profilepic,
+          // poster: `https://image.tmdb.org/t/p/w300${apiData.poster_path}`,
+          screenshot1: screenshot1,
+          screenshot2: screenshot2,
+          // userid: userData[0].id,
+          // username: userData[0].name,
+          // fav_movie: apiData.original_title,
+          // fav_genre: userData[0].fav_genre,
+          // intro: userData[0].intro,
+        });
+      })
+      .catch((err) => res.status(500).json(err));
   }
 
   function getProfileEdit(req, res) {
-    let user = req.user;
     res.render("profileedit", {
-      user: user,
+      user: req.user,
       userid: req.user.id,
     });
   }
 
   function putProfileEdit(req, res) {
-    // console.log("edit user put params");
-    // console.log(req.body.fav_genre);
     return profileService
       .add(
         req.params.userid,
@@ -96,19 +111,10 @@ module.exports = (express) => {
         req.body.intro
       )
       .then(() => {
-        console.log("done");
         res.send("put edit profile");
       })
       .catch((err) => res.status(500).json(err));
   }
-
-  // function postProfilepic(req, res) {
-  //   profileupload(req, res, function (err) {
-  //     if (err) {
-  //       return err;
-  //     }
-  //   });
-  // }
 
   function postScreenshots(req, res) {
     screenshotupload(req, res, function (err) {
@@ -132,14 +138,8 @@ module.exports = (express) => {
       } else if (file.fieldname == "screenshot1") {
         cb(null, `${req.user.id}_1.jpg`);
       }
-      // cb(null, file.fieldname + "-" + Date.now() + ".jpg");
     },
   });
-
-  // var profileupload = multer({
-  //   storage: storage,
-  //   limits: { fileSize: 1000000 },
-  // }).single("profileimageupload");
 
   var screenshotupload = multer({
     storage: storage,

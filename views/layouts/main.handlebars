@@ -65,10 +65,9 @@
                 </li>
               </div>
               <div class="rightmargindiv">
-                <li class="nav-item">
-
-                  <a class="nav-link" href="#">Watch list <i class="fas fa-plus"></i></a>
-                </li>
+                {{#if user}}
+                <a class="nav-link" href="/watchlist">Watch list <i class="fas fa-plus"></i></a>
+                {{/if}}
               </div>
 
 

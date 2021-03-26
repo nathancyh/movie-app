@@ -119,7 +119,7 @@
 
                         <p><b>Review Title:</b> {{this.review_title}}</p>
                         <p><b>Rating:</b> {{this.rating}} <i class="fa fa-star"></i></p>
-                        <p><b>Written by:</b> {{this.name}}</p>
+                        <p><b>Written by:</b> <a href="../profile/{{this.user_id}}">{{this.name}}</a></p>
                         <p class="display-area"><b>Review: </b>{{this.text}}</p>
                     </div>
                     {{/each}}
