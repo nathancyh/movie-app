@@ -31,42 +31,28 @@
   position: relative;
 }
 
-.hidden {
-  display: none;
+.search-watchlist-add-style {
+  color: #fff;
+  background: #ffbe08 !important;
+  border-radius: 3px;
+  font-size: 13px;
+  text-transform: uppercase;
+  font-weight: bold;
+  background: none;
+  border: 1px solid #ccc;
+  padding: 7px 30px;
+  margin-top: 10px;
+  line-height: 16px;
+  background-color: #7575752d;
 }
 
-.search-liked-btn {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 15px;
-  right: 0;
-  width: 40px;
-  height: 40px;
-  border: none;
-  background-color: #84878d;
-  opacity: 0.9;
+.search-watchlist-add-style i {
+  margin-left: 5px;
 }
 
-.search-liked-btn i {
-  font-size: 30px;
-  color: #ffc000;
-}
-
-.search-add-btn {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 15px;
-  right: 0;
-  width: 40px;
-  height: 40px;
-  border: none;
-  background-color: #84878d;
-  opacity: 0.9;
-}
-
-.search-add-btn i {
-  font-size: 30px;
-  color: #ffc000;
+.search-watchlist-add-style:hover {
+  color: #000;
+  background: #ccc !important;
+  border-color: #ccc !important;
+  box-shadow: none;
 }
