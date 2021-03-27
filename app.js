@@ -9,6 +9,9 @@ const exphbs = require("express-handlebars");
 const bodyParser = require("body-parser");
 const session = require("express-session");
 const setupPassport = require("./passport-js/passport");
+// const stripePublicKey = process.env.stripePublicKey;
+// const stripeSecretKey = process.env.stripeSecretKey;
+// const stripe = require("stripe")(stripeSecretKey);
 const port = process.env.PORT || 8080;
 
 const app = express();

@@ -231,3 +231,18 @@ document.addEventListener("DOMContentLoaded", () => {
       ui.cartLogic();
     });
 });
+
+// $("input[name='expiry-data']").mask("00 / 00");
+
+$("#btn-payment").click((e) => {
+  var price = $(".cart-total")[0].innerText;
+  // stripeHandler.open({
+  //     amount: price * 100,
+  console.log(price);
+  console.log("Hellloo");
+});
+// });
+
+// $("#btn-payment").on("click", function () {
+//   console.log("Hellloo");
+// });

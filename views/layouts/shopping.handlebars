@@ -43,16 +43,8 @@
                                         <div class="cart-items">0</div>
                                     </div>
                                 </li>
-                            </div>
-                            <div class="rightmargindiv">
-                                <li class="nav-item">
-                                    {{#if user}}
-                                    <a class="nav-link" href="/profile/{{user.id}}">Hello {{user.name}}</a>
-                                    {{else}}
-                                    <a class="nav-link" href="/login">Login <i class="fas fa-user-circle"></i></a>
-                                    {{/if}}
-                                </li>
-                            </div>
+
+                                >>>>>>> 8ab29d0bbfa4f683e721d636eeb5e95288426374
                         </ul>
                     </div>
                 </span>
@@ -64,8 +56,10 @@
         <div class="container">
             <div class="page">
                 <div class="breadcrumbs">
-                    <a href="/">Home</a>
-                    <i class="fas fa-angle-double-right"></i> <span>handlebar</span>
+                    <a href="/">
+                        <p>Back to the main page
+                    </a></p>
+                    {{!-- <i class="fas fa-angle-double-right"></i> <span>handlebar</span> --}}
                 </div>
                 {{{body}}}
             </div>

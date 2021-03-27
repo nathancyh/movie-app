@@ -8,6 +8,12 @@ $(function () {
     window.location.href = `/profile/edit/${userid}`;
   });
 
+  $(".edit-cancel-btn").click((e) => {
+    console.log("edit cancel");
+    console.log(e);
+    window.location.href = `/profile/${e.currentTarget.dataset.userid}`;
+  });
+
   $(".fav-genres").select2({
     maximumSelectionLength: 3,
   });
@@ -71,16 +77,40 @@ $(function () {
     let intro = $(".introduce-area").val();
     axios
       .put("/profile/edit/1", {
+        //TODO:
         //TODO
         fav_movie: favMovie,
         fav_genre: favGen,
         intro: intro,
       })
       .then(function (response) {
-        window.location.href = "/profile/1"; //TODO
+        setTimeout(function () {
+          window.location.href = "/";
+        }, 500);
       })
       .catch(function (error) {
         console.log(error);
       });
   });
 });
+
+// Profile image
+document.getElementById("buttonid").addEventListener("click", openDialog);
+
+function openDialog() {
+  document.getElementById("fileid").click();
+}
+
+// Screenshot 1
+document.getElementById("buttonid1").addEventListener("click", openDialog);
+
+function openDialog() {
+  document.getElementById("screenshotpic0").click();
+}
+
+// Screenshot 2
+document.getElementById("buttonid2").addEventListener("click", openDialog);
+
+function openDialog() {
+  document.getElementById("screenshotpic1").click();
+}

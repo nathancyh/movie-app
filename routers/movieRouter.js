@@ -18,7 +18,7 @@ module.exports = (express) => {
       return next();
     }
     const url = req.originalUrl;
-    // console.log("redirect-query", url);
+    console.log("redirect-query", url);
     // res.redirect(`/login?redirect=${url}`);
     res.redirect(`/login`);
   };
@@ -97,6 +97,7 @@ module.exports = (express) => {
         const movieReview = results[2];
         res.render("review", {
           user: user,
+          userid: data.user_id,
           poster: `https://image.tmdb.org/t/p/w300${data.poster_path}`,
           title: data.title,
           averageReview: data.vote_average,
@@ -125,6 +126,7 @@ module.exports = (express) => {
   }
 
   function putReview(req, res) {
+    console.log(req.body);
     return movieService
       .update(
         req.params.movieId,

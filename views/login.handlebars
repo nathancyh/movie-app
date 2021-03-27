@@ -1,23 +1,18 @@
-<div class="login-wrapper container-fluid d-flex justify-content-center">
-    {{!-- <div class=""> --}}
-        <form class="loginbox" action="/login" method="post">
-            <div class='login-text text-center'>
-                <h1>LOGIN</h1>
-            </div>
-            <div class=" login-form d-flex justify-content-center">
-                <input class="login-field" type="text" name="username" placeholder="User Name" />
-            </div>
-            <div class="mb-2 login-form d-flex justify-content-center">
-                <input class="login-field" type="password" name="password" placeholder="Password" />
-            </div>
-            <div class="mb-4 login-form d-flex justify-content-center">
-                <input class="btn btn-primary login-btn" type="submit" value="Log In" />
-            </div>
-            <div class="signup-field text-center">
-                <p class="field-text">Don't have an account? <a class="signup-link" href="/signup">Sign Up</a></p>
-                {{!-- <input class="btn signup-link" type="button" value="Sign Up" /> --}}
-            </div>
-        </form>
-        {{!--
-    </div> --}}
-</div>
+<form class="loginbox" action="/login" method="post">
+    <div class='login-text text-center'>
+        <h1>LOGIN</h1>
+    </div>
+    <div class=" login-form d-flex justify-content-center">
+        <input class="login-field" type="text" name="username" placeholder="User Name" />
+    </div>
+    <div class="mb-2 login-form d-flex justify-content-center">
+        <input class="login-field" type="password" name="password" placeholder="Password" />
+    </div>
+    <div class="mb-4 login-form d-flex justify-content-center">
+        <input class="btn btn-primary login-btn" type="submit" value="Log In" />
+    </div>
+    <div class="signup-field text-center">
+        <p class="field-text">Don't have an account? <a class="signup-link" href="/signup">Sign Up</a></p>
+        {{!-- <input class="btn signup-link" type="button" value="Sign Up" /> --}}
+    </div>
+</form>

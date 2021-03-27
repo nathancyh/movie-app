@@ -18,7 +18,6 @@ module.exports = class MovieService {
       .innerJoin("users", "reviews.user_id", "users.id")
       .where("reviews.user_id", userid)
       .then((data) => {
-        console.log("list data", data);
         return data;
       });
   }
@@ -89,7 +88,7 @@ module.exports = class MovieService {
   insert(data) {
     // console.log("insert done")
     let genreid = data.genres.map((x) => (x = x.id));
-    console.log(genreid);
+
     return this.knex("movies").insert([
       {
         api_id: data.id,

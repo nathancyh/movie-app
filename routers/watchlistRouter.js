@@ -43,7 +43,6 @@ module.exports = (express) => {
         }?api_key=d3fd18f172ad640f103d9cfa9fb37451`
       )
       .then((info) => {
-        console.log("INSERT DATA FROM WATCHLIST ROUTER");
         apiData = info.data;
         return movieService.checkdata(apiData.id);
       })

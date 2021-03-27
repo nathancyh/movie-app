@@ -21,20 +21,22 @@ $(function () {
     }).done(console.log("watchlist delete done"));
   });
 
-  $(".watchlist-add-btn").on("click", (e) => {
-    e.preventDefault();
-    console.log("search btn", e.currentTarget.dataset.movieid);
-    $.ajax({
-      type: "POST",
-      data: { api_id: e.currentTarget.dataset.movieid },
-      url: `/watchlist/${e.currentTarget.dataset.movieid}`,
-      success: function () {
-        console.log("INSERT WATCHLIST DATA SUCCESS");
-      },
-    })
-      .done(console.log("search insert .done"))
-      .fail(console.log("fail"));
-  });
+  //NO LONGER USED?
+//   $(".watchlist-add-btn").on("click", (e) => {
+//     e.preventDefault();
+//     console.log("search btn", e.currentTarget.dataset.movieid);
+//     $.ajax({
+//       type: "POST",
+//       data: { api_id: e.currentTarget.dataset.movieid },
+//       url: `/watchlist/${e.currentTarget.dataset.movieid}`,
+//       success: function () {
+//         console.log("INSERT WATCHLIST DATA SUCCESS");
+//       },
+//     })
+//       .done(console.log("search insert .done"))
+//       .fail(console.log("fail"));
+//   });
+
 
   // $(".watchlist-add-btn").click((e) => {
   //   e.preventDefault();

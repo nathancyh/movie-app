@@ -29,28 +29,16 @@ module.exports = class WatchService {
       .then((data) => data);
   }
 
-  //Check if  data already in watchlist
-  checkwatchlist(userid, movieId) {
-    return this.knex("watchlists")
-      .where("user_id", userid)
-      .andWhere("movie_id", movieId)
-      .then((data) => {
-        return data.length > 0 ? true : false;
-      });
-  }
-
-  //Add data to watchlist bridge table
-  addWatchlist(userid, movieId) {
+  addWatchlist(userid, watchlistMovie) {
     return this.knex("watchlists").insert({
       user_id: userid,
-      movie_id: movieId,
+      movie_id: watchlistMovie,
     });
   }
 
-  //Remove data from watchlist bridge table
-  removeWatchlist(userid, movieId) {
+  removeWatchlist(userid, watchlistMovie) {
     return this.knex("watchlists")
-      .where("movie_id", movieId)
+      .where("movie_id", watchlistMovie)
       .andWhere("user_id", userid)
       .del();
   }
