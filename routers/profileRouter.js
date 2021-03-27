@@ -70,11 +70,13 @@ module.exports = (express) => {
       })
       .then((data) => {
         userData = data;
+        console.log("userdatafavmovie");
         moviePoster = `/${profilepic}`;
-        if (userData[0].fav_movie) {
+        let fav_movie = userData[0].fav_movie;
+        if (fav_movie) {
           return axios
             .get(
-              `https://api.themoviedb.org/3/movie/${userData[0].fav_movie}?api_key=d3fd18f172ad640f103d9cfa9fb37451`
+              `https://api.themoviedb.org/3/movie/${fav_movie}?api_key=d3fd18f172ad640f103d9cfa9fb37451`
             )
             .then((data2) => {
               apiData = data2.data;

@@ -12,32 +12,6 @@ h2 .writerev {
   margin: 30px 0px;
 }
 
-.review-watchlist-add-style {
-  color: #fff;
-  background: #ffbe08 !important;
-  border-radius: 3px;
-  font-size: 13px;
-  text-transform: uppercase;
-  font-weight: bold;
-  background: none;
-  border: 1px solid #ccc;
-  padding: 7px 50px;
-  margin-top: 10px;
-  line-height: 16px;
-  background-color: #7575752d;
-}
-
-.review-watchlist-add-style i {
-  margin-left: 5px;
-}
-
-.review-watchlist-add-style:hover {
-  color: #000;
-  background: #ccc !important;
-  border-color: #ccc !important;
-  box-shadow: none;
-}
-
 .hidden {
   display: none;
 }
@@ -94,6 +68,7 @@ h2 .writerev {
   padding-left: 1rem;
   padding-right: 1rem;
 }
+
 /* star rating */
 fieldset,
 label {
@@ -171,11 +146,15 @@ h1[alt="Simple"] {
   margin-top: 15px;
 }
 
+.own-review {
+  border: #ffc000 2px solid;
+}
+
 .starrating > input:hover ~ label {
   color: #ffca08;
 } /* Set yellow color when star hover */
 
 h5 {
   text-align: center;
-  margin-top: 10px;
+  margin-top: 12px;
 }

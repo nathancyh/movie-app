@@ -316,11 +316,6 @@ a {
   vertical-align: middle;
 }
 
-/* ========= Genre Box ========= */
-.genre_div {
-  cursor: pointer;
-}
-
 /* ========= Footer ========= */
 #footer {
   background: #ffbe08;
@@ -432,6 +427,21 @@ a {
 }
 
 /* Genres */
+.genre_div {
+  cursor: pointer;
+}
+
+.genre_div h2 b {
+  z-index: 10;
+}
+
+.genre_div img {
+}
+
+.description h2:after {
+  content: none;
+}
+
 .container-images {
   display: grid;
   grid-gap: 10px;
@@ -468,49 +478,71 @@ a {
   justify-content: center;
   align-items: center;
   font-size: 15pt;
-  -webkit-filter: grayscale(0%);
+  /* -webkit-filter: grayscale(0%);
   filter: grayscale(0%);
   -webkit-transition: 0.3s ease-in-out;
-  transition: 0.3s ease-in-out;
+  transition: 0.3s ease-in-out; */
 }
 
 .container-images > div:hover {
-  -webkit-filter: grayscale(80%);
-  filter: grayscale(80%);
+  /* -webkit-filter: grayscale(80%);
+  filter: grayscale(80%); */
   /* opacity: 0.8; */
 }
 
-h2 .genreTitle {
-  color: #fff;
-}
-/* .hint:hover {
-  opacity: 1;
-} */
-
-/* A hover images for About me */
-/* .swap-on-hover {
-  position: relative;
-  margin: 0 auto;
-  max-width: 350px;
-} */
-
-/* Select the image and make it absolute to the container */
-/* .swap-on-hover img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  overflow: hidden;
-} */
-
-/* .swap-on-hover .swap-on-hover__front-image {
-  z-index: 9999;
-  transition: opacity 0.5s linear;
-  cursor: pointer;
+.genre-box-1 {
+  border-radius: 10px;
+  background: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)),
+    url(/assets/genres/action.jpeg);
 }
 
-.swap-on-hover:hover > .swap-on-hover__front-image {
-  opacity: 0;
-} */
+.genre-box-2 {
+  border-radius: 10px;
+  background: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)),
+    url(/assets/genres/animation.jpeg);
+}
+
+.genre-box-3 {
+  border-radius: 10px;
+  background: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)),
+    url(/assets/genres/comedy2.jpeg);
+}
+
+.genre-box-4 {
+  border-radius: 10px;
+  background: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)),
+    url(/assets/genres/drama.jpeg);
+}
+
+.genre-box-5 {
+  border-radius: 10px;
+  background: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)),
+    url(/assets/genres/fantasy.jpeg);
+}
+
+.genre-box-6 {
+  border-radius: 10px;
+  background: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)),
+    url(/assets/genres/horror.jpeg);
+}
+
+.genre-box-7 {
+  border-radius: 10px;
+  background: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)),
+    url(/assets/genres/romance.jpeg);
+}
+
+.genre-box-8 {
+  border-radius: 10px;
+  background: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)),
+    url(/assets/genres/thriller.jpeg);
+}
+
+.genre-box-9 {
+  border-radius: 10px;
+  background: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)),
+    url(/assets/genres/crime.jpeg);
+}
 
 .cont {
   display: grid;

@@ -2,6 +2,8 @@
   border-radius: 50%;
   object-fit: cover;
   border: 10px solid rgb(255, 255, 255);
+  justify-content: center;
+  text-align: center;
 }
 
 /* .edit-container {
@@ -20,6 +22,7 @@
 .profile-pic-col {
   /* width: 300px;
   height: 300px; */
+  display: flex;
   border-radius: 100px;
   padding: 20px;
 }
