@@ -8,6 +8,12 @@ $(function () {
     window.location.href = `/profile/edit/${userid}`;
   });
 
+  $(".edit-cancel-btn").click((e) => {
+    console.log("edit cancel");
+    console.log(e);
+    window.location.href = `/profile/${e.currentTarget.dataset.userid}`;
+  });
+
   $(".fav-genres").select2({
     maximumSelectionLength: 3,
   });

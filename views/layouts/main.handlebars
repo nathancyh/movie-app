@@ -54,9 +54,11 @@
                     <b>Hello {{user.name}} <i class="far fa-smile"></i></b></a>
                   </a>
                   <div class="dropdown-menu" aria-labelledby="navbarDropdown2">
-                    <a class="dropdown-item" href="/profile/{{user.id}}">Edit Profile
-                      <div class="dropdown-divider"></div>
-                      <a class="dropdown-item" href="/logout">Logout</a>
+                    <div>
+                      <a class="dropdown-item mb-2" href="/profile/{{user.id}}">Profile</a>
+                    </div>
+                    <div class="dropdown-divider ml-3 mr-3"></div>
+                    <a class="dropdown-item mb-2" href="/logout">Logout</a>
                   </div>
                   {{else}}
                   <a class="nav-link" href="/login">Login <i class="fas fa-user-circle"></i></a>

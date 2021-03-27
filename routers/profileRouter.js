@@ -55,39 +55,40 @@ module.exports = (express) => {
         console.log(error);
       });
 
-    let userData, apiData;
+    let userData, apiData, moviePoster, movieTitle;
     validateProfiles
       .then(() => validateScreenshot)
       .then(() => {
-        console.log("before getdata");
         return profileService.getdata(req.params.userid);
       })
       .then((data) => {
         userData = data;
-        console.log("userData");
-
-        return axios
-          .get(
-            `https://api.themoviedb.org/3/movie/${userData[0].fav_movie}?api_key=d3fd18f172ad640f103d9cfa9fb37451`
-          )
-          .then((data2) => {
-            apiData = data2.data;
-            console.log(apiData.poster_path);
-            return data2;
-          })
-          .catch((err) => console.log(err));
-        // return moviedata.original_title, moviedata.poster_path;
+        moviePoster = `/${profilepic}`;
+        if (userData[0].fav_movie) {
+          return axios
+            .get(
+              `https://api.themoviedb.org/3/movie/${userData[0].fav_movie}?api_key=d3fd18f172ad640f103d9cfa9fb37451`
+            )
+            .then((data2) => {
+              apiData = data2.data;
+              moviePoster = `https://image.tmdb.org/t/p/w300${apiData.poster_path}`;
+              movieTitle = apiData.original_title;
+              return apiData;
+            })
+            .catch((err) => console.log(err));
+        }
+        return apiData;
       })
       .then(() => {
         res.render("profile", {
           user: user,
           profile: profilepic,
-          poster: `https://image.tmdb.org/t/p/w300${apiData.poster_path}`,
+          poster: moviePoster,
           screenshot1: screenshot1,
           screenshot2: screenshot2,
           userid: userData[0].id,
           username: userData[0].name,
-          fav_movie: apiData.original_title,
+          fav_movie: movieTitle,
           fav_genre: userData[0].fav_genre,
           intro: userData[0].intro,
         });
