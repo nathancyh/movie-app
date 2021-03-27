@@ -5,30 +5,23 @@
             <div class="row  profile-pic-container">
                 <img class=" img-fluid profile-pic" src="/{{profile}}">
             </div>
-            <div class="row mt-4 d-flex justify-content-center">
-            {{#if user}}
-            <button type="button" class="btn btn-outline-warning edit-profile text-center">Edit Profile</button>
-            {{/if}}
-            </div>
         </div>
     </div>
-</div>
+    <div>            
+        {{#if user}}
+        <button type="button" class="btn btn-outline-warning edit-profile text-center">Edit Profile</button>
+        {{/if}}</div>
 </div>
 <div class="card">
     <div class="card-body">
         <div class="user-container col-md-8">
-            <b>Best movie of all time is:</b> {{fav_movie}}
+            <b>Favourite Genre:</b> {{fav_genre}}
+            <br>
+            <br>
+            <b>Favourite Title:</b> {{fav_movie}}
             <br>
             <br>
             <b>Reasons why:</b> {{intro}}
-            <br>
-            <br>
-            <b>Genres I'm interested in:</b> {{fav_genre}}
-
-            {{!-- {{username}}'s favourite movie info:
-            <h5><b>My Favourite Genres:</b> {{fav_genre}}</p>
-                <h5><b>TitleMovie:</b> {{fav_movie}}</p>
-                    <h5><b>Why {{fav_movie}}?</b> {{intro}}</p> --}}
         </div>
     </div>
 </div>
@@ -36,7 +29,7 @@
     <h5><b>Uploaded photos of my favourite scenes</h5></b>
     <div class="row">
         <div class="col vertical-align-center">
-            <img class=" img-fluid screenshot-pic" src="/{{screenshot1}}">
+            <img class=" img-fluid" src="{{poster}}">
         </div>
         <div class="col screenshot-container">
             <div class="row">

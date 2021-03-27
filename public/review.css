@@ -12,9 +12,9 @@ h2 .writerev {
   margin: 30px 0px;
 }
 
-.hidden {
+/* .hidden {
   display: none;
-}
+} */
 
 .info-container {
   max-width: 70%;
@@ -68,6 +68,7 @@ h2 .writerev {
   padding-left: 1rem;
   padding-right: 1rem;
 }
+
 /* star rating */
 fieldset,
 label {
@@ -145,11 +146,15 @@ h1[alt="Simple"] {
   margin-top: 15px;
 }
 
+.own-review {
+  border: #ffc000 2px solid;
+}
+
 .starrating > input:hover ~ label {
   color: #ffca08;
 } /* Set yellow color when star hover */
 
 h5 {
   text-align: center;
-  margin-top: 10px;
+  margin-top: 12px;
 }
