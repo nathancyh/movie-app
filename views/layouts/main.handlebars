@@ -27,50 +27,32 @@
 <body>
 
   {{!-- NAV --}}
-  <nav class="navbar navbar-expand-md navbar-dark bg-dark ">
-    <div class="navbar-center">
-      <span class="nav-icon">
-        <a href="/" class="navbar-brand">Movie App</a>
-      </span>
-      <div class="search">
-        <form class="">
-          <input class="typeahead form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        </form>
-      </div>
-      <div class="cart-btn">
-        <span class="nav-icon">
-          <div class="rightnav">
-            <ul class="navbar-nav navbar-right">
-              <div class="rightmargindiv">
-                <li class="nav-item">
-                  <a href="/shopping" class="nav-link">Store <i class="fas fa-store"></i></a>
-                </li>
-              </div>
-              <div class="rightmargindiv">
-                <li class="nav-item dropdown">{{#if user}}
-                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button" data-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false">
-                    <b>Hello {{user.name}} <i class="far fa-smile"></i></b></a>
-                  </a>
-                  <div class="dropdown-menu" aria-labelledby="navbarDropdown2">
-                    <a class="dropdown-item" href="/profile/{{user.id}}">View your Profile
-                      <div class="dropdown-divider"></div>
-                      <a class="dropdown-item" href="/logout">Logout</a>
-                  </div>
-                  {{else}}
-                  <a class="nav-link" href="/login">Login <i class="fas fa-user-circle"></i></a>
-                  {{/if}}
-                </li>
-              </div>
-              <div class="rightmargindiv">
-                <li class="nav-item">
-                  <a class="nav-link" href="#">Watch list <i class="fas fa-plus"></i></a>
-                </li>
-              </div>
 
-            </ul>
-          </div>
-      </div>
+  >>>>>>> 8ab29d0bbfa4f683e721d636eeb5e95288426374
+  <li class="nav-item dropdown">{{#if user}}
+    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button" data-toggle="dropdown"
+      aria-haspopup="true" aria-expanded="false">
+      <b>Hello {{user.name}} <i class="far fa-smile"></i></b></a>
+    </a>
+    <div class="dropdown-menu" aria-labelledby="navbarDropdown2">
+      <a class="dropdown-item" href="/profile/{{user.id}}">View your Profile
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" href="/logout">Logout</a>
+    </div>
+    {{else}}
+    <a class="nav-link" href="/login">Login <i class="fas fa-user-circle"></i></a>
+    {{/if}}
+
+    >>>>>>> 8ab29d0bbfa4f683e721d636eeb5e95288426374
+  </li>
+  </div>
+  <div class="rightmargindiv">
+    <li class="nav-item">
+
+      >>>>>>> 8ab29d0bbfa4f683e721d636eeb5e95288426374
+      </ul>
+  </div>
+  </div>
   </nav>
   <main class="main-content">
     <div class="container">
