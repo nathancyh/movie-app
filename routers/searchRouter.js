@@ -21,7 +21,7 @@ module.exports = (express) => {
     let voteCountGate = "";
     let genreOption = "";
 
-    console.log(req.get("Referrer")); //TODO: usr referrer to to do genre > sort
+    // console.log(req.get("Referrer")); //TODO: usr referrer to to do genre > sort
 
     // /search/sort=popularity.desc"
     switch (req.query.sort) {
@@ -95,7 +95,7 @@ module.exports = (express) => {
       .get(getURL)
       .then((info) => {
         //Input user id and apiArr, return newapiArr with wishlist boolean checks
-        if (req.user) {
+        if (req.isAuthenticated()) {
           return watchlistService
             .findWatchlistBoolean(req.user.id, info)
             .then((data) => {

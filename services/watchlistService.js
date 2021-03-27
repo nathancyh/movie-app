@@ -57,15 +57,11 @@ module.exports = class WatchService {
 
   //Input user id and apiArr, return newapiArr with wishlist boolean checks
   findWatchlistBoolean(userid, apiData) {
-    // console.log(apiData);
     let searchArr = apiData.data.results;
     let apiIdArr = searchArr.map((x) => (x = x.id));
     let boolArr = [];
     return this.watchlistUser(userid)
       .then((userWatchlist) => {
-        // console.log("apiIdArr");
-        // console.log(apiIdArr);
-        // console.log("user data");
         let userWatchlistArr = userWatchlist.map((x) => (x = x.movie_id));
         apiIdArr.forEach((element) => {
           boolArr.push(userWatchlistArr.includes(element));
@@ -78,6 +74,6 @@ module.exports = class WatchService {
         }
         return searchArr;
       })
-      .catch((err) => console.error(err));
+      .catch((err) => console.log(err));
   }
 };
