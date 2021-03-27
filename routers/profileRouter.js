@@ -46,6 +46,23 @@ module.exports = (express) => {
         console.log(error);
       });
 
+    //Check if screenshots exist, if not render placeholder
+    // let validateScreenshot = fs.promises
+    //   .readdir("./uploads")
+    //   .then((data) => {
+    //     screenshot1 = data.find((file) => file == `${req.params.userid}_0.jpg`);
+    //     screenshot2 = data.find((file) => file == `${req.params.userid}_1.jpg`);
+    //     if (screenshot1 === undefined) {
+    //       screenshot1 = `screenshotplaceholder.jpg`;
+    //     }
+    //     if (screenshot2 === undefined) {
+    //       screenshot2 = `screenshotplaceholder.jpg`;
+    //     }
+    //   })
+    //   .catch((error) => {
+    //     console.log(error);
+    //   });
+
     let userData, apiData, moviePoster, movieTitle;
     validateUploads
       .then(() => {
