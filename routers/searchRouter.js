@@ -7,17 +7,20 @@ module.exports = (express) => {
   const knexConfig = require("../knexfile").development;
   const knex = require("knex")(knexConfig);
 
+  const WatchlistService = require("../services/watchlistService");
+  const watchlistService = new WatchlistService(knex);
+
   router.route("/").get(getSearch);
   router.route("/:search").get(getSearchQuery);
-
+  router.route("/:movieid").put(addWatchItem);
   // router.route("/:movieid").delete(deleteWatchItem);
 
   function getSearch(req, res) {
-    // console.log(req.session);
-    // console.log(req.user);
+    console.log(req.session);
+    console.log(req.user);
 
-    // console.log("originalURL");
-    // console.log(req.originalUrl);
+    console.log("originalURL");
+    console.log(req.originalUrl);
     let user = req.user;
     let sortOption = "popularity.desc";
     let sortingDisplay = "Popularity";
@@ -97,11 +100,8 @@ module.exports = (express) => {
     return axios
       .get(getURL)
       .then((info) => {
-        // console.log("Query Switch Page");
+        console.log("Query Switch Page");
         // console.log(info.data.results[0].title);
-        let idArr = info.data.results.map((x) => (x = x.id));
-        console.log("idArr");
-        console.log(idArr);
         res.render("search", {
           user: user,
           searchArr: info.data.results,
@@ -114,7 +114,6 @@ module.exports = (express) => {
   // /search/star+wars
   function getSearchQuery(req, res) {
     let user = req.user;
-    // console.log("getting search data");
     return axios
       .get(
         `http://api.themoviedb.org/3/search/movie?query=${req.params.search}&api_key=f22e6ce68f5e5002e71c20bcba477e7d`
@@ -130,6 +129,25 @@ module.exports = (express) => {
       })
       .catch((err) => console.log(err));
   }
+
+  // ADD TO WATCHLIST BUTTON
+  function addWatchItem(req, res) {
+    return watchlistService
+      .addWatchlist(1, req.params.movieid) //TODO
+      .then(() => {
+        res.send("watchlist item added");
+      })
+      .catch((err) => res.status(500).json(err));
+  }
+
+  // function deleteWatchItem(req, res) {
+  //   return watchlistService
+  //     .removeWatchlist(1, req.params.movieid) //TODO
+  //     .then(() => {
+  //       res.send("watchlist item deleted");
+  //     })
+  //     .catch((err) => res.status(500).json(err));
+  // }
 
   return router;
 };
