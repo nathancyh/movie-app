@@ -18,16 +18,17 @@
                             </div>
                             <div class="col d-flex flex-column flex-sm-row justify-content-between mb-3">
                                 <div class="text-center text-sm-left mb-2 mb-sm-0">
-                                    <h4 class="pt-sm-2 pb-1 mb-0 text-nowrap">Handlebar name</h4>
+                                    <h4 class="pt-sm-2 pb-1 mb-0 text-nowrap">{{username}}</h4>
                                     <div class="mt-2">
                                         <input type="file" id="fileid" name="profileimageupload"
                                             accept="IMAGE/JPG" , "IMAGE/PNG" , "IMAGE/JPEG" / hidden>
-                                        <br /><br />
-                                        <button id="buttonid"
-                                            class="btn btn-primary btn btn-outline-warning" type="button">
+                                        <br />
+                                        <label for="fileid" id="buttonid"
+                                            class="btn btn-primary btn btn-outline-warning mb-3" type="button">
                                             <i class="fa fa-fw fa-camera"></i>
                                             <span>Change Photo</span>
-                                        </button>
+                                        </label>
+                                        <p id="name-propic"></p>
                                     </div>
                                 </div>
                             </div>
@@ -35,7 +36,7 @@
                         <div class="row">
                             <div class="col">
                                 <div class="form-group">
-                                    <label>Favourite Genres (choose more than 1)</label><br>
+                                    <label>Favourite Genres (choose More Than 1)</label><br>
                                     <select class="fav-genres js-states form-control"
                                         id="id_label_multiple" multiple="multiple"
                                         placeholder="Choose from the following">
@@ -63,7 +64,7 @@
                             </div>
                             <div class="col">
                                 <div class="form-group">
-                                    <label>Favourite Movie of all time</label><br>
+                                    <label>Favourite Movie of All Time</label><br>
                                     <input class="typeahead1 form-control me-2"
                                         type="search" placeholder="Search"
                                         aria-label="Search" name="search">
@@ -71,9 +72,9 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col mb-3">
+                            <div class="col">
                                 <div class="form-group">
-                                    <label>Tell us why it is your favourite</label>
+                                    <label>Tell Us Why It Is Your Favourite</label>
                                     <textarea class="form-control introduce-area" rows="5"
                                         placeholder=""></textarea>
                                 </div>
@@ -87,28 +88,32 @@
 
     <div class="card">
         <div class="card-body">
-            <label>Add 2 of your favourite movie scenes to your profile</label>
+            <p>Add 2 of Your Favourite Movie Scenes to Your Profile</p>
                 {{!-- screenshot0 --}}
+                <br />
+                <label for="screenshotpic0" id="buttonid1" class="btn btn-primary btn btn-outline-warning mb-3" type="button">
+                    <i class="fa fa-fw fa-camera"></i>
+                    <span>Photo 1</span>
+                </label>
+                <p id="name-screenshotpic0"></p>
+                <br /><br />
                 <input type="file" id="screenshotpic0" name="screenshot0" accept="IMAGE/JPG" , "IMAGE/PNG"
-                    , "IMAGE/JPEG">
-                <br /><br />
-                <button id="buttonid1" class="btn btn-primary btn btn-outline-warning" type="button">
-                    <i class="fa fa-fw fa-camera"></i>
-                    <span>photo 1</span>
-                </button>
+                    , "IMAGE/JPEG" /hidden>
+                <br />
                 {{!-- screenshot 1 --}}
-                <input type="file" id="screenshotpic1" name="screenshot1" accept="IMAGE/JPG" , "IMAGE/PNG"
-                    , "IMAGE/JPEG">
-                <br /><br />
-                <button id="buttonid2" class="btn btn-primary btn btn-outline-warning" type="button">
+                <label for="screenshotpic1" id="buttonid2" class="btn btn-primary btn btn-outline-warning mb-3" type="button">
                     <i class="fa fa-fw fa-camera"></i>
-                    <span>photo 2</span>
-                </button>
+                    <span>Photo 2</span>
+                </label>
+                <p id="name-screenshotpic1"></p>
+                <br />
+                <input type="file" id="screenshotpic1" name="screenshot1" accept="IMAGE/JPG" , "IMAGE/PNG"
+                    , "IMAGE/JPEG" /hidden>
+                <br />
                 <input class="screenshot-upload-btn" type="submit" value="Upload" / hidden>
                 <button class="screenshot-del-btn" hidden>DELETE</button>
         </div>
     </div>
-
 
     <div class="card-body">
         <div class="row">
@@ -119,7 +124,5 @@
         </div>
     </div>
 
-    <button type="button" class="edit-cancel-btn btn btn-primary" data-userid="{{userid}}">Cancel</button>
-    <button type=" button" class="update-btn btn btn-primary" data-userid="{{userid}}">Save Changes</button>
     </form>
 </div>

@@ -107,12 +107,11 @@ module.exports = (express) => {
     res.render("profileedit", {
       user: req.user,
       userid: req.user.id,
+      username: req.user.name,
     });
   }
 
   function putProfileEdit(req, res) {
-    console.log("req.body in proRouter");
-    console.log(req.body);
     return profileService
       .add(
         req.params.userid,
@@ -162,9 +161,3 @@ module.exports = (express) => {
 
   return router;
 };
-
-// psedudo code
-// check if file in system (fsreaddir)
-// use js to check if the filename needed exist
-//if exist, return working image like to handlebar
-//If not exist, return link of default image

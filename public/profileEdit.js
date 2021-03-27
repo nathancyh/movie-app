@@ -46,25 +46,42 @@ $(function () {
   });
 
   // Profile image
-  document.getElementById("buttonid").addEventListener("click", openDialog1);
 
-  function openDialog1() {
-    document.getElementById("fileid").click();
-  }
+  // document.getElementById("buttonid").addEventListener("click", openDialog1);
+  // function openDialog1() {
+  //   document.getElementById("fileid").click();
+  // }
 
-  // Screenshot 1
-  document.getElementById("buttonid1").addEventListener("click", openDialog2);
+  // // Screenshot 1
+  // document.getElementById("buttonid1").addEventListener("click", openDialog2);
+  // function openDialog2() {
+  //   document.getElementById("screenshotpic0").click();
+  // }
 
-  function openDialog2() {
-    document.getElementById("screenshotpic0").click();
-  }
+  // // Screenshot 2
+  // document.getElementById("buttonid2").addEventListener("click", openDialog3);
+  // function openDialog3() {
+  //   document.getElementById("screenshotpic1").click();
+  // }
 
-  // Screenshot 2
-  document.getElementById("buttonid2").addEventListener("click", openDialog3);
+  //Profile edit uploaded nametag
+  $("#fileid").on("change", function () {
+    var file = $("#fileid")[0].files[0].name;
+    console.log(file);
+    $("#name-propic").text(file);
+  });
 
-  function openDialog3() {
-    document.getElementById("screenshotpic1").click();
-  }
+  $("#screenshotpic0").on("change", function () {
+    var file = $("#screenshotpic0")[0].files[0].name;
+    console.log(file);
+    $("#name-screenshotpic0").text(file);
+  });
+
+  $("#screenshotpic1").on("change", function () {
+    var file = $("#screenshotpic1")[0].files[0].name;
+    console.log(file);
+    $("#name-screenshotpic1").text(file);
+  });
 
   ///////////TWITTER-TYPEAHEAD/////////////
 
