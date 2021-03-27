@@ -1,112 +1,86 @@
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
 <div class="container">
+    <form action="/profile/upload1" enctype="multipart/form-data" method="POST">
     <div class="row flex-lg-nowrap">
-
-        <div class="col">
-            <div class="row">
-                <div class="col mb-3">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="e-profile">
-                                <div class="row">
-                                    <div class="col-12 col-sm-auto mb-3">
-                                        <div class="mx-auto" style="width: 140px;">
-                                            <div class="d-flex justify-content-center align-items-center rounded"
-                                                style="height: 140px; background-color: rgb(233, 236, 239);">
-                                                <span
-                                                    style="color: rgb(166, 168, 170); font: bold 8pt Arial;">140x140</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col d-flex flex-column flex-sm-row justify-content-between mb-3">
-                                        <div class="text-center text-sm-left mb-2 mb-sm-0">
-                                            <h4 class="pt-sm-2 pb-1 mb-0 text-nowrap">Handlebar name</h4>
-                                            <div class="mt-2">
-                                                <form action="/profile/upload1" enctype="multipart/form-data"
-                                                    method="POST">
-                                                    <input type="file" id="fileid" name="profileimageupload"
-                                                        accept="IMAGE/JPG" , "IMAGE/PNG" , "IMAGE/JPEG" / hidden>
-                                                    <br /><br />
-                                                    <button id="buttonid"
-                                                        class="btn btn-primary btn btn-outline-warning" type="button">
-                                                        <i class="fa fa-fw fa-camera"></i>
-                                                        <span>Change Photo</span>
-                                                    </button>
-
-                                            </div>
-                                        </div>
+        <div class="col mb-3">
+            <div class="card">
+                <div class="card-body">
+                    <div class="e-profile">
+                        <div class="row">
+                            <div class="col-12 col-sm-auto mb-3">
+                                <div class="mx-auto" style="width: 140px;">
+                                    <div class="d-flex justify-content-center align-items-center rounded"
+                                        style="height: 140px; background-color: rgb(233, 236, 239);">
+                                        <span
+                                            style="color: rgb(166, 168, 170); font: bold 8pt Arial;">140x140</span>
                                     </div>
                                 </div>
-                                <ul class="nav nav-tabs">
-                                    <li class="nav-item"><a href="" class="active nav-link">Edit your profile</a></li>
-                                </ul>
-                                <div class="tab-content pt-3">
-                                    <div class="tab-pane active">
-                                        <form class="form" novalidate="">
-                                            <div class="row">
-                                                <div class="col">
-                                                    <div class="row">
-                                                        <div class="col">
-                                                            <div class="form-group">
-                                                                <label>Favourite Genres (choose more than 1)</label><br>
-                                                                <select class="fav-genres js-states form-control"
-                                                                    id="id_label_multiple" multiple="multiple"
-                                                                    placeholder="Choose from the following">
-                                                                    <option>Action</option>
-                                                                    <option>Adventure</option>
-                                                                    <option>Animation</option>
-                                                                    <option>Comedy</option>
-                                                                    <option>Crime</option>
-                                                                    <option>Documentary</option>
-                                                                    <option>Drama</option>
-                                                                    <option>Family</option>
-                                                                    <option>Fantasy</option>
-                                                                    <option>History</option>
-                                                                    <option>Horror</option>
-                                                                    <option>Music</option>
-                                                                    <option>Mystery</option>
-                                                                    <option>Romance</option>
-                                                                    <option>Science Fiction</option>
-                                                                    <option>TV Movie</option>
-                                                                    <option>Thriller</option>
-                                                                    <option>War</option>
-                                                                    <option>Western</option>
-                                                                </select>
-
-                                                            </div>
-                                                        </div>
-                                                        <div class="col">
-                                                            <div class="form-group">
-                                                                <label>Favourite Movie of all time</label><br>
-                                                                <input class="typeahead1 form-control me-2"
-                                                                    type="search" placeholder="Search"
-                                                                    aria-label="Search" name="search">
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="col mb-3">
-                                                            <div class="form-group">
-                                                                <label>Tell us why it is your favourite</label>
-                                                                <textarea class="form-control introduce-area" rows="5"
-                                                                    placeholder=""></textarea>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-12 col-sm-5 offset-sm-1 mb-3">
-                                                </div>
-
-                                            </div>
+                            </div>
+                            <div class="col d-flex flex-column flex-sm-row justify-content-between mb-3">
+                                <div class="text-center text-sm-left mb-2 mb-sm-0">
+                                    <h4 class="pt-sm-2 pb-1 mb-0 text-nowrap">Handlebar name</h4>
+                                    <div class="mt-2">
+                                        <input type="file" id="fileid" name="profileimageupload"
+                                            accept="IMAGE/JPG" , "IMAGE/PNG" , "IMAGE/JPEG" / hidden>
+                                        <br /><br />
+                                        <button id="buttonid"
+                                            class="btn btn-primary btn btn-outline-warning" type="button">
+                                            <i class="fa fa-fw fa-camera"></i>
+                                            <span>Change Photo</span>
+                                        </button>
                                     </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group">
+                                    <label>Favourite Genres (choose more than 1)</label><br>
+                                    <select class="fav-genres js-states form-control"
+                                        id="id_label_multiple" multiple="multiple"
+                                        placeholder="Choose from the following">
+                                        <option>Action</option>
+                                        <option>Adventure</option>
+                                        <option>Animation</option>
+                                        <option>Comedy</option>
+                                        <option>Crime</option>
+                                        <option>Documentary</option>
+                                        <option>Drama</option>
+                                        <option>Family</option>
+                                        <option>Fantasy</option>
+                                        <option>History</option>
+                                        <option>Horror</option>
+                                        <option>Music</option>
+                                        <option>Mystery</option>
+                                        <option>Romance</option>
+                                        <option>Science Fiction</option>
+                                        <option>TV Movie</option>
+                                        <option>Thriller</option>
+                                        <option>War</option>
+                                        <option>Western</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="form-group">
+                                    <label>Favourite Movie of all time</label><br>
+                                    <input class="typeahead1 form-control me-2"
+                                        type="search" placeholder="Search"
+                                        aria-label="Search" name="search">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col mb-3">
+                                <div class="form-group">
+                                    <label>Tell us why it is your favourite</label>
+                                    <textarea class="form-control introduce-area" rows="5"
+                                        placeholder=""></textarea>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
     </div>
@@ -114,11 +88,9 @@
     <div class="card">
         <div class="card-body">
             <label>Add 2 of your favourite movie scenes to your profile</label>
-            {{!-- <form action="/profile/upload1" enctype="multipart/form-data" method="POST"> --}}
-
                 {{!-- screenshot0 --}}
                 <input type="file" id="screenshotpic0" name="screenshot0" accept="IMAGE/JPG" , "IMAGE/PNG"
-                    , "IMAGE/JPEG" / hidden>
+                    , "IMAGE/JPEG">
                 <br /><br />
                 <button id="buttonid1" class="btn btn-primary btn btn-outline-warning" type="button">
                     <i class="fa fa-fw fa-camera"></i>
@@ -126,18 +98,14 @@
                 </button>
                 {{!-- screenshot 1 --}}
                 <input type="file" id="screenshotpic1" name="screenshot1" accept="IMAGE/JPG" , "IMAGE/PNG"
-                    , "IMAGE/JPEG" / hidden>
+                    , "IMAGE/JPEG">
                 <br /><br />
                 <button id="buttonid2" class="btn btn-primary btn btn-outline-warning" type="button">
                     <i class="fa fa-fw fa-camera"></i>
                     <span>photo 2</span>
                 </button>
-                {{!-- <input type="file" name="screenshot0" accept="IMAGE/JPG" , "IMAGE/PNG" , "IMAGE/JPEG" />
-                <br /><br />
-                <input type="file" name="screenshot1" accept="IMAGE/JPG" , "IMAGE/PNG" , "IMAGE/JPEG" /> --}}
                 <input class="screenshot-upload-btn" type="submit" value="Upload" / hidden>
                 <button class="screenshot-del-btn" hidden>DELETE</button>
-
         </div>
     </div>
 
@@ -147,46 +115,11 @@
             <div class="col d-flex justify-content-end">
                 <button type="button" class="update-btn btn btn-primary btn btn-outline-warning"
                     data-userid="{{userid}}">Save Changes</button>
-                </form>
             </div>
         </div>
     </div>
 
-
-
-
-
-    //ORIGINAL CODE BELOW
-    {{!-- <input type="file" class="inpFile"> --}}
-
-
-    {{!-- ORIGINAL UPLOAD CODE --}}
-    {{!-- <div class="fav-movie-container">
-        <label>Favourite Movie</label>
-        <input class="typeahead1 form-control me-2" type="search" placeholder="Search" aria-label="Search"
-            name="search">
-
-        <br><br><br>
-
-        <textarea class="introduce-area" cols="40" rows="5" name="intro" placeholder="Why do you like it?"></textarea>
-        <br><br><br>
-
-        <label>Screenshot of Your Fav Scene + profile lol</label>
-        <form action="/profile/upload1" enctype="multipart/form-data" method="POST">
-
-            <label>Profile Picture</label>
-            <input type="file" name="profileimageupload" accept="IMAGE/JPG" , "IMAGE/PNG" , "IMAGE/JPEG" /> <br /><br />
-            {{!-- <input class="profile-pic-btn" type="submit" value="Upload" />
-            <br /><br /> --}}
-            <input type="file" name="screenshot0" accept="IMAGE/JPG" , "IMAGE/PNG" , "IMAGE/JPEG" /> <br /><br />
-            <input type="file" name="screenshot1" accept="IMAGE/JPG" , "IMAGE/PNG" , "IMAGE/JPEG" />
-            <input class="screenshot-upload-btn" type="submit" value="Upload" />
-            <button class="screenshot-del-btn">DELETE</button>
-        </form>
-
-    </div>
-    <br><br><br>
     <button type="button" class="edit-cancel-btn btn btn-primary" data-userid="{{userid}}">Cancel</button>
     <button type=" button" class="update-btn btn btn-primary" data-userid="{{userid}}">Save Changes</button>
+    </form>
 </div>
-</div> --}}

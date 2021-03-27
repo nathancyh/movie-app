@@ -26,24 +26,15 @@ module.exports = (express) => {
     let user = req.user;
     let screenshot1, screenshot2, profilepic;
     //Check if propic exist, if not render placeholder
-    let validateProfiles = fs.promises
+    let validateUploads = fs.promises
       .readdir("./uploads")
       .then((data) => {
         profilepic = data.find((file) => file == `${req.params.userid}_p.jpg`);
+        screenshot1 = data.find((file) => file == `${req.params.userid}_0.jpg`);
+        screenshot2 = data.find((file) => file == `${req.params.userid}_1.jpg`);
         if (profilepic === undefined) {
           profilepic = `profileplaceholder.jpg`;
         }
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-
-    //Check if screenshots exist, if not render placeholder
-    let validateScreenshot = fs.promises
-      .readdir("./uploads")
-      .then((data) => {
-        screenshot1 = data.find((file) => file == `${req.params.userid}_0.jpg`);
-        screenshot2 = data.find((file) => file == `${req.params.userid}_1.jpg`);
         if (screenshot1 === undefined) {
           screenshot1 = `screenshotplaceholder.jpg`;
         }
@@ -55,9 +46,25 @@ module.exports = (express) => {
         console.log(error);
       });
 
+    //Check if screenshots exist, if not render placeholder
+    // let validateScreenshot = fs.promises
+    //   .readdir("./uploads")
+    //   .then((data) => {
+    //     screenshot1 = data.find((file) => file == `${req.params.userid}_0.jpg`);
+    //     screenshot2 = data.find((file) => file == `${req.params.userid}_1.jpg`);
+    //     if (screenshot1 === undefined) {
+    //       screenshot1 = `screenshotplaceholder.jpg`;
+    //     }
+    //     if (screenshot2 === undefined) {
+    //       screenshot2 = `screenshotplaceholder.jpg`;
+    //     }
+    //   })
+    //   .catch((error) => {
+    //     console.log(error);
+    //   });
+
     let userData, apiData, moviePoster, movieTitle;
-    validateProfiles
-      .then(() => validateScreenshot)
+    validateUploads
       .then(() => {
         return profileService.getdata(req.params.userid);
       })
@@ -104,6 +111,8 @@ module.exports = (express) => {
   }
 
   function putProfileEdit(req, res) {
+    console.log("req.body in proRouter");
+    console.log(req.body);
     return profileService
       .add(
         req.params.userid,

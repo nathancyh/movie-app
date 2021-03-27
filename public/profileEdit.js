@@ -1,13 +1,14 @@
 "use strict";
 
 $(function () {
+  ///////PROFILE PAGE
   $(".edit-profile").click((e) => {
     // e.preventDefault();
     let userid = window.location.pathname.slice(9);
-    console.log(userid);
     window.location.href = `/profile/edit/${userid}`;
   });
 
+  /////PROFIEL EDIT
   $(".edit-cancel-btn").click((e) => {
     console.log("edit cancel");
     console.log(e);
@@ -17,6 +18,55 @@ $(function () {
   $(".fav-genres").select2({
     maximumSelectionLength: 3,
   });
+
+  //Trigger form-submit and axios put texts
+  $(".update-btn").on("click", (e) => {
+    e.preventDefault();
+    //press update-btn will trigger screenshot-upload-btn
+    $(".screenshot-upload-btn").trigger("click");
+
+    let favGen = $(".fav-genres").val();
+    let favMovie = Number(value);
+    let intro = $(".introduce-area").val();
+    let userid = window.location.pathname.slice(14);
+    axios
+      .put(`/profile/edit/${userid}`, {
+        fav_movie: favMovie,
+        fav_genre: favGen,
+        intro: intro,
+      })
+      .then(function (response) {
+        setTimeout(function () {
+          window.location.href = "/";
+        }, 500);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  });
+
+  // Profile image
+  document.getElementById("buttonid").addEventListener("click", openDialog1);
+
+  function openDialog1() {
+    document.getElementById("fileid").click();
+  }
+
+  // Screenshot 1
+  document.getElementById("buttonid1").addEventListener("click", openDialog2);
+
+  function openDialog2() {
+    document.getElementById("screenshotpic0").click();
+  }
+
+  // Screenshot 2
+  document.getElementById("buttonid2").addEventListener("click", openDialog3);
+
+  function openDialog3() {
+    document.getElementById("screenshotpic1").click();
+  }
+
+  ///////////TWITTER-TYPEAHEAD/////////////
 
   const movies = new Bloodhound({
     datumTokenizer: (datum) => Bloodhound.tokenizers.whitespace(datum.value),
@@ -66,51 +116,4 @@ $(function () {
     value = suggestion.id;
     return value;
   });
-
-  $(".update-btn").on("click", (e) => {
-    e.preventDefault();
-
-    $(".screenshot-upload-btn").trigger("click");
-
-    let favGen = $(".fav-genres").val();
-    let favMovie = Number(value);
-    let intro = $(".introduce-area").val();
-    axios
-      .put("/profile/edit/1", {
-        //TODO:
-        //TODO
-        fav_movie: favMovie,
-        fav_genre: favGen,
-        intro: intro,
-      })
-      .then(function (response) {
-        setTimeout(function () {
-          window.location.href = "/";
-        }, 500);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-  });
 });
-
-// Profile image
-document.getElementById("buttonid").addEventListener("click", openDialog);
-
-function openDialog() {
-  document.getElementById("fileid").click();
-}
-
-// Screenshot 1
-document.getElementById("buttonid1").addEventListener("click", openDialog);
-
-function openDialog() {
-  document.getElementById("screenshotpic0").click();
-}
-
-// Screenshot 2
-document.getElementById("buttonid2").addEventListener("click", openDialog);
-
-function openDialog() {
-  document.getElementById("screenshotpic1").click();
-}
