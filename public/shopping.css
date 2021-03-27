@@ -34,6 +34,7 @@ h2 b {
 
 p {
   margin-top: 0;
+  /* font-size: 12pt; */
   /* margin-bottom: 1rem; */
 }
 
@@ -544,7 +545,11 @@ body {
 
 .btn:hover {
   background-color: white;
-  color: #ffbe08;
+}
+
+a:hover {
+  color: #7e7e7e;
+  text-decoration: none;
 }
 
 .payment-logo {
@@ -591,4 +596,3 @@ body {
     margin-top: 20px;
   }
 }
-

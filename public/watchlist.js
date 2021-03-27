@@ -1,7 +1,7 @@
 "use strict";
 
 $(function () {
-  $(".watchlist-del-btn").click((e) => {
+  $(".watchlist-del-btn").on("click", (e) => {
     e.preventDefault();
     $.ajax({
       type: "DELETE",
@@ -10,6 +10,10 @@ $(function () {
         // console.log("watchlist deleted item");
         window.location.reload();
       },
-    }).done(console.log("watchlist delete done"));
+    }).done(
+      setTimeout(() => {
+        window.location.reload();
+      }, 200)
+    );
   });
 });

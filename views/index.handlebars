@@ -26,7 +26,7 @@
                     </div>
                     <div class="carousel-title-box">
                       <a href="/movie/{{this.id}}">
-                        <h4 class="carousel-title">{{this.title}}</h4>
+                        <h4 class="carousel-title">{{this.title}} {{this.watchlistCheck}}</h4>
                       </a>
                     </div>
                     {{!-- <p class="movie-date">({{slicedate this.release_date}})</p> --}}
@@ -90,9 +90,12 @@
                       <h4>{{this.title}}</h4>
                     </a>
                     {{!-- <p class="movie-date">{{slicedate this.release_date}}</p> --}}
-                    <button class="index-watchlist-add-style btn" data-movieid={{this.id}}>
+                    <<<<<<< HEAD <button class="index-watchlist-add-style btn" data-movieid={{this.id}}>
                       WATCHLIST<i id={{this.id}} class="fas fa-plus"></i>
-                    </button>
+                      </button>
+                      =======
+                      <button class="index-watchlist-add btn">Add to Watchlist</button>
+                      >>>>>>> master
                   </div>
                 </div>
               </div>
@@ -102,7 +105,7 @@
           {{/each}}
         </div>
         <!-- Carousel controls -->
-        <a class=" carousel-control-prev" href="#myCarousel-1" data-slide="prev">
+        <a class="carousel-control-prev" href="#myCarousel-1" data-slide="prev">
           <i class="fa fa-angle-left"></i>
         </a>
         <a class="carousel-control-next" href="#myCarousel-1" data-slide="next">
