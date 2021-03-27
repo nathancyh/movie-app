@@ -84,3 +84,24 @@ $(function () {
       });
   });
 });
+
+// Profile image
+document.getElementById("buttonid").addEventListener("click", openDialog);
+
+function openDialog() {
+  document.getElementById("fileid").click();
+}
+
+// Screenshot 1
+document.getElementById("buttonid1").addEventListener("click", openDialog);
+
+function openDialog() {
+  document.getElementById("screenshotpic0").click();
+}
+
+// Screenshot 2
+document.getElementById("buttonid2").addEventListener("click", openDialog);
+
+function openDialog() {
+  document.getElementById("screenshotpic1").click();
+}

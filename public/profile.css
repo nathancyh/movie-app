@@ -1,17 +1,20 @@
 .profile-pic {
-  /* width: 200px;
-  height: auto; */
   border-radius: 50%;
   object-fit: cover;
+  border: 10px solid rgb(255, 255, 255);
 }
 
 /* .edit-container {
-  
+
 } */
 .profile-pic-container {
   overflow: hidden;
   border-radius: 50%;
   object-fit: cover;
+  width: 200px;
+  height: 200px;
+  border: 5px;
+  justify-content: center;
 }
 
 .profile-pic-col {
@@ -23,7 +26,7 @@
 
 .screenshot-pic {
   width: 680px;
-  height: 480px;
+  height: 300px;
   padding: 20px;
   object-fit: cover;
 }
@@ -37,3 +40,9 @@
   width: 80%;
   max-width: 300px;
 }
+
+/* Profile upload image */
+/* body {
+  margin-top: 20px;
+  background: #f8f8f8;
+} */
