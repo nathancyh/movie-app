@@ -70,6 +70,9 @@ module.exports = (express) => {
               //query fail
               console.log(err);
               return "";
+            })
+            .catch((err) => {
+              console.log(err);
             });
         }
       })
