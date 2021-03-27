@@ -40,7 +40,7 @@
   font-weight: bold;
   background: none;
   border: 1px solid #ccc;
-  padding: 7px 12px;
+  padding: 7px 30px;
   margin-top: 10px;
   line-height: 16px;
   background-color: #7575752d;
@@ -48,10 +48,6 @@
 
 .search-watchlist-add-style i {
   margin-left: 5px;
-}
-
-.green {
-  background-color: green;
 }
 
 .search-watchlist-add-style:hover {
