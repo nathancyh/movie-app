@@ -4,6 +4,12 @@ module.exports = (express) => {
   const router = express.Router();
   const axios = require("axios");
 
+  const knexConfig = require("../knexfile").development;
+  const knex = require("knex")(knexConfig);
+
+  const WatchlistService = require("../services/watchlistService");
+  const watchlistService = new WatchlistService(knex);
+
   router.route("/").get(indexCarousel);
 
   function indexCarousel(req, res) {
@@ -36,22 +42,48 @@ module.exports = (express) => {
         .catch((err) => res.status(500).json(err));
     }
 
-    function getUpComing(req, res) {
-      return axios
-        .get(
-          `https://api.themoviedb.org/3/movie/upcoming?api_key=f22e6ce68f5e5002e71c20bcba477e7d&language=en-US&page=1`
-        )
-        .then((info) => {
-          // console.log(info.data.results[2].title);
-          // console.log("3");
-          return info;
-        })
-        .catch((err) => res.status(500).json(err));
-    }
-    Promise.all([getTop(), getNowPlaying(), getUpComing()])
+    // function getUpComing(req, res) {
+    //   return axios
+    //     .get(
+    //       `https://api.themoviedb.org/3/movie/upcoming?api_key=f22e6ce68f5e5002e71c20bcba477e7d&language=en-US&page=1`
+    //     )
+    //     .then((info) => {
+    //       // console.log(info.data.results[2].title);
+    //       // console.log("3");
+    //       return info;
+    //     })
+    //     .catch((err) => res.status(500).json(err));
+    // }
+    // Promise.all([getTop(), getNowPlaying(), getUpComing()])
+    Promise.all([getTop(), getNowPlaying()])
       .then(function (results) {
         const nowPlaying = [];
         const top = [];
+
+
+
+
+        .then((info) => {
+          //Input user id and apiArr, return newapiArr with wishlist boolean checks
+          if (req.user) {
+            return watchlistService
+              .findWatchlistBoolean(req.user.id, info)
+              .then((data) => {
+                searchArr = data;
+                return "";
+              })
+              .catch((err) => console.log(err));
+          } else {
+            searchArr = info.data.results;
+            return "";
+          }
+        })
+
+
+
+
+
+
 
         // console.log(results[0].data.results);
         nowPlaying[0] = results[1].data.results.slice(0, 4);

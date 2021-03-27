@@ -13,7 +13,7 @@ $(function () {
     window.location.href = `/search?genre=${destination}`;
   });
 
-  $(".index-watchlist-add").on("click", (e) => {
+  $(".index-watchlist-add-script").on("click", (e) => {
     e.preventDefault();
     console.log("search btn", e.currentTarget);
     $.ajax({

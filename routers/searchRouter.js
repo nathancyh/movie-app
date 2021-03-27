@@ -16,11 +16,6 @@ module.exports = (express) => {
   // router.route("/:movieid").delete(deleteWatchItem);
 
   function getSearch(req, res) {
-    // console.log(req.session);
-    // console.log(req.user);
-
-    // console.log("originalURL");
-    // console.log(req.originalUrl);
     let sortOption = "popularity.desc";
     let sortingDisplay = "Popularity";
     let voteCountGate = "";
@@ -99,22 +94,21 @@ module.exports = (express) => {
     return axios
       .get(getURL)
       .then((info) => {
-        console.log("infodataresults");
-        console.log(info.data.results[0]);
-        info.data.results = searchArr;
-        // console.log(searchArr);
-        // console.log("Query Switch Page");
-        // console.log(info.data.results[0].title);
-        return watchlistService
-          .findWatchlistBoolean(1, info) //FIXME: real userid
-          .then((boolArr) => {
-            return boolArr;
-          })
-          .catch((err) => console.log(err));
+        //Input user id and apiArr, return newapiArr with wishlist boolean checks
+        if (req.user) {
+          return watchlistService
+            .findWatchlistBoolean(req.user.id, info)
+            .then((data) => {
+              searchArr = data;
+              return "";
+            })
+            .catch((err) => console.log(err));
+        } else {
+          searchArr = info.data.results;
+          return "";
+        }
       })
-      .then((boolArr) => {
-        console.log("searchRouterboolArr");
-        console.log(boolArr);
+      .then(() => {
         res.render("search", {
           user: req.user,
           searchArr: searchArr,
@@ -126,7 +120,6 @@ module.exports = (express) => {
 
   // /search/star+wars
   function getSearchQuery(req, res) {
-    let user = req.user;
     // console.log("getting search data");
     return axios
       .get(
@@ -136,7 +129,7 @@ module.exports = (express) => {
         console.log("Search String Page");
         // console.log(info.data.results[0].title);
         res.render("search", {
-          user: user,
+          user: req.user,
           searchString: req.params.search,
           searchArr: info.data.results,
         });

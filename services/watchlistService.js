@@ -55,22 +55,29 @@ module.exports = class WatchService {
       .del();
   }
 
+  //Input user id and apiArr, return newapiArr with wishlist boolean checks
   findWatchlistBoolean(userid, apiData) {
-    console.log(apiData);
-    let apiIdArr = apiData.data.results.map((x) => (x = x.id));
+    // console.log(apiData);
+    let searchArr = apiData.data.results;
+    let apiIdArr = searchArr.map((x) => (x = x.id));
     let boolArr = [];
-    return this.watchlistUser(userid).then((userWatchlist) => {
-      // console.log("apiIdArr");
-      // console.log(apiIdArr);
-      // console.log("user data");
-      let userWatchlistArr = userWatchlist.map((x) => (x = x.movie_id));
-      // console.log(userWatchlistArr);
-
-      apiIdArr.forEach((element) => {
-        boolArr.push(userWatchlistArr.includes(element));
-      });
-      console.log(boolArr);
-      return boolArr;
-    });
+    return this.watchlistUser(userid)
+      .then((userWatchlist) => {
+        // console.log("apiIdArr");
+        // console.log(apiIdArr);
+        // console.log("user data");
+        let userWatchlistArr = userWatchlist.map((x) => (x = x.movie_id));
+        apiIdArr.forEach((element) => {
+          boolArr.push(userWatchlistArr.includes(element));
+        });
+        return boolArr;
+      })
+      .then((boolArr) => {
+        for (let index = 0; index < boolArr.length; index++) {
+          searchArr[index].watchlistCheck = boolArr[index];
+        }
+        return searchArr;
+      })
+      .catch((err) => console.error(err));
   }
 };
