@@ -22,15 +22,28 @@ $(function () {
   //     .always(console.log("always"));
   // });
 
-  $(".search-add-btn").click((e) => {
+  $(".search-watchlist-add-style").click((e) => {
     e.preventDefault();
-    console.log("search btn", e.currentTarget);
+    console.log(e);
+
     $.ajax({
       type: "POST",
       data: { api_id: e.currentTarget.dataset.movieid },
-      url: `/watchlist/${e.currentTarget.id}`,
+      url: `/watchlist/${e.currentTarget.dataset.movieid}`,
       success: function () {
-        console.log("INSERT WATCHLIST DATA SUCCESS");
+        let id = e.currentTarget.dataset.movieid;
+        console.log(id);
+        // $(`[data-movieid=${e.currentTarget.dataset.movieid}]`).css(
+        //   "background-color",
+        //   "green"
+        // );
+
+        document.getElementById(`${id}`).classList.remove("fa-plus");
+        document.getElementById(`${id}`).classList.add("fa-check");
+
+        id = `${e.currentTarget.dataset.movieid}hidden`;
+        console.log(id);
+        document.getElementById(`${id}`).classList.add("green");
       },
     })
       .done(console.log("search insert done"))

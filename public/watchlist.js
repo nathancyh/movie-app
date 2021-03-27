@@ -8,6 +8,7 @@ $(function () {
       url: `/watchlist/${e.currentTarget.dataset.movieid}`,
       success: function () {
         console.log("watchlist deleted item");
+        window.location.reload();
         // let id = e.currentTarget.id;
         // console.log("like", id);
         // e.currentTarget.id = `${e.currentTarget.id}hidden`;
@@ -21,20 +22,20 @@ $(function () {
     }).done(console.log("watchlist delete done"));
   });
 
-  $(".watchlist-add-btn").click((e) => {
-    e.preventDefault();
-    console.log("search btn", e.currentTarget);
-    $.ajax({
-      type: "POST",
-      data: { api_id: e.currentTarget.dataset.movieid },
-      url: `/watchlist/${e.currentTarget.id}`,
-      success: function () {
-        console.log("INSERT WATCHLIST DATA SUCCESS");
-      },
-    })
-      .done(console.log("search insert done"))
-      .fail(console.log("fail"));
-  });
+  //$(".watchlist-add-btn").click((e) => {
+  //  e.preventDefault();
+  //  console.log("search btn", e.currentTarget);
+  //  $.ajax({
+  //  type: "POST",
+  //data: { api_id: e.currentTarget.dataset.movieid },
+  // url: `/watchlist/${e.currentTarget.id}`,
+  // success: function () {
+  //  console.log("INSERT WATCHLIST DATA SUCCESS");
+  // },
+  // })
+  // .done(console.log("search insert done"))
+  // .fail(console.log("fail"));
+  //});
 
   // $(".watchlist-add-btn").click((e) => {
   //   e.preventDefault();
