@@ -22,8 +22,6 @@ module.exports = (express) => {
     let voteCountGate = "";
     let genreOption = "";
 
-    // console.log(req.get("Referrer")); //TODO: usr referrer to to do genre > sort
-
     // /search/sort=popularity.desc"
     switch (req.query.sort) {
       case "popularity.desc":
@@ -141,7 +139,7 @@ module.exports = (express) => {
   // ADD TO WATCHLIST BUTTON
   // function addWatchItem(req, res) {
   //   return watchlistService
-  //     .addWatchlist(req.user.id, req.params.movieid) //TODO: real id
+  //     .addWatchlist(req.user.id, req.params.movieid)
   //     .then(() => {
   //       res.send("watchlist item added");
   //     })
@@ -150,7 +148,7 @@ module.exports = (express) => {
 
   // function deleteWatchItem(req, res) {
   //   return watchlistService
-  //     .removeWatchlist(1, req.params.movieid) //TODO: real id
+  //     .removeWatchlist(1, req.params.movieid)
   //     .then(() => {
   //       res.send("watchlist item deleted");
   //     })

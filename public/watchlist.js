@@ -16,8 +16,7 @@ $(function () {
         document.getElementById(`${id}`).classList.add("fa-check");
         $(`#${id}`)
           .closest(".watchlist-add-btn")
-          .attr("style", "background: green !important");
-        // $(this).attr("style", "background: green !important");
+          .attr("style", "background: #28a745 !important");
       },
     })
       .done

@@ -26,14 +26,14 @@
                     </div>
                     <div class="carousel-title-box">
                       <a href="/movie/{{this.id}}">
-                        <h4 class="carousel-title">{{this.title}} {{this.watchlistCheck}}</h4>
+                        <h4 class="carousel-title">{{this.title}}</h4>
                       </a>
                     </div>
                     {{#if ../../user}}
                     {{#if this.watchlistCheck}}
                     {{!-- Show watchlist-tick button if true --}}
                     <a href="/watchlist">
-                      <button class="watchlist-success-style btn" data-movieid={{this.id}}>
+                      <button class="index-watchlist-success-style btn" data-movieid={{this.id}}>
                         WATCHLIST<i id={{this.id}} class="fas fa-check"></i>
                       </button>
                     </a>
@@ -99,14 +99,14 @@
                     </div>
                     <div class="carousel-title-box">
                       <a href="/movie/{{this.id}}">
-                        <h4 class="carousel-title">{{this.title}} {{this.watchlistCheck}}</h4>
+                        <h4 class="carousel-title">{{this.title}}</h4>
                       </a>
                     </div>
                     {{#if ../../user}}
                     {{#if this.watchlistCheck}}
                     {{!-- Show watchlist-tick button if true --}}
                     <a href="/watchlist">
-                      <button class="watchlist-success-style btn" data-movieid={{this.id}}>
+                      <button class="index-watchlist-success-style btn" data-movieid={{this.id}}>
                         WATCHLIST<i id={{this.id}} class="fas fa-check"></i>
                       </button>
                     </a>
