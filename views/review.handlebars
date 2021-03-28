@@ -23,7 +23,7 @@
                 <p><b>Release Date:</b> {{slicedate apidata.release_date}}</p>
                 <p><b>Overview:</b><br> {{apidata.overview}}</p>
             </div>
-            <div class="row d-flex justify-content-center">
+            <div class="row" style="padding-left:15px">
                 {{#if user}}
                 {{#if apidata.watchlistCheck}}
                 {{!-- Show watchlist-tick button if true --}}
@@ -117,8 +117,15 @@
         </div>
     </div>
 
-
     {{!-- DISPLAY REVIEW FROM EVERY USER --}}
+    {{#unless allReview }}
+    {{#unless myReview}}
+    <h2>Be First to <b>Write A Review!</b></h2>
+    {{/unless}}
+    {{/unless}}
+    {{#unless user}}
+    <h5 class="mt-4">Login to Write A Review!</h5>
+    {{/unless}}
     {{#each allReview}}
     <article class="card card-body">
         <div class="review-box">

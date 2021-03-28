@@ -1,5 +1,5 @@
 <div class="container-fluid search-wrapper mt-3">
-    <div class="search-row">
+    <div class="search-row mb-4">
         {{#unless query}}
         {{!-- <h3>Feature Film (Sorted by Number of Popularity Descending)</h3> --}}
         <h3>Feature Film - {{sortingDisplay}}</h3>
@@ -8,6 +8,8 @@
         <h3>Results for <b>"{{searchString}}"</b></h3>
         {{/if}}
     </div>
+
+    {{#if showSort}}
     <div class="row search-sorting-option">
         <ul>
             <li><b>Sort By:</b></li>
@@ -20,6 +22,8 @@
             <li><a href="/search/">Your Rating</a></li>
         </ul>
     </div>
+    {{/if}}
+
     {{#each searchArr}}
     <div class="row search_card mb-3">
         <div class="col-2">
