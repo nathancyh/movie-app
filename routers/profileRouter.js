@@ -32,7 +32,6 @@ module.exports = (express) => {
       // console.log(req.params.userid);
       if (req.params.userid == req_user_id) {
         //Only render the edit button if the correct user is browsing the page
-        console.log("do render_edit_button");
         editbutton =
           '<button type="button" class="btn btn-outline-warning edit-profile text-center">Edit Profile</button>';
       }
