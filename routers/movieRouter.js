@@ -75,14 +75,14 @@ module.exports = (express) => {
     function getMovieReview() {
       if (req.isAuthenticated()) {
         return movieService
-          .listall(req.params.movieId, req.user.id) //TODO: replace with real userid
+          .listall(req.params.movieId, req.user.id)
           .then((data) => {
             return data;
           })
           .catch((err) => res.status(500).json(err));
       } else {
         return movieService
-          .listall(req.params.movieId) //TODO: replace with real userid
+          .listall(req.params.movieId)
           .then((data) => {
             return data;
           })

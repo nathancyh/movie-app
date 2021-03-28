@@ -5,17 +5,14 @@
             <div class="row  profile-pic-container">
                 <img class=" img-fluid profile-pic" src="/{{profile}}">
             </div>
-            <div class="row mt-4 d-flex justify-content-center">
-            {{#if user}}
-            <button type="button" class="btn btn-outline-warning edit-profile text-center">Edit Profile</button>
-            {{/if}}
-            </div>
         </div>
     </div>
-    <div>            
-        {{#if user}}
+    <div>
+        {{!-- {{#if user}}
         <button type="button" class="btn btn-outline-warning edit-profile text-center">Edit Profile</button>
-        {{/if}}</div>
+        {{/if}} --}}
+        {{{editbutton}}}
+    </div>
 </div>
 <div class="card">
     <div class="card-body">
