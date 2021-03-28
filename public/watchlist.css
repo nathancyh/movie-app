@@ -1,5 +1,5 @@
 .watchlist-container {
-  min-height: 93vh;
+  min-height: 85vh;
 }
 
 .watchlist_card {
@@ -11,12 +11,12 @@
 
 .movie-info p {
   margin-top: 5px;
-  margin-left: 20px;
   color: black;
+  font-size: 18px;
 }
 
 .movie-link a {
-  font-size: 20px;
+  font-size: 22px;
   margin-top: 30px;
   color: #0056b3;
 }

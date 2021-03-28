@@ -12,6 +12,9 @@ module.exports = (express) => {
   const MovieService = require("../services/movieService");
   const movieService = new MovieService(knex);
 
+  const WatchlistService = require("../services/watchlistService");
+  const watchlistService = new WatchlistService(knex);
+
   //Band-Aid dulicate of the isLoggedIn from loginRouter
   const isLoggedIn = function (req, res, next) {
     if (req.isAuthenticated()) {
@@ -34,29 +37,42 @@ module.exports = (express) => {
     let user = req.user;
     function getMovieData() {
       let apiData;
-      return axios
-        .get(
-          `https://api.themoviedb.org/3/movie/${req.params.movieId}?api_key=d3fd18f172ad640f103d9cfa9fb37451`
-        )
-        .then((info) => {
-          apiData = info.data;
-          //Check if movie data alrady in database, insert to DB if not
-          return movieService.checkdata(apiData.id);
-        })
-        .then((hvData) => {
-          if (!hvData) {
-            return movieService.insert(apiData);
-          } else {
-            return;
-          }
-        })
-        .then(() => {
-          //Send data to res.render
-          return apiData;
-        })
-        .catch((err) => {
-          console.log("axios get err", err);
-        });
+      return (
+        axios
+          .get(
+            `https://api.themoviedb.org/3/movie/${req.params.movieId}?api_key=d3fd18f172ad640f103d9cfa9fb37451`
+          )
+          .then((info) => {
+            apiData = info.data;
+            //Check if movie data alrady in database, insert to DB if not
+            return movieService.checkdata(apiData.id);
+          })
+          .then((hvData) => {
+            if (!hvData) {
+              return movieService.insert(apiData);
+            } else {
+              return;
+            }
+          })
+          //Check if movie is watchlisted
+          .then(() => {
+            if (user) {
+              return watchlistService
+                .reviewWatchlistBoolean(req.user.id, apiData)
+                .then((hvUserData) => {
+                  apiData = hvUserData;
+                  return apiData;
+                })
+                .catch((err) => console.log(err));
+            } else {
+              //Send data to res.render
+              return apiData;
+            }
+          })
+          .catch((err) => {
+            console.log("axios get err", err);
+          })
+      );
     }
 
     function getMyReview() {
@@ -94,20 +110,12 @@ module.exports = (express) => {
       .then(function (results) {
         const data = results[0];
         const myReview = results[1];
-        console.log("myreview");
-        console.log(results[1]);
+        // console.log("myreview");
+        // console.log(results[1]);
         const movieReview = results[2];
-        console.log("myReview in movieRou");
         res.render("review", {
           user: user,
-          userid: data.user_id,
-          poster: `https://image.tmdb.org/t/p/w300${data.poster_path}`,
-          title: data.title,
-          averageReview: data.vote_average,
-          genres: data.genres[0].name,
-          releaseDate: data.release_date.slice(0, 4),
-          overview: data.overview,
-          movieid: data.id,
+          apidata: data,
           myReview: myReview,
           allReview: movieReview,
         });
