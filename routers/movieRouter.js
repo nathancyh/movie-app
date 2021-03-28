@@ -94,7 +94,10 @@ module.exports = (express) => {
       .then(function (results) {
         const data = results[0];
         const myReview = results[1];
+        console.log("myreview");
+        console.log(results[1]);
         const movieReview = results[2];
+        console.log("myReview in movieRou");
         res.render("review", {
           user: user,
           userid: data.user_id,
@@ -105,8 +108,8 @@ module.exports = (express) => {
           releaseDate: data.release_date.slice(0, 4),
           overview: data.overview,
           movieid: data.id,
-          myReviewArr: myReview,
-          reviewArr: movieReview,
+          myReview: myReview,
+          allReview: movieReview,
         });
       })
       .catch((err) => res.status(500).json(err));

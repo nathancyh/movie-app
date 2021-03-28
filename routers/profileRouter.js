@@ -26,24 +26,15 @@ module.exports = (express) => {
     let user = req.user;
     let screenshot1, screenshot2, profilepic;
     //Check if propic exist, if not render placeholder
-    let validateProfiles = fs.promises
+    let validateUploads = fs.promises
       .readdir("./uploads")
       .then((data) => {
         profilepic = data.find((file) => file == `${req.params.userid}_p.jpg`);
+        screenshot1 = data.find((file) => file == `${req.params.userid}_0.jpg`);
+        screenshot2 = data.find((file) => file == `${req.params.userid}_1.jpg`);
         if (profilepic === undefined) {
           profilepic = `profileplaceholder.jpg`;
         }
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-
-    //Check if screenshots exist, if not render placeholder
-    let validateScreenshot = fs.promises
-      .readdir("./uploads")
-      .then((data) => {
-        screenshot1 = data.find((file) => file == `${req.params.userid}_0.jpg`);
-        screenshot2 = data.find((file) => file == `${req.params.userid}_1.jpg`);
         if (screenshot1 === undefined) {
           screenshot1 = `screenshotplaceholder.jpg`;
         }
@@ -55,19 +46,37 @@ module.exports = (express) => {
         console.log(error);
       });
 
+    //Check if screenshots exist, if not render placeholder
+    // let validateScreenshot = fs.promises
+    //   .readdir("./uploads")
+    //   .then((data) => {
+    //     screenshot1 = data.find((file) => file == `${req.params.userid}_0.jpg`);
+    //     screenshot2 = data.find((file) => file == `${req.params.userid}_1.jpg`);
+    //     if (screenshot1 === undefined) {
+    //       screenshot1 = `screenshotplaceholder.jpg`;
+    //     }
+    //     if (screenshot2 === undefined) {
+    //       screenshot2 = `screenshotplaceholder.jpg`;
+    //     }
+    //   })
+    //   .catch((error) => {
+    //     console.log(error);
+    //   });
+
     let userData, apiData, moviePoster, movieTitle;
-    validateProfiles
-      .then(() => validateScreenshot)
+    validateUploads
       .then(() => {
         return profileService.getdata(req.params.userid);
       })
       .then((data) => {
         userData = data;
+        console.log("userdatafavmovie");
         moviePoster = `/${profilepic}`;
-        if (userData[0].fav_movie) {
+        let fav_movie = userData[0].fav_movie;
+        if (fav_movie) {
           return axios
             .get(
-              `https://api.themoviedb.org/3/movie/${userData[0].fav_movie}?api_key=d3fd18f172ad640f103d9cfa9fb37451`
+              `https://api.themoviedb.org/3/movie/${fav_movie}?api_key=d3fd18f172ad640f103d9cfa9fb37451`
             )
             .then((data2) => {
               apiData = data2.data;
@@ -100,6 +109,7 @@ module.exports = (express) => {
     res.render("profileedit", {
       user: req.user,
       userid: req.user.id,
+      username: req.user.name,
     });
   }
 
@@ -153,9 +163,3 @@ module.exports = (express) => {
 
   return router;
 };
-
-// psedudo code
-// check if file in system (fsreaddir)
-// use js to check if the filename needed exist
-//if exist, return working image like to handlebar
-//If not exist, return link of default image

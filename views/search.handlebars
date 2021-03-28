@@ -23,14 +23,17 @@
     {{#each searchArr}}
     <div class="row search_card mb-3">
         <div class="col-2">
-            {{!-- <a href="../movie/{{this.id}}"> --}}
+            <a href="../movie/{{this.id}}">
                 <img class="img-fluid search_card_poster" width="180" height="auto"
                     src="https://image.tmdb.org/t/p/w300{{this.poster_path}}">
-                <button id={{this.id}} class="search-liked-btn hidden" data-movieid={{this.id}}><i
-                        class="fas fa-check"></i></button>
-                <button id={{this.id}} class="search-add-btn" data-movieid={{this.id}}><i
-                        class="fas fa-plus"></i></button>
-                {{!-- </a> --}}
+
+                <div class="row d-flex justify-content-center">
+                    <button class="search-watchlist-add-style" data-movieid={{this.id}}>
+                        WATCHLIST<i id={{this.id}} class="fas fa-plus"></i>
+                    </button>
+                </div>
+                {{!--
+            </a> --}}
         </div>
         <div class="col-10">
             <p>
@@ -43,6 +46,7 @@
             </p>
             <p>{{genreconverter this.genre_ids}}</p>
             <p>{{this.overview}}</p>
+            <p>{{this.watchlistCheck}}</p>
         </div>
     </div>
     {{/each}}

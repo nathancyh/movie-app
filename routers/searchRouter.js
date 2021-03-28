@@ -12,22 +12,17 @@ module.exports = (express) => {
 
   router.route("/").get(getSearch);
   router.route("/:search").get(getSearchQuery);
-  router.route("/:movieid").put(addWatchItem);
+  // router.route("/:movieid").put(addWatchItem);
   // router.route("/:movieid").delete(deleteWatchItem);
 
   function getSearch(req, res) {
-    console.log(req.session);
-    console.log(req.user);
-
-    console.log("originalURL");
-    console.log(req.originalUrl);
     let user = req.user;
     let sortOption = "popularity.desc";
     let sortingDisplay = "Popularity";
     let voteCountGate = "";
     let genreOption = "";
 
-    console.log(req.get("Referrer")); //TODO: usr referrer to to do genre > sort
+    // console.log(req.get("Referrer")); //TODO: usr referrer to to do genre > sort
 
     // /search/sort=popularity.desc"
     switch (req.query.sort) {
@@ -96,15 +91,28 @@ module.exports = (express) => {
     }
 
     let getURL = `https://api.themoviedb.org/3/discover/movie?api_key=f22e6ce68f5e5002e71c20bcba477e7d&language=en-US&sort_by=${sortOption}&include_adult=false&include_video=true&page=1${voteCountGate}${genreOption}`;
-
+    let searchArr;
     return axios
       .get(getURL)
       .then((info) => {
-        console.log("Query Switch Page");
-        // console.log(info.data.results[0].title);
+        //Input user id and apiArr, return newapiArr with wishlist boolean checks
+        if (req.isAuthenticated()) {
+          return watchlistService
+            .findWatchlistBoolean(req.user.id, info)
+            .then((data) => {
+              searchArr = data;
+              return "";
+            })
+            .catch((err) => console.log(err));
+        } else {
+          searchArr = info.data.results;
+          return "";
+        }
+      })
+      .then(() => {
         res.render("search", {
-          user: user,
-          searchArr: info.data.results,
+          user: req.user,
+          searchArr: searchArr,
           sortingDisplay: sortingDisplay,
         });
       })
@@ -122,7 +130,7 @@ module.exports = (express) => {
         console.log("Search String Page");
         // console.log(info.data.results[0].title);
         res.render("search", {
-          user: user,
+          user: req.user,
           searchString: req.params.search,
           searchArr: info.data.results,
         });
@@ -131,18 +139,18 @@ module.exports = (express) => {
   }
 
   // ADD TO WATCHLIST BUTTON
-  function addWatchItem(req, res) {
-    return watchlistService
-      .addWatchlist(1, req.params.movieid) //TODO
-      .then(() => {
-        res.send("watchlist item added");
-      })
-      .catch((err) => res.status(500).json(err));
-  }
+  // function addWatchItem(req, res) {
+  //   return watchlistService
+  //     .addWatchlist(req.user.id, req.params.movieid) //TODO: real id
+  //     .then(() => {
+  //       res.send("watchlist item added");
+  //     })
+  //     .catch((err) => res.status(500).json(err));
+  // }
 
   // function deleteWatchItem(req, res) {
   //   return watchlistService
-  //     .removeWatchlist(1, req.params.movieid) //TODO
+  //     .removeWatchlist(1, req.params.movieid) //TODO: real id
   //     .then(() => {
   //       res.send("watchlist item deleted");
   //     })

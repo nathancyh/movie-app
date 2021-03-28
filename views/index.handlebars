@@ -26,11 +26,24 @@
                     </div>
                     <div class="carousel-title-box">
                       <a href="/movie/{{this.id}}">
-                        <h4 class="carousel-title">{{this.title}}</h4>
+                        <h4 class="carousel-title">{{this.title}} {{this.watchlistCheck}}</h4>
                       </a>
                     </div>
-                    {{!-- <p class="movie-date">({{slicedate this.release_date}})</p> --}}
-                    <button class="index-watchlist-add btn">Add to Watchlist</button>
+                    {{#if ../../user}}
+                    {{#if this.watchlistCheck}}
+                    {{!-- Show watchlist-tick button if true --}}
+                    <a href="/watchlist">
+                      <button class="watchlist-success-style btn" data-movieid={{this.id}}>
+                        WATCHLIST<i id={{this.id}} class="fas fa-check"></i>
+                      </button>
+                    </a>
+                    {{else}}
+                    {{!-- Else show watchlist-plus button --}}
+                    <button class="index-watchlist-add-style watchlist-add-btn btn" data-movieid={{this.id}}>
+                      WATCHLIST<i id={{this.id}} class="fas fa-plus"></i>
+                    </button>
+                    {{/if}}
+                    {{/if}}
                   </div>
                 </div>
               </div>
@@ -57,7 +70,7 @@
 <div class="container">
   <div class="row">
     <div class="col-md-12">
-      <h2>Top <b>Rated Movies</b></h2>
+      <h2>Top <b>Rated</b></h2>
       <div id="myCarousel-1" class="carousel slide" data-ride="carousel" data-interval="0">
         <!-- Carousel indicators -->
         {{!-- <ol class="carousel-indicators">
@@ -84,11 +97,26 @@
                         {{this.vote_average}} <i class="fa fa-star"></i>
                       </div>
                     </div>
-                    <a href="/movie/{{this.id}}">
-                      <h4>{{this.title}}</h4>
+                    <div class="carousel-title-box">
+                      <a href="/movie/{{this.id}}">
+                        <h4 class="carousel-title">{{this.title}} {{this.watchlistCheck}}</h4>
+                      </a>
+                    </div>
+                    {{#if ../../user}}
+                    {{#if this.watchlistCheck}}
+                    {{!-- Show watchlist-tick button if true --}}
+                    <a href="/watchlist">
+                      <button class="watchlist-success-style btn" data-movieid={{this.id}}>
+                        WATCHLIST<i id={{this.id}} class="fas fa-check"></i>
+                      </button>
                     </a>
-                    {{!-- <p class="movie-date">{{slicedate this.release_date}}</p> --}}
-                    <button class="index-watchlist-add btn">Add to Watchlist</button>
+                    {{else}}
+                    {{!-- Else show watchlist-plus button --}}
+                    <button class="index-watchlist-add-style watchlist-add-btn btn" data-movieid={{this.id}}>
+                      WATCHLIST<i id={{this.id}} class="fas fa-plus"></i>
+                    </button>
+                    {{/if}}
+                    {{/if}}
                   </div>
                 </div>
               </div>
@@ -113,56 +141,56 @@
 <section id="genres">
   <h2><b>Genres</b></h2>
   <section class="container-images">
-    <div class="genre_div" data-genre="action">
-      <img src="/assets/genres/action.jpeg" alt="action" />
+    <div class="genre_div genre-box-1" data-genre="action">
+      {{!-- <img src="/assets/genres/action.jpeg" alt="action" /> --}}
       <span class="description">
         <h2><b>Action</h2></b>
       </span>
     </div>
-    <div class="genre_div" data-genre="animation">
-      <img src="/assets/genres/animation2.jpeg" alt="animation" />
+    <div class="genre_div genre-box-2" data-genre="animation">
+      {{!-- <img src="/assets/genres/animation2.jpeg" alt="animation" /> --}}
       <span class="description">
         <h2><b>Animation</h2></b>
       </span>
     </div>
-    <div class="genre_div" data-genre="comedy">
-      <img src="/assets/genres/comedy2.jpeg" alt="comedy" />
+    <div class="genre_div genre-box-3" data-genre="comedy">
+      {{!-- <img src="/assets/genres/comedy2.jpeg" alt="comedy" /> --}}
       <span class="description">
         <h2><b>Comedy</h2></b>
       </span>
     </div>
-    <div class="genre_div" data-genre="drama">
-      <img src="/assets/genres/drama.jpeg" alt="drama" />
+    <div class="genre_div genre-box-4" data-genre="drama">
+      {{!-- <img src="/assets/genres/drama.jpeg" alt="drama" /> --}}
       <span class="description">
         <h2><b>Drama</h2></b>
       </span>
     </div>
-    <div class="genre_div" data-genre="fantasy">
-      <img src="/assets/genres/fantasy.jpeg" alt="fantasy" />
+    <div class="genre_div genre-box-5" data-genre="fantasy">
+      {{!-- <img src="/assets/genres/fantasy.jpeg" alt="fantasy" /> --}}
       <span class="description">
         <h2><b>Fantasy</h2></b>
       </span>
     </div>
-    <div class="genre_div" data-genre="horror">
-      <img src="/assets/genres/horror.jpeg" alt="horror" />
+    <div class="genre_div genre-box-6" data-genre="horror">
+      {{!-- <img src="/assets/genres/horror.jpeg" alt="horror" /> --}}
       <span class="description">
         <h2><b>Horror</h2></b>
       </span>
     </div>
-    <div class="genre_div" data-genre="romance">
-      <img src="/assets/genres/romance.jpeg" alt="romance" />
+    <div class="genre_div genre-box-7" data-genre="romance">
+      {{!-- <img src="/assets/genres/romance.jpeg" alt="romance" /> --}}
       <span class="description">
         <h2><b>Romance</h2></b>
       </span>
     </div>
-    <div class="genre_div" data-genre="thriller">
-      <img src="/assets/genres/thriller.jpeg" alt="thriller" />
+    <div class="genre_div genre-box-8" data-genre="thriller">
+      {{!-- <img src="/assets/genres/thriller.jpeg" alt="thriller" /> --}}
       <span class="description">
         <h2><b>Thriller</h2></b>
       </span>
     </div>
-    <div class="genre_div" data-genre="crime">
-      <img src="/assets/genres/crime.jpeg" alt="crime" />
+    <div class="genre_div genre-box-9" data-genre="crime">
+      {{!-- <img src="/assets/genres/crime.jpeg" alt="crime" /> --}}
       <span class="description">
         <h2><b>Crime</h2></b>
       </span>
