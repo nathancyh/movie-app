@@ -165,7 +165,7 @@ a {
   font-weight: bold;
   background: none;
   border: 1px solid #ccc;
-  padding: 7px 50px !important;
+  padding: 7px 46px !important;
   margin-top: 10px;
   line-height: 16px;
   background-color: #7575752d;
@@ -201,7 +201,7 @@ a {
   margin: 0 auto;
   left: 0;
   right: 0;
-  border-radius: 4px;
+  border-radius: 3px;
 }
 
 .carousel .carousel-item h4 {

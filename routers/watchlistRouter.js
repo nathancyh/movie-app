@@ -15,8 +15,8 @@ module.exports = (express) => {
   const watchlistService = new WatchlistService(knex);
 
   router.route("/").get(isLoggedIn, getWatchlist);
-  router.route("/:movieId").post(isLoggedIn, addWatchItem); //FIXME: isLoggedIn
-  router.route("/:movieId").delete(isLoggedIn, deleteWatchItem); //FIXME: isLoggedIn
+  router.route("/:movieId").post(isLoggedIn, addWatchItem);
+  router.route("/:movieId").delete(isLoggedIn, deleteWatchItem);
 
   function getWatchlist(req, res) {
     return watchlistService
@@ -38,9 +38,7 @@ module.exports = (express) => {
     let apiData;
     return axios
       .get(
-        `https://api.themoviedb.org/3/movie/${
-          req.params.movieId || 11
-        }?api_key=d3fd18f172ad640f103d9cfa9fb37451`
+        `https://api.themoviedb.org/3/movie/${req.params.movieId}?api_key=d3fd18f172ad640f103d9cfa9fb37451`
       )
       .then((info) => {
         apiData = info.data;
@@ -50,6 +48,8 @@ module.exports = (express) => {
         //insert into movies table
         if (!hvData) {
           return movieService.insert(apiData);
+        } else {
+          return;
         }
       })
       .then(() => {
@@ -57,23 +57,10 @@ module.exports = (express) => {
       })
       .then((hvData) => {
         //insert into watchlist
-        let query = knex("watchlists").insert({
-          user_id: req.user.id, //TODO:need real userid
-          // user_id: 1, //TODO:need real userid
-          movie_id: req.params.movieId,
-        });
-
         if (!hvData) {
-          return query
-            .then(() => "")
-            .then(null, function (err) {
-              //query fail
-              console.log(err);
-              return "";
-            })
-            .catch((err) => {
-              console.log(err);
-            });
+          return watchlistService.addWatchlist(req.user.id, req.params.movieId);
+        } else {
+          return;
         }
       })
       .then(() => res.send("watchlist item added"))

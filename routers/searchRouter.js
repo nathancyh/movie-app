@@ -12,7 +12,7 @@ module.exports = (express) => {
 
   router.route("/").get(getSearch);
   router.route("/:search").get(getSearchQuery);
-  router.route("/:movieid").put(addWatchItem);
+  // router.route("/:movieid").put(addWatchItem);
   // router.route("/:movieid").delete(deleteWatchItem);
 
   function getSearch(req, res) {
@@ -95,7 +95,6 @@ module.exports = (express) => {
     return axios
       .get(getURL)
       .then((info) => {
-
         //Input user id and apiArr, return newapiArr with wishlist boolean checks
         if (req.isAuthenticated()) {
           return watchlistService
@@ -111,7 +110,6 @@ module.exports = (express) => {
         }
       })
       .then(() => {
-
         res.render("search", {
           user: req.user,
           searchArr: searchArr,
@@ -141,14 +139,14 @@ module.exports = (express) => {
   }
 
   // ADD TO WATCHLIST BUTTON
-  function addWatchItem(req, res) {
-    return watchlistService
-      .addWatchlist(1, req.params.movieid) //TODO: real id
-      .then(() => {
-        res.send("watchlist item added");
-      })
-      .catch((err) => res.status(500).json(err));
-  }
+  // function addWatchItem(req, res) {
+  //   return watchlistService
+  //     .addWatchlist(req.user.id, req.params.movieid) //TODO: real id
+  //     .then(() => {
+  //       res.send("watchlist item added");
+  //     })
+  //     .catch((err) => res.status(500).json(err));
+  // }
 
   // function deleteWatchItem(req, res) {
   //   return watchlistService

@@ -1,22 +1,7 @@
 "use strict";
 
 $(function () {
-  $(".watchlist-del-btn").on("click", (e) => {
-    e.preventDefault();
-    $.ajax({
-      type: "DELETE",
-      url: `/watchlist/${e.currentTarget.dataset.movieid}`,
-      success: function () {
-        // console.log("watchlist deleted item");
-        window.location.reload();
-      },
-    }).done(
-      setTimeout(() => {
-        window.location.reload();
-      }, 200)
-    );
-  });
-
+  //ADD WATCHLIST
   $(".watchlist-add-btn").on("click", (e) => {
     e.preventDefault();
     console.log("search btn", e.currentTarget.dataset.movieid);
@@ -26,12 +11,40 @@ $(function () {
       url: `/watchlist/${e.currentTarget.dataset.movieid}`,
       success: function () {
         console.log("INSERT WATCHLIST DATA SUCCESS");
+        let id = e.currentTarget.dataset.movieid;
+        document.getElementById(`${id}`).classList.remove("fa-plus");
+        document.getElementById(`${id}`).classList.add("fa-check");
+        $(`#${id}`)
+          .closest(".watchlist-add-btn")
+          .attr("style", "background: green !important");
+        // $(this).attr("style", "background: green !important");
       },
     })
-      .done(console.log("search insert .done"))
+      .done
+      // setTimeout(() => {
+      //   window.location.reload();
+      // }, 100)
+      ()
       .fail(console.log("fail"));
   });
 
+  //DELETE WATCHLIST
+  $(".watchlist-del-btn").on("click", (e) => {
+    e.preventDefault();
+    $.ajax({
+      type: "DELETE",
+      url: `/watchlist/${e.currentTarget.dataset.movieid}`,
+      success: function () {
+        console.log("watchlist deleted item");
+      },
+    }).done(
+      setTimeout(() => {
+        window.location.reload();
+      }, 200)
+    );
+  });
+
+  // OLD SCRIPTS
   // $(".watchlist-add-btn").click((e) => {
   //   e.preventDefault();
   //   $.ajax({
@@ -48,5 +61,23 @@ $(function () {
   //       likebtn.classList.remove("hidden");
   //     },
   //   }).done(console.log("watchlist add done"));
+  // });
+
+  // $(".index-watchlist-add-style").on("click", (e) => {
+  //   e.preventDefault();
+  //   $.ajax({
+  //     type: "POST",
+  //     data: { api_id: e.currentTarget.dataset.movieid },
+  //     url: `/watchlist/${e.currentTarget.dataset.movieid}`,
+  //     success: function () {
+  //       console.log("INSERT WATCHLIST DATA SUCCESS");
+  //       let id = e.currentTarget.dataset.movieid;
+  //       document.getElementById(`${id}`).classList.remove("fa-plus");
+  //       document.getElementById(`${id}`).classList.add("fa-check");
+  //       // $(`#${id}`).css("background-color", "green");
+  //     },
+  //   })
+  //     .done(console.log("search insert done"))
+  //     .fail(console.log("fail"));
   // });
 });

@@ -29,10 +29,21 @@
                         <h4 class="carousel-title">{{this.title}} {{this.watchlistCheck}}</h4>
                       </a>
                     </div>
-                    {{!-- <p class="movie-date">({{slicedate this.release_date}})</p> --}}
-                    <button class="index-watchlist-add-style btn" data-movieid={{this.id}}>
+                    {{#if ../../user}}
+                    {{#if this.watchlistCheck}}
+                    {{!-- Show watchlist-tick button if true --}}
+                    <a href="/watchlist">
+                      <button class="watchlist-success-style btn" data-movieid={{this.id}}>
+                        WATCHLIST<i id={{this.id}} class="fas fa-check"></i>
+                      </button>
+                    </a>
+                    {{else}}
+                    {{!-- Else show watchlist-plus button --}}
+                    <button class="index-watchlist-add-style watchlist-add-btn btn" data-movieid={{this.id}}>
                       WATCHLIST<i id={{this.id}} class="fas fa-plus"></i>
                     </button>
+                    {{/if}}
+                    {{/if}}
                   </div>
                 </div>
               </div>
@@ -86,16 +97,26 @@
                         {{this.vote_average}} <i class="fa fa-star"></i>
                       </div>
                     </div>
-                    <a href="/movie/{{this.id}}">
-                      <h4>{{this.title}}</h4>
-                    </a>
-                    {{!-- <p class="movie-date">{{slicedate this.release_date}}</p> --}}
-                    <<<<<<< HEAD <button class="index-watchlist-add-style btn" data-movieid={{this.id}}>
-                      WATCHLIST<i id={{this.id}} class="fas fa-plus"></i>
+                    <div class="carousel-title-box">
+                      <a href="/movie/{{this.id}}">
+                        <h4 class="carousel-title">{{this.title}} {{this.watchlistCheck}}</h4>
+                      </a>
+                    </div>
+                    {{#if ../../user}}
+                    {{#if this.watchlistCheck}}
+                    {{!-- Show watchlist-tick button if true --}}
+                    <a href="/watchlist">
+                      <button class="watchlist-success-style btn" data-movieid={{this.id}}>
+                        WATCHLIST<i id={{this.id}} class="fas fa-check"></i>
                       </button>
-                      =======
-                      <button class="index-watchlist-add btn">Add to Watchlist</button>
-                      >>>>>>> master
+                    </a>
+                    {{else}}
+                    {{!-- Else show watchlist-plus button --}}
+                    <button class="index-watchlist-add-style watchlist-add-btn btn" data-movieid={{this.id}}>
+                      WATCHLIST<i id={{this.id}} class="fas fa-plus"></i>
+                    </button>
+                    {{/if}}
+                    {{/if}}
                   </div>
                 </div>
               </div>

@@ -29,7 +29,24 @@ module.exports = class WatchService {
       .then((data) => data);
   }
 
+  //Check if already added by same user
+  checkwatchlist(userid, watchlistMovie) {
+    let query = this.knex("watchlists")
+      .select("*")
+      .where("movie_id", watchlistMovie)
+      .andWhere("user_id", userid);
+
+    return query.then((data) => {
+      return data.length > 0 ? true : false;
+    });
+  }
+
   addWatchlist(userid, watchlistMovie) {
+    // let query = knex("watchlists").insert({
+    //   user_id: req.user.id,
+    //   movie_id: req.params.movieId,
+    // });
+
     return this.knex("watchlists").insert({
       user_id: userid,
       movie_id: watchlistMovie,
