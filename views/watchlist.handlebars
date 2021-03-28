@@ -1,7 +1,10 @@
 <div class="watchlist-container container-fluid search-wrapper mt-3">
-    {{#unless wishMovieArr}}
+
+    {{#if wishMovieArr}}
+    <h2>Your <b>Watchlist</b></h2>
+    {{else}}
     <h2>Your Watchlist is Empty</h2>
-    {{/unless}}
+    {{/if}}
 
     {{#each wishMovieArr}}
     <div class="row watchlist_card d-flex">
@@ -9,13 +12,10 @@
             <div class="poster-container">
                 <img class="img-fluid watchlist_poster" width="180px" height="auto"
                     src="https://image.tmdb.org/t/p/w300{{this.poster_path}}">
-                {{!-- <button id={{this.api_id}} class="watchlist-liked-btn" data-movieid={{this.api_id}}>
-                    <i class="fas fa-check fa-xs"></i></button>
-                <button id={{this.api_id}} class="watchlist-add-btn hidden" data-movieid={{this.api_id}}>
-                    <i class="fas fa-plus"></i></button> --}}
                 <div class="row d-flex justify-content-center">
-                    <button id={{this.api_id}} class="watchlist-del-btn " data-movieid={{this.api_id}}>
-                        REMOVE</button>
+                    <button class="mt-3 watchlist-del-btn" data-movieid={{this.api_id}}>
+                        <span>WATCHLIST</span><i class="pl-1 fas fa-times" data-movieid={{this.api_id}}></i>
+                    </button>
                 </div>
             </div>
 

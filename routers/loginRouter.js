@@ -14,8 +14,8 @@ module.exports = (express) => {
     }
     const url = req.originalUrl;
     console.log("redirect-query", url);
-    res.redirect(`/login?redirect=${url}`);
-    // res.redirect("/login");
+    // res.redirect(`/login?redirect=${url}`);
+    res.redirect("/login");
   };
 
   //Login page
@@ -24,34 +24,33 @@ module.exports = (express) => {
     res.render("login", { layout: "empty" });
   });
 
-  // router.post(
-  //   "/login",
-  //   passport.authenticate("local-login", {
-  //     successRedirect: "/",
-  //     failureRedirect: "/error",
-  //   })
-  // );
+  router.post(
+    "/login",
+    passport.authenticate("local-login", {
+      successRedirect: "/",
+      failureRedirect: "/error",
+    })
+  );
 
-  router.post("/login", function (req, res, next) {
-    passport.authenticate("local-login", function (err, user, info) {
-      if (err) {
-        return next(err);
-      }
-      if (!user) {
-        return res.redirect("/login");
-      }
-      req.logIn(user, function (err) {
-        if (err) {
-          return next(err);
-        }
-        let redirectTarget = req.get("referrer").split("redirect=")[1];
-        console.log("redirectTarget", redirectTarget);
-        return req.method == "GET"
-          ? res.redirect(redirectTarget || "/")
-          : res.redirect("/");
-      });
-    })(req, res, next);
-  });
+  // router.post("/login", function (req, res, next) {
+  //   passport.authenticate("local-login", function (err, user, info) {
+  //     if (err) {
+  //       return next(err);
+  //     }
+  //     if (!user) {
+  //       return res.redirect("/login");
+  //     }
+  //     req.logIn(user, function (err) {
+  //       if (err) {
+  //         return next(err);
+  //       }
+  //       let redirectTarget = req.get("referrer").split("redirect=")[1];
+  //       return req.method == "GET"
+  //         ? res.redirect(redirectTarget || "/")
+  //         : res.redirect("/");
+  //     });
+  //   })(req, res, next);
+  // });
 
   //Signup page
   router.get("/signup", (req, res) => {
