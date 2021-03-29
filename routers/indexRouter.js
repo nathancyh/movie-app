@@ -21,7 +21,7 @@ module.exports = (express) => {
           //Input user id and apiArr, return newapiArr with wishlist boolean checks
           if (user) {
             return watchlistService
-              .findWatchlistBoolean(req.user.id, noUserData) //FIXME: real id
+              .findWatchlistBoolean(req.user.id, noUserData)
               .then((hvUserData) => {
                 return hvUserData;
               })
@@ -43,7 +43,7 @@ module.exports = (express) => {
           if (user) {
             // console.log(noUserData2.data.results[0]);
             return watchlistService
-              .findWatchlistBoolean(req.user.id, noUserData2) //FIXME: real id
+              .findWatchlistBoolean(req.user.id, noUserData2)
               .then((hvUserData2) => {
                 return hvUserData2;
               })

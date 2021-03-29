@@ -1,7 +1,5 @@
 .profile-pic {
-  border-radius: 50%;
   object-fit: cover;
-  border: 10px solid rgb(255, 255, 255);
   justify-content: center;
   text-align: center;
 }
@@ -10,18 +8,20 @@
 
 } */
 .profile-pic-container {
+  border: 10px solid rgb(253, 253, 253);
   overflow: hidden;
   border-radius: 50%;
   object-fit: cover;
   width: 200px;
   height: 200px;
-  border: 5px;
   justify-content: center;
 }
 
+.screenshot-container {
+  padding-right: 90px;
+}
+
 .profile-pic-col {
-  /* width: 300px;
-  height: 300px; */
   display: flex;
   border-radius: 100px;
   padding: 20px;
@@ -30,7 +30,15 @@
 .screenshot-pic {
   width: 680px;
   height: 300px;
-  padding: 20px;
+  padding: 15px;
+  padding-top: 0px;
+  object-fit: cover;
+}
+
+.poster-pic {
+  width: auto;
+  height: 590px;
+  /* margin: 40px 40px; */
   object-fit: cover;
 }
 

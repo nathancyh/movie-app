@@ -5,7 +5,7 @@
   <div class="row">
     <div class="col-md-12">
       <h2>New <b>Releases</b></h2>
-      <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="0">
+      <div id="myCarousel" class="carousel slide mt-5" data-ride="carousel" data-interval="0">
         <div class="carousel-inner">
           {{#each getNow}}
           <div class="carousel-item {{#if @first}}active{{/if}}">
@@ -26,14 +26,14 @@
                     </div>
                     <div class="carousel-title-box">
                       <a href="/movie/{{this.id}}">
-                        <h4 class="carousel-title">{{this.title}} {{this.watchlistCheck}}</h4>
+                        <h4 class="carousel-title">{{this.title}}</h4>
                       </a>
                     </div>
                     {{#if ../../user}}
                     {{#if this.watchlistCheck}}
                     {{!-- Show watchlist-tick button if true --}}
                     <a href="/watchlist">
-                      <button class="watchlist-success-style btn" data-movieid={{this.id}}>
+                      <button class="index-watchlist-success-style btn" data-movieid={{this.id}}>
                         WATCHLIST<i id={{this.id}} class="fas fa-check"></i>
                       </button>
                     </a>
@@ -71,7 +71,7 @@
   <div class="row">
     <div class="col-md-12">
       <h2>Top <b>Rated</b></h2>
-      <div id="myCarousel-1" class="carousel slide" data-ride="carousel" data-interval="0">
+      <div id="myCarousel-1" class="carousel slide mt-5" data-ride="carousel" data-interval="0">
         <!-- Carousel indicators -->
         {{!-- <ol class="carousel-indicators">
           <li data-target="#myCarousel-1" data-slide-to="0" class="active"></li>
@@ -99,14 +99,14 @@
                     </div>
                     <div class="carousel-title-box">
                       <a href="/movie/{{this.id}}">
-                        <h4 class="carousel-title">{{this.title}} {{this.watchlistCheck}}</h4>
+                        <h4 class="carousel-title">{{this.title}}</h4>
                       </a>
                     </div>
                     {{#if ../../user}}
                     {{#if this.watchlistCheck}}
                     {{!-- Show watchlist-tick button if true --}}
                     <a href="/watchlist">
-                      <button class="watchlist-success-style btn" data-movieid={{this.id}}>
+                      <button class="index-watchlist-success-style btn" data-movieid={{this.id}}>
                         WATCHLIST<i id={{this.id}} class="fas fa-check"></i>
                       </button>
                     </a>
@@ -139,7 +139,7 @@
 
 {{!-- Genres --}}
 <section id="genres">
-  <h2><b>Genres</b></h2>
+  <h2 class="mb-5"><b>Genres</b></h2>
   <section class="container-images">
     <div class="genre_div genre-box-1" data-genre="action">
       {{!-- <img src="/assets/genres/action.jpeg" alt="action" /> --}}

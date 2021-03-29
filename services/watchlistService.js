@@ -46,7 +46,6 @@ module.exports = class WatchService {
     //   user_id: req.user.id,
     //   movie_id: req.params.movieId,
     // });
-
     return this.knex("watchlists").insert({
       user_id: userid,
       movie_id: watchlistMovie,
@@ -78,6 +77,25 @@ module.exports = class WatchService {
           searchArr[index].watchlistCheck = boolArr[index];
         }
         return searchArr;
+      })
+      .catch((err) => console.log(err));
+  }
+  //Same as above, but for review page only
+  reviewWatchlistBoolean(userid, apiData) {
+    return this.watchlistUser(userid)
+      .then((userWatchlist) => {
+        let userWatchlistArr = userWatchlist.map((x) => (x = x.movie_id));
+        let bool = userWatchlistArr.includes(apiData.id);
+        // console.log("watchSer reviewBool");
+        // console.log(bool);
+        //Return if movie is watchlisted
+        return bool;
+      })
+      .then((bool) => {
+        apiData.watchlistCheck = bool;
+        // console.log("review watchlist check");
+        // console.log(bool);
+        return apiData;
       })
       .catch((err) => console.log(err));
   }
