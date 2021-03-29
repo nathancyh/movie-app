@@ -53,7 +53,7 @@ $(function () {
   $(".save-btn").click((e) => {
     e.preventDefault();
     let title = $(".edit-title").val();
-    let rating = $(".edit-rating").val();
+    let putrating = $("#edit input[name=rating-put]:checked").val();
     let data = $(".edit-area").val();
     let movieid = window.location.pathname.slice(7);
 
@@ -61,7 +61,7 @@ $(function () {
       type: "PUT",
       url: `/movie/${movieid}`,
       dataType: "text",
-      data: { edit: data, title: title, rating: rating },
+      data: { edit: data, title: title, rating: putrating },
       success: function () {
         console.log("put success");
       },
