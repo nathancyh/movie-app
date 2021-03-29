@@ -27,7 +27,7 @@
 <div class="card">
     <h5 class="mb-4"><b>Uploaded photos of my favourite scenes</h5></b>
     <div class="row">
-    
+
         <div class="col vertical-align-center text-right">
             <img class=" img-fluid poster-pic" src="{{poster}}">
         </div>
@@ -43,13 +43,12 @@
 </div>
 
 
-
-
-
 <div class="row mt-4 d-flex justify-content-center">
-    {{#if user}}
+    {{{editbutton}}}
+    {{!-- KEEP BELOW COMMENTED OUT! SEE profileRouter for button code --}}
+    {{!-- {{#if user}}
     <button type="button" class="btn btn-outline-warning edit-profile text-center">Edit Profile</button>
-    {{/if}}
+    {{/if}} --}}
 </div>
 </div>
 </div>
