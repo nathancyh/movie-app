@@ -88,6 +88,10 @@ h1 {
   margin: 10px;
 }
 
+.radio-inline {
+  padding-right: 5px;
+}
+
 /****** Style Star Rating Widget *****/
 h1[alt="Simple"] {
   color: white;
