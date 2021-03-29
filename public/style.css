@@ -607,3 +607,20 @@ a {
   @media screen and (max-width: 800px) {
   }
 }
+
+/* video */
+.container-movie {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.movie {
+  justify-content: center;
+  align-items: center;
+}
+
+.movie-info {
+  padding-left: 75px;
+  padding-right: 80px;
+}
