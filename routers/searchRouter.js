@@ -12,18 +12,19 @@ module.exports = (express) => {
 
   router.route("/").get(getSearch);
   router.route("/:search").get(getSearchQuery);
-  // router.route("/:movieid").put(addWatchItem);
-  // router.route("/:movieid").delete(deleteWatchItem);
+
+  let showSort;
 
   function getSearch(req, res) {
-    let user = req.user;
+    // let user = req.user;
     let sortOption = "popularity.desc";
     let sortingDisplay = "Popularity";
     let voteCountGate = "";
     let genreOption = "";
+    let pageQuery = req.query.page || 1;
+    showSort = true;
 
-    // console.log(req.get("Referrer")); //TODO: usr referrer to to do genre > sort
-
+    //QUERY SWITCHES
     // /search/sort=popularity.desc"
     switch (req.query.sort) {
       case "popularity.desc":
@@ -55,42 +56,51 @@ module.exports = (express) => {
       case "action":
         genreOption = "&with_genres=28";
         sortingDisplay = "Action Titles";
+        showSort = false;
         break;
       case "animation":
         genreOption = "&with_genres=16";
         sortingDisplay = "Animation Titles";
+        showSort = false;
         break;
       case "comedy":
         genreOption = "&with_genres=35";
         sortingDisplay = "Comedy Titles";
+        showSort = false;
         break;
       case "drama":
         genreOption = "&with_genres=18";
         sortingDisplay = "Drama Titles";
+        showSort = false;
         break;
       case "fantasy":
         genreOption = "&with_genres=14";
         sortingDisplay = "Fantasy Titles";
+        showSort = false;
         break;
       case "horror":
         genreOption = "&with_genres=27";
         sortingDisplay = "Horror Titles";
+        showSort = false;
         break;
       case "romance":
         genreOption = "&with_genres=10749";
         sortingDisplay = "Romance Titles";
+        showSort = false;
         break;
       case "thriller":
         genreOption = "&with_genres=53";
         sortingDisplay = "Thriller Titles";
+        showSort = false;
         break;
       case "crime":
         genreOption = "&with_genres=80";
         sortingDisplay = "Crime Titles";
+        showSort = false;
         break;
     }
 
-    let getURL = `https://api.themoviedb.org/3/discover/movie?api_key=f22e6ce68f5e5002e71c20bcba477e7d&language=en-US&sort_by=${sortOption}&include_adult=false&include_video=true&page=1${voteCountGate}${genreOption}`;
+    let getURL = `https://api.themoviedb.org/3/discover/movie?api_key=f22e6ce68f5e5002e71c20bcba477e7d&language=en-US&sort_by=${sortOption}&include_adult=false&include_video=true&page=${pageQuery}${voteCountGate}${genreOption}`;
     let searchArr;
     return axios
       .get(getURL)
@@ -112,6 +122,7 @@ module.exports = (express) => {
       .then(() => {
         res.render("search", {
           user: req.user,
+          showSort: showSort,
           searchArr: searchArr,
           sortingDisplay: sortingDisplay,
         });
@@ -121,41 +132,23 @@ module.exports = (express) => {
 
   // /search/star+wars
   function getSearchQuery(req, res) {
-    let user = req.user;
+    // let user = req.user;
+    showSort = false;
     return axios
       .get(
         `http://api.themoviedb.org/3/search/movie?query=${req.params.search}&api_key=f22e6ce68f5e5002e71c20bcba477e7d`
       )
       .then((info) => {
-        console.log("Search String Page");
         // console.log(info.data.results[0].title);
         res.render("search", {
           user: req.user,
+          showSort: showSort,
           searchString: req.params.search,
           searchArr: info.data.results,
         });
       })
       .catch((err) => console.log(err));
   }
-
-  // ADD TO WATCHLIST BUTTON
-  // function addWatchItem(req, res) {
-  //   return watchlistService
-  //     .addWatchlist(req.user.id, req.params.movieid) //TODO: real id
-  //     .then(() => {
-  //       res.send("watchlist item added");
-  //     })
-  //     .catch((err) => res.status(500).json(err));
-  // }
-
-  // function deleteWatchItem(req, res) {
-  //   return watchlistService
-  //     .removeWatchlist(1, req.params.movieid) //TODO: real id
-  //     .then(() => {
-  //       res.send("watchlist item deleted");
-  //     })
-  //     .catch((err) => res.status(500).json(err));
-  // }
 
   return router;
 };

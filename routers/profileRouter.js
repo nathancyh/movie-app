@@ -24,7 +24,20 @@ module.exports = (express) => {
 
   function getProfile(req, res) {
     let user = req.user;
-    let screenshot1, screenshot2, profilepic;
+    let screenshot1, screenshot2, profilepic, editbutton;
+
+    if (user) {
+      let req_user_id = req.user.id;
+      // console.log(req_user_id);
+      // console.log(req.params.userid);
+      if (req.params.userid == req_user_id) {
+        //Only render the edit button if the correct user is browsing the page
+        editbutton =
+          '<button type="button" class="btn btn-outline-warning edit-profile text-center">Edit Profile</button>';
+      }
+    }
+    console.log(editbutton);
+
     //Check if propic exist, if not render placeholder
     let validateUploads = fs.promises
       .readdir("./uploads")
@@ -46,23 +59,6 @@ module.exports = (express) => {
         console.log(error);
       });
 
-    //Check if screenshots exist, if not render placeholder
-    // let validateScreenshot = fs.promises
-    //   .readdir("./uploads")
-    //   .then((data) => {
-    //     screenshot1 = data.find((file) => file == `${req.params.userid}_0.jpg`);
-    //     screenshot2 = data.find((file) => file == `${req.params.userid}_1.jpg`);
-    //     if (screenshot1 === undefined) {
-    //       screenshot1 = `screenshotplaceholder.jpg`;
-    //     }
-    //     if (screenshot2 === undefined) {
-    //       screenshot2 = `screenshotplaceholder.jpg`;
-    //     }
-    //   })
-    //   .catch((error) => {
-    //     console.log(error);
-    //   });
-
     let userData, apiData, moviePoster, movieTitle;
     validateUploads
       .then(() => {
@@ -70,9 +66,10 @@ module.exports = (express) => {
       })
       .then((data) => {
         userData = data;
-        console.log("userdatafavmovie");
-        moviePoster = `/${profilepic}`;
+        console.log("userdatafavmovie"); //FIXME:
+        moviePoster = `/posterplaceholder.png`;
         let fav_movie = userData[0].fav_movie;
+        console.log(fav_movie);
         if (fav_movie) {
           return axios
             .get(
@@ -80,7 +77,7 @@ module.exports = (express) => {
             )
             .then((data2) => {
               apiData = data2.data;
-              moviePoster = `https://image.tmdb.org/t/p/w300${apiData.poster_path}`;
+              moviePoster = `https://image.tmdb.org/t/p/w500${apiData.poster_path}`;
               movieTitle = apiData.original_title;
               return apiData;
             })
@@ -91,6 +88,7 @@ module.exports = (express) => {
       .then(() => {
         res.render("profile", {
           user: user,
+          editbutton: editbutton,
           profile: profilepic,
           poster: moviePoster,
           screenshot1: screenshot1,

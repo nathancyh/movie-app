@@ -18,10 +18,17 @@ h2 .writerev {
 
 .info-container {
   max-width: 70%;
+  flex-direction: column;
 }
 
-.info-container {
-  flex-direction: column;
+.poster-container {
+  text-align: center;
+}
+
+.poster-container img {
+  width: 75%;
+  height: auto;
+  border-radius: 3px;
 }
 
 .textSpacing {

@@ -1,5 +1,5 @@
 <div class="container-fluid search-wrapper mt-3">
-    <div class="search-row">
+    <div class="search-row mb-4">
         {{#unless query}}
         {{!-- <h3>Feature Film (Sorted by Number of Popularity Descending)</h3> --}}
         <h3>Feature Film - {{sortingDisplay}}</h3>
@@ -8,6 +8,8 @@
         <h3>Results for <b>"{{searchString}}"</b></h3>
         {{/if}}
     </div>
+
+    {{#if showSort}}
     <div class="row search-sorting-option">
         <ul>
             <li><b>Sort By:</b></li>
@@ -20,20 +22,34 @@
             <li><a href="/search/">Your Rating</a></li>
         </ul>
     </div>
+    {{/if}}
+
     {{#each searchArr}}
     <div class="row search_card mb-3">
         <div class="col-2">
             <a href="../movie/{{this.id}}">
                 <img class="img-fluid search_card_poster" width="180" height="auto"
                     src="https://image.tmdb.org/t/p/w300{{this.poster_path}}">
+            </a>
+            <div class="row d-flex justify-content-center">
 
-                <div class="row d-flex justify-content-center">
-                    <button class="search-watchlist-add-style" data-movieid={{this.id}}>
-                        WATCHLIST<i id={{this.id}} class="fas fa-plus"></i>
+                {{#if ../user}}
+                {{#if this.watchlistCheck}}
+                {{!-- Show watchlist-tick button if true --}}
+                <a href="/watchlist">
+                    <button class="search-watchlist-success-style btn" data-movieid={{this.id}}>
+                        WATCHLIST<i id={{this.id}} class="fas fa-check"></i>
                     </button>
-                </div>
-                {{!--
-            </a> --}}
+                </a>
+                {{else}}
+                {{!-- Else show watchlist-plus button --}}
+                <button class="search-watchlist-add-style watchlist-add-btn btn" data-movieid={{this.id}}>
+                    WATCHLIST<i id={{this.id}} class="fas fa-plus"></i>
+                </button>
+                {{/if}}
+                {{/if}}
+
+            </div>
         </div>
         <div class="col-10">
             <p>

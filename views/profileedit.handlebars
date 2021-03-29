@@ -7,7 +7,8 @@
                     <div class="card-body">
                         <div class="e-profile">
                             <div class="row">
-                                <div class="col-12 col-sm-auto mb-3">
+
+                                {{!-- <div class="col-12 col-sm-auto mb-3">
                                     <div class="mx-auto" style="width: 140px;">
                                         <div class="d-flex justify-content-center align-items-center rounded"
                                             style="height: 140px; background-color: rgb(233, 236, 239);">
@@ -15,10 +16,12 @@
                                                 style="color: rgb(166, 168, 170); font: bold 8pt Arial;">140x140</span>
                                         </div>
                                     </div>
-                                </div>
+                                </div> --}}
                                 <div class="col d-flex flex-column flex-sm-row justify-content-between mb-3">
                                     <div class="text-center text-sm-left mb-2 mb-sm-0">
-                                        <h4 class="pt-sm-2 pb-1 mb-0 text-nowrap">{{username}}</h4>
+                                        <p class="pt-sm-2 pb-1 mb-0 ml-2" style="font-size:30px">
+                                            Editing User: <b style="color: #ffbe08">{{username}}</b>
+                                        </p>
                                         <div class="mt-2">
                                             <input type="file" id="fileid" name="profileimageupload" accept="IMAGE/JPG"
                                                 , "IMAGE/PNG" , "IMAGE/JPEG" / hidden>
@@ -26,7 +29,8 @@
                                             <label for="fileid" id="buttonid"
                                                 class="btn btn-primary btn btn-outline-warning mb-3" type="button">
                                                 <i class="fa fa-fw fa-camera"></i>
-                                                <span>Change Photo</span>
+
+                                                <span>Change Profile Photo</span>
                                             </label>
                                             <p id="name-propic"></p>
                                         </div>
