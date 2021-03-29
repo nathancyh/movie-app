@@ -101,6 +101,32 @@
   box-shadow: none;
 }
 
+.review-watchlist-success-style {
+  background: #28a745 !important;
+  color: #fff !important;
+  border-radius: 3px;
+  font-size: 13px;
+  text-transform: uppercase;
+  font-weight: bold;
+  background: none;
+  border: 1px solid #ccc;
+  padding: 7px 30px;
+  margin-top: 10px;
+  line-height: 16px;
+  background-color: #7575752d;
+}
+
+.review-watchlist-success-style i {
+  margin-left: 5px;
+}
+
+.review-watchlist-success-style:hover {
+  color: #000;
+  background: #ccc !important;
+  border-color: #ccc !important;
+  box-shadow: none;
+}
+
 .fa-star {
   color: #ffc000;
 }

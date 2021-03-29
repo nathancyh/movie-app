@@ -28,13 +28,13 @@
                 {{#if apidata.watchlistCheck}}
                 {{!-- Show watchlist-tick button if true --}}
                 <a href="/watchlist">
-                    <button class="search-watchlist-success-style btn" data-movieid={{this.id}}>
+                    <button class="review-watchlist-success-style btn" data-movieid={{this.id}}>
                         WATCHLIST<i id={{apidata.id}} class="fas fa-check"></i>
                     </button>
                 </a>
                 {{else}}
                 {{!-- Else show watchlist-plus button --}}
-                <button class="search-watchlist-add-style watchlist-add-btn btn" data-movieid={{apidata.id}}>
+                <button class="review-watchlist-add-style watchlist-add-btn btn" data-movieid={{apidata.id}}>
                     WATCHLIST<i id={{apidata.id}} class="fas fa-plus"></i>
                 </button>
                 {{/if}}
