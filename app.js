@@ -9,9 +9,9 @@ const exphbs = require("express-handlebars");
 const bodyParser = require("body-parser");
 const session = require("express-session");
 const setupPassport = require("./passport-js/passport");
-const stripePublicKey = process.env.stripePublicKey;
-const stripeSecretKey = process.env.stripeSecretKey;
-const stripe = require("stripe")(stripeSecretKey);
+// const stripePublicKey = process.env.stripePublicKey;
+// const stripeSecretKey = process.env.stripeSecretKey;
+// const stripe = require("stripe")(stripeSecretKey);
 const port = process.env.PORT || 8080;
 
 const app = express();
@@ -57,7 +57,6 @@ app.use("/profile", profileRouter);
 app.use("/search", searchRouter);
 app.use("/watchlist", watchlistRouter);
 app.use("/shopping", shoppingRouter);
-// app.use("/purchase", shoppingRouter)
 
 app.listen(port, () => {
   console.log(`App is listening to port ${port}`);

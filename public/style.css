@@ -155,6 +155,7 @@ a {
 .carousel {
   margin: 15px auto;
   padding: 0 30px;
+  padding-top: 20px;
 }
 .index-watchlist-add-style {
   color: #fff !important;
@@ -362,6 +363,8 @@ a {
 
 .grid-child-left {
   text-align: left;
+  color: #333;
+  line-height: 20px;
 }
 
 .grid-child-right {
