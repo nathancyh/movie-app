@@ -48,7 +48,7 @@
                 </li>
               </div>
               <div class="rightmargindiv">
-                <a class="nav-link" href="/search?page=1">Discovery <i class="fas fa-search"></i></a>
+                <a class="nav-link" href="/search?page=1">Discover <i class="fas fa-search"></i></a>
               </div>
               <div class="rightmargindiv">
                 <li class="nav-item dropdown">{{#if user}}
@@ -100,15 +100,12 @@
   {{!-- Footer --}}
   <div id="footer" class="text-center">
     <div class="container">
-      <div class="grid-container d-flex justify-content-center">
-        {{!-- <div class="grid-child-left">
-          <h2>About the Movie App</h2>
+      <div class="grid-container">
+        <div class="grid-child-left">
+          <h2>About MÖVIEPICK</h2>
 
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-            dolore
-            magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-            commodo
-            consequat
+          <p>MÖVIEPICK is an online search database of information related to movies. Entertainment fans have the
+            ability to search, sort and provide their reviews using their personal profile.
           </p>
         </div> --}}
 
@@ -161,11 +158,17 @@
   {{!--Axios --}}
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
-  <script src="/main.js"></script>
-  <script src="/index.js"></script>
-  <script src="/review.js"></script>
-  <script src="/profileEdit.js"></script>
-  <script src="/watchlist.js"></script>
+
+    {{!-- Stripe --}}
+    <script src="https://js.stripe.com/v3/"></script>;
+
+    <script src="/main.js"></script>
+    <script src="/index.js"></script>
+    <script src="/review.js"></script>
+    <script src="/profileEdit.js"></script>
+    <script src="/watchlist.js"></script>
+    <script src="/search.js"></script>
+
 </body>
 
 </html>
