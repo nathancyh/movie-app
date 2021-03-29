@@ -95,9 +95,11 @@
             <button class="clear-cart banner-btn">clear cart</button>
 
             <br><br>
-            <button class="banner-btn" id="btn-payment">
-                Pay
-            </button>
+            <form class="pay" action="/submit" method="post">
+                <button class="payment banner-btn" id="btn-payment">
+                    Pay
+                </button>
+            </form>
         </div>
 
 
@@ -114,3 +116,4 @@
 
 
 <script src="./shopping.js"></script>
+<script src="https://js.stripe.com/v3/"></script>

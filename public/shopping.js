@@ -8,6 +8,8 @@ const cartItems = document.querySelector(".cart-items");
 const cartTotal = document.querySelector(".cart-total");
 const cartContent = document.querySelector(".cart-content");
 const productsDOM = document.querySelector(".products-center");
+const payment = document.querySelector(".payment");
+
 let cart = [];
 //buttons
 let buttonsDOM = [];
@@ -20,10 +22,13 @@ class Products {
       let data = await result.json(); //getting data in json data
 
       let products = data.items;
+      console.log(data.items);
       products = products.map((item) => {
         const { title, price } = item.fields;
         const { id } = item.sys;
         const image = item.fields.image.fields.file.url;
+        console.log(id);
+        console.log(image);
         return { title, price, id, image };
       });
       return products;
@@ -232,17 +237,21 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 
-// $("input[name='expiry-data']").mask("00 / 00");
 
 $("#btn-payment").click((e) => {
   var price = $(".cart-total")[0].innerText;
-  // stripeHandler.open({
-  //     amount: price * 100,
-  console.log(price);
+  stripeHandler.open({
+    amount: price * 100,
+  });
+  console.log(price * 100);
+  // console.log(item.id);
   console.log("Hellloo");
+  console.log(cartItems);
+  console.log(cartTotal);
+  // $("#checkout").click((e) => {
+  //   var price = $("#total")[0].innerText.replace("TOTAL = $", "");
+  //   stripeHandler.open({
+  //       amount: price * 100,
+  //   });
+  // });
 });
-// });
-
-// $("#btn-payment").on("click", function () {
-//   console.log("Hellloo");
-// });
