@@ -67,8 +67,9 @@ module.exports = (express) => {
       .then((data) => {
         userData = data;
         console.log("userdatafavmovie"); //FIXME:
-        moviePoster = `/${profilepic}`;
+        moviePoster = `/posterplaceholder.png`;
         let fav_movie = userData[0].fav_movie;
+        console.log(fav_movie);
         if (fav_movie) {
           return axios
             .get(
@@ -76,7 +77,7 @@ module.exports = (express) => {
             )
             .then((data2) => {
               apiData = data2.data;
-              moviePoster = `https://image.tmdb.org/t/p/w300${apiData.poster_path}`;
+              moviePoster = `https://image.tmdb.org/t/p/w500${apiData.poster_path}`;
               movieTitle = apiData.original_title;
               return apiData;
             })
