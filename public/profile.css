@@ -17,6 +17,10 @@
   justify-content: center;
 }
 
+.screenshot-container {
+  padding-right: 90px;
+}
+
 .profile-pic-col {
   display: flex;
   border-radius: 100px;
@@ -26,14 +30,16 @@
 .screenshot-pic {
   width: 680px;
   height: 300px;
-  padding: 20px;
+  padding: 15px;
+  padding-top: 0px;
   object-fit: cover;
 }
 
 .poster-pic {
-  width: 400px;
-  height: 500px;
-  margin: 40px 40px;
+  width: auto;
+  height: 590px;
+  /* margin: 40px 40px; */
+  object-fit: cover;
 }
 
 .user-container {
