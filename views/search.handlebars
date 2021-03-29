@@ -13,13 +13,13 @@
     <div class="row search-sorting-option">
         <ul>
             <li><b>Sort By:</b></li>
-            <li><a href="/search?sort=popularity.desc">Popularity</a></li>
-            {{!-- <li><a href="/search/star">A-Z</a></li> --}}
-            <li><a href="/search?sort=vote_average.desc">User Rating</a></li>
-            <li><a href="/search?sort=vote_count.desc">Vote Count</a></li>
-            <li><a href="/search?sort=release_date.desc">Release Date</a></li>
-            <li><a href="/search/">Date of Your Rating</a></li>
-            <li><a href="/search/">Your Rating</a></li>
+            <li><a href="/search?sort=popularity.desc&page=1">Popularity</a></li>
+            <li><a href="/search?sort=vote_average.desc&page=1">User Rating</a></li>
+            <li><a href="/search?sort=vote_count.desc&page=1">Vote Count</a></li>
+            <li><a href="/search?sort=release_date.desc&page=1">Release Date</a></li>
+            <li><a href="/search?sort=revenue.desc&page=1">Revenue</a></li>
+            {{!-- <li><a href="/search/">Date of Your Rating</a></li>
+            <li><a href="/search/">Your Rating</a></li> --}}
         </ul>
     </div>
     {{/if}}
@@ -57,7 +57,7 @@
                     {{math @index "+" 1}}. {{this.title}} ({{slicedate this.release_date}})
                 </a>
             </p>
-            <p><img style="width: 13px;" src="/assets/sprite-yellow-star.jpg"></img>
+            <p><i class="fa fa-star"></i>
                 {{this.vote_average}}
             </p>
             <p>{{genreconverter this.genre_ids}}</p>
@@ -66,10 +66,16 @@
         </div>
     </div>
     {{/each}}
+    {{!-- {{#if showPage}}
     <div class="row search-sorting-option">
         <ul>
-            <li><a href="/search?q=popularity.desc">Previous Page</a></li>
-            <li><a href="/search?q=vote_average.desc">Next Page</a></li>
+            <li><a href="/search/util/next"><b>Next</b></a></li>
+            <li><a href="/search?q=vote_average.desc"><b>1</b></a></li>
+            <li><a href="/search?q=vote_average.desc"><b>2</b></a></li>
+            <li><a href="/search?q=vote_average.desc"><b>3</b></a></li>
+            <li><a href="/search?q=vote_average.desc"><b>4</b></a></li>
+            <li><a href="/search?q=popularity.desc"><b>5</b></a></li>
         </ul>
     </div>
+    {{/if}} --}}
 </div>

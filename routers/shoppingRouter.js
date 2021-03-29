@@ -1,7 +1,6 @@
 const stripePublicKey = process.env.stripePublicKey;
 const stripeSecretKey = process.env.stripeSecretKey;
 const stripe = require("stripe")(stripeSecretKey);
-const { app } = require("../app");
 
 module.exports = (express) => {
   const router = express.Router();
