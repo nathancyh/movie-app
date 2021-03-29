@@ -129,7 +129,7 @@ active {
 @import url("https://fonts.googleapis.com/css?family=Lato:400,700");
 
 :root {
-  --primaryColor: #f09d51;
+  --primaryColor: #ffbe08;
   --mainWhite: #fff;
   --mainBlack: #222;
   --mainGrey: #ececec;
@@ -164,7 +164,7 @@ body {
   position: absolute;
   top: -12px;
   right: -14px;
-  background: var(--primaryColor);
+  background: rgb(255, 107, 28);
   padding: 0 5px;
   border-radius: 30%;
   color: var(--mainWhite);
@@ -280,16 +280,28 @@ body {
 }
 .item-amount {
   text-align: center;
+  margin: auto;
 }
 .remove-item {
-  color: grey;
+  color: #ffbe08;
   cursor: pointer;
 }
+.remove-item:hover {
+  color: #717171;
+  cursor: pointer;
+}
+
 .fa-chevron-up,
 .fa-chevron-down {
   color: var(--primaryColor);
   cursor: pointer;
 }
+.fa-chevron-up:hover,
+.fa-chevron-down:hover {
+  color: #717171;
+  cursor: pointer;
+}
+
 /*---------- End of Cart Item -------------------- */
 
 .cart-footer {
@@ -307,7 +319,9 @@ body {
 /* --------------- Products ---------------- */
 
 .products {
-  padding: 1rem 0;
+  padding-right: 1rem;
+  padding-bottom: 2rem;
+  /* padding: 1rem 0; */
 }
 .section-title h2 {
   text-align: center;
@@ -319,10 +333,10 @@ body {
 .products-center {
   width: 90vw;
   margin: 0 auto;
-  max-width: 1170px;
+  max-width: 1100px;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  grid-column-gap: 1.5rem;
+  grid-column-gap: 0.5rem;
   grid-row-gap: 2rem;
 }
 .img-container {
@@ -471,22 +485,22 @@ body {
 /* shopping cart payment */
 
 .payment {
-  background: #ffbe08;
+  /* background: #ffbe08;
   max-width: 360px;
   margin: 80px auto;
   height: auto;
   padding: 35px;
   padding-top: 70px;
   border-radius: 5px;
-  position: relative;
+  position: relative; */
 }
 
-.payment h2 {
+/* .payment h2 {
   text-align: center;
   letter-spacing: 2px;
   margin-bottom: 40px;
   color: #0d3c61;
-}
+} */
 
 .form .label {
   display: block;
