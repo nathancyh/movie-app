@@ -12,7 +12,7 @@ $(function () {
     let data = $(".note-area").val();
     //getting star rating value
     let rating;
-    let starValue = $("input[type = 'radio']");
+    let starValue = $("input[name = 'rating']");
     for (let i = 0; i < starValue.length; i++) {
       if (starValue[i].checked) {
         rating = starValue[i].value;
