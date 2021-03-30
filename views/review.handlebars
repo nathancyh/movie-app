@@ -123,12 +123,11 @@
                     </label>
                 </div>
                 <br>
-                <textarea placeholder="Review Title" class="edit-title" name="title">{{this.review_title}}</textarea>
+                <textarea class="edit-title" name="title">{{myReview.[0].review_title}}</textarea>
                 {{!-- <textarea placeholder="Review Rating" class="edit-rating" name="rating">{{this.rating}}</textarea>
                 --}}
                 <br>
-                <textarea placeholder="This Movie Is..." class="edit-area" cols="60" rows="10"
-                    name="edit">{{this.text}}</textarea>
+                <textarea class="edit-area" cols="60" rows="10" name="edit">{{myReview.[0].text}}</textarea>
                 <br>
                 <button type="button" class="save-btn btn btn-outline-warning">save changes</button>
                 <button type="button" class="cancel-btn btn btn-outline-warning">cancel</button>
