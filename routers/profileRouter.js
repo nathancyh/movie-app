@@ -36,7 +36,6 @@ module.exports = (express) => {
           '<button type="button" class="btn btn-outline-warning edit-profile text-center">Edit Profile</button>';
       }
     }
-    console.log(editbutton);
 
     //Check if propic exist, if not render placeholder
     let validateUploads = fs.promises
@@ -66,10 +65,8 @@ module.exports = (express) => {
       })
       .then((data) => {
         userData = data;
-        console.log("userdatafavmovie"); //FIXME:
         moviePoster = `/posterplaceholder.png`;
         let fav_movie = userData[0].fav_movie;
-        console.log(fav_movie);
         if (fav_movie) {
           return axios
             .get(
@@ -127,6 +124,9 @@ module.exports = (express) => {
 
   function postScreenshots(req, res) {
     screenshotupload(req, res, function (err) {
+      console.log("Uploaded");
+      console.log(req.files);
+      res.redirect("/search");
       if (err) {
         return err;
       }
@@ -139,7 +139,7 @@ module.exports = (express) => {
       cb(null, "uploads");
     },
     filename: function (req, file, cb) {
-      console.log(file);
+      // console.log(file);
       if (file.fieldname == "profileimageupload") {
         cb(null, `${req.user.id}_p.jpg`);
       } else if (file.fieldname == "screenshot0") {

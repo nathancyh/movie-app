@@ -37,7 +37,7 @@ $(function () {
       })
       .then(function (response) {
         setTimeout(function () {
-          window.location.href = "/";
+          // window.location.href = "/";
         }, 500);
       })
       .catch(function (error) {
