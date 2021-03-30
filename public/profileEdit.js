@@ -38,7 +38,7 @@ $(function () {
       .then(function (response) {
         setTimeout(function () {
           window.location.href = "/";
-        }, 500);
+        }, 5000);
       })
       .catch(function (error) {
         console.log(error);
