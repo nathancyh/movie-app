@@ -44,7 +44,7 @@ exports.up = function (knex) {
         table.foreign("movie_id").references("movies.api_id");
         table.integer("rating");
         table.varchar("review_title");
-        table.varchar("text");
+        table.text("text");
         table.timestamps(true, true);
       });
     });

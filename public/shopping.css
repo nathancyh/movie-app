@@ -38,6 +38,10 @@ p {
   /* margin-bottom: 1rem; */
 }
 
+#footer .container p {
+  margin-bottom: 0;
+}
+
 /* h2::after {
   content: "";
   width: 100px;
@@ -93,8 +97,9 @@ active {
   width: 100%;
   display: flex;
   align-items: center;
-  background: rgb(231, 226, 221);
+  background: #1b2f75;
   z-index: 1;
+  border-bottom: 4px #ffbe08 solid;
 }
 .navbar-center {
   width: 100%;
@@ -116,10 +121,6 @@ active {
 
 .form-control {
   width: 40vw;
-}
-
-.bg-dark {
-  background-color: #ffbe08 !important;
 }
 
 .navbar-dark .navbar-nav .nav-link {
