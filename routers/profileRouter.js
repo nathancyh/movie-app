@@ -126,7 +126,10 @@ module.exports = (express) => {
     screenshotupload(req, res, function (err) {
       console.log("Uploaded");
       console.log(req.files);
-      res.redirect("/search");
+      console.log(req.get("Referrer"));
+      let dest = req.get("Referrer");
+      let newDest = dest.replace("/edit", "");
+      res.redirect(newDest);
       if (err) {
         return err;
       }
